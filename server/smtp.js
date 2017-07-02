@@ -20,35 +20,36 @@ const mailserver = new SMTPServer({
     return callback(); // Accept the connection
   },
   onData(stream, session, callback){
-    //for the first user
-    name = session.envelope.rcptTo[0].address.split('@')[0];
-    var dir = fileHandler.createDir(path.join(baseDir,name));
-    var fileName = Date.now().toString();
-    var filePath = path.join(baseDir,name,fileName);
-
-    var mailJson = '';
-
+    var mailDataString = '';
+    var rcptTo = session.envelope.rcptTo;
 
     stream.on("data", function (chunk) {
-      mailJson += chunk;
+      mailDataString += chunk;
     });
 
     stream.on("end", function () {
-      simpleParser(mailJson).then(mail=>{}).catch(err=>{})
+      name = rcptTo[0].address.split('@')[0];
 
+      var fileName;
+      var filePath;
 
-      simpleParser(mailJson, (err, mail)=>{
-        fs.writeFileSync(filePath, JSON.stringify(mail) , 'utf-8', callback);
+      simpleParser(mailDataString, (err, mail)=>{
+        fileHandler.createDir(path.join(baseDir,name));
+        fileName = Date.now().toString() + '###' + mail.from.value[0].address + '###' + mail.subject;
+        filePath = path.join(baseDir,name,fileName);
+        fs.writeFileSync(filePath, JSON.stringify(mail) , 'utf-8');
+
+        if (rcptTo.length > 1) {
+          for (i = 1; i < rcptTo.length; i++) {
+            var currentName = rcptTo[i].address.split('@')[0];
+            fileHandler.createDir(path.join(baseDir,currentName));
+            fs.symlink(filePath, path.join(baseDir ,currentName, fileName), callback);
+          }
+        }
+
       });
 
 
-      if (session.envelope.rcptTo.length > 1) {
-        for (i = 1; i < session.envelope.rcptTo.length; i++) {
-          currentName = session.envelope.rcptTo[i].address.split('@')[0];
-          var newDir = fileHandler.createDir(path.join(baseDir,currentName));
-          fs.symlink(filePath, path.join(baseDir ,currentName, fileName), callback);
-        }
-      }
       callback();
     });
 
