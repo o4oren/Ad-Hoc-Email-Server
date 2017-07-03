@@ -1,11 +1,13 @@
 <md-card>
 
   <md-input-container>
-    <input type="text" mdInput [value]="inputValue" [mdAutocomplete]="auto">
+    <input type="text" mdInput [mdAutocomplete]="auto" [formControl]="autoCompleteControl">
   </md-input-container>
 </md-card>
-<md-autocomplete #auto="mdAutocomplete">
-  <md-option *ngFor="let option of options" [value]="option">
-    {{ option }}
+<md-autocomplete #auto="mdAutocomplete" >
+  <md-option *ngFor="let account of accounts" [value]="account">
+    {{ account }}
   </md-option>
 </md-autocomplete>
+
+<button md-button>Submit</button>

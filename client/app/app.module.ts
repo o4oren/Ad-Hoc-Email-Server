@@ -6,6 +6,9 @@ import {MdButtonModule, MdToolbarModule, MdInputModule, MdAutocompleteModule} fr
 
 import { AppComponent } from './app.component';
 import { MainContainerComponent } from './main-container/main-container.component';
+import {ApiService} from "./api.service";
+import {HttpModule} from "@angular/http";
+import {ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -15,13 +18,15 @@ import { MainContainerComponent } from './main-container/main-container.componen
   ],
   imports: [
     BrowserModule,
+    HttpModule,
     BrowserAnimationsModule,
     MdButtonModule,
     MdToolbarModule,
     MdInputModule,
-    MdAutocompleteModule
+    MdAutocompleteModule,
+    ReactiveFormsModule
   ],
-  providers: [],
+  providers: [ApiService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,24 +1,43 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormControl} from "@angular/forms";
+import {ApiService} from "../api.service";
+import {Observable} from "rxjs/Observable";
+import {Subscription} from "rxjs/Subscription";
 
 @Component({
   selector: 'main-container',
   templateUrl: './main-container.component.html',
   styleUrls: ['./main-container.component.css']
 })
-export class MainContainerComponent implements OnInit {
-  stateCtrl: FormControl;
-  options: any[] = ['aaaa','aabbb', 'aaadddd', 'bbbaaa', 'vvvccc', 'bbsrgr'];
-  option;
-  inputValue: string = '';
-  constructor() {
-    this.stateCtrl = new FormControl();
-    this.option = this.stateCtrl.valueChanges
-      .startWith(null)
-      .map(name => this.option(name));
+export class MainContainerComponent implements OnInit, OnDestroy {
+
+
+  sub: Subscription;
+  autoCompleteControl: FormControl;
+  accounts: string[];
+  account ='';
+
+  constructor(private apiService: ApiService) {
+    this.autoCompleteControl = new FormControl();
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
+    // this.apiService.listAccountsAutoComplete('').subscribe(result => this.accounts = result);
+
+    this.autoCompleteControl.valueChanges
+      .debounceTime(400).subscribe(val => {
+      this.filterAccounts(val).subscribe(result => this.accounts = result)
+    })
+
+
+  }
+
+  ngOnDestroy(): void {
+    this.sub.unsubscribe();
+  }
+
+  filterAccounts(val: string) : any {
+    return this.apiService.listAccountsAutoComplete(val);
   }
 
 }
