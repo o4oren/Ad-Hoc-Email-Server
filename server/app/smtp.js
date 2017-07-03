@@ -5,11 +5,13 @@
 const SMTPServer = require('smtp-server').SMTPServer;
 const fs = require("fs");
 const path = require('path');
-const fileHandler = require('../common/filesHelper');
+const fileHelper = require('../common/fileHelper');
 const simpleParser = require('mailparser').simpleParser;
 
-module.exports = {startSTMPServer: function startSTMPServer(dataDir, port)
+module.exports = {startSTMPServer: function startSTMPServer(properties, baseDir)
 {
+  const dataDir = fileHelper.path.isAbsolute(properties.dataDir) ? properties.dataDir : fileHelper.path.join(baseDir, properties.dataDir);
+  const smtpPort = properties.smtpPort;
   const mailserver = new SMTPServer({
     logger: true,
     authOptional: true,
@@ -33,15 +35,15 @@ module.exports = {startSTMPServer: function startSTMPServer(dataDir, port)
         var filePath;
 
         simpleParser(mailDataString, (err, mail) => {
-          fileHandler.createDir(path.join(dataDir, name));
-          fileName = fileHandler.createFileName(mail);
+          fileHelper.createDir(path.join(dataDir, name));
+          fileName = fileHelper.createFileName(mail);
           filePath = path.join(dataDir, name, fileName);
           fs.writeFileSync(filePath, JSON.stringify(mail), 'utf-8');
 
           if (rcptTo.length > 1) {
             for (i = 1; i < rcptTo.length; i++) {
               var currentName = rcptTo[i].address.split('@')[0];
-              fileHandler.createDir(path.join(dataDir, currentName));
+              fileHelper.createDir(path.join(dataDir, currentName));
               fs.symlink(filePath, path.join(dataDir, currentName, fileName), callback);
             }
           }
@@ -58,7 +60,7 @@ module.exports = {startSTMPServer: function startSTMPServer(dataDir, port)
     console.log('Error %s', err.message);
   });
 
-  mailserver.listen(port);
+  mailserver.listen(smtpPort);
   return mailserver;
 }
 }

@@ -3,8 +3,9 @@
  */
 const express = require('express');
 const router = express.Router();
-const fileHandler = require('../common/filesHelper');
-var dataDir = 'data'
+const fileHelper = require('../common/fileHelper');
+var properties = fileHelper.parseJsonFile('properties.json');
+var dataDir = fileHelper.path.isAbsolute(properties.dataDir) ? properties.dataDir : properties.dataDir;
 //indicates the api server is up
 router.get('/alive', (req, res) => {
   res.send('api works');
@@ -14,21 +15,31 @@ router.get('/alive', (req, res) => {
  * returns a list of account names starting with the req.body.prefix
  */
 router.post('/account/autocomplete', (req, res) => {
-  accounts = fileHandler.listFoldersForAutoComplete(dataDir, req.body.prefix);
+  accounts = fileHelper.listFoldersForAutoComplete(dataDir, req.body.prefix);
   res.json(accounts);
 });
 
 /**
  * returns a list of mail metadata bojects in a specific account
  */
-router.post('/account/:account', (req, res) => {
+router.get('/account/:account', (req, res) => {
   let emails = [];
-  let files = fileHandler.listFiles(fileHandler.path.join(dataDir, req.params.account));
+  let files = fileHelper.listFiles(fileHelper.path.join(dataDir, req.params.account));
   files.forEach((f) => {
-    emails.push(fileHandler.parseFileName(f));
+    emails.push(fileHelper.parseFileName(f));
   });
 
   res.json(emails);
+});
+
+/**
+ * returns a list of mail metadata bojects in a specific account
+ */
+router.get('/account/:account/:timestamp', (req, res) => {
+  let completeFileName = fileHelper.listFoldersForAutoComplete(fileHelper.path.join(dataDir, req.params.account), req.params.timestamp)[0];
+  let mail = fileHelper.getFileContents(fileHelper.path.join(dataDir, req.params.account), completeFileName);
+
+  res.json(mail);
 });
 
 

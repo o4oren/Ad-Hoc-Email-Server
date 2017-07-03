@@ -10,11 +10,9 @@ path = require('path'),
   bodyParser = require('body-parser'),
   api = require('./api');
 
-var dataDir;
-
 module.exports = {
-  startServer: function startServer(baseDir) {
-    dataDir = path.join(baseDir, 'data');
+  startServer: function startServer(properties) {
+
     const app = express();
 
 // Parsers for POST data

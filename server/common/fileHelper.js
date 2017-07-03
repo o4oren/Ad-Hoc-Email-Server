@@ -6,6 +6,10 @@ const path = require('path');
 const DELIMITER = '###';
 
 module.exports = {
+  parseJsonFile: (filePath)  => {
+    return JSON.parse(fs.readFileSync(filePath));
+  },
+
   createDir: function createDir(path) {
     var dir = path;
 
@@ -15,9 +19,9 @@ module.exports = {
   },
 
   listFoldersForAutoComplete: function listFolders(path, prefix) {
-    let files = fs.readdirSync(path).filter(function(file) {
-      if(file.startsWith(prefix))
-        return file;
+    let files = fs.readdirSync(path).filter(function (file) {
+        if (file.startsWith(prefix))
+          return file;
       }
     );
 
@@ -43,9 +47,14 @@ module.exports = {
     }
     return mailMetaData;
   },
+
+  getFileContents: (dir, fileName) => {
+
+    return JSON.parse(fs.readFileSync(path.join(dir, fileName), 'utf8'));
+  },
+
   fs,
   path
-
 }
 
 

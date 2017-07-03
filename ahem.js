@@ -4,13 +4,14 @@
 'use strict';
 
 // Start the app
-var path = require('path');
 var app = require('./server/app/serverapp');
 var smtp = require('./server/app/smtp');
+var fileHelper = require('./server/common/fileHelper');
 var baseDir = __dirname;
-var dataDir = path.join(baseDir, 'data');
+var properties = fileHelper.parseJsonFile(fileHelper.path.join(baseDir, 'properties.json'));
+
 
 console.log('starting...');
-app.startServer(baseDir);
-smtp.startSTMPServer(dataDir, 25);
+app.startServer(properties, baseDir);
+smtp.startSTMPServer(properties, baseDir);
 
