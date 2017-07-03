@@ -33,11 +33,29 @@ TBD
 
 ## API
 
+HTTP Method | URI Path | Parameters | Descritpion
+--- | --- | --- | ---
+GET | /api/account/{account} | |returns a list of the email objects in the account
+GET | /api/account/{account}/{timestamp} | |Gets the contents of a specific email
+POST | /account/autocomplete | { "prefix":"value" } | Returns a partial list of accounts
+
+#### GET /api/account/{account}/{timestamp}
+##### Query params
+account - account name
+timestamp - email's time stamp
+
+
 
 
 ## change log
 
-0.3 backend mail server only. 
+### 0.5
+* REST api initial implementation
+* Using configuration file
+* Restructure the project
+
+### 0.3 
+* backend mail server only. 
 
 
 ## Authors
