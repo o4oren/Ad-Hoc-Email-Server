@@ -8,9 +8,7 @@ const express = require('express');
 path = require('path'),
   http = require('http'),
   bodyParser = require('body-parser'),
-  smtp = require('./smtp'),
-  api = require('./api'),
-  port = 25;
+  api = require('./api');
 
 var dataDir;
 

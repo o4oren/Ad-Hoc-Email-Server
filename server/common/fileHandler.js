@@ -11,15 +11,16 @@ module.exports = {
       fs.mkdirSync(dir);
     }
   },
-  listFoldersForAutoComplete: function listFolders(prefix) {
-    fs.readdir(testFolder, (err, files) => {
-        files.reduce(file => {
-          file.startsExpr(prefix);
-        });
-        return files;
+  listFoldersForAutoComplete: function listFolders(path, prefix) {
+    let files = fs.readdirSync(path).filter(function(file) {
+      if(file.startsWith(prefix))
+        return file;
       }
-    )
+    );
+
+    return files;
   }
 }
+
 
 

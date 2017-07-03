@@ -3,7 +3,8 @@
  */
 const express = require('express');
 const router = express.Router();
-
+const fileHandler = require('../common/fileHandler');
+var dataDir = 'data'
 //indicates the api server is up
 router.get('/alive', (req, res) => {
   res.send('api works');
@@ -13,10 +14,11 @@ router.get('/alive', (req, res) => {
  * returns a list of account names starting with the req.body.prefix
  */
 router.post('/accounts/autocomplete', (req, res) => {
-  req.body.prefix
+  accounts = fileHandler.listFoldersForAutoComplete(dataDir, req.body.prefix);
+  res.json(accounts);
 });
 
 
 
-
 module.exports = router;
+
