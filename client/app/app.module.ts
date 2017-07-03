@@ -9,11 +9,13 @@ import { MainContainerComponent } from './main-container/main-container.componen
 import {ApiService} from "./api.service";
 import {HttpModule} from "@angular/http";
 import {ReactiveFormsModule} from "@angular/forms";
+import { AccountSelectorComponent } from './account-selector/account-selector.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MainContainerComponent
+    MainContainerComponent,
+    AccountSelectorComponent
 
   ],
   imports: [
