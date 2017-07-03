@@ -1,7 +1,4 @@
 
-# Usage
-node start ahem.js
-
 # ahem-server
 
 An ad-hoc mail server. Create and use ad hoc disposable mailboxes for testing or any other purpose.
@@ -54,7 +51,7 @@ timestamp - email's time stamp
 * Using configuration file
 * Restructure the project
 
-### 0.3 
+### 0.3
 * backend mail server only. 
 
 
