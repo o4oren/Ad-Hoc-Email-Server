@@ -1,5 +1,5 @@
 {
-  "dataDir" : "stam",
+  "dataDir" : "data",
   "appListenPort": "3000",
   "smtpPort" : 25
 }
