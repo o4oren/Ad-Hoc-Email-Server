@@ -5,7 +5,7 @@
 const SMTPServer = require('smtp-server').SMTPServer;
 const fs = require("fs");
 const path = require('path');
-const fileHandler = require('../common/fileHandler');
+const fileHandler = require('../common/filesHelper');
 const simpleParser = require('mailparser').simpleParser;
 
 module.exports = {startSTMPServer: function startSTMPServer(dataDir, port)
@@ -34,7 +34,7 @@ module.exports = {startSTMPServer: function startSTMPServer(dataDir, port)
 
         simpleParser(mailDataString, (err, mail) => {
           fileHandler.createDir(path.join(dataDir, name));
-          fileName = Date.now().toString() + '###' + mail.from.value[0].address + '###' + mail.subject;
+          fileName = fileHandler.createFileName(mail);
           filePath = path.join(dataDir, name, fileName);
           fs.writeFileSync(filePath, JSON.stringify(mail), 'utf-8');
 
