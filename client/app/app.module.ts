@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MdButtonModule, MdToolbarModule} from '@angular/material';
+import {MdButtonModule, MdToolbarModule, MdInputModule, MdAutocompleteModule} from '@angular/material';
 
 
 import { AppComponent } from './app.component';
@@ -10,13 +10,16 @@ import { MainContainerComponent } from './main-container/main-container.componen
 @NgModule({
   declarations: [
     AppComponent,
-    MainContainerComponent,
+    MainContainerComponent
+
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     MdButtonModule,
-    MdToolbarModule
+    MdToolbarModule,
+    MdInputModule,
+    MdAutocompleteModule
   ],
   providers: [],
   bootstrap: [AppComponent]
