@@ -4,13 +4,13 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "node server.js",
-    "debug": "node %NODE_DEBUG_OPTION% server.js",
+    "start": "node ahem.js",
+    "debug": "node %NODE_DEBUG_OPTION% ahem.js",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "startDev": "concurrent --kill-others \"node server.js\" \"ng serve --proxy-config proxy.conf.json\""
+    "startDev": "concurrent --kill-others \"node ahem.js\" \"ng serve --proxy-config proxy.conf.json\""
   },
   "private": true,
   "dependencies": {

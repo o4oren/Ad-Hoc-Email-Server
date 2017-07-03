@@ -1,11 +1,17 @@
 
 # Usage
-node start server.js
+node start ahem.js
 
 # ahem-server
 
 An ad-hoc mail server. Create and use ad hoc disposable mailboxes for testing or any other purpose.
 This project will provide both RESTful api and web application for consuming the service.
+
+## Prerequisites
+```
+nodejs v6.11
+npm v3.10
+```
 
 ## Installation
 ```
@@ -25,10 +31,9 @@ $ npm start
 
 TBD
 
-### Prerequisites
-```
-node.js
-```
+## API
+
+
 
 ## change log
 
@@ -39,7 +44,7 @@ node.js
 
 * **Oren Geva** 
 
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+See also the list of [contributors](https://github.com/o4oren/ahem-server/contributors) who participated in this project.
 
 ## License
 
