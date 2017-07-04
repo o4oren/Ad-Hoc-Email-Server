@@ -16,7 +16,7 @@ $ git clone https://github.com/o4oren/ahem-server.git
 $ cd ahem-server
 # install the project's dependencies
 $ npm install
-# starts backend on port 3000 and ng serve the front end at port 4200. Watches your files and uses livereload by default. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+# starts backend on port 3000 and ng serve the front end at port 4200. Watches your files and uses livereload by default. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files. For this mode, you need to install npm install -g concurrently
 $ npm devStart
 # prod build, will output the production front end application in `dist`
 # the produced code can be deployed (rsynced) to a remote server
