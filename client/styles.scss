@@ -1,0 +1,43 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/theming';
+
+
+// Include non-theme styles for core.
+@include mat-core();
+
+// Define a theme.
+$primary: mat-palette($mat-blue-grey);
+$accent:  mat-palette($mat-indigo, A200, A100, A400);
+
+$theme: mat-light-theme($primary, $accent);
+
+// Include all theme styles for the components.
+@include angular-material-theme($theme);
+
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+
+
+
+html, body {
+  margin: 0;
+  padding: 0;
+  position: fixed;
+  bottom: 0;
+  top: 0;
+  right: 0;
+  left: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+
+
+
+
+.ahem-cursor-pointer {
+  cursor: pointer;
+}
+
+
+
+

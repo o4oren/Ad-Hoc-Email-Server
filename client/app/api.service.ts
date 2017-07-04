@@ -12,5 +12,15 @@ export class ApiService {
     return this.http.post(url, {prefix: prefix}).map(res => res.json());
   }
 
+  listAccountsEmails(account: string) {
+    let url: string = "/api/account/" + account;
+    return this.http.get(url).map(res => res.json());
+  }
+
+  getEmailContent(account: string, timestamp: string) {
+    let url: string = "/api/account/" + account + "/" + timestamp;
+    return this.http.get(url).map(res => res.json());
+  }
+
 
 }

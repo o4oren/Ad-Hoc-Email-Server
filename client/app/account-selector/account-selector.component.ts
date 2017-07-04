@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl} from "@angular/forms";
 import {ApiService} from "../api.service";
+import {Observable} from "rxjs/Observable";
 
 @Component({
   selector: 'app-account-selector',
@@ -10,7 +11,7 @@ import {ApiService} from "../api.service";
 export class AccountSelectorComponent implements OnInit {
   autoCompleteControl: FormControl;
   accounts: string[];
-  account ='';
+  selectedAccount ='';
 
   constructor(private apiService: ApiService) {
     this.autoCompleteControl = new FormControl();
@@ -20,7 +21,7 @@ export class AccountSelectorComponent implements OnInit {
     // this.apiService.listAccountsAutoComplete('').subscribe(result => this.accounts = result);
 
     this.autoCompleteControl.valueChanges
-      .debounceTime(400).subscribe(val => {
+      .debounceTime(300).subscribe(val => {
       this.filterAccounts(val).subscribe(result => this.accounts = result)
     })
 
@@ -29,7 +30,15 @@ export class AccountSelectorComponent implements OnInit {
 
 
   filterAccounts(val: string) : any {
-    return this.apiService.listAccountsAutoComplete(val);
+    if(typeof val != 'undefined' && val)
+      return this.apiService.listAccountsAutoComplete(val);
+    else {
+      return Observable.create(observer => {
+        observer.next([]);
+        observer.complete();
+      });
+    }
+
   }
 
 }

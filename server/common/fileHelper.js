@@ -41,7 +41,7 @@ module.exports = {
     parts = fileName.split(DELIMITER);
 
     let mailMetaData = {
-      timestap: parts[0],
+      timestamp: parts[0],
       address: parts[1],
       subject: fileName.split(parts[1] + DELIMITER)[1]
     }
