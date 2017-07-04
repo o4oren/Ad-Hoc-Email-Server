@@ -1,5 +1,5 @@
 <md-input-container>
-  <input type="text" mdInput [mdAutocomplete]="auto" [formControl]="autoCompleteControl" [(ngModel)]="selectedAccount">
+  <input type="text" mdInput [mdAutocomplete]="auto" [formControl]="autoCompleteControl" [(ngModel)]="selectedAccount" placeholder="Account">
 </md-input-container>
 <md-autocomplete #auto="mdAutocomplete" >
   <md-option *ngFor="let account of accounts" [value]="account">
@@ -7,5 +7,6 @@
   </md-option>
 </md-autocomplete>
 
-<a routerLink="/{{selectedAccount}}"><button md-button>Submit</button></a>
+<a md-button routerLink="/{{selectedAccount}}">Submit</a>
+
 
