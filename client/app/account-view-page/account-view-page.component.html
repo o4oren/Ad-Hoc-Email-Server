@@ -1,0 +1,5 @@
+
+<div *ngFor='let email of emails | async'>
+  <a routerLink="/{{account}}/{{email.timestamp}}">  {{email.timestamp}} - {{email.address}} - {{email.subject}} </a>
+</div>
+
