@@ -20,7 +20,7 @@ module.exports = {
 
   listFoldersForAutoComplete: function listFolders(path, prefix) {
     let files = fs.readdirSync(path).filter(function (file) {
-        if (file.startsWith(prefix))
+        if (file.toLowerCase().startsWith(prefix.toLowerCase()))
           return file;
       }
     );
