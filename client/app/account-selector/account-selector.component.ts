@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormControl} from "@angular/forms";
 import {ApiService} from "../api.service";
 import {Observable} from "rxjs/Observable";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-account-selector',
@@ -13,7 +14,7 @@ export class AccountSelectorComponent implements OnInit {
   accounts: string[];
   selectedAccount ='';
 
-  constructor(private apiService: ApiService) {
+  constructor(private apiService: ApiService, private router: Router) {
     this.autoCompleteControl = new FormControl();
   }
 
@@ -39,6 +40,10 @@ export class AccountSelectorComponent implements OnInit {
       });
     }
 
+  }
+
+  clickSubmit() {
+    this.router.navigateByUrl('/' + this.selectedAccount);
   }
 
 }

@@ -33,7 +33,12 @@ module.exports = {
   },
 
   createFileName: (mail) => {
-    return Date.now().toString() + '###' + mail.from.value[0].address + '###' + mail.subject;
+
+    let address = mail.from ? mail.from.value[0].address : 'UNDEFINED';
+    let subject = mail.subject || 'UNDEFINED';
+
+    return Date.now().toString() + '###' + address + '###' + subject;
+
   },
 
   parseFileName: (fileName) => {

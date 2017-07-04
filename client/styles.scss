@@ -1,4 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
 @import '~@angular/material/theming';
 
 
@@ -17,9 +18,7 @@ $theme: mat-light-theme($primary, $accent);
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 
 
-
-
-html, body {
+.ahem-app {
   margin: 0;
   padding: 0;
   position: fixed;
@@ -30,8 +29,15 @@ html, body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
+.ahem-margin-auto {
+  margin: auto;
+}
 
-
+.ahem-account-selector {
+  width: 300px;
+  display: block;
+  margin-top: 20px;
+}
 
 
 .ahem-cursor-pointer {

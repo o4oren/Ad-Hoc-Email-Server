@@ -1,4 +1,6 @@
-<div>{{email.date}}</div>
-<div>{{email.from.text}}</div>
-<div>{{email.text}}</div>
+<div *ngIf="email">
+  <div>{{email.date}}</div>
+  <div>{{email.from.text}}</div>
+  <div [innerHTML]="emailBody"> </div>
+</div>
 
