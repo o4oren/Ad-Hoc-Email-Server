@@ -15,8 +15,10 @@ export class AccountViewPageComponent implements OnInit, OnDestroy {
   paramsSub: Subscription;
   account: string;
   emails: Observable<any>;
+  selectedEmail: any;
 
   constructor(private apiService: ApiService, private route: ActivatedRoute) {
+
   }
 
   ngOnInit() {
@@ -32,6 +34,10 @@ export class AccountViewPageComponent implements OnInit, OnDestroy {
 
   getAccountEmails(): any{
     this.emails = this.apiService.listAccountsEmails(this.account);
+  }
+
+  getEmailContents(email: any) {
+    this.apiService.getEmailContent(this.account, email.timestamp).subscribe(result => this.selectedEmail = result);
   }
 
 }

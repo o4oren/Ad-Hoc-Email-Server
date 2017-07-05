@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {
   MdButtonModule, MdToolbarModule, MdInputModule, MdAutocompleteModule, MdCardModule,
-  MdListModule
+  MdListModule, MdSidenavModule
 } from '@angular/material';
 import { AppComponent } from './app.component';
 import {ApiService} from "./api.service";
@@ -18,7 +18,7 @@ import { EmailViewComponent } from './email-view/email-view.component';
 const appRoutes: Routes = [
   { path: '', component:  MainPageComponent},
   { path: ':account', component: AccountViewPageComponent},
-  { path: ':account/:timestamp', component: EmailViewComponent}
+  { path: ':account/:timestamp', component: AccountViewPageComponent}
 ];
 
 @NgModule({
@@ -39,6 +39,7 @@ const appRoutes: Routes = [
     MdInputModule,
     MdAutocompleteModule,
     MdCardModule,
+    MdSidenavModule,
     ReactiveFormsModule,
     MdListModule,
     RouterModule.forRoot(appRoutes)

@@ -1,30 +1,26 @@
 
-<div class="ahem">
+<md-sidenav-container class="ahem-sideNav-container" >
+  <md-sidenav #sidenav opened="true" disableClose="true" class="ahem-sideNav" mode="push">
+    <md-card class="ahem-account-selector ahem-margin-auto">
+      <app-account-selector [selectedAccount]="account"></app-account-selector>
+    </md-card>
+    <md-list style="width:300px">
+      <div *ngFor='let email of emails | async'>
+        <md-list-item  class="ahem-hand-pointer" (click)="getEmailContents(email)">
+          <md-icon md-list-avatar fontSet="fa" fontIcon="fa-envelope=o" class="amy-rightpane-list-item-text"></md-icon>
+          <h4 md-line>{{email.address}}</h4>
+          <p md-line>{{email.subject}}</p>
+          <p md-line>{{email.timestamp | date:'medium'}}</p>
+        </md-list-item>
+        <md-divider></md-divider>
+      </div>
+    </md-list>
+  </md-sidenav>
 
-<md-card class="ahem-account-selector ahem-margin-auto">
-  <md-card-title-group>
-    <md-card-title>AD Hoc Email</md-card-title>
-    <md-card-subtitle></md-card-subtitle>
-  </md-card-title-group>
-  <app-account-selector [selectedAccount]="account"></app-account-selector>
-</md-card>
-
-<div class="ahem-email-content-container">
-
-  <md-list style="width:300px">
-  <div *ngFor='let email of emails | async'>
-      <md-list-item  routerLink="/{{account}}/{{email.timestamp}}" class="ahem-hand-pointer">
-        <md-icon md-list-avatar fontSet="fa" fontIcon="fa-envelope=o" class="amy-rightpane-list-item-text"></md-icon>
-        <h4 md-line>{{email.address}}</h4>
-        <p md-line>{{email.subject}}</p>
-        <p md-line>{{email.timestamp | date:'medium'}}</p>
-      </md-list-item>
-      <md-divider></md-divider>
-    </div>
-  </md-list>
-
-
-
+  <div class = ahem-sidnav-content>
+   <app-email-view [email]="selectedEmail"></app-email-view>
   </div>
-</div>
+
+</md-sidenav-container>
+
 

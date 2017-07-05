@@ -44,10 +44,30 @@ $theme: mat-light-theme($primary, $accent);
 }
 
 .ahem-email-content-container {
-  width: 80%;
+
   margin: auto;
   margin-top: 20px;
   font-size: smaller;
+}
+
+.ahem-sideNav-container {
+  height: 100%;
+  display: flex;
+  overflow: visible;
+}
+
+.ahem-sideNav {
+
+}
+
+.ahem-sidnav-content {
+  height: 80%;
+  overflow: auto;
+  //width: 100%;
+  flex: 1;
+  flex-direction: column;
+  padding: 20px;
+  margin-bottom: 20px;
 }
 
 
