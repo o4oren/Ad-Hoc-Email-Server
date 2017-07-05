@@ -37,7 +37,7 @@
   },
   "lint": [
     {
-      "project": "client/tsconfig.json"
+      "project": "client/tsconfig.app.json"
     },
     {
       "project": "client/tsconfig.spec.json"
