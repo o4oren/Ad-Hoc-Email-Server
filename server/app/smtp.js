@@ -60,6 +60,9 @@ module.exports = {startSTMPServer: function startSTMPServer(properties, baseDir)
     console.log('Error %s', err.message);
   });
 
+//create data dir if doesn't exist
+  fileHelper.createDir(dataDir);
+
   mailserver.listen(smtpPort);
   return mailserver;
 }

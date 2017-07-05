@@ -2,5 +2,6 @@
   <div>{{email.date}}</div>
   <div>{{email.from.text}}</div>
   <div [innerHTML]="emailBody"> </div>
+  <div *ngIf="!email.html" [innerHTML]="email.textAsHtml"> </div>
 </div>
 
