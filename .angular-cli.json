@@ -17,11 +17,12 @@
       "test": "test.ts",
       "tsconfig": "tsconfig.app.json",
       "testTsconfig": "tsconfig.spec.json",
-      "prefix": "app",
+      "prefix": "ahem",
       "styles": [
         "styles.scss"
       ],
       "scripts": [],
+
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",

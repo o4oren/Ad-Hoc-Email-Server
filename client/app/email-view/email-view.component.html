@@ -1,7 +1,24 @@
-<div *ngIf="email">
-  <div>{{email.date}}</div>
-  <div>{{email.from.text}}</div>
-  <div [innerHTML]="emailBody"> </div>
-  <div *ngIf="!email.html" [innerHTML]="email.textAsHtml"> </div>
-</div>
+<md-card class="ahem-account-selector ahem-margin-auto">
+  <md-card-title-group>
+    <md-card-title>AD Hoc Email</md-card-title>
+    <md-card-subtitle></md-card-subtitle>
+  </md-card-title-group>
+  <app-account-selector [selectedAccount]="account"></app-account-selector>
+</md-card>
 
+<div class="ahem-email-content-container">
+
+  <div *ngIf="email">
+    <md-card>
+    <div>Date: <span>{{email.date | date:'medium'}}</span></div>
+    <div>From: <span>{{email.from.text}}</span></div>
+    <div>Subject: <span>{{email.subject}}</span></div>
+    </md-card>
+    <md-card>
+    <div [innerHTML]="emailBody"> </div>
+    <div *ngIf="!email.html" [innerHTML]="email.textAsHtml"> </div>
+    </md-card>
+  </div>
+
+
+</div>

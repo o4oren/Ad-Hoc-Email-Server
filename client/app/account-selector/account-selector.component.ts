@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {FormControl} from "@angular/forms";
 import {ApiService} from "../api.service";
 import {Observable} from "rxjs/Observable";
@@ -12,7 +12,7 @@ import {Router} from "@angular/router";
 export class AccountSelectorComponent implements OnInit {
   autoCompleteControl: FormControl;
   accounts: string[];
-  selectedAccount ='';
+  @Input() selectedAccount ='';
 
   constructor(private apiService: ApiService, private router: Router) {
     this.autoCompleteControl = new FormControl();
