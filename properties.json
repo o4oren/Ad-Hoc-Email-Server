@@ -1,5 +1,7 @@
 {
   "dataDir" : "data",
   "appListenPort": "3000",
-  "smtpPort" : 25
+  "smtpPort" : 25,
+  "emailDeleteInterval" : 86400,
+  "emailDeleteAge" : 7200
 }

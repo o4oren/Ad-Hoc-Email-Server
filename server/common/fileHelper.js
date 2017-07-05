@@ -3,6 +3,7 @@
  */
 const fs = require('fs');
 const path = require('path');
+const rimraf = require('rimraf');
 const DELIMITER = '###';
 
 module.exports = {
@@ -53,13 +54,57 @@ module.exports = {
     return mailMetaData;
   },
 
+  /**
+   * returns a JSON representing the file contents
+   * @param dir
+   * @param fileName
+   */
   getFileContents: (dir, fileName) => {
-
     return JSON.parse(fs.readFileSync(path.join(dir, fileName), 'utf8'));
   },
 
   fs,
-  path
+  path,
+
+  /**
+   * Deletes files and directories older than the age passed in seconds
+   * @param dir
+   * @param age in seconds
+   */
+  deleteOldFilesAndDirectories: function deleteOldFilesAndDirectories(dir, age) {
+    let  now = new Date().getTime();
+    console.log('checking delete candidates in ' + dir);
+    fs.readdir(dir, function(err, files) {
+      files.forEach((file, index) => {
+        let currentPath =  path.join(dir, file);
+        fs.lstat(currentPath, (err, stat) => {
+          var endTime;
+          if (err) {
+            console.error(err);
+          } else {
+            endTime = new Date(stat.ctime).getTime() + (age * 1000);
+            if (now > endTime) {
+              return rimraf(currentPath, function (err) {
+                if (err) {
+                  console.error(err);
+                }
+                console.log('deleted ' + file);
+              });
+            }
+            if (fs.existsSync(currentPath)) {
+              fs.lstat(currentPath, function (err, stats) {
+                if (err) {
+                  console.error(err);
+                } else if (stats.isDirectory()) {
+                  deleteOldFilesAndDirectories(currentPath, age);
+                }
+              });
+            }
+          }
+        });
+      });
+    });
+  }
 }
 
 
