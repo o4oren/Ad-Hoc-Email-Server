@@ -39,8 +39,15 @@ $theme: mat-light-theme($primary, $accent);
   margin-top: 20px;
 }
 
-.ahem-cursor-pointer {
+.ahem-hand-pointer {
   cursor: pointer;
+}
+
+.ahem-email-content-container {
+  width: 80%;
+  margin: auto;
+  margin-top: 20px;
+  font-size: smaller;
 }
 
 
