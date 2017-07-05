@@ -17,15 +17,20 @@ $theme: mat-light-theme($primary, $accent);
 
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 
+html, body, material-app, md-sidenav-container, .my-content {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+}
 
 .ahem-app {
-  margin: 0;
-  padding: 0;
-  position: fixed;
-  bottom: 0;
-  top: 0;
-  right: 0;
-  left: 0;
+  //margin: 0;
+  //padding: 0;
+  //position: fixed;
+  //bottom: 0;
+  //top: 0;
+  //right: 0;
+  //left: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
@@ -44,10 +49,12 @@ $theme: mat-light-theme($primary, $accent);
 }
 
 .ahem-email-content-container {
-
-  margin: auto;
-  margin-top: 20px;
+  margin: 20px;
   font-size: smaller;
+}
+
+.ahem-sidenav-margin {
+  margin-left:300px
 }
 
 .ahem-sideNav-container {
@@ -57,18 +64,18 @@ $theme: mat-light-theme($primary, $accent);
 }
 
 .ahem-sideNav {
-
+  width: 300px;
 }
 
-.ahem-sidnav-content {
-  height: 80%;
-  overflow: auto;
-  //width: 100%;
-  flex: 1;
-  flex-direction: column;
-  padding: 20px;
-  margin-bottom: 20px;
-}
+//.ahem-sidnav-content {
+//  height: 80%;
+//  overflow: auto;
+//  //width: 100%;
+//  flex: 1;
+//  flex-direction: column;
+//  padding: 20px;
+//  margin-bottom: 20px;
+//}
 
 
 
