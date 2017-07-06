@@ -3,7 +3,7 @@
   <md-sidenav #sidenav opened="true" disableClose="true" class="ahem-sideNav" mode="side">
     <div class="ahem-overflow">
     <md-list style="width:300px">
-      <div *ngFor='let email of emails' (click)="selectEmail(email)">
+      <div *ngFor='let email of emails' (click)="selectEmail(email)" class="ahem-email-list-item" [ngClass]="{'ahem-email-selected': email.isSelected }">
           <ahem-email-info [emailInfo]="email"></ahem-email-info>
         <md-divider></md-divider>
       </div>

@@ -7,8 +7,8 @@
 @include mat-core();
 
 // Define a theme.
-$primary: mat-palette($mat-blue);
-$accent:  mat-palette($mat-yellow, A200, A100, A400);
+$primary: mat-palette($mat-blue, 900, A700);
+$accent:  mat-palette($mat-blue-grey, A200, A100, A400);
 $logo: mat-palette($mat-blue, A100, A300);
 
 $theme: mat-light-theme($primary, $accent);
@@ -34,7 +34,7 @@ body {
 }
 
 .ahem-account-selector {
-  flex: 1;
+
 }
 
 .ahem-margin-auto {
@@ -64,14 +64,35 @@ body {
   width: 300px;
 }
 
+.ahem-logo-span {
+  flex: 1;
+  -webkit-box-flex: 1;
+}
+
 .ahem-logo {
   font-size: 64px;
   height: 64px;
   width: 64px;
   color: lightblue;
-  flex: 1;
-  -webkit-box-flex: 1;
+
 }
+
+.ahem-email-selected {
+  background: #fafafa;
+  font-weight: bold;
+}
+
+.ahem-email-list-item {
+  :hover {
+    background: #fafafa;
+    transition: all .3s;
+  }
+  :active {
+    background: lightblue;
+    transition: all .3s;
+  }
+}
+
 
 //.ahem-sidnav-content {
 //  height: 80%;
