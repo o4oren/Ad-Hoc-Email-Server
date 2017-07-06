@@ -22,7 +22,7 @@ export class EmailViewComponent implements OnInit, OnDestroy {
   @Input()
   set email(email) {
     this._email = email;
-    if(email.html && (email.html.includes("<html>") && email.html.includes("<body"))) {
+    if(email.html && (email.html.includes("<html") && email.html.includes("<body"))) {
       let part1 = email.html.split('<body')[1];
       let part2 = part1.slice(part1.indexOf('>') + 1);
       let part3 = part2.split('</body>')[0];
