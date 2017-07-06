@@ -3,8 +3,8 @@
   <md-sidenav #sidenav opened="true" disableClose="true" class="ahem-sideNav" mode="side">
     <div class="ahem-overflow">
     <md-list style="width:300px">
-      <div *ngFor='let email of emails | async'>
-          <ahem-email-info [email]="email" [selectedEmail]="selectedEmail" (emailClicked)="selectEmail($event)"></ahem-email-info>
+      <div *ngFor='let email of emails' (click)="selectEmail(email)">
+          <ahem-email-info [emailInfo]="email"></ahem-email-info>
         <md-divider></md-divider>
       </div>
     </md-list>

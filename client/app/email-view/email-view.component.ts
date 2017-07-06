@@ -1,8 +1,10 @@
-import {Component, Input, OnDestroy, OnInit} from '@angular/core';
+import {Component, Input, OnDestroy, OnInit, Output} from '@angular/core';
 import {Subscription} from "rxjs/Subscription";
 import {ApiService} from "../api.service";
 import {ActivatedRoute} from "@angular/router";
 import {Observable} from "rxjs/Observable";
+import {EmailInfo} from "../model/email-info-model";
+import {EmailDetails} from "../model/email-details-model";
 
 @Component({
   selector: 'app-email-view',
@@ -11,25 +13,19 @@ import {Observable} from "rxjs/Observable";
 })
 export class EmailViewComponent implements OnInit, OnDestroy {
 
-
+  _email: EmailInfo;
+  emailDetails: EmailDetails;
   paramsSub: Subscription;
   emailSub: Subscription;
-  emailBody: string;
   account: string;
-  timestamp: string;
-  _email: any;
+
 
   @Input()
   set email(email) {
-    debugger;
+    console.log(email);
+    this.emailDetails = null;
     this._email = email;
-    this.emailBody='';
-    if(email && email.html && (email.html.includes("<html") && email.html.includes("<body"))) {
-      let part1 = email.html.split('<body')[1];
-      let part2 = part1.slice(part1.indexOf('>') + 1);
-      let part3 = part2.split('</body>')[0];
-      this.emailBody = part3;
-    }
+    if(this.email) this.getEmailDetails();
   }
 
   get email(): any { return this._email; }
@@ -39,26 +35,15 @@ export class EmailViewComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.paramsSub = this.route.params.subscribe(params => {
       this.account = params['account'];
-      this.timestamp = params['timestamp'];
     });
-
   }
-
-
 
   ngOnDestroy(): void {
     this.paramsSub.unsubscribe();
-    if(this.email) this.emailSub.unsubscribe();
   }
 
-  private getEmailContent() {
-    this.emailSub = this.apiService.getEmailContent(this.account, this.timestamp).subscribe(email => {
-      this.email = email;
-      let part1 = email.html.split('<body')[1];
-      let part2 = part1.slice(part1.indexOf('>')+1);
-      let part3 = part2.split('</body>')[0];
-      this.emailBody = part3;
-
-    });
+  getEmailDetails() {
+    this.apiService.getEmailContent(this.account, this.email.timestamp).subscribe(result => this.emailDetails = result);
   }
+
 }

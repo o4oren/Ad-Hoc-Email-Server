@@ -1,16 +1,16 @@
-<div class="ahem-sidenav-margin">
+
 <div class="ahem-email-content-container">
-  <div *ngIf="email">
+  <div *ngIf="emailDetails">
     <md-card>
-    <div>Date: <span>{{email.date | date:'medium'}}</span></div>
-    <div>From: <span>{{email.from.text}}</span></div>
-    <div>Subject: <span>{{email.subject}}</span></div>
+    <div>Date: <span>{{emailDetails.date | date:'medium'}}</span></div>
+    <div>From: <span>{{emailDetails.from.text}}</span></div>
+    <div>Subject: <span>{{emailDetails.subject}}</span></div>
     </md-card>
     <md-card>
-    <div [innerHTML]="emailBody"> </div>
-    <div *ngIf="!email.html" [innerHTML]="email.textAsHtml"> </div>
+    <div *ngIf="emailDetails.html" [innerHTML]="emailDetails.html | htmlCleanup"> </div>
+    <div *ngIf="!emailDetails.html" [innerHTML]="emailDetails.textAsHtml"> </div>
     </md-card>
   </div>
 
 </div>
-</div>
+

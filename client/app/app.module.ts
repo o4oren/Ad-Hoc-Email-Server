@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {
   MdButtonModule, MdToolbarModule, MdInputModule, MdAutocompleteModule, MdCardModule,
-  MdListModule, MdSidenavModule
+  MdListModule, MdSidenavModule, MdIconRegistry, MdIconModule
 } from '@angular/material';
 import { AppComponent } from './app.component';
 import {ApiService} from "./api.service";
@@ -15,6 +15,7 @@ import { MainPageComponent } from './main-page/main-page.component';
 import { AccountViewPageComponent } from './account-view-page/account-view-page.component';
 import { EmailViewComponent } from './email-view/email-view.component';
 import { EmailInfoComponent } from './email-info/email-info.component';
+import { HtmlCleanupPipe } from './pipe/html-cleanup.pipe';
 
 const appRoutes: Routes = [
   { path: '', component:  MainPageComponent},
@@ -29,7 +30,8 @@ const appRoutes: Routes = [
     MainPageComponent,
     AccountViewPageComponent,
     EmailViewComponent,
-    EmailInfoComponent
+    EmailInfoComponent,
+    HtmlCleanupPipe
 
   ],
   imports: [
@@ -44,9 +46,10 @@ const appRoutes: Routes = [
     MdSidenavModule,
     ReactiveFormsModule,
     MdListModule,
+    MdIconModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [ApiService],
+  providers: [ApiService, MdIconRegistry],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

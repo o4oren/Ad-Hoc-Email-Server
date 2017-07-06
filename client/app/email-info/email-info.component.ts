@@ -1,4 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {EmailInfo} from "../model/email-info-model";
 
 @Component({
   selector: 'ahem-email-info',
@@ -7,9 +8,9 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 })
 export class EmailInfoComponent implements OnInit {
 
-  @Input() email: any;
-  @Input() selectedEmail;
-  @Output() emailClicked = new EventEmitter();
+  @Input() emailInfo: EmailInfo;
+  @Output() emailClicked: EventEmitter<EmailInfo> = new EventEmitter();
+
 
   constructor() { }
 
@@ -17,7 +18,7 @@ export class EmailInfoComponent implements OnInit {
   }
 
   onClicked() {
-    this.emailClicked.emit(this.email);
+    this.emailClicked.emit(this.emailInfo);
   }
 
 }

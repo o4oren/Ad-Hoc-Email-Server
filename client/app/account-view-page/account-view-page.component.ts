@@ -1,8 +1,10 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit, Output} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {Subscription} from "rxjs/Subscription";
 import {ApiService} from "../api.service";
 import {Observable} from "rxjs/Observable";
+import {EmailInfo} from "../model/email-info-model";
+import {EmailDetails} from "../model/email-details-model";
 
 @Component({
   selector: 'app-account-view-page',
@@ -14,8 +16,8 @@ export class AccountViewPageComponent implements OnInit, OnDestroy {
 
   paramsSub: Subscription;
   account: string;
-  emails: Observable<any>;
-  selectedEmail: any;
+  emails: Array<EmailInfo>;
+  selectedEmail: EmailInfo;
 
   constructor(private apiService: ApiService, private route: ActivatedRoute) {
 
@@ -24,6 +26,7 @@ export class AccountViewPageComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.paramsSub = this.route.params.subscribe(params => {
       this.account = params['account'];
+
       this.getAccountEmails();
     });
   }
@@ -33,16 +36,16 @@ export class AccountViewPageComponent implements OnInit, OnDestroy {
   }
 
   getAccountEmails(): any{
-    this.emails = this.apiService.listAccountsEmails(this.account);
+    this.apiService.listAccountsEmails(this.account).subscribe(emails => this.emails = emails);
   }
 
-  getEmailContents(email: any) {
-    this.apiService.getEmailContent(this.account, email.timestamp).subscribe(result => this.selectedEmail = result);
-  }
-
-  selectEmail(clickedEmail) {
-    this.selectedEmail = clickedEmail;
-    this.apiService.getEmailContent(this.account, clickedEmail.timestamp).subscribe(result => this.selectedEmail = result);
+  selectEmail(clickedEmail:EmailInfo) {
+    if(clickedEmail) {
+      this.selectedEmail = clickedEmail;
+      for(let e of this.emails) {
+        e.timestamp == this.selectedEmail.timestamp ? e.isSelected = true : e.isSelected = false;
+      }
+    }
   }
 
 }
