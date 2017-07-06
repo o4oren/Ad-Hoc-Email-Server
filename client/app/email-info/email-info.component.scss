@@ -1,0 +1,15 @@
+.ahem-email-list-item {
+  :hover {
+    background: #fafafa;
+    transition: all .3s;
+  }
+  :active {
+    background: lightblue;
+    transition: all .3s;
+  }
+}
+
+.ahem-email-list-item-selected {
+  background: #fafafa;
+  font-weight: bold;
+}

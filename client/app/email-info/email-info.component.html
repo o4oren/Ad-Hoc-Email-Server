@@ -1,0 +1,6 @@
+<md-list-item  class="ahem-hand-pointer" [ngClass]="{'ahem-email-list-item-selected':'selectedEmail && selectedEmail.timestamp== email.timestamp'}" (click)="onClicked()">
+  <md-icon md-list-avatar fontSet="fa" fontIcon="fa-envelope=o" class="amy-rightpane-list-item-text"></md-icon>
+  <h4 md-line>{{email.address}}</h4>
+  <p md-line>{{email.subject}}</p>
+  <p md-line>{{email.timestamp | date:'medium'}}</p>
+</md-list-item>

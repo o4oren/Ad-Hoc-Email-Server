@@ -40,4 +40,9 @@ export class AccountViewPageComponent implements OnInit, OnDestroy {
     this.apiService.getEmailContent(this.account, email.timestamp).subscribe(result => this.selectedEmail = result);
   }
 
+  selectEmail(clickedEmail) {
+    this.selectedEmail = clickedEmail;
+    this.apiService.getEmailContent(this.account, clickedEmail.timestamp).subscribe(result => this.selectedEmail = result);
+  }
+
 }

@@ -7,7 +7,7 @@ import {Router} from "@angular/router";
 @Component({
   selector: 'app-account-selector',
   templateUrl: './account-selector.component.html',
-  styleUrls: ['./account-selector.component.css']
+  styleUrls: ['./account-selector.component.scss']
 })
 export class AccountSelectorComponent implements OnInit {
   autoCompleteControl: FormControl;

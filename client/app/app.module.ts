@@ -14,6 +14,7 @@ import {RouterModule, Routes} from "@angular/router";
 import { MainPageComponent } from './main-page/main-page.component';
 import { AccountViewPageComponent } from './account-view-page/account-view-page.component';
 import { EmailViewComponent } from './email-view/email-view.component';
+import { EmailInfoComponent } from './email-info/email-info.component';
 
 const appRoutes: Routes = [
   { path: '', component:  MainPageComponent},
@@ -27,7 +28,8 @@ const appRoutes: Routes = [
     AccountSelectorComponent,
     MainPageComponent,
     AccountViewPageComponent,
-    EmailViewComponent
+    EmailViewComponent,
+    EmailInfoComponent
 
   ],
   imports: [

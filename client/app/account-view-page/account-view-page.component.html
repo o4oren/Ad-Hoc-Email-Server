@@ -1,20 +1,14 @@
 
 <md-sidenav-container class="ahem-sideNav-container" >
   <md-sidenav #sidenav opened="true" disableClose="true" class="ahem-sideNav" mode="side">
-    <md-card class="ahem-account-selector ahem-margin-auto">
-      <app-account-selector [selectedAccount]="account"></app-account-selector>
-    </md-card>
+    <div class="ahem-overflow">
     <md-list style="width:300px">
       <div *ngFor='let email of emails | async'>
-        <md-list-item  class="ahem-hand-pointer" (click)="getEmailContents(email)">
-          <md-icon md-list-avatar fontSet="fa" fontIcon="fa-envelope=o" class="amy-rightpane-list-item-text"></md-icon>
-          <h4 md-line>{{email.address}}</h4>
-          <p md-line>{{email.subject}}</p>
-          <p md-line>{{email.timestamp | date:'medium'}}</p>
-        </md-list-item>
+          <ahem-email-info [email]="email" [selectedEmail]="selectedEmail" (emailClicked)="selectEmail($event)"></ahem-email-info>
         <md-divider></md-divider>
       </div>
     </md-list>
+    </div>
   </md-sidenav>
 
   <div class="ahem-sidnav-content">
