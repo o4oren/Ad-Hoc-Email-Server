@@ -18,6 +18,8 @@ $ cd ahem-server
 $ npm install
 # starts backend on port 3000 and ng serve the front end at port 4200. Watches your files and uses livereload by default. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files. For this mode, you need to install npm install -g concurrently
 $ npm devStart
+# node-sass is platform specific, so it needs to be rebuilt on some systems
+$ npm rebuild node-sass
 # prod build, will output the production front end application in `dist`
 # the produced code can be deployed (rsynced) to a remote server
 $ npm run build
@@ -27,6 +29,17 @@ $ npm start
 ## Getting Started
 
 TBD
+
+## Configuration
+A configuration file names properties.json is located in the root of the project.
+Edit it to fit your use case.
+Parameters:
+* dataDir - location of the actual email files saved on the filespace.
+* appListenPort - the port the node app will bind to.
+* smtpPort - ahem... you know.
+* emailDeleteInterval - The time in seconds between age checks for purging old files.
+* emailDeleteAge - The age in seconds above which emails will be deleted
+* allowedDomains - An array of allowed email domains. These domains will be allowed by the server as RCPT TO: entries. This also makes the server not act as an open relay. Format: ["my.domain.com", "my.second-domain.com"]
 
 ## API
 
@@ -38,8 +51,8 @@ POST | /account/autocomplete | { "prefix":"value" } | Returns a partial list of 
 
 #### GET /api/account/{account}/{timestamp}
 ##### Query params
-account - account name
-timestamp - email's time stamp
+ * account - account name
+ * timestamp - email's time stamp
 
 
 
