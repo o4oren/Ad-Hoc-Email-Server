@@ -20,6 +20,12 @@ module.exports = {
         console.log("Connection started.")
         return callback(); // Accept the connection
       },
+      onRcptTo(address, session, callback){
+        if(!validateAddress(address, properties.allowedDomains)){
+          return callback(new Error('Only the domains ' + [JSON.stringify(properties.allowedDomains)] +  ' are allowed to receive mail'));
+        }
+        return callback(); // Accept the address
+      },
       onData(stream, session, callback){
         var mailDataString = '';
         var rcptTo = session.envelope.rcptTo;
@@ -70,6 +76,20 @@ module.exports = {
   }
 }
 
+function validateAddress(address, allowedDomains) {
+  let allowed = false;
+
+  allowedDomains.forEach(domain => {
+    console.log(JSON.stringify(address.address.split('@')[1].toLowerCase()));
+    console.log(JSON.stringify(domain));
+    if (domain.toLowerCase() == address.address.split('@')[1].toLowerCase()) {
+
+      allowed = true;
+    }
+  });
+  console.log(allowed);
+  return allowed;
+}
 
 
 
