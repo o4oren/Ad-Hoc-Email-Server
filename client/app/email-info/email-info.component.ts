@@ -4,7 +4,7 @@ import {EmailInfo} from "../model/email-info-model";
 @Component({
   selector: 'ahem-email-info',
   templateUrl: './email-info.component.html',
-  styleUrls: ['./email-info.component.scss']
+  styleUrls: ['./email-info.component.css']
 })
 export class EmailInfoComponent implements OnInit {
 
