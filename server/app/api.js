@@ -28,7 +28,6 @@ router.get('/account/:account', (req, res) => {
   files.forEach((f) => {
     emails.push(fileHelper.parseFileName(f));
   });
-
   res.json(emails);
 });
 
