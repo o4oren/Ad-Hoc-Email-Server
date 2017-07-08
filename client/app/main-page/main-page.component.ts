@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {ApiService} from "../api.service";
+import {Observable} from "rxjs/Observable";
 
 @Component({
   selector: 'app-main-page',
@@ -7,9 +9,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainPageComponent implements OnInit {
 
-  constructor() { }
+  properties: any = {};
+  constructor(private apiService: ApiService) { }
 
   ngOnInit() {
+    this.apiService.getProperties().subscribe(properties => this.properties = properties);
   }
 
   onSelected() {}

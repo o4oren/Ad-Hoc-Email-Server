@@ -49,6 +49,7 @@ Parameters:
 
 HTTP Method | URI Path | Parameters | Descritpion
 --- | --- | --- | ---
+GET | /api/properties | |returns the properties.json content
 GET | /api/account/{account} | |returns a list of the email objects in the account
 GET | /api/account/{account}/{timestamp} | |Gets the contents of a specific email
 POST | /account/autocomplete | { "prefix":"value" } | Returns a partial list of accounts
@@ -57,12 +58,13 @@ POST | /account/autocomplete | { "prefix":"value" } | Returns a partial list of 
 
 - [ ] Error page when user/email doesn't exist.
 - [ ] Empty mail page
-- [ ] Landing page
+- [x] Landing page
 - [x] Errors on find user/email in api
 - [ ] Error on non existing user / message
 - [ ] routing for messages
 - [ ] read/unread icons
 - [ ] attachments
+- [ ] allow delete emails
 
 
 ## Authors

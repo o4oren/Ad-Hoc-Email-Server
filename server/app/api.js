@@ -19,6 +19,10 @@ router.post('/account/autocomplete', (req, res) => {
   res.json(accounts);
 });
 
+router.get('/properties', (req, res, next) => {
+  res.json(properties);
+});
+
 /**
  * returns a list of mail metadata bojects in a specific account
  */
