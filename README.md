@@ -28,9 +28,7 @@ $ npm start
 ```
 ## Getting Started
 
-TBD
-
-## Configuration
+### Configuration
 A configuration file names properties.json is located in the root of the project.
 Edit it to fit your use case.
 Parameters:
@@ -41,7 +39,7 @@ Parameters:
 * emailDeleteAge - The age in seconds above which emails will be deleted
 * allowedDomains - An array of allowed email domains. These domains will be allowed by the server as RCPT TO: entries. This also makes the server not act as an open relay. Format: ["my.domain.com", "my.second-domain.com"]
 
-## API
+### API
 
 HTTP Method | URI Path | Parameters | Descritpion
 --- | --- | --- | ---
@@ -49,13 +47,15 @@ GET | /api/account/{account} | |returns a list of the email objects in the accou
 GET | /api/account/{account}/{timestamp} | |Gets the contents of a specific email
 POST | /account/autocomplete | { "prefix":"value" } | Returns a partial list of accounts
 
-#### GET /api/account/{account}/{timestamp}
-##### Query params
- * account - account name
- * timestamp - email's time stamp
+### Todo for 1.0
 
-
-
+- [ ] Error page when user/email doesn't exist.
+- [ ] Empty mail page
+- [ ] Landing page
+- [ ] Error on non existing user / message
+- [ ] routing for messages
+- [ ] read/unread icons
+- [ ] attachments
 
 
 ## Authors
