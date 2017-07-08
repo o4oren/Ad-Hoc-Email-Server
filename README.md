@@ -4,6 +4,12 @@
 An ad-hoc mail server. Create and use ad hoc disposable mailboxes for testing or any other purpose.
 This project will provide both RESTful api and web application for consuming the service.
 
+
+## Getting Started
+Ahem mail server will accept any email sent to it, and create an ad hoc mailbox as needed.
+Then just browse to it's UI, enter the account name and you'll see the emails the account received.
+That's it. No authentication. No account creation.
+
 ## Prerequisites
 ```
 nodejs v6.11
@@ -11,7 +17,7 @@ npm v3.10
 ```
 
 ## Installation
-```
+```bash
 $ git clone https://github.com/o4oren/ahem-server.git
 $ cd ahem-server
 # install the project's dependencies
@@ -26,7 +32,6 @@ $ npm run build
 # prod run - will run the backend which will also serve the front end form the `dist` folder.
 $ npm start
 ```
-## Getting Started
 
 ### Configuration
 A configuration file names properties.json is located in the root of the project.
