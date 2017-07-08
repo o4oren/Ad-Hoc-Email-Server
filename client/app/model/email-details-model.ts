@@ -11,17 +11,17 @@ export interface EmailDetails {
   "subject":string,
   "date":string,
   "to": {
-    "value": Array<Recipient>,
+    "value": Array<EmailAddress>,
     "html":string,
     "text":string
   },
   "from":{
-    "value":Array<Sender>,
+    "value":Array<EmailAddress>,
     "html":string,
     "text":string
   },
   "cc":{
-    "value":Array<Sender>,
+    "value":Array<EmailAddress>,
     "html":string,
     "text":string
   }
@@ -29,15 +29,11 @@ export interface EmailDetails {
 }
 
 
-export interface Recipient
+export interface EmailAddress
   {
     "address":string,
     "name":string
   }
 
-export interface Sender
-{
-  "address":string,
-  "name":string
-}
+
 

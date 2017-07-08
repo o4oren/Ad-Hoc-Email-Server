@@ -2,9 +2,11 @@
 <div class="ahem-email-content-container">
   <div *ngIf="emailDetails">
     <md-card>
-    <div>Date: <span>{{emailDetails.date | date:'medium'}}</span></div>
-    <div>From: <span>{{emailDetails.from.text}}</span></div>
-    <div>Subject: <span>{{emailDetails.subject}}</span></div>
+      <div>From: <span>{{emailDetails.from.text}}</span></div>
+      <div>Date: <span>{{emailDetails.date | date:'medium'}}</span></div>
+      <div>Subject: <span>{{emailDetails.subject}}</span></div>
+      <div *ngIf="emailDetails.to">To: <span>{{emailDetails.to.text}}</span></div>
+      <div *ngIf="emailDetails.cc">cc: <span>{{emailDetails.cc.text}}</span></div>
     </md-card>
     <md-card>
     <div *ngIf="emailDetails.html" [innerHTML]="emailDetails.html | htmlCleanup"> </div>
