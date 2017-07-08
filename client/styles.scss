@@ -33,15 +33,27 @@ body {
 
 }
 
+.ahem-toolbar {
+  box-shadow: 4px 2px 11px 3px rgba(0, 0, 0, 0.55);
+  height: 100px;
+}
+
 .ahem-account-selector {
   width: 300px;
   justify-content: center;
   align-items: center;
   margin-top:20px;
+  width: auto;
+  height: auto;
 }
 
 .ahem-margin-auto {
   margin: auto;
+}
+
+.ahem-envelope {
+  font-size: 20px;
+  height: 20px !important;
 }
 
 
@@ -64,6 +76,7 @@ body {
 }
 
 .ahem-sideNav {
+  box-shadow: 4px 2px 11px -5px rgba(0, 0, 0, 0.55);
   width: 300px;
 }
 

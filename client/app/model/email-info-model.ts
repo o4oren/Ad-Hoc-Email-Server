@@ -5,4 +5,5 @@ export interface EmailInfo {
   subject: string;
   timestamp: string;
   isSelected: boolean;
+  isRead: boolean;
 }
