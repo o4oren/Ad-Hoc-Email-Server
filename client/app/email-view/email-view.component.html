@@ -2,15 +2,18 @@
 <div class="ahem-email-content-container">
   <div *ngIf="emailDetails">
     <md-card>
-      <div>From: <span>{{emailDetails.from.text}}</span></div>
-      <div>Date: <span>{{emailDetails.date | date:'medium'}}</span></div>
-      <div>Subject: <span>{{emailDetails.subject}}</span></div>
-      <div *ngIf="emailDetails.to">To: <span>{{emailDetails.to.text}}</span></div>
-      <div *ngIf="emailDetails.cc">cc: <span>{{emailDetails.cc.text}}</span></div>
-    </md-card>
-    <md-card>
-    <div *ngIf="emailDetails.html" [innerHTML]="emailDetails.html | htmlCleanup"> </div>
-    <div *ngIf="!emailDetails.html" [innerHTML]="emailDetails.textAsHtml"> </div>
+      <md-card-header>
+        <md-card-title>From: {{emailDetails.from.text}}</md-card-title>
+        <md-card-title>Date: {{emailDetails.date | date:'medium'}}</md-card-title>
+        <md-card-title *ngIf="emailDetails.to">To: {{emailDetails.to.text}}</md-card-title>
+        <md-card-title *ngIf="emailDetails.cc">cc: {{emailDetails.cc.text}}</md-card-title>
+        <md-card-title>Subject: {{emailDetails.subject}}></md-card-title>
+      </md-card-header>
+      <md-divider></md-divider>
+      <md-card-content>
+        <div *ngIf="emailDetails.html" [innerHTML]="emailDetails.html | htmlCleanup"> </div>
+        <div *ngIf="!emailDetails.html" [innerHTML]="emailDetails.textAsHtml"> </div>
+      </md-card-content>
     </md-card>
   </div>
 

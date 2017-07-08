@@ -57,20 +57,10 @@ POST | /account/autocomplete | { "prefix":"value" } | Returns a partial list of 
 
 
 
-## change log
-
-### 0.5
-* REST api initial implementation
-* Using configuration file
-* Restructure the project
-
-### 0.3
-* backend mail server only. 
-
 
 ## Authors
 
-* **Oren Geva** 
+* **Oren Geva**
 
 See also the list of [contributors](https://github.com/o4oren/ahem-server/contributors) who participated in this project.
 
