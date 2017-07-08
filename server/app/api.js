@@ -22,12 +22,17 @@ router.post('/account/autocomplete', (req, res) => {
 /**
  * returns a list of mail metadata bojects in a specific account
  */
-router.get('/account/:account', (req, res) => {
+router.get('/account/:account', (req, res, next) => {
+  if(!fileHelper.fs.existsSync(fileHelper.path.join(dataDir, req.params.account))) {
+    res.status(404).send({error: "USER DOES NOT EXIST"});
+    return;
+  }
   let emails = [];
   let files = fileHelper.listFiles(fileHelper.path.join(dataDir, req.params.account));
   files.forEach((f) => {
     emails.push(fileHelper.parseFileName(f));
   });
+
   res.json(emails);
 });
 
@@ -35,10 +40,18 @@ router.get('/account/:account', (req, res) => {
  * returns a list of mail metadata bojects in a specific account
  */
 router.get('/account/:account/:timestamp', (req, res) => {
-  let completeFileName = fileHelper.listFoldersForAutoComplete(fileHelper.path.join(dataDir, req.params.account), req.params.timestamp)[0];
-  let mail = fileHelper.getFileContents(fileHelper.path.join(dataDir, req.params.account), completeFileName);
 
-  res.json(mail);
+  try {
+    let completeFileName = fileHelper.listFoldersForAutoComplete(fileHelper.path.join(dataDir, req.params.account), req.params.timestamp)[0];
+    let mail = fileHelper.getFileContents(fileHelper.path.join(dataDir, req.params.account), completeFileName);
+    res.json(mail);
+  }
+  catch (e) {
+    res.status(404).send({error: "FILE NOT FOUND"});
+  }
+
+
+
 });
 
 

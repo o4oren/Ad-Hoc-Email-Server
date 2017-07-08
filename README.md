@@ -18,19 +18,20 @@ npm v3.10
 
 ## Installation
 ```bash
-$ git clone https://github.com/o4oren/ahem-server.git
-$ cd ahem-server
+# clone the repository
+git clone https://github.com/o4oren/ahem-server.git
+cd ahem-server
 # install the project's dependencies
-$ npm install
+npm install
 # starts backend on port 3000 and ng serve the front end at port 4200. Watches your files and uses livereload by default. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files. For this mode, you need to install npm install -g concurrently
-$ npm devStart
+npm devStart
 # node-sass is platform specific, so it needs to be rebuilt on some systems
-$ npm rebuild node-sass
+npm rebuild node-sass
 # prod build, will output the production front end application in `dist`
 # the produced code can be deployed (rsynced) to a remote server
-$ npm run build
+npm run build
 # prod run - will run the backend which will also serve the front end form the `dist` folder.
-$ npm start
+npm start
 ```
 
 ### Configuration
@@ -57,6 +58,7 @@ POST | /account/autocomplete | { "prefix":"value" } | Returns a partial list of 
 - [ ] Error page when user/email doesn't exist.
 - [ ] Empty mail page
 - [ ] Landing page
+- [x] Errors on find user/email in api
 - [ ] Error on non existing user / message
 - [ ] routing for messages
 - [ ] read/unread icons

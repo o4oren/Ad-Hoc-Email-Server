@@ -31,6 +31,12 @@ module.exports = {
     })
     ;
 
+    //error handler
+    app.use(function (err, req, res, next) {
+      console.log(err);
+      res.status(500).send({error: err.message});
+    });
+
     /**
      * Get port from environment and store in Express.
      */
