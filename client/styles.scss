@@ -29,10 +29,6 @@ body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
-.ahem-app {
-
-}
-
 .ahem-toolbar {
   box-shadow: 4px 2px 11px 3px rgba(0, 0, 0, 0.55);
   height: 100px;
@@ -40,12 +36,19 @@ body {
 }
 
 .ahem-account-selector {
-  width: 600px;
+  
   justify-content: center;
   align-items: center;
   margin:auto;
   margin-top:20px;
 
+}
+
+.ahem-centered-card {
+  width:600px;
+  margin: auto;
+  margin-top: 20px;
+  align-self: center;
 }
 
 .ahem-margin-auto {
