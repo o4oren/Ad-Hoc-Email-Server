@@ -21,14 +21,11 @@ npm v3.10
 # clone the repository
 git clone https://github.com/o4oren/ahem-server.git
 cd ahem-server
-# install the project's dependencies
-npm install
-# starts backend on port 3000 and ng serve the front end at port 4200. Watches your files and uses livereload by default. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files. For this mode, you need to install npm install -g concurrently
-npm devStart
-# node-sass is platform specific, so it needs to be rebuilt on some systems
-npm rebuild node-sass
-# prod build, will output the production front end application in `dist`
-# the produced code can be deployed (rsynced) to a remote server
+# builds the project.
+# the build script actually runs npm install to install all dependencies, 
+# npm rebuild node-sass to rebuild the sass compiler for the system,
+# and ng build --prod to build a 'production' version of the ng2 front end.
+# There are other, convenience options for build and run in development mode.
 npm run build
 # prod run - will run the backend which will also serve the front end form the `dist` folder.
 npm start
