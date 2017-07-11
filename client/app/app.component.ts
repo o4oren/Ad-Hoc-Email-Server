@@ -3,7 +3,7 @@ import {DomSanitizer} from "@angular/platform-browser";
 import {MdIconRegistry} from "@angular/material";
 
 @Component({
-  selector: 'app-root',
+  selector: 'ahem-app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
