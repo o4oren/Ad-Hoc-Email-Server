@@ -9,7 +9,7 @@
         What is you account? Any account name you choose.</p>
       <p>The server serves the domains:
         <md-list >
-          <md-list-item *ngFor="let domain of properties.allowedDomains"> {{domain}} </md-list-item>
+          <div *ngFor="let domain of properties.allowedDomains"> {{domain}} </div>
         </md-list>
       <p>It will check every {{properties.emailDeleteInterval}} seconds if an email has passed {{properties.emailDeleteAge}} seconds of age, and if it did, it will erase it.</p>
       <p>So go ahead, and give it a try. Send an email to whatever@one-of-the domains above, and enter your account.</p>
