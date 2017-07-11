@@ -7,6 +7,7 @@
     "start": "node ahem.js",
     "debug": "node %NODE_DEBUG_OPTION% ahem.js",
     "build": "npm install && npm rebuild node-sass && ng build --prod",
+    "buildDev": "npm install && npm rebuild node-sass && ng build --dev",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
