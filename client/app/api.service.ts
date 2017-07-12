@@ -22,6 +22,11 @@ export class ApiService {
     return this.http.get(url).map(res => res.json());
   }
 
+  deleteEmail(account: string, timestamp: string) {
+    let url: string = "/api/account/" + account + "/" + timestamp;
+    return this.http.delete(url).map(res => res.json());
+  }
+
   getProperties() {
     return this.http.get("/api/properties").map(res => res.json());
   }

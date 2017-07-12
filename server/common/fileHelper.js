@@ -19,7 +19,7 @@ module.exports = {
     }
   },
 
-  listFoldersForAutoComplete: function listFolders(path, prefix) {
+  getFileOrFolderNameByPrefix: function listFolders(path, prefix) {
     let files = fs.readdirSync(path).filter(function (file) {
         if (file.toLowerCase().startsWith(prefix.toLowerCase()))
           return file;
@@ -65,6 +65,10 @@ module.exports = {
 
   fs,
   path,
+
+  deleteFile: (filePath) => {
+    return rimraf(filePath);
+  },
 
   /**
    * Deletes files and directories older than the age passed in seconds

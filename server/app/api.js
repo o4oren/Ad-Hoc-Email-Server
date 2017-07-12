@@ -15,7 +15,7 @@ router.get('/alive', (req, res) => {
  * returns a list of account names starting with the req.body.prefix
  */
 router.post('/account/autocomplete', (req, res) => {
-  accounts = fileHelper.listFoldersForAutoComplete(dataDir, req.body.prefix);
+  accounts = fileHelper.getFileOrFolderNameByPrefix(dataDir, req.body.prefix);
   res.json(accounts);
 });
 
@@ -46,7 +46,7 @@ router.get('/account/:account', (req, res, next) => {
 router.get('/account/:account/:timestamp', (req, res) => {
 
   try {
-    let completeFileName = fileHelper.listFoldersForAutoComplete(fileHelper.path.join(dataDir, req.params.account), req.params.timestamp)[0];
+    let completeFileName = fileHelper.getFileOrFolderNameByPrefix(fileHelper.path.join(dataDir, req.params.account), req.params.timestamp)[0];
     let mail = fileHelper.getFileContents(fileHelper.path.join(dataDir, req.params.account), completeFileName);
     res.json(mail);
   }
@@ -58,6 +58,21 @@ router.get('/account/:account/:timestamp', (req, res) => {
 
 });
 
+router.delete('/account/:account/:timestamp', (req, res) => {
+
+  try {
+    let completeFileName = fileHelper.getFileOrFolderNameByPrefix(fileHelper.path.join(dataDir, req.params.account), req.params.timestamp)[0];
+    let mailFile = fileHelper.getFileContents(fileHelper.path.join(dataDir, req.params.account), completeFileName);
+    fileHelper.deleteFile(mailFile);
+    res.json({success:true});
+  }
+  catch (e) {
+    res.status(500).send({error: "FAILED TO DELETE FILE", succes:false});
+  }
+
+
+
+});
 
 module.exports = router;
 
