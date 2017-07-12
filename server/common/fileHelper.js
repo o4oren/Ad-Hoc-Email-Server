@@ -4,7 +4,7 @@
 const fs = require('fs');
 const path = require('path');
 const rimraf = require('rimraf');
-const DELIMITER = '###';
+const DELIMITER = '##^!#';
 
 module.exports = {
   parseJsonFile: (filePath)  => {
