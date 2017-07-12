@@ -38,7 +38,7 @@ module.exports = {
     let address = mail.from ? mail.from.value[0].address : 'UNDEFINED';
     let subject = mail.subject || 'UNDEFINED';
 
-    return Date.now().toString() + '###' + address + '###' + subject;
+    return Date.now().toString() + DELIMITER + address + DELIMITER + subject;
 
   },
 
