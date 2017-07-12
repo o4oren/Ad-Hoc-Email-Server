@@ -24,7 +24,11 @@ export class ApiService {
 
   deleteEmail(account: string, timestamp: string) {
     let url: string = "/api/account/" + account + "/" + timestamp;
-    return this.http.delete(url).map(res => res.json());
+    return this.http.delete(url).map(res => res.json()).catch((error: any) => {
+      if (error.status < 400 ||  error.status ===500) {
+        return Observable.throw(new Error(error.status));
+      }
+    });
   }
 
   getProperties() {

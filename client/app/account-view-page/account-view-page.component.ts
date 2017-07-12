@@ -68,10 +68,12 @@ export class AccountViewPageComponent implements OnInit, OnDestroy {
 
   deleteFile() {
     this.apiService.deleteEmail(this.account, this.selectedEmail.timestamp).subscribe(
-
       result => {
         this.getAccountEmails();
         this.selectedEmail = null;
+      },
+      err => {
+        console.log('error!!!!', err); //TODO popup message
       }
     );
   }
