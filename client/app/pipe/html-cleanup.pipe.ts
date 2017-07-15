@@ -11,7 +11,7 @@ export class HtmlCleanupPipe implements PipeTransform {
       let part1 = html.split('<body')[1];
       let part2 = part1.slice(part1.indexOf('>') + 1);
       if(part2.startsWith('<style')) {
-        part2 = part2.slice(part2.indexOf('<style'), part2.indexOf('</style>'));
+        part2 = part2.split('</style>')[1];
       }
       let part3 = part2.split('</body>')[0];
       return part3;
