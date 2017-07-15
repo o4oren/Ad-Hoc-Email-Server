@@ -16,9 +16,10 @@ import { AccountViewPageComponent } from './account-view-page/account-view-page.
 import { EmailViewComponent } from './email-view/email-view.component';
 import { EmailInfoComponent } from './email-info/email-info.component';
 import { HtmlCleanupPipe } from './pipe/html-cleanup.pipe';
+import { LandingPageComponent } from './landing-page/landing-page.component';
 
 const appRoutes: Routes = [
-  { path: '', component:  MainPageComponent},
+  { path: '', component:  LandingPageComponent},
   { path: ':account', component: AccountViewPageComponent},
   { path: ':account/:timestamp', component: AccountViewPageComponent}
 ];
@@ -31,7 +32,8 @@ const appRoutes: Routes = [
     AccountViewPageComponent,
     EmailViewComponent,
     EmailInfoComponent,
-    HtmlCleanupPipe
+    HtmlCleanupPipe,
+    LandingPageComponent
 
   ],
   imports: [

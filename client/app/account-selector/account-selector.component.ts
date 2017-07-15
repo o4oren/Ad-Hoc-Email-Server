@@ -13,6 +13,7 @@ export class AccountSelectorComponent implements OnInit {
   autoCompleteControl: FormControl;
   accounts: string[];
   @Input() selectedAccount ='';
+  @Input() color = 'primary';
 
   constructor(private apiService: ApiService, private router: Router) {
     this.autoCompleteControl = new FormControl();

@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, OnDestroy, OnInit, Output} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {Subscription} from "rxjs/Subscription";
 import {ApiService} from "../api.service";
@@ -23,6 +23,7 @@ export class AccountViewPageComponent implements OnInit, OnDestroy {
   account: string;
   emails: Array<EmailInfo>;
   selectedEmail: EmailInfo;
+  @Output() onAccountDetermined: EventEmitter<string> = new EventEmitter();
 
 
   constructor(private apiService: ApiService, private route: ActivatedRoute) {
@@ -32,7 +33,7 @@ export class AccountViewPageComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.paramsSub = this.route.params.subscribe(params => {
       this.account = params['account'];
-
+      this.onAccountDetermined.emit(this.account);
       this.getAccountEmails();
     });
   }

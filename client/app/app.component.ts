@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {DomSanitizer} from "@angular/platform-browser";
 import {MdIconRegistry} from "@angular/material";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'ahem-app-root',
@@ -10,9 +11,5 @@ import {MdIconRegistry} from "@angular/material";
 export class AppComponent {
   title = 'AHEM - Ad Hoc Email Server';
 
-  constructor(iconRegistry: MdIconRegistry, sanitizer: DomSanitizer) {
-    iconRegistry.addSvgIcon(
-      'ahem-logo',
-      sanitizer.bypassSecurityTrustResourceUrl('assets/images/ahem_logo_icon.svg'))
-  }
+  constructor() {}
 }

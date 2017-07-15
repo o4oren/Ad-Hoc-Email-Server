@@ -7,9 +7,10 @@
 @include mat-core();
 
 // Define a theme.
-$primary: mat-palette($mat-blue, 900, A700);
+$primary: mat-palette($mat-blue, 900, A700, A700);
 $accent:  mat-palette($mat-indigo, 50, 300, A400);
 $logo: mat-palette($mat-blue, A100, A300);
+
 
 $theme: mat-light-theme($primary, $accent);
 
@@ -31,7 +32,7 @@ body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
-ahem-app-root {
+ahem-landing-page {
     display: flex;
     flex-direction: column;
     flex-grow: 1;
@@ -52,7 +53,6 @@ app-account-view-page {
 .ahem-internal-toolbar {
   box-shadow: 0 3px 5px -1px rgba(0,0,0,.2), 0 6px 10px 0 rgba(0,0,0,.14), 0 1px 18px 0 rgba(0,0,0,.12);
   z-index: 10;
-  height: 120px;
 }
 
 .ahem-account-selector {

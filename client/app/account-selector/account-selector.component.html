@@ -1,5 +1,5 @@
-<md-input-container>
-  <input type="text" mdInput [mdAutocomplete]="auto" [formControl]="autoCompleteControl" [(ngModel)]="selectedAccount" placeholder="Account" (keyup.enter)="clickSubmit()">
+<md-input-container color="{{color}}">
+  <input type="text" mdInput  [mdAutocomplete]="auto" [formControl]="autoCompleteControl" [(ngModel)]="selectedAccount" placeholder="Account" (keyup.enter)="clickSubmit()">
 </md-input-container>
 <md-autocomplete #auto="mdAutocomplete" >
   <md-option *ngFor="let account of accounts" [value]="account">
