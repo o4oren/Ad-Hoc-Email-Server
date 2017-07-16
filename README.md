@@ -5,6 +5,8 @@ An ad-hoc mail server. Create and use ad hoc disposable mailboxes for testing or
 This project will provide both RESTful api and web application for consuming the service.
 
 
+![Alt text](/../images/images/screenshot.png?raw=true "AHEM mail server")
+
 ## Getting Started
 Ahem mail server will accept any email sent to it, and create an ad hoc mailbox as needed.
 Then just browse to it's UI, enter the account name and you'll see the emails the account received.
@@ -46,10 +48,11 @@ Parameters:
 
 HTTP Method | URI Path | Parameters | Descritpion
 --- | --- | --- | ---
+POST | /account/autocomplete | { "prefix":"value" } | Returns a partial list of accounts
 GET | /api/properties | |returns the properties.json content
 GET | /api/account/{account} | |returns a list of the email objects in the account
 GET | /api/account/{account}/{timestamp} | |Gets the contents of a specific email
-POST | /account/autocomplete | { "prefix":"value" } | Returns a partial list of accounts
+DELETE | /api/account/{account}/{timestamp} | |Deletes a specific email
 
 ### Todo for 1.0
 
@@ -61,7 +64,7 @@ POST | /account/autocomplete | { "prefix":"value" } | Returns a partial list of 
 - [ ] routing for messages
 - [ ] read/unread icons
 - [ ] attachments
-- [ ] allow delete emails
+- [x] allow delete emails
 
 
 ## Authors
