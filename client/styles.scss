@@ -45,6 +45,7 @@ app-account-view-page {
 }
 
 .ahem-toolbar {
+  height: 128px;
   box-shadow: 0 3px 5px -1px rgba(0,0,0,.2), 0 6px 10px 0 rgba(0,0,0,.14), 0 1px 18px 0 rgba(0,0,0,.12);
   position: relative;
   z-index: 10;
@@ -118,12 +119,11 @@ app-account-view-page {
   -webkit-box-flex: 1;
 }
 
-.ahem-logo {
-  font-size: 64px;
-  height: 64px;
-  width: 64px;
+.mat-icon.ahem-logo {
   color: lightblue;
-
+  height: 128px;
+  width: 192px;
+  padding-top: 72px;
 }
 
 .ahem-email-selected {
