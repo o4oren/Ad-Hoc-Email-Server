@@ -8,7 +8,7 @@
 
 // Define a theme.
 $ahem-app-primary: mat-palette($mat-blue, 900, A700);
-$ahem-app-accent:  mat-palette($mat-blue-grey, A200, A100, A400);
+$ahem-app-accent:  mat-palette($mat-light-blue, 100, 100, A400);
 $ahem-app-warn:    mat-palette($mat-red);
 
 $ahem-app-theme: mat-light-theme($ahem-app-primary, $ahem-app-accent, $ahem-app-warn);
@@ -131,7 +131,7 @@ app-account-view-page {
 }
 
 .mat-icon.ahem-logo {
-  color: lightblue;
+  color: mat-color($ahem-app-accent);
   height: 100%;
   width: 100%;
 }
