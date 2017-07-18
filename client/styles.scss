@@ -119,6 +119,11 @@ app-account-view-page {
   -webkit-box-flex: 1;
 }
 
+.ahem-spacer {
+  flex: 1;
+  -webkit-box-flex: 1;
+}
+
 .mat-icon.ahem-logo {
   color: $accent;
   height: 128px;
