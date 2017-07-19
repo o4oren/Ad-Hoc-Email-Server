@@ -24,6 +24,7 @@ export class AccountViewPageComponent implements OnInit, OnDestroy {
   emails: Array<EmailInfo>;
   selectedEmail: EmailInfo;
   readEmails: Array<string> = [];
+
   @Output() onAccountDetermined: EventEmitter<string> = new EventEmitter();
 
 
@@ -44,21 +45,25 @@ export class AccountViewPageComponent implements OnInit, OnDestroy {
   }
 
   getAccountEmails(): any{
-    this.readEmails = JSON.parse(localStorage.getItem(this.account + '_readEmails'));
+    if(localStorage.getItem(this.account + '_read_emails')!= null)
+      this.readEmails = JSON.parse(localStorage.getItem(this.account + '_read_emails'));
     this.apiService.listAccountsEmails(this.account).subscribe(emails => {
       this.emails = emails;
       this.sortEmails(SortBy.Timestamp, true);
+      this.updateReadEmails();
     });
   }
 
   selectEmail(clickedEmail:EmailInfo) {
     if(clickedEmail) {
       this.selectedEmail = clickedEmail;
-      this.readEmails.push(clickedEmail.timestamp);
-      localStorage.setItem(this.account + '_readEmails', JSON.stringify(this.readEmails));
+
       for(let e of this.emails) {
         e.timestamp == this.selectedEmail.timestamp ? e.isSelected = true : e.isSelected = false;
       }
+      if(!this.readEmails.includes(clickedEmail.timestamp))
+        this.readEmails.push(clickedEmail.timestamp);
+      this.updateReadEmails();
 
     }
   }
@@ -71,6 +76,15 @@ export class AccountViewPageComponent implements OnInit, OnDestroy {
       return Number(a.timestamp) - Number(b.timestamp);
       });
   }
+
+  updateReadEmails() {
+    localStorage.setItem(this.account + '_read_emails', JSON.stringify(this.readEmails));
+    this.emails.forEach(e => {
+        this.readEmails.includes(e.timestamp) ? e.isRead = true : e.isRead = false;
+      }
+    );
+  }
+
 
   deleteFile() {
     this.apiService.deleteEmail(this.account, this.selectedEmail.timestamp).subscribe(
