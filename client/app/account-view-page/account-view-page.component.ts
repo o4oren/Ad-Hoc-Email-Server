@@ -23,6 +23,7 @@ export class AccountViewPageComponent implements OnInit, OnDestroy {
   account: string;
   emails: Array<EmailInfo>;
   selectedEmail: EmailInfo;
+  readEmails: Array<string> = [];
   @Output() onAccountDetermined: EventEmitter<string> = new EventEmitter();
 
 
@@ -43,6 +44,7 @@ export class AccountViewPageComponent implements OnInit, OnDestroy {
   }
 
   getAccountEmails(): any{
+    this.readEmails = JSON.parse(localStorage.getItem(this.account + '_readEmails'));
     this.apiService.listAccountsEmails(this.account).subscribe(emails => {
       this.emails = emails;
       this.sortEmails(SortBy.Timestamp, true);
@@ -52,9 +54,12 @@ export class AccountViewPageComponent implements OnInit, OnDestroy {
   selectEmail(clickedEmail:EmailInfo) {
     if(clickedEmail) {
       this.selectedEmail = clickedEmail;
+      this.readEmails.push(clickedEmail.timestamp);
+      localStorage.setItem(this.account + '_readEmails', JSON.stringify(this.readEmails));
       for(let e of this.emails) {
         e.timestamp == this.selectedEmail.timestamp ? e.isSelected = true : e.isSelected = false;
       }
+
     }
   }
 
