@@ -94,8 +94,8 @@ app-account-view-page {
   height: 20px !important;
 }
 
-.ahem-email-unread {
-  font-weight: bolder;
+.ahem-email-unread h2, .ahem-email-unread p{
+  font-weight: bolder !important;
 }
 
 .ahem-email-list {
