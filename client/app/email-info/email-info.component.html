@@ -1,6 +1,6 @@
-<md-list-item  class="ahem-hand-pointer" (click)="onClicked()" [ngClass]="{'ahem-email-unread': !emailInfo.isRead}">
+<md-list-item  class="ahem-hand-pointer" (click)="onClicked()">
   <md-icon md-list-avatar fontSet="fa" fontIcon="{{getFontIcon(emailInfo.isRead)}}" class="ahem-envelope"></md-icon>
-  <h2 md-line>{{emailInfo.address}}</h2>
+  <h2 md-line [ngClass]="{'ahem-email-unread': !emailInfo.isRead}">{{emailInfo.address}}</h2>
   <p md-line>{{emailInfo.subject}}</p>
   <p md-line>{{emailInfo.timestamp | date:'medium'}}</p>
 </md-list-item>
