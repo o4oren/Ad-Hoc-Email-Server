@@ -24,6 +24,8 @@ export class AccountViewPageComponent implements OnInit, OnDestroy {
   emails: Array<EmailInfo>;
   selectedEmail: EmailInfo;
   readEmails: Array<string> = [];
+  readUnreadIcon: string;
+  readUnreadText: string;
 
   @Output() onAccountDetermined: EventEmitter<string> = new EventEmitter();
 
@@ -64,6 +66,8 @@ export class AccountViewPageComponent implements OnInit, OnDestroy {
       if(!this.readEmails.includes(clickedEmail.timestamp))
         this.readEmails.push(clickedEmail.timestamp);
       this.updateReadEmails();
+      this.readUnreadIcon = 'fa-envelope-o';
+      this.readUnreadText = 'unread';
 
     }
   }
@@ -86,21 +90,20 @@ export class AccountViewPageComponent implements OnInit, OnDestroy {
   }
 
   markAsReadOrUnread() {
-    this.readEmails.forEach(t => {
-      if(this.selectedEmail.timestamp == t) {
-        var index = this.readEmails.indexOf(t);
-        this.readEmails.splice(index);
-        this.updateReadEmails();
-        return;
-      }
-    });
+    if(this.readEmails.includes(this.selectedEmail.timestamp)){
+      var index = this.readEmails.indexOf(this.selectedEmail.timestamp);
+      this.readEmails.splice(index, 1);
+      this.updateReadEmails();
+      this.readUnreadIcon = 'fa-envelope-open-o';
+      this.readUnreadText = 'read';
+      return;
+    }
+
     this.readEmails.push(this.selectedEmail.timestamp);
     this.updateReadEmails();
+    this.readUnreadIcon = 'fa-envelope-o';
+    this.readUnreadText = 'unread';
 
-  }
-
-  getFontIcon(isRead: boolean): any {
-    return isRead ? {'icon': 'fa-envelope-open-o', text: 'unread'} : {icon: 'fa-envelope-o', text: 'read'};
   }
 
 

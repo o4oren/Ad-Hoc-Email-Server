@@ -11,7 +11,7 @@
   <div class="ahem-sidnav-content">
     <md-toolbar color="accent" class="ahem-internal-toolbar">
       <button md-button *ngIf="selectedEmail" (click)="deleteFile()"><md-icon>delete forever</md-icon>Delete</button>
-      <button md-button *ngIf="selectedEmail.isRead" (click)="markAsReadOrUnread()"><md-icon fontSet="fa" fontIcon={{getFontIcon(selectedEmail.isRead).icon}}></md-icon>Mark as {{getFontIcon(selectedEmail.isRead).text}}</button>
+      <button md-button *ngIf="selectedEmail" (click)="markAsReadOrUnread()"><md-icon fontSet="fa" fontIcon={{readUnreadIcon}}></md-icon>Mark as {{readUnreadText}}</button>
     </md-toolbar>
    <app-email-view [email]="selectedEmail"></app-email-view>
   </div>
