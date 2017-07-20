@@ -85,6 +85,24 @@ export class AccountViewPageComponent implements OnInit, OnDestroy {
     );
   }
 
+  markAsReadOrUnread() {
+    this.readEmails.forEach(t => {
+      if(this.selectedEmail.timestamp == t) {
+        var index = this.readEmails.indexOf(t);
+        this.readEmails.splice(index);
+        this.updateReadEmails();
+        return;
+      }
+    });
+    this.readEmails.push(this.selectedEmail.timestamp);
+    this.updateReadEmails();
+
+  }
+
+  getFontIcon(isRead: boolean): any {
+    return isRead ? {'icon': 'fa-envelope-open-o', text: 'unread'} : {icon: 'fa-envelope-o', text: 'read'};
+  }
+
 
   deleteFile() {
     this.apiService.deleteEmail(this.account, this.selectedEmail.timestamp).subscribe(
