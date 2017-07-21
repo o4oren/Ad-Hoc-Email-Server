@@ -66,7 +66,7 @@ export class AccountViewPageComponent implements OnInit, OnDestroy {
       if(!this.readEmails.includes(clickedEmail.timestamp))
         this.readEmails.push(clickedEmail.timestamp);
       this.updateReadEmails();
-      this.readUnreadIcon = 'fa-envelope-o';
+      this.readUnreadIcon = 'fa-envelope';
       this.readUnreadText = 'unread';
 
     }
@@ -94,14 +94,14 @@ export class AccountViewPageComponent implements OnInit, OnDestroy {
       var index = this.readEmails.indexOf(this.selectedEmail.timestamp);
       this.readEmails.splice(index, 1);
       this.updateReadEmails();
-      this.readUnreadIcon = 'fa-envelope-open-o';
+      this.readUnreadIcon = 'fa-envelope-open';
       this.readUnreadText = 'read';
       return;
     }
 
     this.readEmails.push(this.selectedEmail.timestamp);
     this.updateReadEmails();
-    this.readUnreadIcon = 'fa-envelope-o';
+    this.readUnreadIcon = 'fa-envelope';
     this.readUnreadText = 'unread';
 
   }
