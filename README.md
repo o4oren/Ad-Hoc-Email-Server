@@ -62,7 +62,7 @@ DELETE | /api/account/{account}/{timestamp} | |Deletes a specific email
 - [x] Errors on find user/email in api
 - [ ] Error on non existing user / message
 - [ ] routing for messages
-- [ ] read/unread icons
+- [x] read/unread icons
 - [ ] attachments
 - [x] allow delete emails
 
