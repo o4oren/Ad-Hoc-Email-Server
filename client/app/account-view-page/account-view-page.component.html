@@ -10,6 +10,7 @@
 
   <div class="ahem-sidnav-content">
     <md-toolbar color="accent" class="ahem-internal-toolbar">
+      <button md-button (click)="sidenav.toggle()"><md-icon style="height:100%" fontSet="fa" fontIcon="fa-navicon"></md-icon></button>
       <button md-button *ngIf="selectedEmail" (click)="deleteFile()"><md-icon>delete forever</md-icon>Delete</button>
       <button md-button *ngIf="selectedEmail" (click)="markAsReadOrUnread()"><md-icon style="height:100%" fontSet="fa" fontIcon={{readUnreadIcon}}></md-icon>Mark as {{readUnreadText}}</button>
     </md-toolbar>
