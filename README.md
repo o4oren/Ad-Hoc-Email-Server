@@ -16,6 +16,7 @@ That's it. No authentication. No account creation.
 ```
 nodejs v6.11
 npm v3.10
+angular cli installed globally
 ```
 
 ## Installation
