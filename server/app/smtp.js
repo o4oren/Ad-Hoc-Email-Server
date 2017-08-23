@@ -82,7 +82,7 @@ function validateAddress(address, allowedDomains) {
   allowedDomains.forEach(domain => {
     console.log(JSON.stringify(address.address.split('@')[1].toLowerCase()));
     console.log(JSON.stringify(domain));
-    if (domain.toLowerCase() == address.address.split('@')[1].toLowerCase()) {
+    if (address.address.split('@')[1].toLowerCase().endsWith(domain.toLowerCase())) {
 
       allowed = true;
     }
