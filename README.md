@@ -1,7 +1,8 @@
 
-# ahem-server
+# Ad Hoc Email Server (AHEM)
 
-An ad-hoc mail server. Create and use ad hoc disposable mailboxes for testing or any other purpose.
+Ad Hoc Email Server is, well, an ad hoc mail server. Create and use ad hoc disposable mailboxes for testing or any other purpose.
+AHEM server can be used for testing, were a large (or unknown) number of mailboxes is needed or to provide disposable emails for registering into services that might expose the email for spam;
 This project will provide both RESTful api and web application for consuming the service.
 
 
@@ -16,7 +17,7 @@ That's it. No authentication. No account creation.
 ```
 nodejs v6.11
 npm v3.10
-angular cli installed globally
+angular cli installed globally (npm install -g @angular/cli)
 ```
 
 ## Installation
