@@ -11,7 +11,7 @@
       </md-card-header>
       <md-divider></md-divider>
       <md-card-content>
-        <div *ngIf="emailDetails.html" [innerHTML]="emailDetails.html | htmlCleanup"> </div>
+        <div *ngIf="emailDetails.html" [innerHTML]="emailDetails.html | htmlSanitizer"> </div>
         <div *ngIf="!emailDetails.html" [innerHTML]="emailDetails.textAsHtml"> </div>
       </md-card-content>
     </md-card>

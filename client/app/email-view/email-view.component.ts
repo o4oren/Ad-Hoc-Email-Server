@@ -5,6 +5,7 @@ import {ActivatedRoute} from "@angular/router";
 import {Observable} from "rxjs/Observable";
 import {EmailInfo} from "../model/email-info-model";
 import {EmailDetails} from "../model/email-details-model";
+import {DomSanitizer, SafeHtml} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-email-view',
@@ -30,7 +31,7 @@ export class EmailViewComponent implements OnInit, OnDestroy {
 
   get email(): any { return this._email; }
 
-  constructor(private apiService: ApiService, private route: ActivatedRoute) { }
+  constructor(private apiService: ApiService, private route: ActivatedRoute, private domSanitizer: DomSanitizer) { }
 
   ngOnInit() {
     this.paramsSub = this.route.params.subscribe(params => {
@@ -38,12 +39,18 @@ export class EmailViewComponent implements OnInit, OnDestroy {
     });
   }
 
+  getSafeHtml(htmlString): SafeHtml {
+    return this.domSanitizer.bypassSecurityTrustHtml(htmlString);
+  }
+
   ngOnDestroy(): void {
     this.paramsSub.unsubscribe();
   }
 
   getEmailDetails() {
-    this.apiService.getEmailContent(this.account, this.email.timestamp).subscribe(result => this.emailDetails = result);
+    this.apiService.getEmailContent(this.account, this.email.timestamp).subscribe(result => {
+      this.emailDetails = result;
+    });
   }
 
 }
