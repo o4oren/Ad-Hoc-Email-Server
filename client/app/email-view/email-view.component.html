@@ -10,7 +10,7 @@
         <md-card-title>Subject: {{emailDetails.subject}}></md-card-title>
       </md-card-header>
       <md-divider></md-divider>
-      <md-card-content>
+      <md-card-content class="ahem-email-content">
         <div *ngIf="emailDetails.html" [innerHTML]="emailDetails.html | htmlSanitizer"> </div>
         <div *ngIf="!emailDetails.html" [innerHTML]="emailDetails.textAsHtml"> </div>
       </md-card-content>
