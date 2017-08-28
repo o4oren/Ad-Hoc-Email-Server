@@ -8,7 +8,11 @@ export class HtmlSanitizerPipe implements PipeTransform {
 
   constructor(private domSanitizer: DomSanitizer){}
 
-  transform(value: any, args?: any): any {
+  transform(value: string, args?: any): any {
+    //add http if emails contains "relative" links
+    if(value.includes('href')){
+        value.replace('href="w', 'href="http://w')
+    };
     return this.domSanitizer.bypassSecurityTrustHtml(value);
   }
 
