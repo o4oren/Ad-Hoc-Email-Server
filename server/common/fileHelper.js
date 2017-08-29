@@ -113,6 +113,14 @@ module.exports = {
         });
       });
     });
+  },
+
+  emptyDirectory: function emptyDirectory(dir) {
+    fs.readdir(dir, function(err, files) {
+      files.forEach((file, index) => {
+        deleteFile(file);
+      });
+    })
   }
 }
 
