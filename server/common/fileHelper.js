@@ -15,6 +15,14 @@ const deleteFile = (filePath) => {
     });
   };
 
+const emptyDirectory = function emptyDirectory(dir) {
+  fs.readdir(dir, function(err, files) {
+    files.forEach((file) => {
+      deleteFile(path.join(dir,file));
+    });
+  })
+}
+
 module.exports = {
   parseJsonFile: (filePath)  => {
     return JSON.parse(fs.readFileSync(filePath));
@@ -116,13 +124,8 @@ module.exports = {
     });
   },
 
-  emptyDirectory: function emptyDirectory(dir) {
-    fs.readdir(dir, function(err, files) {
-      files.forEach((file) => {
-        deleteFile(path.join(dir,file));
-      });
-    })
-  }, 
+  emptyDirectory,
+
   emptyChildDirs: function emptyChildDirs(dir) {
     fs.readdir(dir, function(err, dirs) {
       dirs.forEach((childDir) => {
