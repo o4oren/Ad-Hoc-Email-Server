@@ -55,14 +55,16 @@ GET | /api/properties | |returns the properties.json content
 GET | /api/account/{account} | |returns a list of the email objects in the account
 GET | /api/account/{account}/{timestamp} | |Gets the contents of a specific email
 DELETE | /api/account/{account}/{timestamp} | |Deletes a specific email
+DELETE | /api/account/{account} | | Deletes a whole account
+DELETE | /api/dataDir | | Empty the data folder
 
 ### Todo for 1.0
 
-- [ ] Error page when user/email doesn't exist.
+- [x] Error page when user/email doesn't exist.
 - [ ] Empty mail page
 - [x] Landing page
 - [x] Errors on find user/email in api
-- [ ] Error on non existing user / message
+- [x] Error on non existing user / message
 - [ ] routing for messages
 - [x] read/unread icons
 - [ ] attachments
