@@ -7,7 +7,7 @@ const rimraf = require('rimraf');
 const DELIMITER = '##^@#';
 
 const deleteFile = (filePath) => {
-    return rimraf(filePath, function (err) {
+    rimraf(filePath, function (err) {
       if (err) {
         console.error(err);
       }
@@ -118,8 +118,8 @@ module.exports = {
 
   emptyDirectory: function emptyDirectory(dir) {
     fs.readdir(dir, function(err, files) {
-      files.forEach((file, index) => {
-        deleteFile(file);
+      files.forEach((file) => {
+        deleteFile(path.join(dir,file));
       });
     })
   }
