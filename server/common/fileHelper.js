@@ -127,9 +127,13 @@ module.exports = {
     fs.readdir(dir, function(err, dirs) {
       dirs.forEach((childDir) => {
         var fullChildDir = path.join(dir, childDir);
-        if(fs.isDirectory(fullChildDir)) {
-          emptyDirectory(fullChildDir);
-        }
+        fs.lstat(fullChildDir, function (err, stats) {
+                if (err) {
+                  console.error(err);
+                } else if (stats.isDirectory()) {
+                  emptyDirectory(fullChildDir);
+                }
+              });
       });
     })
   }
