@@ -81,7 +81,7 @@ router.delete('/account/:account', (req, res) => {
   try {
     let accountPath = fileHelper.path.join(dataDir, req.params.account);
     console.log(accountPath);
-    fileHelper.deleteFile(accountPath);
+    fileHelper.emptyDirectory(accountPath);
     res.json({success:true});
   }
   catch (e) {
@@ -94,7 +94,7 @@ router.delete('/dataDir', (req, res) => {
 
   try {
     console.log('Deleting data dir: ' + dataDir);
-    fileHelper.emptyDirectory(dataDir);
+    fileHelper.emptyChildDirs(dataDir);
     res.json({success:true});
   }
   catch (e) {

@@ -122,6 +122,16 @@ module.exports = {
         deleteFile(path.join(dir,file));
       });
     })
+  }, 
+  emptyChildDirs: function emptyChildDirs(dir) {
+    fs.readdir(dir, function(err, dirs) {
+      dirs.forEach((childDir) => {
+        var fullChildDir = path.join(dir, childDir);
+        if(fs.isDirectory(fullChildDir)) {
+          emptyDirectory(fullChildDir);
+        }
+      });
+    })
   }
 }
 
