@@ -94,7 +94,7 @@ router.delete('/dataDir', (req, res) => {
 
   try {
     console.log('Deleting data dir: ' + dataDir);
-    emptyDirectory(dataDir);
+    fileHelper.emptyDirectory(dataDir);
     res.json({success:true});
   }
   catch (e) {
