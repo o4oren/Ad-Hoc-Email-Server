@@ -81,7 +81,7 @@ router.delete('/account/:account', (req, res) => {
   try {
     let accountPath = fileHelper.path.join(dataDir, req.params.account);
     console.log(accountPath);
-    fileHelper.emptyDirectory(accountPath);
+    fileHelper.deleteFile(accountPath);
     res.json({success:true});
   }
   catch (e) {
@@ -99,7 +99,7 @@ router.delete('/dataDir', (req, res) => {
   }
   catch (e) {
     console.log(e);
-    res.status(500).send({error: "FAILED TO DELETE ACCOUNT", succes:false});
+    res.status(500).send({error: "FAILED TO DELETE ALL ACCOUNTS", succes:false});
   }
 });
 
