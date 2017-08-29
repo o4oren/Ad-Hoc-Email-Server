@@ -67,6 +67,7 @@ module.exports = {
   path,
 
   deleteFile: (filePath) => {
+    console.log('Deleting file ' + filePath);
     return rimraf(filePath, function (err) {
       if (err) {
         console.error(err);
