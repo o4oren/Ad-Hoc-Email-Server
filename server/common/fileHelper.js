@@ -6,6 +6,15 @@ const path = require('path');
 const rimraf = require('rimraf');
 const DELIMITER = '##^@#';
 
+const deleteFile = (filePath) => {
+    return rimraf(filePath, function (err) {
+      if (err) {
+        console.error(err);
+      }
+      console.log('deleted ' + filePath);
+    });
+  };
+
 module.exports = {
   parseJsonFile: (filePath)  => {
     return JSON.parse(fs.readFileSync(filePath));
@@ -65,16 +74,7 @@ module.exports = {
 
   fs,
   path,
-
-  deleteFile: (filePath) => {
-    console.log('Deleting file ' + filePath);
-    return rimraf(filePath, function (err) {
-      if (err) {
-        console.error(err);
-      }
-      console.log('deleted ' + filePath);
-    });
-  },
+  deleteFile,
 
   /**
    * Deletes files and directories older than the age passed in seconds
