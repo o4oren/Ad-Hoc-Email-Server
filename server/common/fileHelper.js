@@ -14,7 +14,7 @@ module.exports = {
   createDir: function createDir(path) {
     var dir = path;
 
-    if (!fs.existsSync(dir)) {
+    if (!fs.existsSync(dir.toLowerCase())) {
       fs.mkdirSync(dir);
     }
   },
@@ -22,7 +22,7 @@ module.exports = {
   getFileOrFolderNameByPrefix: function listFolders(path, prefix) {
     let files = fs.readdirSync(path).filter(function (file) {
         if (file.toLowerCase().startsWith(prefix.toLowerCase()))
-          return file;
+          return file.toLowerCase();
       }
     );
 
