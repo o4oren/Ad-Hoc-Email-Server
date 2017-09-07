@@ -6,6 +6,23 @@ const path = require('path');
 const rimraf = require('rimraf');
 const DELIMITER = '##^@#';
 
+const deleteFile = (filePath) => {
+    rimraf(filePath, function (err) {
+      if (err) {
+        console.error(err);
+      }
+      console.log('deleted ' + filePath);
+    });
+  };
+
+const emptyDirectory = function emptyDirectory(dir) {
+  fs.readdir(dir, function(err, files) {
+    files.forEach((file) => {
+      deleteFile(path.join(dir,file));
+    });
+  })
+}
+
 module.exports = {
   parseJsonFile: (filePath)  => {
     return JSON.parse(fs.readFileSync(filePath));
@@ -65,15 +82,7 @@ module.exports = {
 
   fs,
   path,
-
-  deleteFile: (filePath) => {
-    return rimraf(filePath, function (err) {
-      if (err) {
-        console.error(err);
-      }
-      console.log('deleted ' + filePath);
-    });
-  },
+  deleteFile,
 
   /**
    * Deletes files and directories older than the age passed in seconds
@@ -115,10 +124,19 @@ module.exports = {
     });
   },
 
-  emptyDirectory: function emptyDirectory(dir) {
-    fs.readdir(dir, function(err, files) {
-      files.forEach((file, index) => {
-        deleteFile(file);
+  emptyDirectory,
+
+  emptyChildDirs: function emptyChildDirs(dir) {
+    fs.readdir(dir, function(err, dirs) {
+      dirs.forEach((childDir) => {
+        var fullChildDir = path.join(dir, childDir);
+        fs.lstat(fullChildDir, function (err, stats) {
+                if (err) {
+                  console.error(err);
+                } else if (stats.isDirectory()) {
+                  emptyDirectory(fullChildDir);
+                }
+              });
       });
     })
   }

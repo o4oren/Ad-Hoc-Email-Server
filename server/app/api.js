@@ -94,12 +94,12 @@ router.delete('/dataDir', (req, res) => {
 
   try {
     console.log('Deleting data dir: ' + dataDir);
-    fileHelper.emptyDirectory(dataDir);
+    fileHelper.emptyChildDirs(dataDir);
     res.json({success:true});
   }
   catch (e) {
     console.log(e);
-    res.status(500).send({error: "FAILED TO DELETE ACCOUNT", succes:false});
+    res.status(500).send({error: "FAILED TO DELETE ALL ACCOUNTS", succes:false});
   }
 });
 
