@@ -54,6 +54,7 @@ POST | /account/autocomplete | { "prefix":"value" } | Returns a partial list of 
 GET | /api/properties | |returns the properties.json content
 GET | /api/account/{account} | |returns a list of the email objects in the account
 GET | /api/account/{account}/{timestamp} | |Gets the contents of a specific email
+GET | /api/account/{account}/{timestamp}/attachments/{filename} | |Downloads a specific attachment form an email
 DELETE | /api/account/{account}/{timestamp} | |Deletes a specific email
 DELETE | /api/account/{account} | | Deletes a whole account
 DELETE | /api/dataDir | | Empty the data folder
