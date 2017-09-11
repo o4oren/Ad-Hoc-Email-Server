@@ -69,7 +69,9 @@ router.get('/account/:account/:timestamp/attachments/:filename', (req, res) => {
     let mail = fileHelper.getFileContents(fileHelper.path.join(dataDir, req.params.account), completeFileName);
 
 
-    let attachmentsFound = mail.attachments.filter(attachment => attachment.filename == decodeURI(req.params.filename));
+    let attachmentsFound = mail.attachments.filter(attachment => {
+      return attachment.filename == decodeURI(req.params.filename);
+    });
     console.log(attachmentsFound);
     res.setHeader('Content-Type', attachmentsFound[0].contentType);
     // res.setHeader('Content-disposition', 'attachment;filename=' + attachmentsFound[0].filename);
@@ -88,6 +90,7 @@ router.delete('/account/:account/:timestamp', (req, res) => {
   try {
     let completeFileName = fileHelper.getFileOrFolderNameByPrefix(fileHelper.path.join(dataDir, req.params.account), req.params.timestamp)[0];
     let completePath = fileHelper.path.join(fileHelper.path.join(dataDir, req.params.account, completeFileName));
+    console.log(completePath);
     fileHelper.deleteFile(completePath);
     res.json({success:true});
   }
