@@ -48,6 +48,11 @@ router.get('/account/:account/:timestamp', (req, res) => {
   try {
     let completeFileName = fileHelper.getFileOrFolderNameByPrefix(fileHelper.path.join(dataDir, req.params.account), req.params.timestamp)[0];
     let mail = fileHelper.getFileContents(fileHelper.path.join(dataDir, req.params.account), completeFileName);
+    let a = mail.attachments.map(attachment => {
+      attachment.content = "Use documented api to fetch the attachment!";
+      return attachment;
+    });
+    mail.attachments = a;
     res.json(mail);
   }
   catch (e) {
@@ -61,17 +66,19 @@ router.get('/account/:account/:timestamp', (req, res) => {
 router.get('/account/:account/:timestamp/attachments/:filename', (req, res) => {
   try {
     let completeFileName = fileHelper.getFileOrFolderNameByPrefix(fileHelper.path.join(dataDir, req.params.account), req.params.timestamp)[0];
-    let mail = JSON.parse(fileHelper.getFileContents(fileHelper.path.join(dataDir, req.params.account), completeFileName));
+    console.log(completeFileName);
+    let mail = fileHelper.getFileContents(fileHelper.path.join(dataDir, req.params.account), completeFileName);
+    console.log(mail.attachments);
     let attachmentsFound = mail.attachments.filter(attachment => attachment.filename == req.params.filename);
     console.log("attachment found",attachmentsFound);
-    res.writeHead(200, {
-      'Content-Type': 'application/octet-stream',
-      'Content-disposition': 'attachment;filename=' + attachmentsFound[0].filename,
-      'Content-Length': attachmentsFound[0].size
-    });
-    res.end(new Buffer(attachmentsFound.content.data, 'binary'));
+    res.setHeader('Content-Type', attachmentsFound[0].contentType);
+    res.setHeader('Content-disposition', 'attachment;filename=' + attachmentsFound[0].filename);
+    res.setHeader('Content-Length', attachmentsFound[0].size);
+    res.writeHead(200);
+    res.end(new Buffer(attachmentsFound[0].content.data));
   }
   catch (e) {
+    console.log(e);
     res.status(404).send({error: "FILE NOT FOUND"});
   }
 });
