@@ -69,12 +69,8 @@ router.get('/account/:account/:timestamp/attachments/:filename', (req, res) => {
     let mail = fileHelper.getFileContents(fileHelper.path.join(dataDir, req.params.account), completeFileName);
 
 
-    let attachmentsFound = mail.attachments.filter(attachment => {
-      console.log(attachment.filename);
-      console.log(req.params.filename);
-      console.log(decodeURI(req.params.filename));
-      attachment.filename == decodeURI(req.params.filename);
-    });
+    let attachmentsFound = mail.attachments.filter(attachment => attachment.filename == decodeURI(req.params.filename));
+
     res.setHeader('Content-Type', attachmentsFound[0].contentType);
     res.setHeader('Content-disposition', 'attachment;filename=' + attachmentsFound[0].filename);
     res.setHeader('Content-Length', attachmentsFound[0].size);
