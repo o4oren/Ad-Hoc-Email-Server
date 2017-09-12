@@ -51,6 +51,7 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
     MdListModule,
     MdIconModule,
+    MdButtonModule,
     RouterModule.forRoot(appRoutes)
   ],
   providers: [ApiService, MdIconRegistry],

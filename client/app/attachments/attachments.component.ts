@@ -66,7 +66,6 @@ export class AttachmentsComponent implements OnInit {
       }
       default: {
         return 'fa-file-o';
-
       }
     }
   }
