@@ -1,3 +1,3 @@
-<div *ngFor='let attachment of emailDetails.attachments'>
-  <a href="/api/account/{{account}}/{{timestamp}}/attachments/{{attachment.filename}}" download><md-icon style="height:100%" fontSet="fa" fontIcon={{getIconName(attachment.filename)}}></md-icon> {{attachment.filename}}</a>
-</div>
+<span *ngFor='let attachment of emailDetails.attachments'>
+  <a href="/api/account/{{account}}/{{timestamp}}/attachments/{{attachment.filename}}" download> <md-icon style="height:100%" fontSet="fa" fontIcon={{getIconName(attachment.filename)}}></md-icon> {{attachment.filename}}</a>
+</span>

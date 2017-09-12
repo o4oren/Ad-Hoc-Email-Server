@@ -9,11 +9,13 @@
         <md-card-title *ngIf="emailDetails.cc">cc: {{emailDetails.cc.text}}</md-card-title>
         <md-card-title>Subject: {{emailDetails.subject}}></md-card-title>
       </md-card-header>
+      <div *ngIf="emailDetails.attachments.length > 0">
+        <md-divider></md-divider>
+        Attachments: <attachments [emailDetails]="emailDetails" [account]="account" [timestamp]="_email.timestamp"></attachments>
+      </div>
       <md-divider></md-divider>
       <md-card-content class="ahem-email-content">
-        <div>
-          Attachments: <attachments [emailDetails]="emailDetails" [account]="account" [timestamp]="_email.timestamp"></attachments>
-        </div>
+
         <div *ngIf="emailDetails.html" [innerHTML]="emailDetails.html | htmlSanitizer"> </div>
         <div *ngIf="!emailDetails.html" [innerHTML]="emailDetails.textAsHtml"> </div>
       </md-card-content>
