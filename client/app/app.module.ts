@@ -17,6 +17,7 @@ import { EmailViewComponent } from './email-view/email-view.component';
 import { EmailInfoComponent } from './email-info/email-info.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { HtmlSanitizerPipe } from './pipe/html-sanitizer.pipe';
+import { AttachmentsComponent } from './attachments/attachments.component';
 
 const appRoutes: Routes = [
   { path: '', component:  LandingPageComponent},
@@ -33,7 +34,8 @@ const appRoutes: Routes = [
     EmailViewComponent,
     EmailInfoComponent,
     LandingPageComponent,
-    HtmlSanitizerPipe
+    HtmlSanitizerPipe,
+    AttachmentsComponent
 
   ],
   imports: [

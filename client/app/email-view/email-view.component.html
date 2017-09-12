@@ -11,6 +11,9 @@
       </md-card-header>
       <md-divider></md-divider>
       <md-card-content class="ahem-email-content">
+        <div>
+          Attachments: <attachments [emailDetails]="emailDetails" [account]="account" [timestamp]="_email.timestamp"></attachments>
+        </div>
         <div *ngIf="emailDetails.html" [innerHTML]="emailDetails.html | htmlSanitizer"> </div>
         <div *ngIf="!emailDetails.html" [innerHTML]="emailDetails.textAsHtml"> </div>
       </md-card-content>

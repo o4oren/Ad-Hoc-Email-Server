@@ -17,7 +17,6 @@ export class EmailViewComponent implements OnInit, OnDestroy {
   _email: EmailInfo;
   emailDetails: EmailDetails;
   paramsSub: Subscription;
-  emailSub: Subscription;
   account: string;
 
 
