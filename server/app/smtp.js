@@ -50,7 +50,7 @@ module.exports = {
               for (i = 1; i < rcptTo.length; i++) {
                 var currentName = rcptTo[i].address.split('@')[0];
                 fileHelper.createDir(path.join(dataDir, currentName));
-                fs.symlink(filePath, path.join(dataDir, currentName, fileName), callback);
+                fs.symlinkSync(filePath, path.join(dataDir, currentName, fileName), callback);
               }
             }
 
