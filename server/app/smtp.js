@@ -44,11 +44,15 @@ module.exports = {
             fileHelper.createDir(path.join(dataDir, name));
             fileName = fileHelper.createFileName(mail);
             filePath = path.join(dataDir, name, fileName);
+            console.log('Writing ' + fileName + ' to: ', filePath );
+
             fs.writeFileSync(filePath, JSON.stringify(mail), 'utf-8');
 
             if (rcptTo.length > 1) {
+              console.log("Multiple recipients");
               for (i = 1; i < rcptTo.length; i++) {
                 var currentName = rcptTo[i].address.split('@')[0];
+                console.log("recipient",currentName);
                 fileHelper.createDir(path.join(dataDir, currentName));
                 fs.symlinkSync(filePath, path.join(dataDir, currentName, fileName), callback);
               }
@@ -80,8 +84,8 @@ function validateAddress(address, allowedDomains) {
   let allowed = false;
 
   allowedDomains.forEach(domain => {
-    console.log(JSON.stringify(address.address.split('@')[1].toLowerCase()));
-    console.log(JSON.stringify(domain));
+    // console.log(JSON.stringify(address.address.split('@')[1].toLowerCase()));
+    // console.log(JSON.stringify(domain));
     if (address.address.split('@')[1].toLowerCase().endsWith(domain.toLowerCase())) {
 
       allowed = true;
