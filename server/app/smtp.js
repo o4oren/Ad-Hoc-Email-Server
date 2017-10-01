@@ -27,18 +27,18 @@ module.exports = {
         return callback(); // Accept the address
       },
       onData(stream, session, callback){
-        var mailDataString = '';
-        var rcptTo = session.envelope.rcptTo;
+        let mailDataString = '';
+        const rcptTo = session.envelope.rcptTo;
 
         stream.on("data", function (chunk) {
           mailDataString += chunk;
         });
 
         stream.on("end", function () {
-          name = rcptTo[0].address.split('@')[0];
+          const name = rcptTo[0].address.split('@')[0];
 
-          var fileName;
-          var filePath;
+          let fileName;
+          let filePath;
 
           simpleParser(mailDataString, (err, mail) => {
             fileHelper.createDir(path.join(dataDir, name));
@@ -51,7 +51,7 @@ module.exports = {
             if (rcptTo.length > 1) {
               console.log("Multiple recipients");
               for (i = 1; i < rcptTo.length; i++) {
-                var currentName = rcptTo[i].address.split('@')[0];
+                let currentName = rcptTo[i].address.split('@')[0];
                 console.log("recipient",currentName);
                 fileHelper.createDir(path.join(dataDir, currentName));
                 fs.symlinkSync(filePath, path.join(dataDir, currentName, fileName), callback);
