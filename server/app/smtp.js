@@ -8,6 +8,9 @@ const path = require('path');
 const fileHelper = require('../common/fileHelper');
 const simpleParser = require('mailparser').simpleParser;
 
+const bunyan = require('bunyan');
+const log = bunyan.createLogger({name: "ahem-smtp"});
+
 module.exports = {
   startSTMPServer: function startSTMPServer(properties, baseDir) {
     const dataDir = fileHelper.path.isAbsolute(properties.dataDir) ? properties.dataDir : fileHelper.path.join(baseDir, properties.dataDir);
@@ -18,7 +21,7 @@ module.exports = {
       disabledCommands: ['AUTH'],
       disableReverseLookup: true,
       onConnect(session, callback){
-        console.log("Connection started.")
+        log.info("Connection started.")
         return callback(); // Accept the connection
       },
       onRcptTo(address, session, callback){
@@ -45,15 +48,15 @@ module.exports = {
             fileHelper.createDir(path.join(dataDir, name));
             fileName = fileHelper.createFileName(mail);
             filePath = path.join(dataDir, name, fileName);
-            console.log('Writing ' + fileName + ' to: ', filePath );
+            log.info('Writing ' + fileName + ' to: ', filePath );
 
             fs.writeFileSync(filePath, JSON.stringify(mail), 'utf-8');
 
             if (rcptTo.length > 1) {
-              console.log("Multiple recipients");
+              log.info("Multiple recipients");
               for (i = 1; i < rcptTo.length; i++) {
                 let currentName = rcptTo[i].address.split('@')[0];
-                console.log("recipient",currentName);
+                log.info("recipient",currentName);
                 fileHelper.createDir(path.join(dataDir, currentName));
                 fs.symlinkSync(filePath, path.join(dataDir, currentName, fileName), callback);
               }
@@ -66,7 +69,7 @@ module.exports = {
     });
 
     mailserver.on('error', err => {
-      console.log('Error %s', err.message);
+      log.error('Error %s', err.message);
     });
 
 //create data dir if doesn't exist
@@ -92,7 +95,7 @@ function validateAddress(address, allowedDomains) {
       allowed = true;
     }
   });
-  console.log(allowed);
+  log.info(allowed);
   return allowed;
 }
 

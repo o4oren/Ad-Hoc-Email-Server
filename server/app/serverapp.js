@@ -5,7 +5,10 @@
  * Created by ogeva on 7/1/2017.
  */
 const express = require('express');
-path = require('path'),
+const bunyan = require('bunyan');
+const log = bunyan.createLogger({name: "ahem-server"});
+
+let path = require('path'),
   http = require('http'),
   bodyParser = require('body-parser'),
   api = require('./api');
@@ -33,7 +36,7 @@ module.exports = {
 
     //error handler
     app.use(function (err, req, res, next) {
-      console.log(err);
+      log.error(err);
       res.status(500).send({error: err.message});
     });
 
@@ -53,10 +56,10 @@ module.exports = {
      */
 
     server.listen(port, function () {
-      console.log("ad-hoc-mail service started!");
+      log.info("ad-hoc-mail service started!");
     });
 
-    console.log("mail server listening");
+    log.info("mail server listening");
     return app;
   }
 

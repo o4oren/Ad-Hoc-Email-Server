@@ -4,8 +4,11 @@
 const express = require('express');
 const router = express.Router();
 const fileHelper = require('../common/fileHelper');
-var properties = fileHelper.parseJsonFile('properties.json');
-var dataDir = fileHelper.path.isAbsolute(properties.dataDir) ? properties.dataDir : properties.dataDir;
+const bunyan = require('bunyan');
+const log = bunyan.createLogger({name: "ahem-server"});
+
+let properties = fileHelper.parseJsonFile('properties.json');
+let dataDir = fileHelper.path.isAbsolute(properties.dataDir) ? properties.dataDir : properties.dataDir;
 //indicates the api server is up
 router.get('/alive', (req, res) => {
   res.send('api works');
@@ -72,7 +75,7 @@ router.get('/account/:account/:timestamp/attachments/:filename', (req, res) => {
     let attachmentsFound = mail.attachments.filter(attachment => {
       return attachment.filename == decodeURI(req.params.filename);
     });
-    console.log(attachmentsFound);
+    log.info(attachmentsFound);
     res.setHeader('Content-Type', attachmentsFound[0].contentType);
     // res.setHeader('Content-disposition', 'attachment;filename=' + attachmentsFound[0].filename);
     res.setHeader('Content-Length', attachmentsFound[0].size);
@@ -80,7 +83,7 @@ router.get('/account/:account/:timestamp/attachments/:filename', (req, res) => {
     res.end(new Buffer(attachmentsFound[0].content.data));
   }
   catch (e) {
-    console.log(e);
+    log.error(e);
     res.status(404).send({error: "FILE NOT FOUND"});
   }
 });
@@ -90,12 +93,12 @@ router.delete('/account/:account/:timestamp', (req, res) => {
   try {
     let completeFileName = fileHelper.getFileOrFolderNameByPrefix(fileHelper.path.join(dataDir, req.params.account), req.params.timestamp)[0];
     let completePath = fileHelper.path.join(fileHelper.path.join(dataDir, req.params.account, completeFileName));
-    console.log(completePath);
+    log.info(completePath);
     fileHelper.deleteFile(completePath);
     res.json({success:true});
   }
   catch (e) {
-    console.log(e);
+    log.error(e);
     res.status(500).send({error: "FAILED TO DELETE FILE", succes:false});
   }
 
@@ -107,12 +110,12 @@ router.delete('/account/:account', (req, res) => {
 
   try {
     let accountPath = fileHelper.path.join(dataDir, req.params.account);
-    console.log(accountPath);
+    log.info(accountPath);
     fileHelper.emptyDirectory(accountPath);
     res.json({success:true});
   }
   catch (e) {
-    console.log(e);
+    log.error(e);
     res.status(500).send({error: "FAILED TO DELETE ACCOUNT", succes:false});
   }
 });
@@ -120,12 +123,12 @@ router.delete('/account/:account', (req, res) => {
 router.delete('/dataDir', (req, res) => {
 
   try {
-    console.log('Deleting data dir: ' + dataDir);
+    log.info('Deleting data dir: ' + dataDir);
     fileHelper.emptyChildDirs(dataDir);
     res.json({success:true});
   }
   catch (e) {
-    console.log(e);
+    log.error(e);
     res.status(500).send({error: "FAILED TO DELETE ALL ACCOUNTS", succes:false});
   }
 });
