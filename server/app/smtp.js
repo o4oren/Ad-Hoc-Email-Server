@@ -15,6 +15,7 @@ module.exports = {
     const mailserver = new SMTPServer({
       logger: true,
       authOptional: true,
+      disabledCommands: ['AUTH'],
       disableReverseLookup: true,
       onConnect(session, callback){
         console.log("Connection started.")
