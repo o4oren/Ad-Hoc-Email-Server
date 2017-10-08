@@ -28,6 +28,9 @@ export class EmailViewComponent implements OnInit, OnDestroy {
     if(this.email) this.getEmailDetails();
   }
 
+
+  @Input() accountExists: boolean;
+
   get email(): any { return this._email; }
 
   constructor(private apiService: ApiService, private route: ActivatedRoute, private domSanitizer: DomSanitizer) { }

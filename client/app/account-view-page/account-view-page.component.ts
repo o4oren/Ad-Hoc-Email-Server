@@ -1,5 +1,5 @@
 import {Component, EventEmitter, OnDestroy, OnInit, Output} from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {Subscription} from "rxjs/Subscription";
 import {ApiService} from "../api.service";
 import {Observable} from "rxjs/Observable";
@@ -26,11 +26,12 @@ export class AccountViewPageComponent implements OnInit, OnDestroy {
   readEmails: Array<string> = [];
   readUnreadIcon: string;
   readUnreadText: string;
+  accountExsits: boolean;
 
   @Output() onAccountDetermined: EventEmitter<string> = new EventEmitter();
 
 
-  constructor(private apiService: ApiService, private route: ActivatedRoute) {
+  constructor(private apiService: ApiService, private route: ActivatedRoute, private router: Router) {
 
   }
 
@@ -50,9 +51,14 @@ export class AccountViewPageComponent implements OnInit, OnDestroy {
     if(localStorage.getItem(this.account + '_read_emails')!= null)
       this.readEmails = JSON.parse(localStorage.getItem(this.account + '_read_emails'));
     this.apiService.listAccountsEmails(this.account).subscribe(emails => {
+      this.accountExsits=true;
       this.emails = emails;
       this.sortEmails(SortBy.Timestamp, true);
       this.updateReadEmails();
+    }, err => {
+      if(err.statusText==="Not Found") {
+        this.accountExsits = false;
+      }
     });
   }
 

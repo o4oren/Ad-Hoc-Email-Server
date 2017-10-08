@@ -1,22 +1,22 @@
-<mat-sidenav-container class="ahem-sideNav-container ahem-overflow" >
-  <mat-sidenav #sidenav opened="true"  class="ahem-sideNav" mode="side">
-    <mat-list>
+<md-sidenav-container class="ahem-sideNav-container ahem-overflow" >
+  <md-sidenav #sidenav opened="true"  class="ahem-sideNav" mode="side">
+    <md-list>
       <div *ngFor='let email of emails' (click)="selectEmail(email)" class="ahem-email-list-item" [ngClass]="{'ahem-email-selected': email.isSelected }">
           <ahem-email-info [emailInfo]="email"></ahem-email-info>
-        <mat-divider></mat-divider>
+        <md-divider></md-divider>
       </div>
-    </mat-list>
-  </mat-sidenav>
+    </md-list>
+  </md-sidenav>
 
   <div class="ahem-sidnav-content">
-    <mat-toolbar color="accent" class="ahem-internal-toolbar">
-      <button mat-button (click)="sidenav.toggle()"><mat-icon style="height:100%" fontSet="fa" fontIcon="fa-navicon"></mat-icon></button>
-      <button mat-button *ngIf="selectedEmail" (click)="deleteFile()"><mat-icon>delete forever</mat-icon>Delete</button>
-      <button mat-button *ngIf="selectedEmail" (click)="markAsReadOrUnread()"><mat-icon style="height:100%" fontSet="fa" fontIcon={{readUnreadIcon}}></mat-icon>Mark as {{readUnreadText}}</button>
-    </mat-toolbar>
-   <app-email-view [email]="selectedEmail"></app-email-view>
+    <md-toolbar color="accent" class="ahem-internal-toolbar">
+      <button md-button (click)="sidenav.toggle()"><md-icon style="height:100%" fontSet="fa" fontIcon="fa-navicon"></md-icon></button>
+      <button md-button *ngIf="selectedEmail" (click)="deleteFile()"><md-icon>delete forever</md-icon>Delete</button>
+      <button md-button *ngIf="selectedEmail" (click)="markAsReadOrUnread()"><md-icon style="height:100%" fontSet="fa" fontIcon={{readUnreadIcon}}></md-icon>Mark as {{readUnreadText}}</button>
+    </md-toolbar>
+   <app-email-view [email]="selectedEmail" [accountExists]="accountExists"></app-email-view>
   </div>
 
-</mat-sidenav-container>
+</md-sidenav-container>
 
 
