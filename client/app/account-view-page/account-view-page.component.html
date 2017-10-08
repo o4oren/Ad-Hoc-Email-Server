@@ -14,7 +14,7 @@
       <button mat-button *ngIf="selectedEmail" (click)="deleteFile()"><mat-icon>delete forever</mat-icon>Delete</button>
       <button mat-button *ngIf="selectedEmail" (click)="markAsReadOrUnread()"><mat-icon style="height:100%" fontSet="fa" fontIcon={{readUnreadIcon}}></mat-icon>Mark as {{readUnreadText}}</button>
     </mat-toolbar>
-   <app-email-view [email]="selectedEmail" [accountExists]="accountExists"></app-email-view>
+   <app-email-view [email]="selectedEmail"></app-email-view>
   </div>
 
 </mat-sidenav-container>

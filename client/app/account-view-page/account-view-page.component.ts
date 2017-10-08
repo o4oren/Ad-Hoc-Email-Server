@@ -26,7 +26,6 @@ export class AccountViewPageComponent implements OnInit, OnDestroy {
   readEmails: Array<string> = [];
   readUnreadIcon: string;
   readUnreadText: string;
-  accountExsits: boolean;
 
   @Output() onAccountDetermined: EventEmitter<string> = new EventEmitter();
 
@@ -52,14 +51,13 @@ export class AccountViewPageComponent implements OnInit, OnDestroy {
       this.readEmails = JSON.parse(localStorage.getItem(this.account + '_read_emails'));
     this.apiService.listAccountsEmails(this.account).subscribe(
       emails => {
-      this.accountExsits=true;
       this.emails = emails;
       this.sortEmails(SortBy.Timestamp, true);
       this.updateReadEmails();
     }, err => {
-      if(err.statusText==="Not Found") {
-        this.accountExsits = false;
-      }
+        this.emails = [];
+        this.selectedEmail = null;
+        console.error(err);
     });
   }
 

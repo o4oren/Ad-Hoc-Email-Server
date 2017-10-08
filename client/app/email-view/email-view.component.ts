@@ -25,11 +25,12 @@ export class EmailViewComponent implements OnInit, OnDestroy {
     console.log(email);
     this.emailDetails = null;
     this._email = email;
-    if(this.email) this.getEmailDetails();
+    if(this.email) {
+      this.getEmailDetails();
+    } else {
+      this.emailDetails = null;
+    }
   }
-
-
-  @Input() accountExists: boolean;
 
   get email(): any { return this._email; }
 
