@@ -62,7 +62,7 @@ DELETE | /api/dataDir | | Empty the data folder
 ### Todo for 1.0
 
 - [x] Error page when user/email doesn't exist.
-- [ ] Empty mail page
+- [x] Empty mail page
 - [x] Landing page
 - [x] Errors on find user/email in api
 - [x] Error on non existing user / message

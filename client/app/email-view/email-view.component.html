@@ -22,6 +22,11 @@
       </md-card-content>
     </md-card>
   </div>
+  <div *ngIf="!emailDetails">
+    <md-card>
+        <md-card-title> <md-icon fontSet="fa" fontIcon="fa-meh-o"></md-icon> This mailbox is empty!</md-card-title>
+    </md-card>
+  </div>
 
 </div>
 
