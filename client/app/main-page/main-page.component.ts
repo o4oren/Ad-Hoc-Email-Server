@@ -1,8 +1,8 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {DomSanitizer} from "@angular/platform-browser";
-import {MdIconRegistry} from "@angular/material";
 import {Subscription} from "rxjs/Subscription";
+import {MatIconRegistry} from "@angular/material";
 
 @Component({
   selector: 'app-main-page',
@@ -15,7 +15,7 @@ export class MainPageComponent implements OnInit, OnDestroy{
   hideToolbarComponents = true;
   routerSub: Subscription;
 
-  constructor(iconRegistry: MdIconRegistry, sanitizer: DomSanitizer, private router: Router) {
+  constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer, private router: Router) {
     iconRegistry.addSvgIcon(
       'ahem-logo',
       sanitizer.bypassSecurityTrustResourceUrl('assets/images/ahem_logo_icon.svg'));
@@ -23,7 +23,7 @@ export class MainPageComponent implements OnInit, OnDestroy{
         this.router.url !='/' ? this.hideToolbarComponents = false : this.hideToolbarComponents = true;
         this.account = this.router.url.split('/')[1];
       });
-      
+
 
   }
 

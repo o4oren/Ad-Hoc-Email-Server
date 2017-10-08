@@ -1,31 +1,31 @@
 <span>
-<md-card class="ahem-centered-card">
-  <md-card-content>
+<mat-card class="ahem-centered-card">
+  <mat-card-content>
     <p>From <a href="https://www.merriam-webster.com/dictionary/ahem" target="_blank">Merriam-Webster</a>:</p>
-  </md-card-content>
-  <md-card-title-group>
-    <md-card-title>ahem</md-card-title>
-    <md-card-subtitle>interjection \ a throat-clearing sound; often read as ə-ˈhem ; \</md-card-subtitle>
-  </md-card-title-group>
-  <md-card-content>
+  </mat-card-content>
+  <mat-card-title-group>
+    <mat-card-title>ahem</mat-card-title>
+    <mat-card-subtitle>interjection \ a throat-clearing sound; often read as ə-ˈhem ; \</mat-card-subtitle>
+  </mat-card-title-group>
+  <mat-card-content>
     <h3>Definition of ahem</h3>
     <p>—used especially to attract attention or to express disapproval or embarrassment</p>
-  </md-card-content>
-</md-card>
-<md-card class="ahem-centered-card">
-   <md-card-title>Ad Hoc Email Server</md-card-title>
-  <md-card-content>
+  </mat-card-content>
+</mat-card>
+<mat-card class="ahem-centered-card">
+   <mat-card-title>Ad Hoc Email Server</mat-card-title>
+  <mat-card-content>
     <p>AHEM server is an ad-hoc mail server. By ad-hoc we mean that a mail box will be created for you as soon as an
       email for your account reaches the server.
       What is you account? Any account name you choose.</p>
     <p>The server serves the domains:
-      <md-list>
+      <mat-list>
         <div *ngFor="let domain of properties.allowedDomains"> {{domain}}</div>
-      </md-list>
+      </mat-list>
     <p>It will check every {{properties.emailDeleteInterval}} seconds if an email has passed
       {{properties.emailDeleteAge}} seconds of age, and if it did, it will erase it.</p>
     <p>So go ahead, and give it a try. Send an email to whatever@one-of-the domains above, and enter your account.</p>
-  </md-card-content>
+  </mat-card-content>
   <app-account-selector></app-account-selector>
-</md-card>
+</mat-card>
 </span>

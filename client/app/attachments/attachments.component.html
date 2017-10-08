@@ -1,7 +1,7 @@
 <span *ngFor='let attachment of emailDetails.attachments' class="mat-button">
   <a href="/api/account/{{account}}/{{timestamp}}/attachments/{{attachment.filename}}" download>
     <span class="ahem-attachment-span">
-      <md-icon fontSet="fa" fontIcon={{getIconName(attachment.filename)}}></md-icon>{{attachment.filename}}
+      <mat-icon fontSet="fa" fontIcon={{getIconName(attachment.filename)}}></mat-icon>{{attachment.filename}}
     </span>
   </a>
 </span>

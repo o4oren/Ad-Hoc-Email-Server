@@ -26,7 +26,7 @@ span:hover {
   transition: all .3s;
 }
 
-md-icon {
+mat-icon {
   width: auto;
   padding: 5px;
   font-weight: 800;

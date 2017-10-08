@@ -2,8 +2,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {
-  MdButtonModule, MdToolbarModule, MdInputModule, MdAutocompleteModule, MdCardModule,
-  MdListModule, MdSidenavModule, MdIconRegistry, MdIconModule
+  MatAutocompleteModule,
+  MatButtonModule, MatCardModule, MatIconModule, MatIconRegistry, MatInputModule, MatListModule, MatSidenavModule,
+  MatToolbarModule
+
 } from '@angular/material';
 import { AppComponent } from './app.component';
 import {ApiService} from "./api.service";
@@ -42,19 +44,19 @@ const appRoutes: Routes = [
     BrowserModule,
     HttpModule,
     BrowserAnimationsModule,
-    MdButtonModule,
-    MdToolbarModule,
-    MdInputModule,
-    MdAutocompleteModule,
-    MdCardModule,
-    MdSidenavModule,
+    MatButtonModule,
+    MatToolbarModule,
+    MatInputModule,
+    MatAutocompleteModule,
+    MatCardModule,
+    MatSidenavModule,
     ReactiveFormsModule,
-    MdListModule,
-    MdIconModule,
-    MdButtonModule,
+    MatListModule,
+    MatIconModule,
+    MatButtonModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [ApiService, MdIconRegistry],
+  providers: [ApiService, MatIconRegistry],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

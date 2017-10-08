@@ -1,31 +1,31 @@
 
 <div class="ahem-email-content-container">
   <div *ngIf="emailDetails">
-    <md-card>
-      <md-card-header>
-        <md-card-title>From: {{emailDetails.from.text}}</md-card-title>
-        <md-card-title>Date: {{emailDetails.date | date:'medium'}}</md-card-title>
-        <md-card-title *ngIf="emailDetails.to">To: {{emailDetails.to.text}}</md-card-title>
-        <md-card-title *ngIf="emailDetails.cc">cc: {{emailDetails.cc.text}}</md-card-title>
-        <md-card-title>Subject: {{emailDetails.subject}}</md-card-title>
-      </md-card-header>
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>From: {{emailDetails.from.text}}</mat-card-title>
+        <mat-card-title>Date: {{emailDetails.date | date:'medium'}}</mat-card-title>
+        <mat-card-title *ngIf="emailDetails.to">To: {{emailDetails.to.text}}</mat-card-title>
+        <mat-card-title *ngIf="emailDetails.cc">cc: {{emailDetails.cc.text}}</mat-card-title>
+        <mat-card-title>Subject: {{emailDetails.subject}}</mat-card-title>
+      </mat-card-header>
       <div *ngIf="emailDetails.attachments.length > 0">
-        <md-divider></md-divider>
+        <mat-divider></mat-divider>
         Attachments: <attachments [emailDetails]="emailDetails" [account]="account" [timestamp]="_email.timestamp"></attachments>
       </div>
-      <md-divider></md-divider>
+      <mat-divider></mat-divider>
 
-      <md-card-content class="ahem-email-content">
+      <mat-card-content class="ahem-email-content">
 
         <div *ngIf="emailDetails.html" [innerHTML]="emailDetails.html | htmlSanitizer"> </div>
         <div *ngIf="!emailDetails.html" [innerHTML]="emailDetails.textAsHtml"> </div>
-      </md-card-content>
-    </md-card>
+      </mat-card-content>
+    </mat-card>
   </div>
   <div *ngIf="!emailDetails">
-    <md-card>
-        <md-card-title> <md-icon fontSet="fa" fontIcon="fa-meh-o"></md-icon> This mailbox is empty!</md-card-title>
-    </md-card>
+    <mat-card>
+        <mat-card-title> <mat-icon fontSet="fa" fontIcon="fa-meh-o"></mat-icon> This mailbox is empty!</mat-card-title>
+    </mat-card>
   </div>
 
 </div>

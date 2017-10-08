@@ -1,7 +1,7 @@
-<md-list-item  class="ahem-hand-pointer" (click)="onClicked()" [ngClass]="{'ahem-email-unread': !emailInfo.isRead}">
-  <md-icon md-list-avatar fontSet="fa" fontIcon="{{getFontIcon(emailInfo.isRead)}}" class="ahem-envelope"></md-icon>
-    <h2 md-line>{{emailInfo.address}}</h2>
-    <p md-line>{{emailInfo.subject}}</p>
-    <p md-line>{{emailInfo.timestamp | date:'medium'}}</p>
-</md-list-item>
+<mat-list-item  class="ahem-hand-pointer" (click)="onClicked()" [ngClass]="{'ahem-email-unread': !emailInfo.isRead}">
+  <mat-icon mat-list-avatar fontSet="fa" fontIcon="{{getFontIcon(emailInfo.isRead)}}" class="ahem-envelope"></mat-icon>
+    <h2 mat-line>{{emailInfo.address}}</h2>
+    <p mat-line>{{emailInfo.subject}}</p>
+    <p mat-line>{{emailInfo.timestamp | date:'medium'}}</p>
+</mat-list-item>
 
