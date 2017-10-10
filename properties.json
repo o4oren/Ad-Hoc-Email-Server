@@ -4,5 +4,6 @@
   "smtpPort" : 25,
   "emailDeleteInterval" : 86400,
   "emailDeleteAge" : 7200,
-  "allowedDomains" : ["my.domain.com"]
+  "allowedDomains" : ["my.domain.com"],
+  "customText": "<h1>heading</h1><p>my paragraph</p>"
 }

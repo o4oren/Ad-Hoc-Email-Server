@@ -45,6 +45,7 @@ Parameters:
 * emailDeleteInterval - The time in seconds between age checks for purging old files.
 * emailDeleteAge - The age in seconds above which emails will be deleted
 * allowedDomains - An array of allowed email domains. These domains will be allowed by the server as RCPT TO: entries. This also makes the server not act as an open relay. Format: ["my.domain.com", "my.second-domain.com"]
+* customText - html string that will replace the default text in the landing page
 
 ### API
 
