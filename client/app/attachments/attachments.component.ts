@@ -19,7 +19,7 @@ export class AttachmentsComponent implements OnInit {
   }
 
   getIconName(filename: string): string {
-    let ext = filename.split('.').pop();
+    let ext = (/[.]/.exec(filename)) ? /[^.]+$/.exec(filename) : undefined;
 
     switch (ext) {
       case 'zip': {
