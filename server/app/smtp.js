@@ -65,7 +65,7 @@ module.exports = {
             //TODO remove after solving TC issue
             let subject = mail.subject;
             if(subject.includes('Team Connect')) {
-              condole.log('TC mail data', mailDataString);
+              log.info('TC mail data', mailDataString);
             }
 
           });
