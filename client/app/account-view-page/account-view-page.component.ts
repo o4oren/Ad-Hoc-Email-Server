@@ -26,6 +26,7 @@ export class AccountViewPageComponent implements OnInit, OnDestroy {
   readEmails: Array<string> = [];
   readUnreadIcon: string;
   readUnreadText: string;
+  timestamp: string;
 
   @Output() onAccountDetermined: EventEmitter<string> = new EventEmitter();
 
@@ -37,6 +38,7 @@ export class AccountViewPageComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.paramsSub = this.route.params.subscribe(params => {
       this.account = params['account'].toLowerCase();
+      this.timestamp = params['timestamp'];
       this.onAccountDetermined.emit(this.account);
       this.getAccountEmails();
     });
@@ -54,6 +56,7 @@ export class AccountViewPageComponent implements OnInit, OnDestroy {
       this.emails = emails;
       this.sortEmails(SortBy.Timestamp, true);
       this.updateReadEmails();
+      this.selectEmail(this.getEmailFromTimeStamp(this.timestamp));
     }, err => {
         this.emails = [];
         this.selectedEmail = null;
@@ -61,15 +64,20 @@ export class AccountViewPageComponent implements OnInit, OnDestroy {
     });
   }
 
-  selectEmail(clickedEmail:EmailInfo) {
-    if(clickedEmail) {
-      this.selectedEmail = clickedEmail;
+  clickedEmail(clickedEmail: EmailInfo) {
+    this.router.navigateByUrl(this.account + "/" + clickedEmail.timestamp);
+  }
+
+
+  selectEmail(emailInfo:EmailInfo) {
+    if(emailInfo) {
+      this.selectedEmail = emailInfo;
 
       for(let e of this.emails) {
         e.timestamp == this.selectedEmail.timestamp ? e.isSelected = true : e.isSelected = false;
       }
-      if(!this.readEmails.includes(clickedEmail.timestamp))
-        this.readEmails.push(clickedEmail.timestamp);
+      if(!this.readEmails.includes(emailInfo.timestamp))
+        this.readEmails.push(emailInfo.timestamp);
       this.updateReadEmails();
       this.readUnreadIcon = 'fa-envelope';
       this.readUnreadText = 'unread';
@@ -124,4 +132,7 @@ export class AccountViewPageComponent implements OnInit, OnDestroy {
     );
   }
 
+  private getEmailFromTimeStamp(timestamp: string): EmailInfo {
+    return this.emails.filter(email => email.timestamp === timestamp)[0];
+  }
 }

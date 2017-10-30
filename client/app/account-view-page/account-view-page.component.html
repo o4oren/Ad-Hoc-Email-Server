@@ -1,7 +1,7 @@
 <mat-sidenav-container class="ahem-sideNav-container ahem-overflow" >
   <mat-sidenav #sidenav opened="true"  class="ahem-sideNav" mode="side">
     <mat-list>
-      <div *ngFor='let email of emails' (click)="selectEmail(email)" class="ahem-email-list-item" [ngClass]="{'ahem-email-selected': email.isSelected }">
+      <div *ngFor='let email of emails' (click)="clickedEmail(email)" class="ahem-email-list-item" [ngClass]="{'ahem-email-selected': email.isSelected }">
           <ahem-email-info [emailInfo]="email"></ahem-email-info>
         <mat-divider></mat-divider>
       </div>

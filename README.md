@@ -67,7 +67,7 @@ DELETE | /api/dataDir | | Empty the data folder
 - [x] Landing page
 - [x] Errors on find user/email in api
 - [x] Error on non existing user / message
-- [ ] routing for messages
+- [x] routing for messages
 - [x] read/unread icons
 - [x] attachments
 - [x] allow delete emails
