@@ -8,8 +8,7 @@ const express = require('express');
 const bunyan = require('bunyan');
 const log = bunyan.createLogger({name: "ahem-server"});
 
-let path = require('path'),
-  http = require('http'),
+let http = require('http'),
   bodyParser = require('body-parser'),
   api = require('./api');
 
@@ -17,10 +16,24 @@ module.exports = {
   startServer: function startServer(properties) {
 
     const app = express();
+    const db = {};
+    MongoClient.connect(properties.mongoConnectUrl, function (err,dbconn) {
+      assert.equal(null, err);
+      db.dbConnectiob = dbconn;
+      db.collection = dbconn.collection('test1');
+      console.log("Connected successfully to mongodb server");
+    });
+
+
+    app.use(function (req,res,next) {
+      req.db = db;
+      next();
+    });
 
 // Parsers for POST data
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({extended: false}));
+
 
 // Point static path to dist
     app.use(express.static(path.join(__dirname, 'dist')));

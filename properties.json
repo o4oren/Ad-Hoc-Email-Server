@@ -1,5 +1,5 @@
 {
-  "dataDir" : "data",
+  "mongoConnectUrl": "mongodb://localhost:27017/ahem",
   "appListenPort": 3000,
   "smtpPort" : 25,
   "emailDeleteInterval" : 86400,
