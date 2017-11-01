@@ -62,6 +62,7 @@ module.exports = {
 
               collection = db.collection('accounts');
               mail.to.value.forEach(address => {
+                console.log(value);
                 let nameAndDomain = address.address.split['@'];
                 if (properties.allowedDomains.indexOf(nameAndDomain[1].toLowerCase()) > -1) {
                   db.update({"name": nameAndDomain[0], $push: {"emails": result._id}});
