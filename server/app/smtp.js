@@ -39,12 +39,30 @@ module.exports = {
         });
 
         stream.on("end", function () {
+
+
           const name = rcptTo[0].address.split('@')[0];
 
           let fileName;
           let filePath;
 
           simpleParser(mailDataString, (err, mail) => {
+
+
+
+            ////////
+            ///part for db, rest of this method can be deleted when it's done
+
+            req.db.collection.insertOne(mail, function (err, result) {
+              if(err) {
+                return console.error(err);
+              }
+              console.log("Inserted results into the collection.");
+            });
+
+            ////////
+
+
             fileHelper.createDir(path.join(dataDir, name));
             fileName = fileHelper.createFileName(mail);
             filePath = path.join(dataDir, name, fileName);
