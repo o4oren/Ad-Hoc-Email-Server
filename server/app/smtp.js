@@ -58,6 +58,7 @@ module.exports = {
                 return console.error(err);
               }
               console.log("Inserted results into the collection.");
+              console.log(result);
             });
 
 
