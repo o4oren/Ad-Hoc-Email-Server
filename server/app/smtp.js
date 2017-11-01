@@ -64,7 +64,7 @@ module.exports = {
                 if (properties.allowedDomains.indexOf(nameAndDomain[1].toLowerCase()) > -1) {
                   console.log('result', result);
                   console.log('oid', result._id);
-                  db.collection('accounts').updateOne({"name": nameAndDomain[0]}, {$push: {"emails": result._id}}, { upsert: true });
+                  db.collection('accounts').updateOne({"name": nameAndDomain[0]}, {$push: {"emails": mail._id}}, { upsert: true });
                 }
               });
             });
