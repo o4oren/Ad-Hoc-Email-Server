@@ -12,20 +12,16 @@ const baseDir = __dirname;
 const properties = fileHelper.parseJsonFile(fileHelper.path.join(baseDir, 'properties.json'));
 const assert = require('assert');
 
-const db = {};
-MongoClient.connect(properties.mongoConnectUrl, function (err,dbconn) {
+
+MongoClient.connect(properties.mongoConnectUrl, function (err,db) {
   assert.equal(null, err);
-  db.dbConnection = dbconn;
-  db.collection = dbconn.collection('emails');
-  db.changeCollection = function (collection) {
-    db.collection = dbconn.collection(collection);
-  }
   console.log("Connected successfully to mongodb server");
+  app.startServer(properties, db);
+  smtp.startSTMPServer(properties, baseDir, db);
 });
 
 
-console.log('starting...');
-app.startServer(properties, db);
-smtp.startSTMPServer(properties, baseDir, db);
+
+
 
 

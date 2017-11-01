@@ -25,8 +25,8 @@ module.exports = {
         return callback(); // Accept the connection
       },
       onRcptTo(address, session, callback){
-        if(!validateAddress(address, properties.allowedDomains)){
-          return callback(new Error('Only the domains ' + [JSON.stringify(properties.allowedDomains)] +  ' are allowed to receive mail'));
+        if (!validateAddress(address, properties.allowedDomains)) {
+          return callback(new Error('Only the domains ' + [JSON.stringify(properties.allowedDomains)] + ' are allowed to receive mail'));
         }
         return callback(); // Accept the address
       },
@@ -53,25 +53,21 @@ module.exports = {
             ////////
             ///part for db, rest of this method can be deleted when it's done
 
-            db.collection("emails", function(err, collection) {
-              collection.insertOne(mail, function (err, result) {
-                if(err) {
-                  return console.error(err);
+            let collection = db.collection('emails');
+            collection.insertOne(mail, function (err, result) {
+              if (err) {
+                return console.error(err);
+              }
+              console.log("Inserted results into the collection.");
+
+              collection = db.collection('accounts');
+              mail.to.value.forEach(address => {
+                let nameAndDomain = address.address.split['@'];
+                if (properties.allowedDomains.indexOf(nameAndDomain[1].toLowerCase()) > -1) {
+                  db.update({"name": nameAndDomain[0], $push: {"emails": result._id}});
                 }
-                console.log("Inserted results into the collection.");
-
-                db.collection("accounts", function(err, collection) {
-                  mail.to.value.forEach(address => {
-                    let nameAndDomain = address.address.split['@'];
-                    if (properties.allowedDomains.indexOf(nameAndDomain[1].toLowerCase()) > -1) {
-                      db.update({"name": nameAndDomain[0], $push: {"emails": result._id.str} });
-
-                    }
-                  });
-                });
               });
             });
-
 
 
             ////////
@@ -80,7 +76,7 @@ module.exports = {
             fileHelper.createDir(path.join(dataDir, name));
             fileName = fileHelper.createFileName(mail);
             filePath = path.join(dataDir, name, fileName);
-            log.info('Writing ' + fileName + ' to: ', filePath );
+            log.info('Writing ' + fileName + ' to: ', filePath);
 
             fs.writeFileSync(filePath, JSON.stringify(mail), 'utf-8');
 
@@ -88,7 +84,7 @@ module.exports = {
               log.info("Multiple recipients");
               for (i = 1; i < rcptTo.length; i++) {
                 let currentName = rcptTo[i].address.split('@')[0];
-                log.info("recipient",currentName);
+                log.info("recipient", currentName);
                 fileHelper.createDir(path.join(dataDir, currentName));
                 fs.symlinkSync(filePath, path.join(dataDir, currentName, fileName), callback);
               }
@@ -96,7 +92,7 @@ module.exports = {
 
             //TODO remove after solving TC issue
             let subject = mail.subject;
-            if(subject.includes('Team Connect')) {
+            if (subject.includes('Team Connect')) {
               log.info('TC mail data', mailDataString);
             }
 
