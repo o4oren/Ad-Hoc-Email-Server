@@ -53,12 +53,23 @@ module.exports = {
             ////////
             ///part for db, rest of this method can be deleted when it's done
 
-            db.collection.insertOne(mail, function (err, result) {
-              if(err) {
-                return console.error(err);
-              }
-              console.log("Inserted results into the collection.");
-              console.log(result);
+            db.collection("emails", function(err, collection) {
+              collection.insertOne(mail, function (err, result) {
+                if(err) {
+                  return console.error(err);
+                }
+                console.log("Inserted results into the collection.");
+
+                db.collection("accounts", function(err, collection) {
+                  mail.to.value.forEach(address => {
+                    let nameAndDomain = address.address.split['@'];
+                    if (properties.allowedDomains.indexOf(nameAndDomain[1].toLowerCase()) > -1) {
+                      db.update({"name": nameAndDomain[0], $push: {"emails": result._id.str} });
+
+                    }
+                  });
+                });
+              });
             });
 
 

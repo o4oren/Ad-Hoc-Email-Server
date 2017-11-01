@@ -15,8 +15,11 @@ const assert = require('assert');
 const db = {};
 MongoClient.connect(properties.mongoConnectUrl, function (err,dbconn) {
   assert.equal(null, err);
-  db.dbConnectiob = dbconn;
-  db.collection = dbconn.collection('ahem');
+  db.dbConnection = dbconn;
+  db.collection = dbconn.collection('emails');
+  db.changeCollection = function (collection) {
+    db.collection = dbconn.collection(collection);
+  }
   console.log("Connected successfully to mongodb server");
 });
 
