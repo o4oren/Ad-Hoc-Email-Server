@@ -53,18 +53,16 @@ module.exports = {
             ////////
             ///part for db, rest of this method can be deleted when it's done
 
-            let collection = db.collection('emails');
-            collection.insertOne(mail, function (err, result) {
+            db.collection('emails').insertOne(mail, function (err, result) {
               if (err) {
                 return console.error(err);
               }
               console.log("Inserted results into the collection.");
 
-              collection = db.collection('accounts');
               mail.to.value.forEach(recipient => {
                 let nameAndDomain = recipient.address.split('@');
                 if (properties.allowedDomains.indexOf(nameAndDomain[1].toLowerCase()) > -1) {
-                  db.updateOne({"name": nameAndDomain[0]}, {$push: {"emails": result._id}}, { upsert: true });
+                  db.collection('accounts').updateOne({"name": nameAndDomain[0]}, {$push: {"emails": result._id}}, { upsert: true });
                 }
               });
             });
