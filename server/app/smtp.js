@@ -53,12 +53,14 @@ module.exports = {
             ////////
             ///part for db, rest of this method can be deleted when it's done
 
-            req.db.collection.insertOne(mail, function (err, result) {
+            db.collection.insertOne(mail, function (err, result) {
               if(err) {
                 return console.error(err);
               }
               console.log("Inserted results into the collection.");
             });
+
+
 
             ////////
 
