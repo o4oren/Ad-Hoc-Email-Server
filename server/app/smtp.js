@@ -12,7 +12,7 @@ const bunyan = require('bunyan');
 const log = bunyan.createLogger({name: "ahem-smtp"});
 
 module.exports = {
-  startSTMPServer: function startSTMPServer(properties, baseDir) {
+  startSTMPServer: function startSTMPServer(properties, baseDir, db) {
     const dataDir = fileHelper.path.isAbsolute(properties.dataDir) ? properties.dataDir : fileHelper.path.join(baseDir, properties.dataDir);
     const smtpPort = properties.smtpPort;
     const mailserver = new SMTPServer({

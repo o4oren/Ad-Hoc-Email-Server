@@ -71,6 +71,8 @@ DELETE | /api/dataDir | | Empty the data folder
 - [x] read/unread icons
 - [x] attachments
 - [x] allow delete emails
+- [] migrate to mongodb
+- [] update missing emails page and loading circles
 
 
 ## Authors
