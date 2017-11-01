@@ -16,6 +16,8 @@ const assert = require('assert');
 MongoClient.connect(properties.mongoConnectUrl, function (err,db) {
   assert.equal(null, err);
   console.log("Connected successfully to mongodb server");
+  //creating indexes
+  db.collection('accounts').createIndex( {"name":1}, { unique: true } );
   app.startServer(properties, db);
   smtp.startSTMPServer(properties, baseDir, db);
 });
