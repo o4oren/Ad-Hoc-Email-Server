@@ -18,7 +18,7 @@ router.get('/alive', (req, res) => {
  * returns a list of account names starting with the req.body.prefix
  */
 router.post('/account/autocomplete', (req, res) => {
-  accounts = fileHelper.getFileOrFolderNameByPrefix(dataDir, req.body.prefix);
+  accounts = req.db.collection("accounts").find( { "name": { $regex: ".*" + req.body.prefix + ".*" }}, {"name": 1} );
   res.json(accounts);
 });
 
