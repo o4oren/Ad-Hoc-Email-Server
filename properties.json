@@ -5,5 +5,5 @@
   "smtpPort" : 25,
   "emailDeleteInterval" : 86400,
   "emailDeleteAge" : 7200,
-  "allowedDomains" : ["my.domain.com","ci0700000007622.rim.net"]
+  "allowedDomains" : ["my.domain.com"]
 }
