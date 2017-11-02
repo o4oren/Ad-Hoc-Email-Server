@@ -65,7 +65,7 @@ module.exports = {
                     $push: {
                       "emails": {
                         "emailId": mail._id,
-                        "sender": mail.from.value,
+                        "sender": mail.from.value[0],
                         "subject": mail.subject,
                         "timestamp": mail._id.getTimestamp()
                       }
