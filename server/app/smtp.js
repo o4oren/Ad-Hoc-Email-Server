@@ -61,7 +61,16 @@ module.exports = {
               mail.to.value.forEach(recipient => {
                 let nameAndDomain = recipient.address.split('@');
                 if (properties.allowedDomains.indexOf(nameAndDomain[1].toLowerCase()) > -1) {
-                  db.collection('accounts').updateOne({"name": nameAndDomain[0]}, {$push: {"emails": mail._id}}, { upsert: true });
+                  db.collection('accounts').updateOne({"name": nameAndDomain[0]}, {
+                    $push: {
+                      "emails": {
+                        "emailId": mail._id,
+                        "sender": mail.from.value,
+                        "subject": mail.subject,
+                        "timestamp": mail._id.getTimestamp()
+                      }
+                    }
+                  }, {upsert: true});
                 }
                 console.log("Inserted results into the collection.");
               });
