@@ -11,7 +11,7 @@
       </mat-card-header>
       <div *ngIf="emailDetails.attachments.length > 0">
         <mat-divider></mat-divider>
-        Attachments: <attachments [emailDetails]="emailDetails" [account]="account" [timestamp]="_email.timestamp"></attachments>
+        Attachments: <attachments [emailDetails]="emailDetails" [account]="account" [emailId]="_email.emailId"></attachments>
       </div>
       <mat-divider></mat-divider>
 

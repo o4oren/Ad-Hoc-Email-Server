@@ -40,19 +40,7 @@ module.exports = {
 
         stream.on("end", function () {
 
-
-          const name = rcptTo[0].address.split('@')[0];
-
-          let fileName;
-          let filePath;
-
           simpleParser(mailDataString, (err, mail) => {
-
-
-
-            ////////
-            ///part for db, rest of this method can be deleted when it's done
-
             db.collection('emails').insertOne(mail, function (err, result) {
               if (err) {
                 return console.error(err);

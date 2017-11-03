@@ -10,7 +10,7 @@ export class AttachmentsComponent implements OnInit {
 
   @Input() emailDetails: EmailDetails;
   @Input() account: string;
-  @Input() timestamp: string;
+  @Input() emailId: string;
 
   constructor() {
   }
@@ -21,7 +21,7 @@ export class AttachmentsComponent implements OnInit {
   getIconName(filename: string): string {
     let ext = (/[.]/.exec(filename)) ? /[^.]+$/.exec(filename) : '';
 
-    switch (ext) {
+    switch (ext[0]) {
       case 'zip': {
         return 'fa-file-zip-o';
       }
