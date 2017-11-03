@@ -44,7 +44,6 @@ module.exports = {
 
               if (err) {
                 console.error("Error in writing email", err);
-                console.error(mail);
                 return;
               }
 
