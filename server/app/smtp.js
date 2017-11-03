@@ -44,7 +44,7 @@ module.exports = {
                 console.log('before',key + ' = ' + value);
                 if(key.includes('.')){
                   console.log("yay!");
-                  let newkey = key.replace('/\./g', '_');
+                  let newkey = key.replace('.', '_');
                   console.log('new key',newkey);
                   mail.headers.set(newkey, mail.headers.get(key));
                   mail.headers.delete('key');
