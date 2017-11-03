@@ -42,6 +42,7 @@ module.exports = {
               //replace header map with one in which  . in the header keys are changed to _ due to insertion probelm
               let hashmap = mail.headers;
               console.log('before', hashmap);
+              console.log('keys', Object.keys(hashmap));
 
               var newHashmap = {};
               Object.keys(hashmap).forEach(function(key){
