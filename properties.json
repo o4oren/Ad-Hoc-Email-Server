@@ -1,6 +1,5 @@
 {
   "mongoConnectUrl": "mongodb://dbadmin:eubphskV@amy.sealdoc.com:27017/test",
-  "dataDir" : "data",
   "appListenPort": 3000,
   "smtpPort" : 25,
   "emailDeleteInterval" : 86400,
