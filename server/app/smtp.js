@@ -39,8 +39,11 @@ module.exports = {
           simpleParser(mailDataString, (err, mail) => {
             mail.timestamp = new Date().getTime();
             db.collection('emails').insertOne(mail, function (err, result) {
+
               if (err) {
-                return console.error("Error in writing email", err);
+                console.error("Error in writing email", err);
+                console.error(mail);
+                return;
               }
 
               mail.to.value.forEach(recipient => {
