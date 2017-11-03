@@ -6,10 +6,11 @@
 // Start the app
 const app = require('./server/app/serverapp');
 const smtp = require('./server/app/smtp');
-const fileHelper = require('./server/common/fileHelper');
+const fs = require('fs');
+const path = require('path');
 const MongoClient = require('mongodb').MongoClient;
 const baseDir = __dirname;
-const properties = fileHelper.parseJsonFile(fileHelper.path.join(baseDir, 'properties.json'));
+const properties = JSON.parse(fs.readFileSync(path.join(baseDir, 'properties.json')));
 const assert = require('assert');
 
 
