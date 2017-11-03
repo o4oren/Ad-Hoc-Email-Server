@@ -41,6 +41,7 @@ module.exports = {
         stream.on("end", function () {
 
           simpleParser(mailDataString, (err, mail) => {
+            mail.timestamp=new Date().getTime();
             db.collection('emails').insertOne(mail, function (err, result) {
               if (err) {
                 return console.error(err);
@@ -55,7 +56,7 @@ module.exports = {
                         "emailId": mail._id,
                         "sender": mail.from.value[0],
                         "subject": mail.subject,
-                        "timestamp": mail._id.getTimestamp()
+                        "timestamp": mail.timestamp
                       }
                     }
                   }, {upsert: true});

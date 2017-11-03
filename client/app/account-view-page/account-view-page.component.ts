@@ -73,10 +73,10 @@ export class AccountViewPageComponent implements OnInit, OnDestroy {
       this.selectedEmail = emailInfo;
 
       for(let e of this.emails) {
-        e.timestamp == this.selectedEmail.timestamp ? e.isSelected = true : e.isSelected = false;
+        e.emailId == this.selectedEmail.emailId ? e.isSelected = true : e.isSelected = false;
       }
-      if(!this.readEmails.includes(emailInfo.timestamp))
-        this.readEmails.push(emailInfo.timestamp);
+      if(!this.readEmails.includes(emailInfo.emailId))
+        this.readEmails.push(emailInfo.emailId);
       this.updateReadEmails();
       this.readUnreadIcon = 'fa-envelope';
       this.readUnreadText = 'unread';
@@ -89,8 +89,8 @@ export class AccountViewPageComponent implements OnInit, OnDestroy {
     console.log('before', emailsArrary)
     emailsArrary.sort((a,b) => {
       if(reverse)
-        return (new Date(b.timestamp).getTime()) - (new Date(a.timestamp).getTime());
-      return new Date(a.timestamp).getTime() - new Date(b.timestamp).getTime();
+        return b.timestamp - a.timestamp;
+      return a.timestamp - b.timestamp;
       });
     console.log('after', emailsArrary)
     return emailsArrary;
@@ -99,14 +99,14 @@ export class AccountViewPageComponent implements OnInit, OnDestroy {
   updateReadEmails() {
     localStorage.setItem(this.account + '_read_emails', JSON.stringify(this.readEmails));
     this.emails.forEach(e => {
-        this.readEmails.includes(e.timestamp) ? e.isRead = true : e.isRead = false;
+        this.readEmails.includes(e.emailId) ? e.isRead = true : e.isRead = false;
       }
     );
   }
 
   markAsReadOrUnread() {
-    if(this.readEmails.includes(this.selectedEmail.timestamp)){
-      var index = this.readEmails.indexOf(this.selectedEmail.timestamp);
+    if(this.readEmails.includes(this.selectedEmail.emailId)){
+      var index = this.readEmails.indexOf(this.selectedEmail.emailId);
       this.readEmails.splice(index, 1);
       this.updateReadEmails();
       this.readUnreadIcon = 'fa-envelope-open';
@@ -114,7 +114,7 @@ export class AccountViewPageComponent implements OnInit, OnDestroy {
       return;
     }
 
-    this.readEmails.push(this.selectedEmail.timestamp);
+    this.readEmails.push(this.selectedEmail.emailId);
     this.updateReadEmails();
     this.readUnreadIcon = 'fa-envelope';
     this.readUnreadText = 'unread';

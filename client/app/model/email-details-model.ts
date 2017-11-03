@@ -3,6 +3,8 @@
  */
 
 export interface EmailDetails {
+  "_id": string,
+  "timestamp": Number,
   "attachments": Array<any>,
   "headers": any,
   "html": string,
