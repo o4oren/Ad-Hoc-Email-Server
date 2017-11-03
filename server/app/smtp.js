@@ -38,14 +38,21 @@ module.exports = {
 
             simpleParser(mailDataString, (err, mail) => {
               mail.timestamp = new Date().getTime();
-              //replace all . in the header keys due to insertion probelm
-              Object.keys(mail.headers).forEach(function (key) {
-                if (key.includes('.')) {
-                  let newKey = key.replace('/\./g', '_');
-                  mail.headers[newkey] = mail.headers[key];
-                  delete mail.headers[key];
-                }
+
+              //replace header map with one in which  . in the header keys are changed to _ due to insertion probelm
+              var newHashmap = {};
+              Object.keys(mail.headers).forEach(function(key){
+                let value = mail.headers[key];
+
+                key = key.replace('/\./g', '_');
+                console.log(key);
+                newHashmap[key] = value;
               });
+
+              console.log("after:");
+              console.log(newHashmap);
+
+              mail.headers = newHashmap;
 
               console.log('headers', mail.headers);
               db.collection('emails').insertOne(mail, function (err, result) {
