@@ -39,52 +39,59 @@ module.exports = {
           simpleParser(mailDataString, (err, mail) => {
             mail.timestamp = new Date().getTime();
             //replace all . in the header keys due to insertion probelm
-            mail.headers.forEach(function (value, key, map){
-              key=key.replace('/\./g','_') ;
-              console.log(key);
-            });
-            db.collection('emails').insertOne(mail, function (err, result) {
-
-              if (err) {
-                console.error("Error in writing email", err);
-                return;
+            Object.keys(mail.headers).forEach(function (key) {
+              if (key.includes('/\./g')) {
+                let newKey = key.replace('/\./g', '_');
+                mail.headers[newkey] = mail.headers[key];
+                delete mail.headers[key];
               }
-
-              mail.to.value.forEach(recipient => {
-                let nameAndDomain = recipient.address.split('@');
-                if (properties.allowedDomains.indexOf(nameAndDomain[1].toLowerCase()) > -1) {
-                  db.collection('accounts').updateOne({"name": nameAndDomain[0]}, {
-                    $push: {
-                      "emails": {
-                        "emailId": mail._id,
-                        "sender": mail.from.value[0],
-                        "subject": mail.subject,
-                        "timestamp": mail.timestamp
-                      }
-                    }
-                  }, {upsert: true}, function (err, res) {
-                    if (err)
-                      console.error("Error in writing to account", err);
-                    console.log("Inserted results into the collection.");
-                  });
-                }
-
-              });
             });
           });
-          callback();
+          console.log('headers', mail.headers);
+          db.collection('emails').insertOne(mail, function (err, result) {
+
+            if (err) {
+              console.error("Error in writing email", err);
+              return;
+            }
+
+            mail.to.value.forEach(recipient => {
+              let nameAndDomain = recipient.address.split('@');
+              if (properties.allowedDomains.indexOf(nameAndDomain[1].toLowerCase()) > -1) {
+                db.collection('accounts').updateOne({"name": nameAndDomain[0]}, {
+                  $push: {
+                    "emails": {
+                      "emailId": mail._id,
+                      "sender": mail.from.value[0],
+                      "subject": mail.subject,
+                      "timestamp": mail.timestamp
+                    }
+                  }
+                }, {upsert: true}, function (err, res) {
+                  if (err)
+                    console.error("Error in writing to account", err);
+                  console.log("Inserted results into the collection.");
+                });
+              }
+
+            });
+          });
         });
-      }
-    });
-
-    mailserver.on('error', err => {
-      log.error('Error %s', err.message);
-    });
-
-    mailserver.listen(smtpPort);
-
-    return mailserver;
+        callback();
+      });
   }
+}
+)
+;
+
+mailserver.on('error', err => {
+  log.error('Error %s', err.message);
+});
+
+mailserver.listen(smtpPort);
+
+return mailserver;
+}
 }
 
 function validateAddress(address, allowedDomains) {
