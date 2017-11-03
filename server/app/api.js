@@ -55,6 +55,7 @@ router.get('/account/:account/:emailId', (req, res) => {
     "to": 1,
     "cc": 1,
     "date": 1,
+    "timestamp":1,
     "subject": 1,
     "html": 1,
     "textAsHtml": 1,
