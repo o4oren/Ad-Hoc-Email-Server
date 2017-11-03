@@ -53,7 +53,7 @@ export class AccountViewPageComponent implements OnInit, OnDestroy {
       this.readEmails = JSON.parse(localStorage.getItem(this.account + '_read_emails'));
     this.apiService.listAccountsEmails(this.account).subscribe(
       emails => {
-      this.emails = this.sortEmails(emails, SortBy.Timestamp, false);
+      this.emails = this.sortEmails(emails, SortBy.Timestamp, true);
       this.updateReadEmails();
       this.selectEmail(this.getEmailFromTimeStamp(this.emailId));
     }, err => {
@@ -86,11 +86,13 @@ export class AccountViewPageComponent implements OnInit, OnDestroy {
 
   sortEmails(emailsArrary: EmailInfo[], sortBy: SortBy, reverse: boolean): EmailInfo[] {
 
+    console.log('before', emailsArrary)
     emailsArrary.sort((a,b) => {
       if(reverse)
-        return Number(b.timestamp) - Number(a.timestamp);
-      return Number(a.timestamp) - Number(b.timestamp);
+        return (new Date(b.timestamp).getTime()) - (new Date(a.timestamp).getTime());
+      return new Date(a.timestamp).getTime() - new Date(b.timestamp).getTime();
       });
+    console.log('after', emailsArrary)
     return emailsArrary;
   }
 

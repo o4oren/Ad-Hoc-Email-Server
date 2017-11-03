@@ -1,6 +1,6 @@
 
 export interface EmailInfo {
-  emailId: string,
+  emailId: string
   sender: { address: string, name: string};
   subject: string;
   timestamp: string;
