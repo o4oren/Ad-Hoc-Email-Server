@@ -47,7 +47,7 @@ module.exports = {
               Object.keys(hashmap).forEach(function(key){
                 let value = hashmap[key];
 
-                newkey = key.replace('/\./g', '_');
+                let newkey = key.replace('/\./g', '_');
                 newHashmap[newkey] = value;
               });
 
