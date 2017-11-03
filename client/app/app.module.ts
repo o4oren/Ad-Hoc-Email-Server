@@ -24,7 +24,7 @@ import { AttachmentsComponent } from './attachments/attachments.component';
 const appRoutes: Routes = [
   { path: '', component:  LandingPageComponent},
   { path: ':account', component: AccountViewPageComponent},
-  { path: ':account/:timestamp', component: AccountViewPageComponent}
+  { path: ':account/:emailId', component: AccountViewPageComponent}
 ];
 
 @NgModule({

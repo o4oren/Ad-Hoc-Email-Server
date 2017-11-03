@@ -75,34 +75,6 @@ module.exports = {
                 console.log("Inserted results into the collection.");
               });
             });
-
-
-            ////////
-
-
-            fileHelper.createDir(path.join(dataDir, name));
-            fileName = fileHelper.createFileName(mail);
-            filePath = path.join(dataDir, name, fileName);
-            log.info('Writing ' + fileName + ' to: ', filePath);
-
-            fs.writeFileSync(filePath, JSON.stringify(mail), 'utf-8');
-
-            if (rcptTo.length > 1) {
-              log.info("Multiple recipients");
-              for (i = 1; i < rcptTo.length; i++) {
-                let currentName = rcptTo[i].address.split('@')[0];
-                log.info("recipient", currentName);
-                fileHelper.createDir(path.join(dataDir, currentName));
-                fs.symlinkSync(filePath, path.join(dataDir, currentName, fileName), callback);
-              }
-            }
-
-            //TODO remove after solving TC issue
-            let subject = mail.subject;
-            if (subject.includes('Team Connect')) {
-              log.info('TC mail data', mailDataString);
-            }
-
           });
           callback();
         });

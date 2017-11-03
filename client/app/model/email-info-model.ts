@@ -1,7 +1,7 @@
 
 export interface EmailInfo {
-  sender: string;
-  address: string;
+  emailId: string,
+  sender: { address: string, name: string};
   subject: string;
   timestamp: string;
   isSelected: boolean;

@@ -26,7 +26,7 @@ export class AccountViewPageComponent implements OnInit, OnDestroy {
   readEmails: Array<string> = [];
   readUnreadIcon: string;
   readUnreadText: string;
-  timestamp: string;
+  emailId: string;
 
   @Output() onAccountDetermined: EventEmitter<string> = new EventEmitter();
 
@@ -38,7 +38,7 @@ export class AccountViewPageComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.paramsSub = this.route.params.subscribe(params => {
       this.account = params['account'].toLowerCase();
-      this.timestamp = params['timestamp'];
+      this.emailId = params['emailId'];
       this.onAccountDetermined.emit(this.account);
       this.getAccountEmails();
     });
@@ -56,7 +56,7 @@ export class AccountViewPageComponent implements OnInit, OnDestroy {
       this.emails = emails;
       this.sortEmails(SortBy.Timestamp, true);
       this.updateReadEmails();
-      this.selectEmail(this.getEmailFromTimeStamp(this.timestamp));
+      this.selectEmail(this.getEmailFromTimeStamp(this.emailId));
     }, err => {
         this.emails = [];
         this.selectedEmail = null;
@@ -65,7 +65,7 @@ export class AccountViewPageComponent implements OnInit, OnDestroy {
   }
 
   clickedEmail(clickedEmail: EmailInfo) {
-    this.router.navigateByUrl(this.account + "/" + clickedEmail.timestamp);
+    this.router.navigateByUrl(this.account + "/" + clickedEmail.emailId);
   }
 
 
@@ -121,7 +121,7 @@ export class AccountViewPageComponent implements OnInit, OnDestroy {
 
 
   deleteFile() {
-    this.apiService.deleteEmail(this.account, this.selectedEmail.timestamp).subscribe(
+    this.apiService.deleteEmail(this.account, this.selectedEmail.emailId).subscribe(
       result => {
         this.getAccountEmails();
         this.selectedEmail = null;
@@ -132,7 +132,7 @@ export class AccountViewPageComponent implements OnInit, OnDestroy {
     );
   }
 
-  private getEmailFromTimeStamp(timestamp: string): EmailInfo {
-    return this.emails.filter(email => email.timestamp === timestamp)[0];
+  private getEmailFromTimeStamp(emailId: string): EmailInfo {
+    return this.emails.filter(email => email.emailId === emailId)[0];
   }
 }

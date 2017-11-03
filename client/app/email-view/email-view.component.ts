@@ -51,7 +51,7 @@ export class EmailViewComponent implements OnInit, OnDestroy {
   }
 
   getEmailDetails() {
-    this.apiService.getEmailContent(this.account, this.email.timestamp).subscribe(result => {
+    this.apiService.getEmailContent(this.account, this.email.emailId).subscribe(result => {
       this.emailDetails = result;
     });
   }

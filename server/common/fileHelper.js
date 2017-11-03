@@ -124,22 +124,7 @@ module.exports = {
     });
   },
 
-  emptyDirectory,
-
-  emptyChildDirs: function emptyChildDirs(dir) {
-    fs.readdir(dir, function(err, dirs) {
-      dirs.forEach((childDir) => {
-        var fullChildDir = path.join(dir, childDir);
-        fs.lstat(fullChildDir, function (err, stats) {
-                if (err) {
-                  console.error(err);
-                } else if (stats.isDirectory()) {
-                  emptyDirectory(fullChildDir);
-                }
-              });
-      });
-    })
-  }
+  emptyDirectory
 }
 
 

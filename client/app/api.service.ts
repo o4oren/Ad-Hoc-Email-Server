@@ -17,8 +17,8 @@ export class ApiService {
     return this.http.get(url).map(res => res.json());
   }
 
-  getEmailContent(account: string, timestamp: string) {
-    let url: string = "/api/account/" + account + "/" + timestamp;
+  getEmailContent(account: string, emailId: string) {
+    let url: string = "/api/account/" + account + "/" + emailId;
     return this.http.get(url).map(res => res.json());
   }
 
