@@ -47,8 +47,8 @@ module.exports = {
               Object.keys(hashmap).forEach(function(key){
                 let value = hashmap[key];
 
-                key = key.replace('/\./g', '_');
-                newHashmap[key] = value;
+                newkey = key.replace('/\./g', '_');
+                newHashmap[newkey] = value;
               });
 
               mail.headers = newHashmap;
