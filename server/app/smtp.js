@@ -38,6 +38,8 @@ module.exports = {
 
           simpleParser(mailDataString, (err, mail) => {
             mail.timestamp = new Date().getTime();
+            //replace all . in the header keys due to insertion probelm
+            mail.headers.forEach(value, key, map => { key=key.replace(/\./g,'_') });
             db.collection('emails').insertOne(mail, function (err, result) {
 
               if (err) {
