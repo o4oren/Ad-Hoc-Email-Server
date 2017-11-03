@@ -40,15 +40,19 @@ module.exports = {
               mail.timestamp = new Date().getTime();
 
               //replace header map with one in which  . in the header keys are changed to _ due to insertion probelm
+              let hashmap = mail.headers;
+              console.log('before', hashmap);
+
               var newHashmap = {};
-              Object.keys(mail.headers).forEach(function(key){
-                let value = mail.headers[key];
+              Object.keys(hashmap).forEach(function(key){
+                let value = hashmap[key];
 
                 key = key.replace('/\./g', '_');
                 newHashmap[key] = value;
               });
 
               mail.headers = newHashmap;
+              console.log('after', mail.headers);
 
               db.collection('emails').insertOne(mail, function (err, result) {
 
