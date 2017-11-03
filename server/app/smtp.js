@@ -45,16 +45,11 @@ module.exports = {
                 let value = mail.headers[key];
 
                 key = key.replace('/\./g', '_');
-                console.log(key);
                 newHashmap[key] = value;
               });
 
-              console.log("after:");
-              console.log(newHashmap);
-
               mail.headers = newHashmap;
 
-              console.log('headers', mail.headers);
               db.collection('emails').insertOne(mail, function (err, result) {
 
                 if (err) {
