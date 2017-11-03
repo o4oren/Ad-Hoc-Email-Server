@@ -3,9 +3,6 @@
  */
 
 const SMTPServer = require('smtp-server').SMTPServer;
-const fs = require("fs");
-const path = require('path');
-const fileHelper = require('../common/fileHelper');
 const simpleParser = require('mailparser').simpleParser;
 
 const bunyan = require('bunyan');
@@ -13,7 +10,6 @@ const log = bunyan.createLogger({name: "ahem-smtp"});
 
 module.exports = {
   startSTMPServer: function startSTMPServer(properties, baseDir, db) {
-    const dataDir = fileHelper.path.isAbsolute(properties.dataDir) ? properties.dataDir : fileHelper.path.join(baseDir, properties.dataDir);
     const smtpPort = properties.smtpPort;
     const mailserver = new SMTPServer({
       logger: true,
@@ -74,13 +70,7 @@ module.exports = {
       log.error('Error %s', err.message);
     });
 
-//create data dir if doesn't exist
-    fileHelper.createDir(dataDir);
-
     mailserver.listen(smtpPort);
-
-    setInterval(fileHelper.deleteOldFilesAndDirectories.bind(null, dataDir, properties.emailDeleteAge),
-      properties.emailDeleteInterval * 1000);
 
     return mailserver;
   }

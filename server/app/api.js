@@ -3,13 +3,10 @@
  */
 const express = require('express');
 const router = express.Router();
-const fileHelper = require('../common/fileHelper');
 const bunyan = require('bunyan');
 const log = bunyan.createLogger({name: "ahem-server"});
 const ObjectID = require('mongodb').ObjectID;
 
-let properties = fileHelper.parseJsonFile('properties.json');
-let dataDir = fileHelper.path.isAbsolute(properties.dataDir) ? properties.dataDir : properties.dataDir;
 //indicates the api server is up
 router.get('/alive', (req, res) => {
   res.send('api works');
@@ -27,7 +24,7 @@ router.post('/account/autocomplete', (req, res) => {
 });
 
 router.get('/properties', (req, res, next) => {
-  res.json(properties);
+  res.json(req.properties);
 });
 
 /**
@@ -128,6 +125,7 @@ router.delete('/dataDir', (req, res) => {
     res.status(500).send({error: "FAILED TO DELETE ALL ACCOUNTS", succes: false});
   }
 });
+
 
 module.exports = router;
 

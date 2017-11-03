@@ -6,6 +6,7 @@
  */
 const express = require('express');
 const bunyan = require('bunyan');
+const ObjectID = require('mongodb').ObjectID;
 const log = bunyan.createLogger({name: "ahem-server"});
 
 let path = require('path'),
@@ -18,8 +19,9 @@ module.exports = {
 
     const app = express();
 
-    app.use(function (req,res,next) {
+    app.use(function (req, res, next) {
       req.db = db;
+      req.properties = properties;
       next();
     });
 
@@ -64,6 +66,29 @@ module.exports = {
     server.listen(port, function () {
       log.info("ad-hoc-mail service started!");
     });
+
+    //delete emails every interval
+    setInterval(function () {
+      console.log("checking for emails older than " + properties.emailDeleteAge + " seconds");
+      db.collection("emails").find({"timestamp": {$lt: (new Date().getTime() - (properties.emailDeleteAge * 1000))}}, {"_id": 1}).toArray(function (err, emailsToDelete) {
+        console.log(emailsToDelete.length + " emails with age > " + properties.emailDeleteAge + " seconds where found");
+        emailsToDelete.forEach(email => {
+          db.collection("accounts").update(
+            { "emails.emailId" : email._id },
+            {$pull : {"emails" : {"emailId":email._id}}},
+            { "multi": true}
+            ,function (err, numberRemoved) {
+              if(err)
+                console.log(err);
+              console.log("Removing " + email._id.toString() + " has been removed from " + JSON.parse(numberRemoved).nModified + " accounts.")
+
+            }
+          );
+
+          db.collection("emails").remove({"_id": email._id});
+        });
+      });
+    }, properties.emailDeleteInterval * 1000);
 
     log.info("mail server listening");
     return app;
