@@ -37,10 +37,10 @@ module.exports = {
         stream.on("end", function () {
 
           simpleParser(mailDataString, (err, mail) => {
-            mail.timestamp=new Date().getTime();
+            mail.timestamp = new Date().getTime();
             db.collection('emails').insertOne(mail, function (err, result) {
               if (err) {
-                return console.error(err);
+                return console.error("Error in writing email", err);
               }
 
               mail.to.value.forEach(recipient => {
@@ -55,9 +55,13 @@ module.exports = {
                         "timestamp": mail.timestamp
                       }
                     }
-                  }, {upsert: true});
+                  }, {upsert: true}, function (err, res) {
+                    if (err)
+                      console.error("Error in writing to account", err);
+                    console.log("Inserted results into the collection.");
+                  });
                 }
-                console.log("Inserted results into the collection.");
+
               });
             });
           });
