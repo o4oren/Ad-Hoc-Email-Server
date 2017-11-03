@@ -36,6 +36,7 @@ app-main-page {
     flex-direction: column;
     flex-grow: 1;
     height: 100%;
+    overflow: auto;
 }
 
 app-account-view-page {
