@@ -40,7 +40,7 @@ module.exports = {
             mail.timestamp = new Date().getTime();
             //replace all . in the header keys due to insertion probelm
             Object.keys(mail.headers).forEach(function (key) {
-              if (key.includes('/\./g')) {
+              if (key.includes('.')) {
                 let newKey = key.replace('/\./g', '_');
                 mail.headers[newkey] = mail.headers[key];
                 delete mail.headers[key];
