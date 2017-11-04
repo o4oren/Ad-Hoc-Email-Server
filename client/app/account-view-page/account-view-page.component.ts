@@ -34,12 +34,14 @@ export class AccountViewPageComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.paramsSub = this.route.params.subscribe(params => {
+      this.emailId = params['emailId'];
       if (!this.account || this.account.toLowerCase() !== params['account'].toLowerCase()) {
         this.account = params['account'].toLowerCase();
         this.onAccountDetermined.emit(this.account);
         this.getAccountEmails();
+      } else {
+        this.selectEmail(this.getEmailFromTimeStamp(this.emailId));
       }
-      this.emailId = params['emailId'];
     });
   }
 
