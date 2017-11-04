@@ -41,15 +41,12 @@ module.exports = {
 
               //replace header map with one in which  . in the header keys are changed to _ due to insertion probelm
               mail.headers.forEach(function(value, key) {
-                console.log('before',key + ' = ' + value);
                 if(key.includes('.')){
-                  console.log("yay!");
                   let newkey = key.replace(/\./g, '_');
                   mail.headers.set(newkey, mail.headers.get(key));
                   mail.headers.delete(key);
                 }
               });
-              console.log('after', mail.headers);
 
               db.collection('emails').insertOne(mail, function (err, result) {
 
