@@ -3,7 +3,8 @@ import { NgModule } from '@angular/core';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {
   MatAutocompleteModule,
-  MatButtonModule, MatCardModule, MatIconModule, MatIconRegistry, MatInputModule, MatListModule, MatSidenavModule,
+  MatButtonModule, MatCardModule, MatExpansionModule, MatIconModule, MatIconRegistry, MatInputModule, MatListModule,
+  MatSidenavModule,
   MatToolbarModule
 
 } from '@angular/material';
@@ -55,6 +56,7 @@ const appRoutes: Routes = [
     MatListModule,
     MatIconModule,
     MatButtonModule,
+    MatExpansionModule,
     RouterModule.forRoot(appRoutes)
   ],
   providers: [ApiService, MatIconRegistry],

@@ -1,19 +1,27 @@
-<span>
+
+
 <mat-card class="ahem-centered-card">
-  <mat-card-content>
-    <p>From <a href="https://www.merriam-webster.com/dictionary/ahem" target="_blank">Merriam-Webster</a>:</p>
-  </mat-card-content>
-  <mat-card-title-group>
-    <mat-card-title>ahem</mat-card-title>
-    <mat-card-subtitle>interjection \ a throat-clearing sound; often read as ə-ˈhem ; \</mat-card-subtitle>
-  </mat-card-title-group>
-  <mat-card-content>
-    <h3>Definition of ahem</h3>
-    <p>—used especially to attract attention or to express disapproval or embarrassment</p>
-  </mat-card-content>
-</mat-card>
-<mat-card class="ahem-centered-card">
-   <mat-card-title>Ad Hoc Email Server</mat-card-title>
+   <mat-card-title>
+     <mat-expansion-panel class="ahem-definition-of">
+       <mat-expansion-panel-header>
+         <mat-panel-title>
+           Ad Hoc EMail Sever
+         </mat-panel-title>
+         <mat-panel-description>
+           Definition of ahem
+         </mat-panel-description>
+       </mat-expansion-panel-header>
+       <mat-card-content>
+         <p>From <a href="https://www.merriam-webster.com/dictionary/ahem" target="_blank">Merriam-Webster</a>:</p>
+       </mat-card-content>
+       <h2>ahem</h2>
+       <mat-card-subtitle>interjection \ a throat-clearing sound; often read as ə-ˈhem ; \</mat-card-subtitle>
+       <mat-card-content>
+         <h3>Definition of ahem</h3>
+         <p>—used especially to attract attention or to express disapproval or embarrassment</p>
+       </mat-card-content>
+     </mat-expansion-panel>
+   </mat-card-title>
   <mat-card-content *ngIf="!properties.customText">
     <p>AHEM server is an ad-hoc mail server. By ad-hoc we mean that a mail box will be created for you as soon as an
       email for your account reaches the server.
@@ -22,8 +30,8 @@
       <mat-list>
         <div *ngFor="let domain of properties.allowedDomains"> {{domain}}</div>
       </mat-list>
-    <p>It will check every {{properties.emailDeleteInterval | amDuration:'seconds'}} if an email has passed
-      {{properties.emailDeleteAge | amDuration:'seconds'}} of age, and if it did, it will erase it.</p>
+    <p>AHEM will check in an interval of {{properties.emailDeleteInterval | amDuration:'seconds'}} for emails that aged over
+      {{properties.emailDeleteAge | amDuration:'seconds'}}, and if it find these, it will erase them.</p>
     <p>So go ahead, and give it a try. Send an email to whatever@one-of-the domains above, and enter your account.</p>
   </mat-card-content>
   <mat-card-content *ngIf="properties.customText" [innerHtml]="properties.customText">
@@ -31,4 +39,4 @@
   </mat-card-content>
   <app-account-selector></app-account-selector>
 </mat-card>
-</span>
+
