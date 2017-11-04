@@ -34,7 +34,7 @@ export class AccountViewPageComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.paramsSub = this.route.params.subscribe(params => {
-      if (this.account.toLowerCase() !== params['account'].toLowerCase()) {
+      if (!this.account || this.account.toLowerCase() !== params['account'].toLowerCase()) {
         this.account = params['account'].toLowerCase();
         this.onAccountDetermined.emit(this.account);
         this.getAccountEmails();
