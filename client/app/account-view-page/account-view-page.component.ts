@@ -1,10 +1,10 @@
 import {Component, EventEmitter, OnDestroy, OnInit, Output} from '@angular/core';
-import {ActivatedRoute, Router} from "@angular/router";
-import {Subscription} from "rxjs/Subscription";
-import {ApiService} from "../api.service";
-import {Observable} from "rxjs/Observable";
-import {EmailInfo} from "../model/email-info-model";
-import {EmailDetails} from "../model/email-details-model";
+import {ActivatedRoute, Router} from '@angular/router';
+import {Subscription} from 'rxjs/Subscription';
+import {ApiService} from '../api.service';
+import {Observable} from 'rxjs/Observable';
+import {EmailInfo} from '../model/email-info-model';
+import {EmailDetails} from '../model/email-details-model';
 
 enum SortBy {
   Timestamp, Sender, Subject
@@ -30,17 +30,16 @@ export class AccountViewPageComponent implements OnInit, OnDestroy {
 
   @Output() onAccountDetermined: EventEmitter<string> = new EventEmitter();
 
-
-  constructor(private apiService: ApiService, private route: ActivatedRoute, private router: Router) {
-
-  }
+  constructor(private apiService: ApiService, private route: ActivatedRoute, private router: Router) {}
 
   ngOnInit() {
     this.paramsSub = this.route.params.subscribe(params => {
-      this.account = params['account'].toLowerCase();
+      if (this.account.toLowerCase() !== params['account'].toLowerCase()) {
+        this.account = params['account'].toLowerCase();
+        this.onAccountDetermined.emit(this.account);
+        this.getAccountEmails();
+      }
       this.emailId = params['emailId'];
-      this.onAccountDetermined.emit(this.account);
-      this.getAccountEmails();
     });
   }
 
@@ -48,9 +47,10 @@ export class AccountViewPageComponent implements OnInit, OnDestroy {
     this.paramsSub.unsubscribe();
   }
 
-  getAccountEmails(): any{
-    if(localStorage.getItem(this.account + '_read_emails')!= null)
+  getAccountEmails(): any {
+    if (localStorage.getItem(this.account + '_read_emails')!= null) {
       this.readEmails = JSON.parse(localStorage.getItem(this.account + '_read_emails'));
+    }
     this.apiService.listAccountsEmails(this.account).subscribe(
       emails => {
       this.emails = this.sortEmails(emails, SortBy.Timestamp, true);
@@ -64,19 +64,20 @@ export class AccountViewPageComponent implements OnInit, OnDestroy {
   }
 
   clickedEmail(clickedEmail: EmailInfo) {
-    this.router.navigateByUrl(this.account + "/" + clickedEmail.emailId);
+    this.router.navigateByUrl(this.account + '/' + clickedEmail.emailId);
   }
 
 
-  selectEmail(emailInfo:EmailInfo) {
-    if(emailInfo) {
+  selectEmail(emailInfo: EmailInfo) {
+    if (emailInfo) {
       this.selectedEmail = emailInfo;
 
-      for(let e of this.emails) {
-        e.emailId == this.selectedEmail.emailId ? e.isSelected = true : e.isSelected = false;
+      for (const e of this.emails) {
+        e.emailId === this.selectedEmail.emailId ? e.isSelected = true : e.isSelected = false;
       }
-      if(!this.readEmails.includes(emailInfo.emailId))
+      if (!this.readEmails.includes(emailInfo.emailId)) {
         this.readEmails.push(emailInfo.emailId);
+    }
       this.updateReadEmails();
       this.readUnreadIcon = 'fa-envelope';
       this.readUnreadText = 'unread';
@@ -87,9 +88,10 @@ export class AccountViewPageComponent implements OnInit, OnDestroy {
   sortEmails(emailsArrary: EmailInfo[], sortBy: SortBy, reverse: boolean): EmailInfo[] {
 
     console.log('before', emailsArrary)
-    emailsArrary.sort((a,b) => {
-      if(reverse)
+    emailsArrary.sort((a, b) => {
+      if (reverse) {
         return b.timestamp - a.timestamp;
+      }
       return a.timestamp - b.timestamp;
       });
     console.log('after', emailsArrary)
@@ -105,8 +107,8 @@ export class AccountViewPageComponent implements OnInit, OnDestroy {
   }
 
   markAsReadOrUnread() {
-    if(this.readEmails.includes(this.selectedEmail.emailId)){
-      var index = this.readEmails.indexOf(this.selectedEmail.emailId);
+    if (this.readEmails.includes(this.selectedEmail.emailId)) {
+      const index = this.readEmails.indexOf(this.selectedEmail.emailId);
       this.readEmails.splice(index, 1);
       this.updateReadEmails();
       this.readUnreadIcon = 'fa-envelope-open';
@@ -129,7 +131,7 @@ export class AccountViewPageComponent implements OnInit, OnDestroy {
         this.selectedEmail = null;
       },
       err => {
-        console.log('error!!!!', err); //TODO popup message
+        console.log('error!!!!', err); // TODO popup message
       }
     );
   }

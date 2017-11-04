@@ -1,8 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {FormControl} from "@angular/forms";
-import {ApiService} from "../api.service";
-import {Observable} from "rxjs/Observable";
-import {Router} from "@angular/router";
+import {FormControl} from '@angular/forms';
+import {ApiService} from '../api.service';
+import {Observable} from 'rxjs/Observable';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-account-selector',
@@ -32,15 +32,14 @@ export class AccountSelectorComponent implements OnInit {
 
 
   filterAccounts(val: string) : any {
-    if(typeof val != 'undefined' && val)
+    if (typeof val !== 'undefined' && val) {
       return this.apiService.listAccountsAutoComplete(val);
-    else {
+  } else {
       return Observable.create(observer => {
         observer.next([]);
         observer.complete();
       });
     }
-
   }
 
   clickSubmit() {
