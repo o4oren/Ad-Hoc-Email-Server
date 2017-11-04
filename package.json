@@ -28,6 +28,7 @@
     "@angular/platform-browser-dynamic": "^4.4.4",
     "@angular/router": "^4.0.0",
     "@types/node": "^6.0.89",
+    "angular2-moment": "^1.7.0",
     "body-parser": "^1.17.2",
     "bunyan": "^1.8.12",
     "core-js": "^2.5.1",

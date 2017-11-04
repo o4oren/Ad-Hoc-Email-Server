@@ -22,8 +22,8 @@
       <mat-list>
         <div *ngFor="let domain of properties.allowedDomains"> {{domain}}</div>
       </mat-list>
-    <p>It will check every {{properties.emailDeleteInterval}} seconds if an email has passed
-      {{properties.emailDeleteAge}} seconds of age, and if it did, it will erase it.</p>
+    <p>It will check every {{properties.emailDeleteInterval | amDuration:'seconds'}} if an email has passed
+      {{properties.emailDeleteAge | amDuration:'seconds'}} of age, and if it did, it will erase it.</p>
     <p>So go ahead, and give it a try. Send an email to whatever@one-of-the domains above, and enter your account.</p>
   </mat-card-content>
   <mat-card-content *ngIf="properties.customText" [innerHtml]="properties.customText">

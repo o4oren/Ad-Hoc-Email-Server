@@ -20,6 +20,7 @@ import { EmailInfoComponent } from './email-info/email-info.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { HtmlSanitizerPipe } from './pipe/html-sanitizer.pipe';
 import { AttachmentsComponent } from './attachments/attachments.component';
+import {MomentModule} from "angular2-moment";
 
 const appRoutes: Routes = [
   { path: '', component:  LandingPageComponent},
@@ -38,11 +39,11 @@ const appRoutes: Routes = [
     LandingPageComponent,
     HtmlSanitizerPipe,
     AttachmentsComponent
-
   ],
   imports: [
     BrowserModule,
     HttpModule,
+    MomentModule,
     BrowserAnimationsModule,
     MatButtonModule,
     MatToolbarModule,
