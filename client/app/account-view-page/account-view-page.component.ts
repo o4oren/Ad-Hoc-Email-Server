@@ -48,7 +48,7 @@ export class AccountViewPageComponent implements OnInit, OnDestroy {
   }
 
   getAccountEmails(): any {
-    if (localStorage.getItem(this.account + '_read_emails')!= null) {
+    if (localStorage.getItem(this.account + '_read_emails') != null) {
       this.readEmails = JSON.parse(localStorage.getItem(this.account + '_read_emails'));
     }
     this.apiService.listAccountsEmails(this.account).subscribe(
