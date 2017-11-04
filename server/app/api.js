@@ -16,7 +16,7 @@ router.get('/alive', (req, res) => {
  * returns a list of account names starting with the req.body.prefix
  */
 router.post('/account/autocomplete', (req, res) => {
-  req.db.collection("accounts").find({"name": {$regex: ".*" + req.body.prefix + ".*"}}, {"name": 1}).toArray(function (err, accounts) {
+  req.db.collection("accounts").find({"name": {'$regex' : '^' + req.body.prefix, '$options' : 'i'}}, {"name": 1}).toArray(function (err, accounts) {
     if (err)
       res.status(500).json(err);
     res.status(200).send(accounts.map(account => account.name));
