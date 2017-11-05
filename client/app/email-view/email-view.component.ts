@@ -1,11 +1,11 @@
 import {Component, Input, OnDestroy, OnInit, Output} from '@angular/core';
-import {Subscription} from "rxjs/Subscription";
-import {ApiService} from "../api.service";
-import {ActivatedRoute} from "@angular/router";
-import {Observable} from "rxjs/Observable";
-import {EmailInfo} from "../model/email-info-model";
-import {EmailDetails} from "../model/email-details-model";
-import {DomSanitizer, SafeHtml} from "@angular/platform-browser";
+import {Subscription} from 'rxjs/Subscription';
+import {ApiService} from '../api.service';
+import {ActivatedRoute} from '@angular/router';
+import {Observable} from 'rxjs/Observable';
+import {EmailInfo} from '../model/email-info-model';
+import {EmailDetails} from '../model/email-details-model';
+import {DomSanitizer, SafeHtml} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-email-view',
@@ -25,7 +25,7 @@ export class EmailViewComponent implements OnInit, OnDestroy {
     console.log(email);
     this.emailDetails = null;
     this._email = email;
-    if(this.email) {
+    if (this.email) {
       this.getEmailDetails();
     } else {
       this.emailDetails = null;
