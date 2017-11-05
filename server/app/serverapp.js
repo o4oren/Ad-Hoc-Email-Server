@@ -85,9 +85,26 @@ module.exports = {
             }
           );
 
-          db.collection("emails").remove({"_id": email._id});
+          db.collection("emails").remove({"_id": email._id}, function(err, result){
+            if (err) {
+              console.log(err);
+            } else {
+              console.log('Delete email', result);
+            }
+          });
         });
       });
+
+      db.collection("accounts").remove({"emails": { $exists: true, $ne: "[]" }}, function (err, result) {
+        if (err) {
+          console.log(err);
+        } else {
+          console.log('Removed empty accounts', result );
+        }
+
+
+      });
+
     }, properties.emailDeleteInterval * 1000);
 
     log.info("mail server listening");
