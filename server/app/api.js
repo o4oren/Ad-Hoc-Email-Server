@@ -80,7 +80,7 @@ router.get('/account/:account/:emailId/attachments/:filename', (req, res) => {
       // res.setHeader('Content-disposition', 'attachment;filename=' + attachmentsFound[0].filename);
       res.setHeader('Content-Length', attachmentsFound[0].size);
       res.writeHead(200);
-      res.end(new Buffer(attachmentsFound[0].content.data));
+      res.end(attachmentsFound[0].content.buffer);
       }
     );
   }
