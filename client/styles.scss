@@ -45,17 +45,13 @@ app-account-view-page {
 }
 
 .ahem-toolbar {
-  height: 128px;
+  //height: 128px;
   box-shadow: 0 3px 5px -1px rgba(0,0,0,.2), 0 6px 10px 0 rgba(0,0,0,.14), 0 1px 18px 0 rgba(0,0,0,.12);
   position: relative;
   z-index: 10;
 }
 
 .ahem-toolbar .mat-toolbar-layout {
-  height: 100%;
-}
-
-.ahem-toolbar .mat-toolbar-layout .mat-toolbar-row{
   height: 100%;
 }
 
@@ -69,8 +65,7 @@ app-account-view-page {
   justify-content: center;
   align-items: center;
   margin:auto;
-  margin-top:20px;
-
+  //margin-top:20px;
 }
 
 .ahem-account-selector-internal {
@@ -146,7 +141,7 @@ app-account-view-page {
 .mat-icon.ahem-logo {
   color: mat-color($ahem-app-accent);
   height: 100%;
-  width: 100%;
+  width: 90px;
 }
 
 .ahem-email-selected {
