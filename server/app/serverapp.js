@@ -89,7 +89,7 @@ module.exports = {
             if (err) {
               console.log(err);
             } else {
-              console.log('Delete email', result);
+              console.log('Delete email', result.result);
             }
           });
         });
@@ -99,7 +99,7 @@ module.exports = {
         if (err) {
           console.log(err);
         } else {
-          console.log('Removed empty accounts', result );
+          console.log('Removed empty accounts', result.result );
         }
 
 
