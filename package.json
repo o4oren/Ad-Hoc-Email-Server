@@ -29,6 +29,7 @@
     "@angular/router": "^4.0.0",
     "@types/node": "^6.0.89",
     "angular2-moment": "^1.7.0",
+    "angulartics2": "^3.3.0",
     "body-parser": "^1.17.2",
     "bunyan": "^1.8.12",
     "core-js": "^2.5.1",

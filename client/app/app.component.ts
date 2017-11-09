@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {Angulartics2GoogleAnalytics} from "angulartics2";
 
 @Component({
   selector: 'ahem-app-root',
@@ -8,5 +9,5 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'AHEM - Ad Hoc Email Server';
 
-  constructor() {}
+  constructor(angulartics2GoogleAnalytics: Angulartics2GoogleAnalytics) {}
 }

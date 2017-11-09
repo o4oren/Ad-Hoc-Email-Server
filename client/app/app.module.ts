@@ -22,6 +22,7 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
 import { HtmlSanitizerPipe } from './pipe/html-sanitizer.pipe';
 import { AttachmentsComponent } from './attachments/attachments.component';
 import {MomentModule} from "angular2-moment";
+import {Angulartics2GoogleAnalytics, Angulartics2Module} from "angulartics2";
 
 const appRoutes: Routes = [
   { path: '', component:  LandingPageComponent},
@@ -57,7 +58,8 @@ const appRoutes: Routes = [
     MatIconModule,
     MatButtonModule,
     MatExpansionModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    Angulartics2Module.forRoot([ Angulartics2GoogleAnalytics ])
   ],
   providers: [ApiService, MatIconRegistry],
   bootstrap: [AppComponent]
