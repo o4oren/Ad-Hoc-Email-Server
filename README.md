@@ -40,14 +40,14 @@ npm start
 A configuration file names properties.json is located in the root of the project.
 Edit it to fit your use case.
 Parameters:
-* dataDir - location of the actual email files saved on the filespace.
+* mongoConnectUrl - the mongodb connect url in the form of "mongodb://localhost:27017/ahem"
 * appListenPort - the port the node app will bind to.
 * smtpPort - ahem... you know.
 * emailDeleteInterval - The time in seconds between age checks for purging old files.
 * emailDeleteAge - The age in seconds above which emails will be deleted
 * allowedDomains - An array of allowed email domains. These domains will be allowed by the server as RCPT TO: entries. This also makes the server not act as an open relay. Format: ["my.domain.com", "my.second-domain.com"]
 * customText - html string that will replace the default text in the landing page
-* mongoConnectUrl - the mongodb connect url in the form of "mongodb://localhost:27017/ahem"
+* googleAnalyticsId - if a Google Analytics id is set, tracking information will be sent to GA.
 
 ### API
 
