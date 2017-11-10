@@ -4,4 +4,8 @@
 
 .footer-internal {
    font-size: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  display: -webkit-flex; /* Safari */
+  -webkit-flex-wrap: wrap; /* Safari 6.1+ */
 }
