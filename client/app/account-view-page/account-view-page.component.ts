@@ -1,10 +1,10 @@
-import {Component, EventEmitter, OnDestroy, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, OnDestroy, OnInit, Output, ViewChild} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Subscription} from 'rxjs/Subscription';
 import {ApiService} from '../api.service';
-import {Observable} from 'rxjs/Observable';
 import {EmailInfo} from '../model/email-info-model';
-import {EmailDetails} from '../model/email-details-model';
+import {MatSidenav} from "@angular/material/sidenav";
+
 
 enum SortBy {
   Timestamp, Sender, Subject
@@ -29,7 +29,9 @@ export class AccountViewPageComponent implements OnInit, OnDestroy {
   emailId: string;
 
   @Output() onAccountDetermined: EventEmitter<string> = new EventEmitter();
+  @ViewChild(MatSidenav) sidenav: MatSidenav;
   private mediaMatcher: MediaQueryList = matchMedia(`(max-width: 720px)`);
+
 
   constructor(private apiService: ApiService, private route: ActivatedRoute, private router: Router) {}
 
@@ -42,6 +44,11 @@ export class AccountViewPageComponent implements OnInit, OnDestroy {
         this.getAccountEmails();
       } else {
         this.selectEmail(this.getEmailFromTimeStamp(this.emailId));
+      }
+    });
+    this.router.events.subscribe(() => {
+      if (this.isScreenSmall()) {
+        this.sidenav.close();
       }
     });
   }
