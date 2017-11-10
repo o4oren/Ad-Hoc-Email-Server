@@ -35,7 +35,9 @@ app-main-page {
     display: flex;
     display: -webkit-flex;
     flex-direction: column;
+    -webkit-flex-direction: column;
     flex-grow: 1;
+    -webkit-flex-grow: 1;
     height: 100%;
     overflow: auto;
 }
@@ -54,6 +56,7 @@ ahem-landing-page, ahem-email-view {
   display: flex;
   display: -webkit-flex;
   flex-direction: column;
+  -webkit-flex-direction: column;
   height: 100%;
 }
 
@@ -62,6 +65,7 @@ mat-sidenav-content > div {
   display: flex;
   display: -webkit-flex;
   flex-direction: column;
+  -webkit-flex-direction: column;
   height: 100%;
 }
 
@@ -83,6 +87,7 @@ mat-sidenav-content > div {
   bottom: 0;
   left: 0;
   align-content: flex-end;
+  -webkit-align-content: flex-end;
   display: flex;
   display: -webkit-flex;
   /*padding: 1rem;*/
@@ -151,7 +156,7 @@ mat-sidenav-content > div {
 .ahem-sideNav-container {
   height: 100%;
   display: flex;
-  display: -webkit-flex;;
+  display: -webkit-flex;
 }
 
 .ahem-overflow {
@@ -173,6 +178,7 @@ mat-list {
 
 .ahem-spacer {
   flex: 3;
+  -webkit-flex: 3;
   -webkit-box-flex: 3;
 }
 
