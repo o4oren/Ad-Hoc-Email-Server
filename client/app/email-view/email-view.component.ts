@@ -8,7 +8,7 @@ import {EmailDetails} from '../model/email-details-model';
 import {DomSanitizer, SafeHtml} from '@angular/platform-browser';
 
 @Component({
-  selector: 'app-email-view',
+  selector: 'ahem-email-view',
   templateUrl: './email-view.component.html',
   styleUrls: ['./email-view.component.css']
 })

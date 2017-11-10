@@ -1,7 +1,7 @@
 <mat-sidenav-container class="ahem-sideNav-container ahem-overflow" >
   <mat-sidenav #sidenav opened="true"
                [mode]="isScreenSmall() ? 'over' : 'side'"
-               [fixedInViewport]="isScreenSmall()"  class="ahem-sideNav" mode="side">
+               [fixedInViewport]="isScreenSmall()"  class="ahem-sideNav" mode="side" style="top: 56px;">
     <mat-list>
       <div *ngFor='let email of emails' (click)="clickedEmail(email)" class="ahem-email-list-item" [ngClass]="{'ahem-email-selected': email.isSelected }">
           <ahem-email-info [emailInfo]="email"></ahem-email-info>
@@ -10,13 +10,13 @@
     </mat-list>
   </mat-sidenav>
 
-  <div class="ahem-sidnav-content">
+  <div>
     <mat-toolbar color="accent" class="ahem-internal-toolbar">
       <button mat-button (click)="sidenav.toggle()"><mat-icon style="height:100%" fontSet="fa" fontIcon="fa-navicon"></mat-icon></button>
       <button mat-button *ngIf="selectedEmail" (click)="deleteFile()"><mat-icon>delete forever</mat-icon>Delete</button>
       <button mat-button *ngIf="selectedEmail" (click)="markAsReadOrUnread()"><mat-icon style="height:100%" fontSet="fa" fontIcon={{readUnreadIcon}}></mat-icon>Mark as {{readUnreadText}}</button>
     </mat-toolbar>
-   <app-email-view [email]="selectedEmail"></app-email-view>
+   <ahem-email-view [email]="selectedEmail"></ahem-email-view>
   </div>
 </mat-sidenav-container>
 
