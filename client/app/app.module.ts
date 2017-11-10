@@ -23,6 +23,7 @@ import { HtmlSanitizerPipe } from './pipe/html-sanitizer.pipe';
 import { AttachmentsComponent } from './attachments/attachments.component';
 import {MomentModule} from "angular2-moment";
 import {Angulartics2GoogleAnalytics, Angulartics2Module} from "angulartics2";
+import { FooterComponent } from './footer/footer.component';
 
 const appRoutes: Routes = [
   { path: '', component:  LandingPageComponent},
@@ -40,7 +41,8 @@ const appRoutes: Routes = [
     EmailInfoComponent,
     LandingPageComponent,
     HtmlSanitizerPipe,
-    AttachmentsComponent
+    AttachmentsComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

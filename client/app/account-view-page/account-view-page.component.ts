@@ -29,6 +29,7 @@ export class AccountViewPageComponent implements OnInit, OnDestroy {
   emailId: string;
 
   @Output() onAccountDetermined: EventEmitter<string> = new EventEmitter();
+  private mediaMatcher: MediaQueryList = matchMedia(`(max-width: 720px)`);
 
   constructor(private apiService: ApiService, private route: ActivatedRoute, private router: Router) {}
 
@@ -57,7 +58,14 @@ export class AccountViewPageComponent implements OnInit, OnDestroy {
       emails => {
       this.emails = this.sortEmails(emails, SortBy.Timestamp, true);
       this.updateReadEmails();
-      this.selectEmail(this.getEmailFromTimeStamp(this.emailId));
+      if(this.emailId) {
+        this.selectEmail(this.getEmailFromTimeStamp(this.emailId));
+      } else {
+        if(this.emails.length>0) {
+          this.selectEmail(this.emails[0]);
+        }
+      }
+
     }, err => {
         this.emails = [];
         this.selectedEmail = null;
@@ -136,6 +144,10 @@ export class AccountViewPageComponent implements OnInit, OnDestroy {
         console.log('error!!!!', err); // TODO popup message
       }
     );
+  }
+
+  isScreenSmall() {
+    return this.mediaMatcher.matches;
   }
 
   private getEmailFromTimeStamp(emailId: string): EmailInfo {
