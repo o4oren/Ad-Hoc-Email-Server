@@ -24,9 +24,11 @@ import { AttachmentsComponent } from './attachments/attachments.component';
 import {MomentModule} from "angular2-moment";
 import {Angulartics2GoogleAnalytics, Angulartics2Module} from "angulartics2";
 import { FooterComponent } from './footer/footer.component';
+import { PrivacyComponent } from './privacy/privacy.component';
 
 const appRoutes: Routes = [
   { path: '', component:  LandingPageComponent},
+  { path: 'privacy', component: PrivacyComponent},
   { path: ':account', component: AccountViewPageComponent},
   { path: ':account/:emailId', component: AccountViewPageComponent}
 ];
@@ -42,7 +44,8 @@ const appRoutes: Routes = [
     LandingPageComponent,
     HtmlSanitizerPipe,
     AttachmentsComponent,
-    FooterComponent
+    FooterComponent,
+    PrivacyComponent
   ],
   imports: [
     BrowserModule,

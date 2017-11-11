@@ -69,7 +69,7 @@ export class AccountViewPageComponent implements OnInit, OnDestroy {
         this.selectEmail(this.getEmailFromTimeStamp(this.emailId));
       } else {
         if(this.emails.length>0) {
-          this.selectEmail(this.emails[0]);
+          // this.selectEmail(this.emails[0]); //TODO handle non empty mailbox vs empty mailbox
         }
       }
 
