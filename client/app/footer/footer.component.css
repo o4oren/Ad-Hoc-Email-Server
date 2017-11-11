@@ -3,7 +3,8 @@
 }
 
 .footer-internal {
-   font-size: 12px;
+  margin-top: 20px;
+  font-size: 12px;
   display: flex;
   display: -webkit-flex;
   flex-wrap: wrap;
