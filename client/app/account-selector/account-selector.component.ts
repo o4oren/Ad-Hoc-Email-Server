@@ -43,7 +43,7 @@ export class AccountSelectorComponent implements OnInit {
   }
 
   clickSubmit() {
-    this.router.navigateByUrl('/' + this.selectedAccount.toLowerCase());
+    this.router.navigateByUrl('/account/' + this.selectedAccount.toLowerCase());
   }
 
 }

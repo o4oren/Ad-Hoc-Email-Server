@@ -81,7 +81,7 @@ export class AccountViewPageComponent implements OnInit, OnDestroy {
   }
 
   clickedEmail(clickedEmail: EmailInfo) {
-    this.router.navigateByUrl(this.account + '/' + clickedEmail.emailId);
+    this.router.navigateByUrl('/account/' + this.account + '/' + clickedEmail.emailId);
   }
 
 

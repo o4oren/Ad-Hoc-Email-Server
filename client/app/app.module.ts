@@ -29,8 +29,8 @@ import { PrivacyComponent } from './privacy/privacy.component';
 const appRoutes: Routes = [
   { path: '', component:  LandingPageComponent},
   { path: 'privacy', component: PrivacyComponent},
-  { path: ':account', component: AccountViewPageComponent},
-  { path: ':account/:emailId', component: AccountViewPageComponent}
+  { path: 'account/:account', component: AccountViewPageComponent},
+  { path: 'account/:account/:emailId', component: AccountViewPageComponent}
 ];
 
 @NgModule({
