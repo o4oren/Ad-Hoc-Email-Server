@@ -4,6 +4,7 @@ import {Subscription} from 'rxjs/Subscription';
 import {ApiService} from '../api.service';
 import {EmailInfo} from '../model/email-info-model';
 import {MatSidenav} from "@angular/material/sidenav";
+import {Angulartics2} from "angulartics2/dist";
 
 
 enum SortBy {
@@ -33,7 +34,7 @@ export class AccountViewPageComponent implements OnInit, OnDestroy {
   private mediaMatcher: MediaQueryList = matchMedia(`(max-width: 720px)`);
 
 
-  constructor(private apiService: ApiService, private route: ActivatedRoute, private router: Router) {}
+  constructor(private apiService: ApiService, private route: ActivatedRoute, private router: Router, private angulartics2: Angulartics2) {}
 
   ngOnInit() {
     this.paramsSub = this.route.params.subscribe(params => {
@@ -98,6 +99,10 @@ export class AccountViewPageComponent implements OnInit, OnDestroy {
       this.updateReadEmails();
       this.readUnreadIcon = 'fa-envelope';
       this.readUnreadText = 'unread';
+      this.angulartics2.eventTrack.next({
+        action: 'Selected an email',
+        properties: { category: 'emails' },
+      });
 
     }
   }
