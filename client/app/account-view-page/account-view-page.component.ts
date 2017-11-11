@@ -34,7 +34,7 @@ export class AccountViewPageComponent implements OnInit, OnDestroy {
   private mediaMatcher: MediaQueryList = matchMedia(`(max-width: 720px)`);
 
 
-  constructor(private apiService: ApiService, private route: ActivatedRoute, private router: Router, private angulartics2: Angulartics2) {}
+  constructor(private apiService: ApiService, private route: ActivatedRoute, private router: Router) {}
 
   ngOnInit() {
     this.paramsSub = this.route.params.subscribe(params => {
@@ -99,11 +99,6 @@ export class AccountViewPageComponent implements OnInit, OnDestroy {
       this.updateReadEmails();
       this.readUnreadIcon = 'fa-envelope';
       this.readUnreadText = 'unread';
-      this.angulartics2.eventTrack.next({
-        action: 'Selected an email',
-        properties: { category: 'emails' },
-      });
-
     }
   }
 
