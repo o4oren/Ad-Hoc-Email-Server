@@ -21,7 +21,7 @@ export class MainPageComponent implements OnInit, OnDestroy{
       sanitizer.bypassSecurityTrustResourceUrl('assets/images/ahem_logo_icon.svg'));
       this.routerSub = this.router.events.subscribe(val => {
         this.router.url !='/' ? this.hideToolbarComponents = false : this.hideToolbarComponents = true;
-        this.account = this.router.url.split('/account/')[1];
+        this.account = this.router.url.split('/account/')[1].split('/')[0];
       });
 
 
