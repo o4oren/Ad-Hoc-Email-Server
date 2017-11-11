@@ -4,6 +4,7 @@
 
 .footer-internal {
   margin-top: 20px;
+  border-top: solid 1px lightblue;
   font-size: 12px;
   display: flex;
   display: -webkit-flex;
