@@ -2,6 +2,6 @@
   <mat-icon mat-list-avatar fontSet="fa" fontIcon="{{getFontIcon(emailInfo.isRead)}}" class="ahem-envelope"></mat-icon>
     <h2 mat-line>{{emailInfo.sender.address}}</h2>
     <p mat-line>{{emailInfo.subject}}</p>
-    <p mat-line>{{emailInfo.timestamp | amCalendar}}</p>
+    <p mat-line>{{emailInfo.timestamp | amTimeAgo}}</p>
 </mat-list-item>
 

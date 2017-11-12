@@ -48,7 +48,7 @@ export class AccountViewPageComponent implements OnInit, OnDestroy {
       }
     });
     this.router.events.subscribe(() => {
-      if (this.isScreenSmall()) {
+      if (this.isMobile()) {
         this.sidenav.close();
       }
     });
@@ -103,15 +103,12 @@ export class AccountViewPageComponent implements OnInit, OnDestroy {
   }
 
   sortEmails(emailsArrary: EmailInfo[], sortBy: SortBy, reverse: boolean): EmailInfo[] {
-
-    console.log('before', emailsArrary)
     emailsArrary.sort((a, b) => {
       if (reverse) {
         return b.timestamp - a.timestamp;
       }
       return a.timestamp - b.timestamp;
       });
-    console.log('after', emailsArrary)
     return emailsArrary;
   }
 
@@ -153,8 +150,18 @@ export class AccountViewPageComponent implements OnInit, OnDestroy {
     );
   }
 
-  isScreenSmall() {
-    return this.mediaMatcher.matches;
+  isMobile() {
+    let isMobile = false;
+    if(this.mediaMatcher.matches) {
+      isMobile = true;
+    } else if( /Android|webOS|iPhone|iPad|iPod|Opera Mini/i.test(navigator.userAgent) ) {
+      isMobile = true;
+    }
+    return isMobile;
+  }
+
+  isIos() {
+    return /iPad|iPhone|iPod/.test(navigator.userAgent);
   }
 
   private getEmailFromTimeStamp(emailId: string): EmailInfo {
