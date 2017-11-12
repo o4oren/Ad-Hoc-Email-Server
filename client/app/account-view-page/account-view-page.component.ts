@@ -154,9 +154,10 @@ export class AccountViewPageComponent implements OnInit, OnDestroy {
     let isMobile = false;
     if(this.mediaMatcher.matches) {
       isMobile = true;
-    } else if( /Android|webOS|iPhone|iPad|iPod|Opera Mini/i.test(navigator.userAgent) ) {
-      isMobile = true;
     }
+    // else if( /Android|webOS|iPhone|iPad|iPod|Opera Mini/i.test(navigator.userAgent) ) {
+    //   isMobile = true;
+    // }
     return isMobile;
   }
 
