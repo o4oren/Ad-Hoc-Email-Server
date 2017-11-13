@@ -87,7 +87,7 @@ export class AccountViewPageComponent implements OnInit, OnDestroy {
         emailInfo.isRead=true;
       }
       this.selectedEmail = emailInfo;
-      this.apiService.markAsReadOrUnread(this.account, this.selectedEmail.emailId, true);
+      this.apiService.markAsReadOrUnread(this.account, this.selectedEmail.emailId, true).subscribe();
       this.readUnreadIcon = "fa-envelope";
       this.readUnreadText = "unread"
     }
@@ -106,7 +106,7 @@ export class AccountViewPageComponent implements OnInit, OnDestroy {
 
   markAsReadOrUnread() {
       this.selectedEmail.isRead = !this.selectedEmail.isRead;
-      this.apiService.markAsReadOrUnread(this.account, this.selectedEmail.emailId, this.selectedEmail.isRead);
+      this.apiService.markAsReadOrUnread(this.account, this.selectedEmail.emailId, this.selectedEmail.isRead).subscribe();
     if(this.selectedEmail.isRead){
       this.readUnreadIcon = 'fa-envelope';
       this.readUnreadText = 'unread';

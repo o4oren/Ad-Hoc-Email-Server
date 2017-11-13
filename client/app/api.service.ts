@@ -25,7 +25,7 @@ export class ApiService {
   markAsReadOrUnread(account: string, emailId: string, isRead: boolean) {
     let url: string = "/api/account/" + account + "/" + emailId;
     let body = { "isRead": isRead};
-    return this.http.patch(url, body).subscribe(res => console.log(res));
+    return this.http.patch(url, body).map(res => res.json());
   }
 
 
