@@ -64,7 +64,8 @@ module.exports = {
                           "emailId": mail._id,
                           "sender": mail.from.value[0],
                           "subject": mail.subject,
-                          "timestamp": mail.timestamp
+                          "timestamp": mail.timestamp,
+                          "isRead":false
                         }
                       }
                     }, {upsert: true}, function (err, res) {

@@ -42,7 +42,7 @@ router.get('/account/:account', (req, res, next) => {
 });
 
 /**
- * returns a list of mail metadata bojects in a specific account
+ * returns an email object in a specific account
  */
 router.get('/account/:account/:emailId', (req, res) => {
 
@@ -61,6 +61,21 @@ router.get('/account/:account/:emailId', (req, res) => {
     if(err)
       res.status(500).send({error: err});
     res.status(200).send(doc);
+  });
+});
+
+/**
+ * updates a specific email object in a specific account
+ */
+router.patch('/account/:account/:emailId', (req, res) => {
+
+  let objectId = ObjectID.createFromHexString(req.params.emailId);
+  req.db.collection("accounts").updateOne({ "name": req.params.account, "emails.emailId" : objectId},
+    {$set: {"emails.$.isRead": req.body.isRead}},
+    function (err, result) {
+    if(err)
+      res.status(500).send({error: err});
+    res.status(200).send(result);
   });
 });
 

@@ -22,6 +22,13 @@ export class ApiService {
     return this.http.get(url).map(res => res.json());
   }
 
+  markAsReadOrUnread(account: string, emailId: string, isRead: boolean) {
+    let url: string = "/api/account/" + account + "/" + emailId;
+    let body = { "isRead": isRead};
+    return this.http.patch(url, body).subscribe(res => console.log(res));
+  }
+
+
   deleteEmail(account: string, timestamp: string) {
     let url: string = "/api/account/" + account + "/" + timestamp;
     return this.http.delete(url).map(res => res.json()).catch((error: any) => {

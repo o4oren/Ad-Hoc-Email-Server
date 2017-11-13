@@ -24,7 +24,6 @@ export class AccountViewPageComponent implements OnInit, OnDestroy {
   account: string;
   emails: Array<EmailInfo>;
   selectedEmail: EmailInfo;
-  readEmails: Array<string> = [];
   readUnreadIcon: string;
   readUnreadText: string;
   emailId: string;
@@ -59,13 +58,9 @@ export class AccountViewPageComponent implements OnInit, OnDestroy {
   }
 
   getAccountEmails(): any {
-    if (localStorage.getItem(this.account + '_read_emails') != null) {
-      this.readEmails = JSON.parse(localStorage.getItem(this.account + '_read_emails'));
-    }
     this.apiService.listAccountsEmails(this.account).subscribe(
       emails => {
       this.emails = this.sortEmails(emails, SortBy.Timestamp, true);
-      this.updateReadEmails();
       if(this.emailId) {
         this.selectEmail(this.getEmailFromTimeStamp(this.emailId));
       } else {
@@ -88,17 +83,13 @@ export class AccountViewPageComponent implements OnInit, OnDestroy {
 
   selectEmail(emailInfo: EmailInfo) {
     if (emailInfo) {
-      this.selectedEmail = emailInfo;
-
-      for (const e of this.emails) {
-        e.emailId === this.selectedEmail.emailId ? e.isSelected = true : e.isSelected = false;
+      if(!emailInfo.isRead) {
+        emailInfo.isRead=true;
       }
-      if (!this.readEmails.includes(emailInfo.emailId)) {
-        this.readEmails.push(emailInfo.emailId);
-    }
-      this.updateReadEmails();
-      this.readUnreadIcon = 'fa-envelope';
-      this.readUnreadText = 'unread';
+      this.selectedEmail = emailInfo;
+      this.apiService.markAsReadOrUnread(this.account, this.selectedEmail.emailId, true);
+      this.readUnreadIcon = "fa-envelope";
+      this.readUnreadText = "unread"
     }
   }
 
@@ -112,30 +103,20 @@ export class AccountViewPageComponent implements OnInit, OnDestroy {
     return emailsArrary;
   }
 
-  updateReadEmails() {
-    localStorage.setItem(this.account + '_read_emails', JSON.stringify(this.readEmails));
-    this.emails.forEach(e => {
-        this.readEmails.includes(e.emailId) ? e.isRead = true : e.isRead = false;
-      }
-    );
-  }
 
   markAsReadOrUnread() {
-    if (this.readEmails.includes(this.selectedEmail.emailId)) {
-      const index = this.readEmails.indexOf(this.selectedEmail.emailId);
-      this.readEmails.splice(index, 1);
-      this.updateReadEmails();
+      this.selectedEmail.isRead = !this.selectedEmail.isRead;
+      this.apiService.markAsReadOrUnread(this.account, this.selectedEmail.emailId, this.selectedEmail.isRead);
+    if(this.selectedEmail.isRead){
+      this.readUnreadIcon = 'fa-envelope';
+      this.readUnreadText = 'unread';
+    } else {
       this.readUnreadIcon = 'fa-envelope-open';
       this.readUnreadText = 'read';
-      return;
     }
-
-    this.readEmails.push(this.selectedEmail.emailId);
-    this.updateReadEmails();
-    this.readUnreadIcon = 'fa-envelope';
-    this.readUnreadText = 'unread';
-
+      return;
   }
+
 
 
   deleteFile() {
