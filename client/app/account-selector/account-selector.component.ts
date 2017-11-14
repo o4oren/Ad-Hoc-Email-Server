@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {ApiService} from '../api.service';
 import {Observable} from 'rxjs/Observable';
+import 'rxjs/add/operator/debounceTime';
 import {Router} from '@angular/router';
 
 @Component({
@@ -12,7 +13,7 @@ import {Router} from '@angular/router';
 export class AccountSelectorComponent implements OnInit {
   autoCompleteControl: FormControl;
   accounts: string[];
-  @Input() selectedAccount ='';
+  @Input() selectedAccount = '';
   @Input() color = 'primary';
 
   constructor(private apiService: ApiService, private router: Router) {
@@ -24,14 +25,14 @@ export class AccountSelectorComponent implements OnInit {
 
     this.autoCompleteControl.valueChanges
       .debounceTime(300).subscribe(val => {
-      this.filterAccounts(val).subscribe(result => this.accounts = result)
-    })
+      this.filterAccounts(val).subscribe(result => this.accounts = result);
+    });
 
 
   }
 
 
-  filterAccounts(val: string) : any {
+  filterAccounts(val: string): any {
     if (typeof val !== 'undefined' && val) {
       return this.apiService.listAccountsAutoComplete(val);
   } else {

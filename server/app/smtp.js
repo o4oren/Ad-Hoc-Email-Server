@@ -5,9 +5,6 @@
 const SMTPServer = require('smtp-server').SMTPServer;
 const simpleParser = require('mailparser').simpleParser;
 
-const bunyan = require('bunyan');
-const log = bunyan.createLogger({name: "ahem-smtp"});
-
 module.exports = {
   startSTMPServer: function startSTMPServer(properties, baseDir, db) {
     const smtpPort = properties.smtpPort;
@@ -17,7 +14,7 @@ module.exports = {
         disabledCommands: ['AUTH'],
         disableReverseLookup: true,
         onConnect(session, callback){
-          log.info("Connection started.")
+          console.log("Connection started.")
           return callback(); // Accept the connection
         },
         onRcptTo(address, session, callback){
@@ -86,7 +83,7 @@ module.exports = {
     ;
 
     mailserver.on('error', err => {
-      log.error('Error %s', err.message);
+      console.log('Error %s', err.message);
     });
 
     mailserver.listen(smtpPort);
@@ -106,7 +103,7 @@ function validateAddress(address, allowedDomains) {
       allowed = true;
     }
   });
-  log.info(allowed);
+  console.log(allowed);
   return allowed;
 }
 

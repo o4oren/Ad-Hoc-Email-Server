@@ -3,8 +3,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {Subscription} from 'rxjs/Subscription';
 import {ApiService} from '../api.service';
 import {EmailInfo} from '../model/email-info-model';
-import {MatSidenav} from "@angular/material/sidenav";
-import {Angulartics2} from "angulartics2/dist";
+import {MatSidenav} from '@angular/material/sidenav';
 
 
 enum SortBy {
@@ -61,10 +60,10 @@ export class AccountViewPageComponent implements OnInit, OnDestroy {
     this.apiService.listAccountsEmails(this.account).subscribe(
       emails => {
       this.emails = this.sortEmails(emails, SortBy.Timestamp, true);
-      if(this.emailId) {
+      if (this.emailId) {
         this.selectEmail(this.getEmailFromTimeStamp(this.emailId));
       } else {
-        if(this.emails.length>0) {
+        if (this.emails.length > 0) {
           // this.selectEmail(this.emails[0]); //TODO handle non empty mailbox vs empty mailbox
         }
       }
@@ -83,13 +82,13 @@ export class AccountViewPageComponent implements OnInit, OnDestroy {
 
   selectEmail(emailInfo: EmailInfo) {
     if (emailInfo) {
-      if(!emailInfo.isRead) {
-        emailInfo.isRead=true;
+      if (!emailInfo.isRead) {
+        emailInfo.isRead = true;
       }
       this.selectedEmail = emailInfo;
       this.apiService.markAsReadOrUnread(this.account, this.selectedEmail.emailId, true).subscribe();
-      this.readUnreadIcon = "fa-envelope";
-      this.readUnreadText = "unread"
+      this.readUnreadIcon = 'fa-envelope';
+      this.readUnreadText = 'unread';
     }
   }
 
@@ -107,7 +106,7 @@ export class AccountViewPageComponent implements OnInit, OnDestroy {
   markAsReadOrUnread() {
       this.selectedEmail.isRead = !this.selectedEmail.isRead;
       this.apiService.markAsReadOrUnread(this.account, this.selectedEmail.emailId, this.selectedEmail.isRead).subscribe();
-    if(this.selectedEmail.isRead){
+    if (this.selectedEmail.isRead) {
       this.readUnreadIcon = 'fa-envelope';
       this.readUnreadText = 'unread';
     } else {
@@ -133,7 +132,7 @@ export class AccountViewPageComponent implements OnInit, OnDestroy {
 
   isMobile() {
     let isMobile = false;
-    if(this.mediaMatcher.matches) {
+    if (this.mediaMatcher.matches) {
       isMobile = true;
     }
     // else if( /Android|webOS|iPhone|iPad|iPod|Opera Mini/i.test(navigator.userAgent) ) {

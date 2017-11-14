@@ -3,9 +3,8 @@
  */
 const express = require('express');
 const router = express.Router();
-const bunyan = require('bunyan');
-const log = bunyan.createLogger({name: "ahem-server"});
 const ObjectID = require('mongodb').ObjectID;
+
 
 //indicates the api server is up
 router.get('/alive', (req, res) => {
@@ -90,7 +89,7 @@ router.get('/account/:account/:emailId/attachments/:filename', (req, res) => {
       let attachmentsFound = mail.attachments.filter(attachment => {
         return attachment.filename == decodeURI(req.params.filename);
       });
-      log.info(attachmentsFound);
+      console.log(attachmentsFound);
       res.setHeader('Content-Type', attachmentsFound[0].contentType);
       // res.setHeader('Content-disposition', 'attachment;filename=' + attachmentsFound[0].filename);
       res.setHeader('Content-Length', attachmentsFound[0].size);
@@ -100,7 +99,7 @@ router.get('/account/:account/:emailId/attachments/:filename', (req, res) => {
     );
   }
   catch (e) {
-    log.error(e);
+    console.log(e);
     res.status(404).send({error: "FILE NOT FOUND"});
   }
 });
@@ -136,7 +135,7 @@ router.delete('/dataDir', (req, res) => {
     res.json({success: true});
   }
     catch (e) {
-    log.error(e);
+    console.log(e);
     res.status(500).send({error: "FAILED TO DELETE ALL ACCOUNTS", succes: false});
   }
 });

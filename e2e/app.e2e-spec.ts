@@ -1,14 +1,14 @@
-import { AdHocEmailPage } from './app.po';
+import { AppPage } from './app.po';
 
-describe('ad-hoc-email App', () => {
-  let page: AdHocEmailPage;
+describe('ahem-universal App', () => {
+  let page: AppPage;
 
   beforeEach(() => {
-    page = new AdHocEmailPage();
+    page = new AppPage();
   });
 
   it('should display welcome message', () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('Welcome to app!!');
+    expect(page.getParagraphText()).toEqual('Welcome to app!');
   });
 });
