@@ -2,7 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 
 module.exports = {
-  entry: {  api: './server/app/api.js', smtp:'./server/app/smtp.js', server:'./server/app/serverapp.ts', ahem: './ahem.ts' },
+  entry: {  ahem: './ahem.ts' },
   resolve: { extensions: ['.js', '.ts'] },
   target: 'node',
   // this makes sure we include node_modules and other 3rd party libraries

@@ -19,13 +19,13 @@ const path = require('path'),
 const app = express();
 
 const PORT = process.env.PORT || 4000;
-const DIST_FOLDER = join(process.cwd(), 'dist');
+const DIST_FOLDER = join(process.cwd() , 'dist');
 console.log(DIST_FOLDER);
 // Our index.html we'll use as our template
 const template = readFileSync(join(DIST_FOLDER, 'browser', 'index.html')).toString();
 
 // * NOTE :: leave this as require() since this file is built Dynamically from webpack
-const {AppServerModuleNgFactory, LAZY_MODULE_MAP} = require(join(DIST_FOLDER, 'server/main.bundle'));
+const {AppServerModuleNgFactory, LAZY_MODULE_MAP} = require('./dist/server/main.bundle');
 
 const {provideModuleMap} = require('@nguniversal/module-map-ngfactory-loader');
 
