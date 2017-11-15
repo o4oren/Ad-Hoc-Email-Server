@@ -1,62 +1,62 @@
-
 // These are important and needed before anything else
 import 'zone.js/dist/zone-node';
 import 'reflect-metadata';
 
-import { renderModuleFactory } from '@angular/platform-server';
-import { enableProdMode } from '@angular/core';
+import {renderModuleFactory} from '@angular/platform-server';
+import {enableProdMode} from '@angular/core';
 
 import * as express from 'express';
-import { join } from 'path';
-import { readFileSync } from 'fs';
+import {join} from 'path';
+import {readFileSync} from 'fs';
 
-
+enableProdMode();
 const ObjectID = require('mongodb').ObjectID;
 const path = require('path'),
-    http = require('http'),
-    bodyParser = require('body-parser'),
-    api = require('./api');
+  http = require('http'),
+  bodyParser = require('body-parser'),
+  api = require('./api');
+
+const app = express();
+
+const PORT = process.env.PORT || 4000;
+const DIST_FOLDER = join(process.cwd(), 'dist');
+console.log(DIST_FOLDER);
+// Our index.html we'll use as our template
+const template = readFileSync(join(DIST_FOLDER, 'browser', 'index.html')).toString();
+
+// * NOTE :: leave this as require() since this file is built Dynamically from webpack
+const {AppServerModuleNgFactory, LAZY_MODULE_MAP} = require(join(DIST_FOLDER, 'server/main.bundle'));
+
+const {provideModuleMap} = require('@nguniversal/module-map-ngfactory-loader');
 
 
+export class ServerApp {
 
-export const serverApp = {
-  startServer: function startServer(properties, db) {
-    enableProdMode();
-    const DIST_FOLDER = join(process.cwd(), 'dist');
+  public start(properties, db) {
+    app.engine('html', (_, options, callback) => {
+      renderModuleFactory(AppServerModuleNgFactory, {
+        // Our index.html
+        document: template,
+        url: options.req.url,
+        // DI so that we can get lazy-loading to work differently (since we need it to just instantly render it)
+        extraProviders: [
+          provideModuleMap(LAZY_MODULE_MAP)
+        ]
+      }).then(html => {
+        callback(null, html);
+      });
+    });
 
-    const app = express();
-        // Our index.html we'll use as our template
-    const template = readFileSync(join(DIST_FOLDER, 'browser', 'index.html')).toString();
-
-    // * NOTE :: leave this as require() since this file is built Dynamically from webpack
-    const { AppServerModuleNgFactory, LAZY_MODULE_MAP } = require('./dist/server/main.bundle');
-
-    const { provideModuleMap } = require('@nguniversal/module-map-ngfactory-loader');
-
-app.engine('html', (_, options, callback) => {
-  renderModuleFactory(AppServerModuleNgFactory, {
-    // Our index.html
-    document: template,
-    url: options.req.url,
-    // DI so that we can get lazy-loading to work differently (since we need it to just instantly render it)
-    extraProviders: [
-      provideModuleMap(LAZY_MODULE_MAP)
-    ]
-  }).then(html => {
-    callback(null, html);
-  });
-});
-
-app.set('view engine', 'html');
-app.set('views', join(DIST_FOLDER, 'browser'));
+    app.set('view engine', 'html');
+    app.set('views', join(DIST_FOLDER, 'browser'));
 
 // Server static files from /browser
-app.get('*.*', express.static(join(DIST_FOLDER, 'browser')));
+    app.get('*.*', express.static(join(DIST_FOLDER, 'browser')));
 
 // All regular routes use the Universal engine
-app.get('*', (req, res) => {
-  res.render(join(DIST_FOLDER, 'browser', 'index.html'), { req });
-});
+    app.get('*', (req, res) => {
+      res.render(join(DIST_FOLDER, 'browser', 'index.html'), {req});
+    });
 
     app.use(function (req, res, next) {
       req.db = db;
@@ -81,7 +81,7 @@ app.get('*', (req, res) => {
     })
     ;
 
-    // error handler
+// error handler
     app.use(function (err, req, res, next) {
       console.log(err);
       res.status(500).send({error: err.message});
@@ -106,29 +106,29 @@ app.get('*', (req, res) => {
       console.log('ad-hoc-mail service started!');
     });
 
-    // delete emails every interval
+// delete emails every interval
     setInterval(function () {
       console.log('checking for emails older than ' + properties.emailDeleteAge + ' seconds');
       db.collection('emails').find({'timestamp': {$lt: (new Date().getTime() - (properties.emailDeleteAge * 1000))}},
-       {'_id': 1}).toArray(function (err, emailsToDelete) {
+        {'_id': 1}).toArray(function (err, emailsToDelete) {
         console.log(emailsToDelete.length + ' emails with age > ' + properties.emailDeleteAge + ' seconds where found');
         emailsToDelete.forEach(email => {
           db.collection('accounts').update(
-            { 'emails.emailId' : email._id },
-            {$pull : {'emails' : {'emailId':email._id}}},
-            { 'multi': true}
+            {'emails.emailId': email._id},
+            {$pull: {'emails': {'emailId': email._id}}},
+            {'multi': true}
             , function (err, numberRemoved) {
               if (err) {
                 console.log(err);
-            }
-              console.log('Removing ' + email._id.toString() 
-              + ' has been removed from '
-              + JSON.parse(numberRemoved).nModified + ' accounts.');
+              }
+              console.log('Removing ' + email._id.toString()
+                + ' has been removed from '
+                + JSON.parse(numberRemoved).nModified + ' accounts.');
 
             }
           );
 
-          db.collection('emails').remove({'_id': email._id}, function(err, result){
+          db.collection('emails').remove({'_id': email._id}, function (err, result) {
             if (err) {
               console.log(err);
             } else {
@@ -138,21 +138,20 @@ app.get('*', (req, res) => {
         });
       });
 
-      db.collection('accounts').remove({'emails': { $exists: true, $ne: '[]' }}, function (err, result) {
+      db.collection('accounts').remove({'emails': {$exists: true, $ne: '[]'}}, function (err, result) {
         if (err) {
           console.log(err);
         } else {
-          console.log('Removed empty accounts', result.result );
+          console.log('Removed empty accounts', result.result);
         }
       });
 
     }, properties.emailDeleteInterval * 1000);
 
     console.log('mail server listening');
-    return app;
   }
+}
 
-};
 
 
 

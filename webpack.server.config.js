@@ -26,7 +26,7 @@ module.exports = {
     ),
     new webpack.ContextReplacementPlugin(
       /(.+)?express(\\|\/)(.+)?/,
-      path.join(__dirname, 'src'),
+      path.join(__dirname, 'client'),
       {}
     )
   ]
