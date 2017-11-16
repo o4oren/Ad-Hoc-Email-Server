@@ -18,7 +18,7 @@ const path = require('path'),
 
 const app = express();
 
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT || 3000;
 const DIST_FOLDER = join(process.cwd() , 'dist');
 console.log(DIST_FOLDER);
 // Our index.html we'll use as our template
@@ -50,13 +50,6 @@ export class ServerApp {
     app.set('view engine', 'html');
     app.set('views', join(DIST_FOLDER, 'browser'));
 
-// Server static files from /browser
-    app.get('*.*', express.static(join(DIST_FOLDER, 'browser')));
-
-// All regular routes use the Universal engine
-    app.get('*', (req, res) => {
-      res.render(join(DIST_FOLDER, 'browser', 'index.html'), {req});
-    });
 
     app.use(function (req, res, next) {
       req.db = db;
@@ -75,11 +68,13 @@ export class ServerApp {
 // Set our api routes
     app.use('/api', api);
 
-// Catch all other routes and return the index file
+// Server static files from /browser
+app.get('*.*', express.static(join(DIST_FOLDER, 'browser')));
+
+// All regular routes use the Universal engine
     app.get('*', (req, res) => {
-      res.sendFile(path.join(__dirname, 'dist/index.html'));
-    })
-    ;
+      res.render(join(DIST_FOLDER, 'browser', 'index.html'), {req});
+    });
 
 // error handler
     app.use(function (err, req, res, next) {

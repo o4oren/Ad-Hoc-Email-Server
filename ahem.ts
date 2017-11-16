@@ -19,7 +19,7 @@ const properties = JSON.parse(fs.readFileSync(path.join(baseDir, 'properties.jso
 const assert = require('assert');
 const server = new ServerApp();
 
-
+console.log('properties', properties);
 
 MongoClient.connect(properties.mongoConnectUrl, function (err, db) {
   assert.equal(null, err);

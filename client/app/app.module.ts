@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, PLATFORM_ID, Inject, APP_ID } from '@angular/core';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {
   MatAutocompleteModule,
@@ -26,6 +26,8 @@ import { Angulartics2, Angulartics2Module } from 'angulartics2';
 import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 import { FooterComponent } from './footer/footer.component';
 import { PrivacyComponent } from './privacy/privacy.component';
+import { isPlatformBrowser } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 
 const appRoutes: Routes = [
   { path: '', component:  LandingPageComponent},
@@ -51,6 +53,7 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule.withServerTransition({ appId: 'ahem' }),
     HttpModule,
+    HttpClientModule,
     MomentModule,
     BrowserAnimationsModule,
     MatButtonModule,
@@ -70,4 +73,12 @@ const appRoutes: Routes = [
   providers: [ApiService, MatIconRegistry],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { 
+  constructor(
+    @Inject(PLATFORM_ID) private platformId: Object,
+    @Inject(APP_ID) private appId: string) {
+    const platform = isPlatformBrowser(platformId) ?
+      'on the server' : 'in the browser';
+    console.log(`Running ${platform} with appId=${appId}`);
+  }
+}

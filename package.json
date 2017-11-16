@@ -1,6 +1,6 @@
 {
   "name": "ahem-server",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "license": "LGPL-3",
   "scripts": {
     "ng": "ng",

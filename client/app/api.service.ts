@@ -13,6 +13,7 @@ export class ApiService {
   constructor(private http: Http, 
     @Optional() @Inject(APP_BASE_HREF) origin: string) {
       this.baseUri=`${origin}`;
+      this.baseUri='http://localhost:3000'
   }
 
   listAccountsAutoComplete(prefix: string): any {
