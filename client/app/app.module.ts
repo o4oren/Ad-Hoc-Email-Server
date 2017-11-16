@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, PLATFORM_ID, Inject, APP_ID } from '@angular/core';
+import { NgModule, PLATFORM_ID, Inject, APP_ID, Optional } from '@angular/core';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {
   MatAutocompleteModule,
@@ -26,7 +26,7 @@ import { Angulartics2, Angulartics2Module } from 'angulartics2';
 import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 import { FooterComponent } from './footer/footer.component';
 import { PrivacyComponent } from './privacy/privacy.component';
-import { isPlatformBrowser } from '@angular/common';
+import { isPlatformBrowser, APP_BASE_HREF } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 
 const appRoutes: Routes = [
@@ -76,9 +76,11 @@ const appRoutes: Routes = [
 export class AppModule { 
   constructor(
     @Inject(PLATFORM_ID) private platformId: Object,
-    @Inject(APP_ID) private appId: string) {
-    const platform = isPlatformBrowser(platformId) ?
-      'on the server' : 'in the browser';
-    console.log(`Running ${platform} with appId=${appId}`);
+    @Inject(APP_ID) private appId: string,
+    @Optional() @Inject(APP_BASE_HREF) origin: string,
+    apiService: ApiService) {
+      apiService.baseUri=`${origin}`;
+      const platform = isPlatformBrowser(platformId) ? 'on the server' : 'on the server';
+    console.log(`Running ${platform} with appId=${appId} with baseURI ${origin}`);
   }
 }

@@ -8,12 +8,9 @@ import { APP_BASE_HREF } from '@angular/common';
 @Injectable()
 export class ApiService {
   //for server side rendering
-  baseUri: string;
+  public baseUri: string;
 
-  constructor(private http: Http, 
-    @Optional() @Inject(APP_BASE_HREF) origin: string) {
-      this.baseUri=`${origin}`;
-      this.baseUri='http://localhost:3000'
+  constructor(private http: Http) {
   }
 
   listAccountsAutoComplete(prefix: string): any {
