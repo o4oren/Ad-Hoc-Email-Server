@@ -1,9 +1,10 @@
-import {Component, EventEmitter, OnDestroy, OnInit, Output, ViewChild} from '@angular/core';
+import {Component, EventEmitter, OnDestroy, OnInit, Output, ViewChild, Inject, PLATFORM_ID} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Subscription} from 'rxjs/Subscription';
 import {ApiService} from '../api.service';
 import {EmailInfo} from '../model/email-info-model';
 import {MatSidenav} from '@angular/material/sidenav';
+import { isPlatformBrowser } from '@angular/common';
 
 
 enum SortBy {
@@ -29,10 +30,14 @@ export class AccountViewPageComponent implements OnInit, OnDestroy {
 
   @Output() onAccountDetermined: EventEmitter<string> = new EventEmitter();
   @ViewChild(MatSidenav) sidenav: MatSidenav;
-  private mediaMatcher: MediaQueryList = matchMedia(`(max-width: 720px)`);
+  private mediaMatcher: MediaQueryList;
 
-
-  constructor(private apiService: ApiService, private route: ActivatedRoute, private router: Router) {}
+  constructor(private apiService: ApiService,
+    private route: ActivatedRoute,
+    private router: Router,
+    @Inject(PLATFORM_ID) private platformId: Object) {
+      this.mediaMatcher = isPlatformBrowser(PLATFORM_ID) ? matchMedia(`(max-width: 720px)`) : null;
+    }
 
   ngOnInit() {
     this.paramsSub = this.route.params.subscribe(params => {
@@ -132,12 +137,10 @@ export class AccountViewPageComponent implements OnInit, OnDestroy {
 
   isMobile() {
     let isMobile = false;
-    if (this.mediaMatcher.matches) {
+    if (isPlatformBrowser(PLATFORM_ID) && this.mediaMatcher.matches) {
       isMobile = true;
     }
-    // else if( /Android|webOS|iPhone|iPad|iPod|Opera Mini/i.test(navigator.userAgent) ) {
-    //   isMobile = true;
-    // }
+
     return isMobile;
   }
 
