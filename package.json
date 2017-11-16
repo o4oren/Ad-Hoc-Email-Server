@@ -1,7 +1,7 @@
 {
-  "name": "ahem-universal",
+  "name": "ahem-server",
   "version": "0.0.0",
-  "license": "MIT",
+  "license": "LGPL-3",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
