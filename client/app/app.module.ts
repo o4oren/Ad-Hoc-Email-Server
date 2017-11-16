@@ -49,7 +49,7 @@ const appRoutes: Routes = [
     PrivacyComponent
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'ahem' }),
     HttpModule,
     MomentModule,
     BrowserAnimationsModule,
