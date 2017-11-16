@@ -41,6 +41,7 @@ npm start
 A configuration file names properties.json is located in the root of the project.
 Edit it to fit your use case.
 Parameters:
+* serverBaseUri - the base address for your api server
 * mongoConnectUrl - the mongodb connect url in the form of "mongodb://localhost:27017/ahem"
 * appListenPort - the port the node app will bind to.
 * smtpPort - ahem... you know.
