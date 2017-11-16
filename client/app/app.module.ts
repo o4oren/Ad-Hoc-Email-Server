@@ -79,7 +79,6 @@ export class AppModule {
     @Inject(APP_ID) private appId: string,
     @Optional() @Inject(APP_BASE_HREF) origin: string,
     apiService: ApiService) {
-      apiService.baseUri = `${origin}` || '';
       const platform = isPlatformBrowser(platformId) ? 'on the server' : 'on the server';
     console.log(`Running ${platform} with appId=${appId} with baseURI ${origin}`);
   }
