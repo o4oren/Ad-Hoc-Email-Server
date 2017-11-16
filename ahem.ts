@@ -8,12 +8,12 @@
 // Start the app
 
 
-import { ServerApp} from "./server/app/serverapp";
+import { ServerApp} from './server/app/serverapp';
+import { MongoClient} from 'mongodb';
 
 const smtp = require('./server/app/smtp');
 const fs = require('fs');
 const path = require('path');
-const MongoClient = require('mongodb').MongoClient;
 const baseDir = process.cwd();
 const properties = JSON.parse(fs.readFileSync(path.join(baseDir, 'properties.json')));
 const assert = require('assert');
