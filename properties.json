@@ -1,4 +1,5 @@
 {
+  "serverBaseUri": "http://myserver.address",
   "mongoConnectUrl": "mongodb://dbadmin:eubphskV@amy.sealdoc.com:27017/test",
   "appListenPort": 3000,
   "smtpPort" : 25,
