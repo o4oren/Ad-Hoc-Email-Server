@@ -8,7 +8,7 @@ import { APP_BASE_HREF } from '@angular/common';
 @Injectable()
 export class ApiService {
   //for server side rendering
-  public baseUri: string;
+  public baseUri: string ='';
 
   constructor(private http: Http) {
   }
