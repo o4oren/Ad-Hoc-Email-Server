@@ -8,7 +8,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "startDev": "concurrent --kill-others \"node ahem.ts\" \"ng serve --proxy-config proxy.conf.json\"",
+    "startDev": "concurrent --kill-others \"node dist\\ahem.js\" \"ng serve --proxy-config proxy.conf.json\"",
     "build": "npm install && npm rebuild node-sass && ng build",
     "buildDev": "npm install && npm rebuild node-sass && ng build --dev",
     "build:ssr": "npm run build:client-and-server-bundles && npm run webpack:server",

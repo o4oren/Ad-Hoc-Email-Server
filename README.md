@@ -27,14 +27,12 @@ mongodb installed and running
 # clone the repository
 git clone https://github.com/o4oren/ahem-server.git
 cd ahem-server
+npm install
 # builds the project.
-# the build script actually runs npm install to install all dependencies, 
-# npm rebuild node-sass to rebuild the sass compiler for the system,
-# and ng build --prod to build a 'production' version of the ng2 front end.
 # There are other, convenience options for build and run in development mode.
-npm run build
+npm run build:ssr
 # prod run - will run the backend which will also serve the front end form the `dist` folder.
-npm start
+npm run serve:ssr
 ```
 
 ### Configuration

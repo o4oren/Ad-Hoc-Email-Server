@@ -36,7 +36,7 @@ export class AccountViewPageComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     private router: Router,
     @Inject(PLATFORM_ID) private platformId: Object) {
-      this.mediaMatcher = isPlatformBrowser(PLATFORM_ID) ? matchMedia(`(max-width: 720px)`) : null;
+      this.mediaMatcher = isPlatformBrowser(platformId) ? matchMedia(`(max-width: 720px)`) : null;
     }
 
   ngOnInit() {
@@ -137,7 +137,7 @@ export class AccountViewPageComponent implements OnInit, OnDestroy {
 
   isMobile() {
     let isMobile = false;
-    if (isPlatformBrowser(PLATFORM_ID) && this.mediaMatcher.matches) {
+    if (isPlatformBrowser(this.platformId) && this.mediaMatcher.matches) {
       isMobile = true;
     }
 
