@@ -28,10 +28,12 @@ import { FooterComponent } from './footer/footer.component';
 import { PrivacyComponent } from './privacy/privacy.component';
 import { isPlatformBrowser, APP_BASE_HREF } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
+import { ApiDocumentationComponent } from './api-documentation/api-documentation.component';
 
 const appRoutes: Routes = [
   { path: '', component:  LandingPageComponent},
   { path: 'privacy', component: PrivacyComponent},
+  { path: 'api', component: ApiDocumentationComponent},
   { path: 'account/:account', component: AccountViewPageComponent},
   { path: 'account/:account/:emailId', component: AccountViewPageComponent}
 ];
@@ -48,7 +50,8 @@ const appRoutes: Routes = [
     HtmlSanitizerPipe,
     AttachmentsComponent,
     FooterComponent,
-    PrivacyComponent
+    PrivacyComponent,
+    ApiDocumentationComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ahem' }),
