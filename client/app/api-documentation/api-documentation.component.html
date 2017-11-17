@@ -1,4 +1,4 @@
-<div class="ahem-centered-card">
+<div class="ahem-centered-card ahem-doc-api">
   <mat-table #table [dataSource]="dataSource">
 
     <ng-container matColumnDef="httpMethod">
@@ -6,19 +6,15 @@
       <mat-cell *matCellDef="let element"> {{element.httpMethod}} </mat-cell>
     </ng-container>
 
-    <!-- Name Column -->
     <ng-container matColumnDef="uriPath">
       <mat-header-cell *matHeaderCellDef> URI Path </mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.uriPath}} </mat-cell>
     </ng-container>
 
-    <!-- Weight Column -->
     <ng-container matColumnDef="parameters">
       <mat-header-cell *matHeaderCellDef> Parameters </mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.parameters}} </mat-cell>
     </ng-container>
-
-    <!-- Color Column -->
     <ng-container matColumnDef="description">
       <mat-header-cell *matHeaderCellDef> Description </mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.description}} </mat-cell>
