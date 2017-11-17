@@ -1,27 +1,27 @@
-<div class="mat-elevation-z8">
+<div class="ahem-centered-card">
   <mat-table #table [dataSource]="dataSource">
 
     <ng-container matColumnDef="httpMethod">
       <mat-header-cell *matHeaderCellDef> HTTP Method </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.position}} </mat-cell>
+      <mat-cell *matCellDef="let element"> {{element.httpMethod}} </mat-cell>
     </ng-container>
 
     <!-- Name Column -->
     <ng-container matColumnDef="uriPath">
       <mat-header-cell *matHeaderCellDef> URI Path </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+      <mat-cell *matCellDef="let element"> {{element.uriPath}} </mat-cell>
     </ng-container>
 
     <!-- Weight Column -->
     <ng-container matColumnDef="parameters">
       <mat-header-cell *matHeaderCellDef> Parameters </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.weight}} </mat-cell>
+      <mat-cell *matCellDef="let element"> {{element.parameters}} </mat-cell>
     </ng-container>
 
     <!-- Color Column -->
     <ng-container matColumnDef="description">
       <mat-header-cell *matHeaderCellDef> Description </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.symbol}} </mat-cell>
+      <mat-cell *matCellDef="let element"> {{element.description}} </mat-cell>
     </ng-container>
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

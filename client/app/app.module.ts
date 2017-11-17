@@ -4,7 +4,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {
   MatAutocompleteModule,
   MatButtonModule, MatCardModule, MatExpansionModule, MatIconModule, MatIconRegistry, MatInputModule, MatListModule,
-  MatSidenavModule,
+  MatSidenavModule, MatTableModule,
   MatToolbarModule
 
 } from '@angular/material';
@@ -33,7 +33,7 @@ import { ApiDocumentationComponent } from './api-documentation/api-documentation
 const appRoutes: Routes = [
   { path: '', component:  LandingPageComponent},
   { path: 'privacy', component: PrivacyComponent},
-  { path: 'api', component: ApiDocumentationComponent},
+  { path: 'doc/api', component: ApiDocumentationComponent},
   { path: 'account/:account', component: AccountViewPageComponent},
   { path: 'account/:account/:emailId', component: AccountViewPageComponent}
 ];
@@ -62,6 +62,7 @@ const appRoutes: Routes = [
     MatButtonModule,
     MatToolbarModule,
     MatInputModule,
+    MatTableModule,
     MatAutocompleteModule,
     MatCardModule,
     MatSidenavModule,
@@ -76,7 +77,7 @@ const appRoutes: Routes = [
   providers: [ApiService, MatIconRegistry],
   bootstrap: [AppComponent]
 })
-export class AppModule { 
+export class AppModule {
   constructor(
     @Inject(PLATFORM_ID) private platformId: Object,
     @Inject(APP_ID) private appId: string,
