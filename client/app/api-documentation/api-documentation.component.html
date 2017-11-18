@@ -1,4 +1,10 @@
-<div class="ahem-centered-card ahem-doc-api">
+
+
+<div class="ahem-centered ahem-doc-api">
+  <p>
+    AHEM provides an easy to use RESTful API.
+    The table below details the various calls you can make to the service.
+  </p>
   <mat-table #table [dataSource]="dataSource">
 
     <ng-container matColumnDef="httpMethod">
@@ -24,3 +30,5 @@
     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
   </mat-table>
 </div>
+<ahem-footer class="footer"></ahem-footer>
+

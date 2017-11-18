@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material';
 
 @Component({
-  selector: 'app-api-documentation',
+  selector: 'ahem-api-documentation',
   templateUrl: './api-documentation.component.html',
   styleUrls: ['./api-documentation.component.css']
 })

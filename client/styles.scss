@@ -53,7 +53,7 @@ app-account-view-page {
 
 }
 
-ahem-landing-page, ahem-email-view, ahem-privacy {
+ahem-landing-page, ahem-email-view, ahem-privacy, ahem-api-documentation {
   display: flex;
   display: -webkit-flex;
   flex-direction: column;
@@ -114,12 +114,16 @@ mat-sidenav-content > div {
   align-self: end;
 }
 
-.ahem-centered-card {
+.ahem-centered {
   margin: auto;
   margin-top: 20px;
-  margin-left: 20%;
-  margin-right: 20%;
   align-self: center;
+}
+
+.ahem-doc-api {
+  padding: 20px;
+  min-width: 600px;
+  max-width: 1024px;
 }
 
 .ahem-definition-of {
