@@ -11,7 +11,7 @@
   flex-wrap: wrap;
   display: -webkit-flex;
   -webkit-flex-wrap: wrap;
-  height: auto;
+  height: 100%;
   width: 100%;
   padding: 10px;
   display: -webkit-flex; /* Safari */
