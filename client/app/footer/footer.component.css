@@ -4,12 +4,15 @@
 
 .footer-internal {
   margin-top: 20px;
-  border-top: solid 1px lightblue;
+  border-top: 1px solid #9cc9d6;
+  background: #b3e5fc;
   font-size: 12px;
   display: flex;
   flex-wrap: wrap;
   display: -webkit-flex;
   -webkit-flex-wrap: wrap;
   height: auto;
+  width: 100%;
+  padding: 10px;
   display: -webkit-flex; /* Safari */
 }
