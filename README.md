@@ -60,7 +60,6 @@ PATCH | /api/account/{acount}/{emailId} | {"isRead" : true} |Updates the emailIn
 GET | /api/account/{account}/{emailId}/attachments/{filename} | |Downloads a specific attachment form an email
 DELETE | /api/account/{account}/{emailId} | |Deletes a specific email
 DELETE | /api/account/{account} | | Deletes a whole account
-DELETE | /api/dataDir | | Empty the data folder
 
 ### Google Analytics
 
