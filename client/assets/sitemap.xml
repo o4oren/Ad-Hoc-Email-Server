@@ -4,11 +4,15 @@
   xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
   <url> 
     <loc>http://www.ahem.email</loc> 
-	<loc>http://www.ahem.email/privacy</loc> 
-	<loc>http://www.ahem.email/doc/api</loc> 
     <image:image>
        <image:loc>http://www.ahem.email/assets/images/ahem_logo_icon.svg</image:loc>
        <image:caption>Ahem Logo</image:caption>
     </image:image>
+  </url>
+  <url>
+  	<loc>http://www.ahem.email/privacy</loc> 
+  </url>
+  <url>
+	<loc>http://www.ahem.email/doc/api</loc> 
   </url>
 </urlset>
