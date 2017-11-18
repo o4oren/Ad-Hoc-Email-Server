@@ -62,6 +62,22 @@ DELETE | /api/account/{account}/{emailId} | |Deletes a specific email
 DELETE | /api/account/{account} | | Deletes a whole account
 DELETE | /api/dataDir | | Empty the data folder
 
+### Google Analytics
+
+AHEM server is ready for google analytics. By default, when you set it up, it will not send information to GA though.
+If you'd like to enable GA, add the snippet below in your /client/index.html file's head section, and rebuild the project.
+Replace XX-XXXXXXXXX-X with your GA id.
+```html
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'XX-XXXXXXXXX-X', 'auto');
+  </script>
+```
+
 ### Todo for 1.0
 
 - [x] Error page when user/email doesn't exist.
