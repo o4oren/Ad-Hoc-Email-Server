@@ -7,7 +7,9 @@
   border-top: solid 1px lightblue;
   font-size: 12px;
   display: flex;
+  flex-wrap: wrap;
   display: -webkit-flex;
+  -webkit-flex-wrap: wrap;
   height: auto;
   display: -webkit-flex; /* Safari */
 }
