@@ -1,5 +1,6 @@
 .footer-item {
   margin: 5px;
+  flex: 1;
 }
 
 .footer-internal {
