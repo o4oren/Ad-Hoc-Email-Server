@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" 
+  xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" 
+  xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
+  <url> 
+    <loc>http://www.ahem.email</loc> 
+	<loc>http://www.ahem.email/privacy</loc> 
+	<loc>http://www.ahem.email/doc/api</loc> 
+    <image:image>
+       <image:loc>http://www.ahem.email/assets/images/ahem_logo_icon.svg</image:loc>
+       <image:caption>Ahem Logo</image:caption>
+    </image:image>
+  </url>
+</urlset>
