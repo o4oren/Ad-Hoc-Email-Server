@@ -1,6 +1,5 @@
 .footer-item {
   margin: 5px;
-  flex: 1;
 }
 
 .footer-internal {
@@ -9,7 +8,6 @@
   font-size: 12px;
   display: flex;
   display: -webkit-flex;
-  flex-wrap: wrap;
+  height: auto;
   display: -webkit-flex; /* Safari */
-  -webkit-flex-wrap: wrap; /* Safari 6.1+ */
 }
