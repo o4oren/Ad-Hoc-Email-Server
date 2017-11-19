@@ -23,7 +23,12 @@ router.post('/account/autocomplete', (req, res) => {
 });
 
 router.get('/properties', (req, res, next) => {
-  res.json(req.properties);
+  res.json(req.properties.map(prop => ({
+    serverBaseUri: prop.serverBaseUri,
+    emailDeleteInterval: prop.emailDeleteInterval,
+    emailDeleteAge: prop.emailDeleteAge,
+    allowedDomains: prop.allowedDomains
+  })));
 });
 
 /**
