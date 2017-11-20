@@ -15,6 +15,7 @@ export class AccountSelectorComponent implements OnInit {
   accounts: string[];
   @Input() selectedAccount = '';
   @Input() color = 'primary';
+  properties: any = {allowedDomains: [""]};
 
   constructor(private apiService: ApiService, private router: Router) {
     this.autoCompleteControl = new FormControl();
@@ -22,6 +23,7 @@ export class AccountSelectorComponent implements OnInit {
 
   ngOnInit(): void {
     // this.apiService.listAccountsAutoComplete('').subscribe(result => this.accounts = result);
+    this.apiService.getProperties().subscribe(properties => this.properties = properties);
 
     this.autoCompleteControl.valueChanges
       .debounceTime(300).subscribe(val => {
@@ -45,6 +47,16 @@ export class AccountSelectorComponent implements OnInit {
 
   clickSubmit() {
     this.router.navigateByUrl('/account/' + this.selectedAccount.toLowerCase());
+  }
+
+  generateEmail() {
+    let email = "";
+    let possible = "abcdefghijklmnopqrstuvwxyz0123456789";
+
+    for (var i = 0; i < 8; i++)
+      email += possible.charAt(Math.floor(Math.random() * possible.length));
+
+    this.selectedAccount = email;
   }
 
 }
