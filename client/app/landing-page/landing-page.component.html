@@ -1,64 +1,67 @@
-<div class="ahem-flex-container">
-  <div class="ahem-centered" style="max-width: 600px">
-    <mat-card-content *ngIf="!properties.customText">
-      <p>AHEM server is an ad-hoc mail server. By ad-hoc we mean that a mail box will be created for you as soon as an
-        email for your account reaches the server.
-        What is you account? Any account name you choose.</p>
-      <p>The server serves the domains:
-        <mat-list>
-          <div *ngFor="let domain of properties.allowedDomains"> {{domain}}</div>
-        </mat-list>
-      <p>AHEM will check in an interval of {{properties.emailDeleteInterval | amDuration:'seconds'}} for emails that aged over
-        {{properties.emailDeleteAge | amDuration:'seconds'}}, and if it find these, it will erase them.</p>
-      <p>So go ahead, and give it a try. Send an email to whatever@one-of-the domains above, and enter your account.</p>
-    </mat-card-content>
-    <app-account-selector></app-account-selector>
-    <div *ngIf="!properties.customText">
+<div class="ahem-centered" *ngIf="properties.customText">
+  <mat-card-content [innerHtml]="properties.customText" class="ahem-centered">
+  </mat-card-content>
+</div>
+
+<div class="ahem-flex-container" *ngIf="!properties.customText">
+  <div class="landing-page-column">
+    <div class="landing-page-item" style="mix-width: 600px">
+      <mat-card-content>
+        <p>AHEM server is an ad-hoc mail server. By ad-hoc we mean that a mail box will be created for you as soon as an
+          email for your account reaches the server.
+          What is you account? Any account name you choose.</p>
+        <p>The server serves the domains:
+          <mat-list>
+            <div *ngFor="let domain of properties.allowedDomains"> {{domain}}</div>
+          </mat-list>
+        <p>AHEM will check in an interval of {{properties.emailDeleteInterval | amDuration:'seconds'}} for emails that aged over
+          {{properties.emailDeleteAge | amDuration:'seconds'}}, and if it find these, it will erase them.</p>
+        <p>So go ahead, and give it a try. Send an email to whatever@one-of-the domains above, and enter your account.</p>
+      </mat-card-content>
+      <app-account-selector></app-account-selector>
+    </div>
+
+    <div class="landing-page-item">
+      <h2>How an Ad-Hoc email works?</h2>
+      <p>
+        When you send an email to an AHEM email domain, <br>
+        The mailbox is created. This way the site will send spam to your temporary email address, while your real address stays safe.
+      </p>
+    </div>
+
+
+  </div>
+
+  <div class="landing-page-column">
+    <div class="landing-page-item">
+      <div class="ahem-definition-of">
+          <mat-panel-title>
+            Ad Hoc EMail Sever
+          </mat-panel-title>
+          <mat-panel-description>
+            Definition of ahem
+          </mat-panel-description>
+
+        <mat-card-content>
+          <p>From <a href="https://www.merriam-webster.com/dictionary/ahem" target="_blank">Merriam-Webster</a>:</p>
+        </mat-card-content>
+        <h2>ahem</h2>
+        <mat-card-subtitle>interjection \ a throat-clearing sound; often read as ə-ˈhem ; \</mat-card-subtitle>
+        <mat-card-content>
+          <h3>Definition of ahem</h3>
+          <p>—used especially to attract attention or to express disapproval or embarrassment</p>
+        </mat-card-content>
+      </div>
+    </div>
+    <div class=landing-page-item>
+      <h2>Use cases</h2>
+      <ul>
+        <li>Software testing</li>
+        <li>Prevent spam</li>
+        <li></li>
+      </ul>
 
     </div>
-  </div>
-  <div div class="ahem-centered" style="max-width: 600px">
-    <mat-expansion-panel class="ahem-definition-of">
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          Ad Hoc EMail Sever
-        </mat-panel-title>
-        <mat-panel-description>
-          Definition of ahem
-        </mat-panel-description>
-      </mat-expansion-panel-header>
-      <mat-card-content *ngIf="properties.customText" [innerHtml]="properties.customText">
-
-      </mat-card-content>
-
-      <mat-card-content>
-        <p>From <a href="https://www.merriam-webster.com/dictionary/ahem" target="_blank">Merriam-Webster</a>:</p>
-      </mat-card-content>
-      <h2>ahem</h2>
-      <mat-card-subtitle>interjection \ a throat-clearing sound; often read as ə-ˈhem ; \</mat-card-subtitle>
-      <mat-card-content>
-        <h3>Definition of ahem</h3>
-        <p>—used especially to attract attention or to express disapproval or embarrassment</p>
-      </mat-card-content>
-    </mat-expansion-panel>
-  </div>
-
-  <div div class="ahem-centered" style="max-width: 600px">
-    <h2>How an Ad-Hoc email works?</h2>
-    <p>
-      When you send an email to an AHEM email domain, <br>
-      The mailbox is created. This way the site will send spam to your temporary email address, while your real address stays safe.
-    </p>
-  </div>
-
-  <div div class="ahem-centered" style="max-width: 600px">
-    <h2>Use cases</h2>
-    <ul>
-    <li>Software testing</li>
-    <li>Prevent spam</li>
-    <li></li>
-    </ul>
-
   </div>
 
 </div>

@@ -29,7 +29,8 @@ router.get('/properties', (req, res, next) => {
     serverBaseUri: req.properties.serverBaseUri,
     emailDeleteInterval: req.properties.emailDeleteInterval,
     emailDeleteAge: req.properties.emailDeleteAge,
-    allowedDomains: req.properties.allowedDomains
+    allowedDomains: req.properties.allowedDomains,
+    customText: req.properties.customText
   });
 });
 

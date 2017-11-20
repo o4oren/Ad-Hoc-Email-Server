@@ -4,7 +4,7 @@ import {ApiService} from "../api.service";
 @Component({
   selector: 'ahem-landing-page',
   templateUrl: './landing-page.component.html',
-  styleUrls: ['./landing-page.component.scss']
+  styleUrls: ['./landing-page.component.css']
 })
 export class LandingPageComponent implements OnInit {
 
