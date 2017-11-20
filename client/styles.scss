@@ -70,6 +70,11 @@ mat-sidenav-content > div {
   height: 100%;
 }
 
+.ahem-flex-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
 
 .ahem-toolbar {
   height: auto !important;
@@ -88,7 +93,7 @@ mat-sidenav-content > div {
 }
 
 .mat-toolbar.mat-primary {
-  
+
 }
 
 .footer {
@@ -126,6 +131,7 @@ mat-sidenav-content > div {
   padding-left: 20px;
   padding-right: 20px;
   align-self: center;
+  width: 50%;
 }
 
 .ahem-doc-api {
