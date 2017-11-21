@@ -1,10 +1,10 @@
 <div class="ahem-flex-container landing-page-container" >
-  <div class="ahem-centered" *ngIf="properties.customText" *ngIf="!properties.customText">
+  <div class="ahem-centered" *ngIf="properties.customText">
     <mat-card-content [innerHtml]="properties.customText" class="ahem-centered">
     </mat-card-content>
   </div>
 
-  <div *ngIf="properties.customText" class="ahem-flex-container landing-page-container">
+  <div *ngIf="!properties.customText" class="ahem-flex-container landing-page-container">
   <div class="landing-page-column">
     <div class="landing-page-item" style="max-width: 600px">
       <mat-card-content>
