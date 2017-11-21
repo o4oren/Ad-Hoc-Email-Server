@@ -1,5 +1,5 @@
-<div class="ahem-flex-container landing-page-container" *ngIf="!properties.customText">
-  <div class="ahem-centered" *ngIf="properties.customText">
+<div class="ahem-flex-container landing-page-container" >
+  <div class="ahem-centered" *ngIf="properties.customText" *ngIf="!properties.customText">
         <mat-card-content [innerHtml]="properties.customText" class="ahem-centered">
         </mat-card-content>
 
@@ -68,7 +68,7 @@
     </div>
   </div>
 </div>
-
+</div>
 <ahem-footer class="footer"></ahem-footer>
 
 
