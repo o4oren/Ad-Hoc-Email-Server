@@ -10,3 +10,7 @@
 .landing-page-column {
   flex: 1;
 }
+
+.landing-page-container {
+  height: 100%;
+}
