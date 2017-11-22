@@ -1,12 +1,12 @@
 <mat-sidenav-container class="ahem-sideNav-container ahem-overflow">
   <mat-sidenav #sidenav opened="true"
-               [mode]="isMobile() ? 'over' : 'side'"
-               [fixedInViewport]="isMobile()"
+               [mode]="deviceService.isMobile() ? 'over' : 'side'"
+               [fixedInViewport]="deviceService.isMobile()"
                class="ahem-sideNav"
   >
     <mat-list>
       <!-- used for the sake of pushing the sidenav downwards when it is in hover mode for mobile-->
-      <div *ngIf="isMobile()" style="height:156px"></div>
+      <div *ngIf="deviceService.isMobile()" style="height:156px"></div>
       <div *ngFor='let email of emails' (click)="clickedEmail(email)" class="ahem-email-list-item" [ngClass]="{'ahem-email-selected': email.isSelected }">
           <ahem-email-info [emailInfo]="email"></ahem-email-info>
         <mat-divider></mat-divider>

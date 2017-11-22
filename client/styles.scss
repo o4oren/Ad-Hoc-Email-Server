@@ -102,6 +102,12 @@ mat-sidenav-content > div {
   /*padding: 1rem;*/
   text-align: center;
   margin-top: auto;
+  width: 100%;
+}
+
+.footer-fixed {
+  bottom: 0;
+  position: fixed;
 }
 
 .ahem-internal-toolbar {

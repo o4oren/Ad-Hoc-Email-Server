@@ -1,10 +1,10 @@
-<div class="ahem-flex-container landing-page-container">
+<div>
   <div class="ahem-centered" *ngIf="properties.customText">
     <mat-card-content [innerHtml]="properties.customText" class="ahem-centered">
     </mat-card-content>
   </div>
   <div *ngIf="!properties.customText" class="ahem-flex-container landing-page-container">
-
+    <div class="landing-page-column">
       <div class="landing-page-item" style="max-width: 600px">
         <mat-card-content>
           <p>AHEM server is an ad-hoc mail server. By ad-hoc we mean that a mail box will be created for you as soon as
@@ -31,6 +31,8 @@
           This way the site will send spam to your temporary email address, while your real address stays safe.
         </p>
       </div>
+    </div>
+    <div class="landing-page-column">
       <div class="landing-page-item">
         <div class="ahem-definition-of">
           <mat-panel-title>
@@ -60,8 +62,9 @@
           <li>Auto generated or selected email address.</li>
         </ul>
       </div>
+    </div>
   </div>
-
+  <ahem-footer class="footer" [ngClass]="{'footer-fixed': !deviceService.isMobile() }"></ahem-footer>
 </div>
 
 

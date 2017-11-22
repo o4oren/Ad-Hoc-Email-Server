@@ -4,7 +4,7 @@ import {Subscription} from 'rxjs/Subscription';
 import {ApiService} from '../api.service';
 import {EmailInfo} from '../model/email-info-model';
 import {MatSidenav} from '@angular/material/sidenav';
-import { isPlatformBrowser } from '@angular/common';
+import {DeviceService} from "../device.service";
 
 
 enum SortBy {
@@ -30,14 +30,12 @@ export class AccountViewPageComponent implements OnInit, OnDestroy {
 
   @Output() onAccountDetermined: EventEmitter<string> = new EventEmitter();
   @ViewChild(MatSidenav) sidenav: MatSidenav;
-  private mediaMatcher: MediaQueryList;
 
   constructor(private apiService: ApiService,
     private route: ActivatedRoute,
     private router: Router,
-    @Inject(PLATFORM_ID) private platformId: Object) {
-      this.mediaMatcher = isPlatformBrowser(platformId) ? matchMedia(`(max-width: 720px)`) : null;
-    }
+              private deviceService: DeviceService
+  ){}
 
   ngOnInit() {
     this.paramsSub = this.route.params.subscribe(params => {
@@ -49,7 +47,7 @@ export class AccountViewPageComponent implements OnInit, OnDestroy {
       } else {
         this.selectEmail(this.getEmailFromTimeStamp(this.emailId));
       }
-      if (this.isMobile()) {
+      if (this.deviceService.isMobile()) {
         this.sidenav.close();
       }
     });
@@ -131,19 +129,6 @@ export class AccountViewPageComponent implements OnInit, OnDestroy {
         console.log('error!!!!', err); // TODO popup message
       }
     );
-  }
-
-  isMobile() {
-    let isMobile = false;
-    if (isPlatformBrowser(this.platformId) && this.mediaMatcher.matches) {
-      isMobile = true;
-    }
-
-    return isMobile;
-  }
-
-  isIos() {
-    return /iPad|iPhone|iPod/.test(navigator.userAgent);
   }
 
   private getEmailFromTimeStamp(emailId: string): EmailInfo {

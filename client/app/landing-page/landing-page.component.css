@@ -9,9 +9,11 @@
 
 .landing-page-column {
   flex: 1;
+  min-width: 360px;
 }
 
 .landing-page-container {
   width: 100%;
   flex: 1;
+  display: flex;
 }

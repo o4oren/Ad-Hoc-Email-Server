@@ -29,6 +29,7 @@ import { PrivacyComponent } from './privacy/privacy.component';
 import { isPlatformBrowser, APP_BASE_HREF } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { ApiDocumentationComponent } from './api-documentation/api-documentation.component';
+import {DeviceService} from "./device.service";
 
 const appRoutes: Routes = [
   { path: '', component:  LandingPageComponent},
@@ -74,7 +75,7 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     Angulartics2Module.forRoot([ Angulartics2GoogleAnalytics ])
   ],
-  providers: [ApiService, MatIconRegistry],
+  providers: [ApiService, MatIconRegistry, DeviceService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
