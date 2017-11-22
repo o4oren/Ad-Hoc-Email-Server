@@ -34,7 +34,7 @@ export class AccountViewPageComponent implements OnInit, OnDestroy {
   constructor(private apiService: ApiService,
     private route: ActivatedRoute,
     private router: Router,
-              private deviceService: DeviceService
+              public deviceService: DeviceService
   ){}
 
   ngOnInit() {
