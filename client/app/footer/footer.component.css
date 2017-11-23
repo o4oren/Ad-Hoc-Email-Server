@@ -11,6 +11,7 @@
   flex-wrap: wrap;
   display: -webkit-flex;
   -webkit-flex-wrap: wrap;
+  align-content: center;
   height: 100%;
   width: 100%;
   padding: 10px;
