@@ -1,5 +1,5 @@
 <mat-sidenav-container class="ahem-sideNav-container ahem-overflow">
-  <mat-sidenav #sidenav opened="true"
+  <mat-sidenav #sidenav opened="deviceService.isMobile()"
                [mode]="deviceService.isMobile() ? 'over' : 'side'"
                [fixedInViewport]="deviceService.isMobile()"
                class="ahem-sideNav"

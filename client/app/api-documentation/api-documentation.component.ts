@@ -28,7 +28,7 @@ export interface Element {
 
 const ELEMENT_DATA: Element[] = [
   {httpMethod: 'POST', uriPath: '/api/properties', parameters: '{ "prefix":[string] }',
-    description: 'Returns a partial list of accounts'},
+    description: 'Returns a list of accounts starting with the prefix'},
   {httpMethod: 'GET', uriPath: '/api/properties', parameters: '', description: 'Returns various server properties and settings'},
   {httpMethod: 'GET', uriPath: '/api/account/{account}', parameters: '', description: 'returns a list of the email objects in the account'},
   {httpMethod: 'DELETE', uriPath: '/api/account/{account}', parameters: '', description: 'Deletes a whole account'},

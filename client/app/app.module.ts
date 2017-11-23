@@ -34,7 +34,7 @@ import {DeviceService} from "./device.service";
 const appRoutes: Routes = [
   { path: '', component:  LandingPageComponent},
   { path: 'privacy', component: PrivacyComponent},
-  { path: 'doc/api', component: ApiDocumentationComponent},
+  { path: 'help/api', component: ApiDocumentationComponent},
   { path: 'account/:account', component: AccountViewPageComponent},
   { path: 'account/:account/:emailId', component: AccountViewPageComponent}
 ];

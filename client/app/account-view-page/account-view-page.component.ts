@@ -40,16 +40,15 @@ export class AccountViewPageComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.paramsSub = this.route.params.subscribe(params => {
       this.emailId = params['emailId'];
-      if (!this.account || this.account.toLowerCase() !== params['account'].toLowerCase()) {
+      if (!this.account || this.account.toLowerCase() != params['account'].toLowerCase()) {
         this.account = params['account'].toLowerCase();
         this.onAccountDetermined.emit(this.account);
         this.getAccountEmails();
       } else {
         this.selectEmail(this.getEmailFromTimeStamp(this.emailId));
-      }
-      if (this.deviceService.isMobile()) {
         this.sidenav.close();
       }
+      this.closeSidenavIfMobile();
     });
   }
 
@@ -63,6 +62,7 @@ export class AccountViewPageComponent implements OnInit, OnDestroy {
       this.emails = this.sortEmails(emails, SortBy.Timestamp, true);
       if (this.emailId) {
         this.selectEmail(this.getEmailFromTimeStamp(this.emailId));
+        this.closeSidenavIfMobile();
       } else {
         if (this.emails.length > 0) {
           // this.selectEmail(this.emails[0]); //TODO handle non empty mailbox vs empty mailbox
@@ -129,6 +129,12 @@ export class AccountViewPageComponent implements OnInit, OnDestroy {
         console.log('error!!!!', err); // TODO popup message
       }
     );
+  }
+
+  private closeSidenavIfMobile() {
+    if (this.deviceService.isMobile()) {
+      this.sidenav.close();
+    }
   }
 
   private getEmailFromTimeStamp(emailId: string): EmailInfo {

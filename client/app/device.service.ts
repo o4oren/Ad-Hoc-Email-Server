@@ -8,13 +8,18 @@ export class DeviceService {
     this.mediaMatcher = isPlatformBrowser(platformId) ? matchMedia(`(max-width: 720px)`) : null;
   }
 
+  _isMobile: boolean = null;
+
   isMobile() {
-    let isMobile = false;
+    if(this._isMobile !== null) {
+      return this._isMobile;
+    }
+    this._isMobile = false;
     if (isPlatformBrowser(this.platformId) && this.mediaMatcher.matches) {
-      isMobile = true;
+      this._isMobile  = true;
     }
 
-    return isMobile;
+    return this._isMobile ;
   }
 
   isIos() {
