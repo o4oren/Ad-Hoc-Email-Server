@@ -8,18 +8,14 @@ export class DeviceService {
     this.mediaMatcher = isPlatformBrowser(platformId) ? matchMedia(`(max-width: 720px)`) : null;
   }
 
-  _isSmallScreen: boolean = null;
-
   isSmallScreen() {
-    if(this._isSmallScreen !== null) {
-      return this._isSmallScreen;
-    }
-    this._isSmallScreen = false;
+
+    let _isSmallScreen = false;
     if (isPlatformBrowser(this.platformId) && this.mediaMatcher.matches) {
-      this._isSmallScreen  = true;
+      _isSmallScreen  = true;
     }
 
-    return this._isSmallScreen ;
+    return _isSmallScreen ;
   }
 
   isIos() {
