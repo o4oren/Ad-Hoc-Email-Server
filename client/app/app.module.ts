@@ -30,13 +30,16 @@ import { isPlatformBrowser, APP_BASE_HREF } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { ApiDocumentationComponent } from './api-documentation/api-documentation.component';
 import {DeviceService} from "./device.service";
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 const appRoutes: Routes = [
   { path: '', component:  LandingPageComponent},
   { path: 'privacy', component: PrivacyComponent},
   { path: 'help/api', component: ApiDocumentationComponent},
+  { path: 'doc/api', component: ApiDocumentationComponent},
   { path: 'account/:account', component: AccountViewPageComponent},
-  { path: 'account/:account/:emailId', component: AccountViewPageComponent}
+  { path: 'account/:account/:emailId', component: AccountViewPageComponent},
+  { path: '**', component: PageNotFoundComponent }
 ];
 
 @NgModule({
@@ -52,7 +55,8 @@ const appRoutes: Routes = [
     AttachmentsComponent,
     FooterComponent,
     PrivacyComponent,
-    ApiDocumentationComponent
+    ApiDocumentationComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ahem' }),
