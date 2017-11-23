@@ -131,7 +131,7 @@ export class AccountViewPageComponent implements OnInit, OnDestroy {
   }
 
   private closeSidenavIfMobile() {
-    if (this.deviceService.isMobile()) {
+    if (this.deviceService.isSmallScreen()) {
       this.sidenav.close();
     }
   }
