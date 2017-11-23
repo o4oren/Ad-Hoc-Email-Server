@@ -46,9 +46,8 @@ export class AccountViewPageComponent implements OnInit, OnDestroy {
         this.getAccountEmails();
       } else {
         this.selectEmail(this.getEmailFromTimeStamp(this.emailId));
-        this.sidenav.close();
+        this.closeSidenavIfMobile();
       }
-      this.closeSidenavIfMobile();
     });
   }
 
