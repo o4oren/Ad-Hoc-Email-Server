@@ -1,1 +1,11 @@
+@media screen and (max-width: 720px) {
+  router-outlet {
+    margin-top: 156px;
+  }
+  mat-toolbar {
+    position: fixed;
+    top: 0;
+  }
+}
+
 
