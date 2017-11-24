@@ -21,7 +21,7 @@ $ahem-app-theme: mat-light-theme($ahem-app-primary, $ahem-app-accent, $ahem-app-
 html, body, material-app, mat-sidenav-container, ahem-sidnav-content {
   margin: 0;
   width: 100%;
-  //height: 100%;
+  height: 100%;
   //overflow: hidden;
 }
 
@@ -32,13 +32,17 @@ body {
 }
 
 app-main-page {
-  display: flex;
-  display: -webkit-flex;
-  flex-direction: column;
-  -webkit-flex-direction: column;
-  flex-grow: 1;
-  -webkit-flex-grow: 1;
-  overflow: auto;
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
+    -webkit-flex-direction: column;
+    flex-grow: 1;
+    -webkit-flex-grow: 1;
+    overflow: auto;
+}
+
+app-main-page-large-screen {
+  height: 100%;
 }
 
 app-account-view-page {
