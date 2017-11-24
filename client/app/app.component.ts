@@ -10,5 +10,5 @@ import {DeviceService} from "./device.service";
 export class AppComponent {
   title = 'AHEM - Ad Hoc Email Server';
 
-  constructor(angulartics2GoogleAnalytics: Angulartics2GoogleAnalytics, deviceService: DeviceService) {}
+  constructor(angulartics2GoogleAnalytics: Angulartics2GoogleAnalytics, public deviceService: DeviceService) {}
 }
