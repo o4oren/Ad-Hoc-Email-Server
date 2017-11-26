@@ -19,7 +19,7 @@ export class AccountSelectorComponent implements OnInit {
   @Input() isInline = true;
   properties: any = {allowedDomains: ['']};
 
-  constructor(private apiService: ApiService, private router: Router, deviceService: DeviceService) {
+  constructor(private apiService: ApiService, private router: Router, public deviceService: DeviceService) {
     this.autoCompleteControl = new FormControl();
   }
 
