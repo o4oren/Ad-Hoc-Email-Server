@@ -6,7 +6,7 @@
   >
     <mat-list>
       <!-- used for the sake of pushing the sidenav downwards when it is in hover mode for mobile-->
-      <div *ngIf="deviceService.isSmallScreen()" style="height:156px"></div>
+      <div *ngIf="deviceService.isSmallScreen()" style="height:79px"></div>
       <div *ngFor='let email of emails' (click)="clickedEmail(email)" class="ahem-email-list-item" [ngClass]="{'ahem-email-selected': email.isSelected }">
           <ahem-email-info [emailInfo]="email"></ahem-email-info>
         <mat-divider></mat-divider>
