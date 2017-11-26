@@ -18,7 +18,7 @@ $ahem-app-theme: mat-light-theme($ahem-app-primary, $ahem-app-accent, $ahem-app-
 
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 
-html, body, material-app, mat-sidenav-container, ahem-sidnav-content {
+html, body, material-app, mat-sidenav-container, ahem-sidnav-content, app-main-page {
   margin: 0;
   width: 100%;
   height: 100%;
@@ -27,7 +27,6 @@ html, body, material-app, mat-sidenav-container, ahem-sidnav-content {
 
 
 body {
-
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
