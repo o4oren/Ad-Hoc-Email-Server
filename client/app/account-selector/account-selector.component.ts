@@ -15,6 +15,7 @@ export class AccountSelectorComponent implements OnInit {
   accounts: string[];
   @Input() selectedAccount = '';
   @Input() color = 'primary';
+  @Input() isInline = true;
   properties: any = {allowedDomains: [""]};
 
   constructor(private apiService: ApiService, private router: Router) {

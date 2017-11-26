@@ -6,6 +6,13 @@
   align-self: center;
   max-width: 600px;
 }
+.ahem-inline-input-div {
+  padding: 5px;
+}
+
+input::placeholder {
+  color: lightgray;
+}
 
 .landing-page-column {
   flex: 1;

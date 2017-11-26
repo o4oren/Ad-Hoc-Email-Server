@@ -1,3 +1,18 @@
+.ahem-inline-input {
+  background: white;
+  color: black;
+  border-radius: 15px;
+  font-size: 16px;
+  padding: 5px;
+  border: 0;
+}
 
+input:focus {
+  outline: none;
+}
+
+input::placeholder {
+  color: lightgray;
+}
 
 

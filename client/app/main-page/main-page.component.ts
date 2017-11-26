@@ -3,6 +3,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {DomSanitizer} from "@angular/platform-browser";
 import {Subscription} from "rxjs/Subscription";
 import {MatIconRegistry} from "@angular/material";
+import {DeviceService} from "../device.service";
 
 @Component({
   selector: 'app-main-page',
@@ -15,7 +16,7 @@ export class MainPageComponent implements OnInit, OnDestroy{
   hideToolbarComponents = true;
   routerSub: Subscription;
 
-  constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer, private router: Router) {
+  constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer, private router: Router, public deviceService: DeviceService) {
     iconRegistry.addSvgIcon(
       'ahem-logo',
       sanitizer.bypassSecurityTrustResourceUrl('assets/images/ahem_logo_icon.svg'));
