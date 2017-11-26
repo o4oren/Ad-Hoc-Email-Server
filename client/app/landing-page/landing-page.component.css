@@ -4,14 +4,7 @@
   padding-left: 20px;
   padding-right: 20px;
   align-self: center;
-  max-width: 600px;
-}
-.ahem-inline-input-div {
-  padding: 5px;
-}
-
-input::placeholder {
-  color: lightgray;
+  max-width: 300px;
 }
 
 .landing-page-column {

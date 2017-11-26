@@ -1,11 +1,17 @@
 .ahem-inline-input {
   background: white;
   color: black;
-  border-radius: 15px;
+  border-radius: 5px;
   font-size: 16px;
   padding: 5px;
   border: 0;
+  max-width: 300px;
 }
+
+.ahem-inline-input-div {
+  padding: 5px;
+}
+
 
 input:focus {
   outline: none;
