@@ -1,6 +1,6 @@
 @media screen and (max-width: 720px) {
   router-outlet {
-    margin-top: 88px;
+    margin-top: 79px;
   }
   mat-toolbar {
     position: fixed;

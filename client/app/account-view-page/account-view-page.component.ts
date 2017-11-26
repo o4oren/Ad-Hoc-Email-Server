@@ -4,7 +4,7 @@ import {Subscription} from 'rxjs/Subscription';
 import {ApiService} from '../api.service';
 import {EmailInfo} from '../model/email-info-model';
 import {MatSidenav} from '@angular/material/sidenav';
-import {DeviceService} from "../device.service";
+import {DeviceService} from '../device.service';
 
 
 enum SortBy {
@@ -35,7 +35,7 @@ export class AccountViewPageComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     private router: Router,
               public deviceService: DeviceService
-  ){}
+  ) {}
 
   ngOnInit() {
     this.paramsSub = this.route.params.subscribe(params => {
