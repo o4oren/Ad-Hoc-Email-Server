@@ -4,6 +4,7 @@ import {ApiService} from '../api.service';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/debounceTime';
 import {Router} from '@angular/router';
+import { DeviceService } from '../device.service';
 
 @Component({
   selector: 'app-account-selector',
@@ -16,9 +17,9 @@ export class AccountSelectorComponent implements OnInit {
   @Input() selectedAccount = '';
   @Input() color = 'primary';
   @Input() isInline = true;
-  properties: any = {allowedDomains: [""]};
+  properties: any = {allowedDomains: ['']};
 
-  constructor(private apiService: ApiService, private router: Router) {
+  constructor(private apiService: ApiService, private router: Router, deviceService: DeviceService) {
     this.autoCompleteControl = new FormControl();
   }
 
@@ -51,11 +52,12 @@ export class AccountSelectorComponent implements OnInit {
   }
 
   generateEmail() {
-    let email = "";
-    let possible = "abcdefghijklmnopqrstuvwxyz0123456789";
+    let email = '';
+    const possible = 'abcdefghijklmnopqrstuvwxyz0123456789';
 
-    for (var i = 0; i < 8; i++)
+    for (let i = 0; i < 8; i++) {
       email += possible.charAt(Math.floor(Math.random() * possible.length));
+    }
 
     this.selectedAccount = email;
   }

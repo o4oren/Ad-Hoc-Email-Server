@@ -6,7 +6,7 @@
          placeholder="Account"
          (keyup.enter)="clickSubmit()"
          class="ahem-inline-input mat-elevation-z8">
-  <span *ngIf="isInline" matSuffix style="color: grey">@{{properties.allowedDomains[0]}}</span>
+  <span *ngIf="isInline && !deviceService.isSmallScreen()" matSuffix style="color: lightgrey">@{{properties.allowedDomains[0]}}</span>
 </div>
 
 <mat-form-field color="{{color}}" *ngIf="!isInline">
