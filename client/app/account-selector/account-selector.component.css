@@ -1,10 +1,11 @@
 .ahem-inline-input {
   background: white;
   color: black;
-  border-radius: 5px;
+  border-radius: 1px;
   font-size: 16px;
   padding: 5px;
   border: 0;
+  height: 20px;
   max-width: 300px;
 }
 
