@@ -30,6 +30,15 @@ body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
+ahem-landing-page, ahem-email-view, ahem-privacy, ahem-api-documentation, ahem-page-not-found {
+  display: flex;
+  display: -webkit-flex;
+  flex-direction: column;
+  -webkit-flex-direction: column;
+  height: 100%;
+}
+
+
 app-main-page {
     display: flex;
     display: -webkit-flex;
@@ -68,13 +77,6 @@ app-account-view-page {
 
 }
 
-ahem-landing-page, ahem-email-view, ahem-privacy, app-main-page, ahem-api-documentation, ahem-page-not-found {
-  display: flex;
-  display: -webkit-flex;
-  flex-direction: column;
-  -webkit-flex-direction: column;
-  height: 100%;
-}
 
 
 mat-sidenav-content > div {

@@ -26,6 +26,15 @@ export class DeviceService {
     return window.screen.height;
   }
 
+  getHeightStyle(substractFromResult?: number) {
+    let height = this.getPlatformHeight() - 79 - 69;
+    if(substractFromResult) {
+      height = height - substractFromResult;
+    }
+    console.log(height.toString()+"px");
+    return height.toString() + "px";
+  }
+
   isIos() {
     return /iPad|iPhone|iPod/.test(navigator.userAgent);
   }

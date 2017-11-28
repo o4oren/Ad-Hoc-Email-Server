@@ -6,6 +6,7 @@ import {Observable} from 'rxjs/Observable';
 import {EmailInfo} from '../model/email-info-model';
 import {EmailDetails} from '../model/email-details-model';
 import {DomSanitizer, SafeHtml} from '@angular/platform-browser';
+import {DeviceService} from "../device.service";
 
 @Component({
   selector: 'ahem-email-view',
@@ -34,7 +35,7 @@ export class EmailViewComponent implements OnInit, OnDestroy {
 
   get email(): any { return this._email; }
 
-  constructor(private apiService: ApiService, private route: ActivatedRoute, private domSanitizer: DomSanitizer) { }
+  constructor(private apiService: ApiService, private route: ActivatedRoute, private domSanitizer: DomSanitizer, public deviceService: DeviceService) { }
 
   ngOnInit() {
     this.paramsSub = this.route.params.subscribe(params => {

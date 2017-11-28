@@ -1,5 +1,5 @@
 
-<div class="ahem-email-content-container">
+<div class="ahem-email-content-container" [style.min-height]="deviceService.getHeightStyle(96)">
   <div *ngIf="emailDetails">
     <mat-card>
       <mat-card-header>

@@ -13,9 +13,4 @@ export class PageNotFoundComponent implements OnInit {
 
   ngOnInit() {
   }
-
-  getHeight() {
-    return (this.deviceService.getPlatformHeight() - 79).toString() + "px;";
-  }
-
 }
