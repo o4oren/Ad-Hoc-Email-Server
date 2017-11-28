@@ -1,5 +1,10 @@
 import {Inject, Injectable, PLATFORM_ID} from '@angular/core';
 import {isPlatformBrowser} from '@angular/common';
+import {Platform} from "@angular/cdk/typings/platform";
+
+
+
+
 
 @Injectable()
 export class DeviceService {
@@ -14,8 +19,11 @@ export class DeviceService {
     if (isPlatformBrowser(this.platformId) && this.mediaMatcher.matches) {
       _isSmallScreen  = true;
     }
-
     return _isSmallScreen ;
+  }
+
+  getPlatformHeight(): number {
+    return window.screen.height;
   }
 
   isIos() {

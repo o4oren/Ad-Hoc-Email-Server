@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import {DeviceService} from "../device.service";
 
 @Component({
   selector: 'ahem-page-not-found',
@@ -8,9 +9,13 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 })
 export class PageNotFoundComponent implements OnInit {
 
-  constructor() { }
+  constructor(public deviceService: DeviceService) { }
 
   ngOnInit() {
+  }
+
+  getHeight() {
+    return (this.deviceService.getPlatformHeight() - 79).toString() + "px;";
   }
 
 }
