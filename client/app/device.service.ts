@@ -1,10 +1,5 @@
 import {Inject, Injectable, PLATFORM_ID} from '@angular/core';
 import {isPlatformBrowser} from '@angular/common';
-import {Platform} from "@angular/cdk/typings/platform";
-
-
-
-
 
 @Injectable()
 export class DeviceService {
@@ -34,8 +29,8 @@ export class DeviceService {
     if (substractFromResult) {
       height = height - substractFromResult;
     }
-    console.log(height.toString()+"px");
-    return height.toString() + "px";
+    console.log(height.toString()+'px');
+    return height.toString() + 'px';
   }
 
   isIos() {
