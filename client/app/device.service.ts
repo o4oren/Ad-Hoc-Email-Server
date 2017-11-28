@@ -22,7 +22,7 @@ export class DeviceService {
   }
 
   getHeightStyle(substractFromResult?: number, isForMobileOnly?: boolean) {
-    if (isForMobileOnly && !this.isSmallScreen) {
+    if (isForMobileOnly && !this.isSmallScreen()) {
       return '0px';
     }
     let height = this.getPlatformHeight() - 79 - 69;
