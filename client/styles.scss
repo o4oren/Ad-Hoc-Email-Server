@@ -37,6 +37,11 @@ ahem-landing-page, ahem-email-view, ahem-privacy, ahem-api-documentation, ahem-p
 
 
 app-main-page {
+  position: absolute;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
   display: flex;
   display: -webkit-flex;
   flex-direction: column;
@@ -46,18 +51,18 @@ app-main-page {
   overflow: auto;
 }
 
-@media screen and (min-width: 720px) {
-app-main-page {
-  display: flex;
-  display: -webkit-flex;
-  flex-direction: column;
-  -webkit-flex-direction: column;
-  flex-grow: 1;
-  -webkit-flex-grow: 1;
-  overflow: auto;
-  height: 100%;
-}
-}
+//@media screen and (min-width: 720px) {
+//  app-main-page {
+//    display: flex;
+//    display: -webkit-flex;
+//    flex-direction: column;
+//    -webkit-flex-direction: column;
+//    flex-grow: 1;
+//    -webkit-flex-grow: 1;
+//    overflow: auto;
+//    height: 100%;
+//  }
+//}
 
 app-main-page-large-screen {
 height: 100%;
