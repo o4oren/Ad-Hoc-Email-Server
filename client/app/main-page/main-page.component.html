@@ -2,8 +2,8 @@
 <mat-toolbar color="primary" class="ahem-toolbar">
   <span routerLink="" class="ahem-hand-pointer ahem-logo-span">
     <!--<mat-icon svgIcon="ahem-logo" class="ahem-logo"></mat-icon>-->
-    <img *ngIf="!deviceService.isSmallScreen()" src="/assets/images/ahem-logo.png" alt="AHEM - an adc-hoc email server" class="logo">
-    <img *ngIf="deviceService.isSmallScreen()" src="/assets/images/ahem-logo-64.png" alt="AHEM - an adc-hoc email server">
+    <img *ngIf="!deviceService.isSmallScreen() && hideToolbarComponents" src="/assets/images/ahem-logo.png" alt="AHEM - an adc-hoc email server" class="logo">
+    <img *ngIf="deviceService.isSmallScreen() || !hideToolbarComponents" src="/assets/images/ahem-logo-64.png" alt="AHEM - an adc-hoc email server">
   </span>
   <span *ngIf="!deviceService.isSmallScreen()">AHEM - Ad Hoc Email Server</span>
   <span class="ahem-spacer"></span>
