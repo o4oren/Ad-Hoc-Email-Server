@@ -10,6 +10,7 @@
 .landing-page-column {
   flex: 1;
   min-width: 360px;
+  max-width: 500px;
 }
 
 .landing-page-container {
@@ -17,3 +18,15 @@
   flex: 1;
   display: flex;
 }
+
+@media screen and (max-width: 720px) {
+  #left {
+    margin-right: 108px;
+  }
+
+  #right {
+    margin-left: 128px;
+  }
+}
+
+

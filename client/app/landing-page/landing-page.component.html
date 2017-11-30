@@ -4,8 +4,8 @@
     </mat-card-content>
   </div>
   <div *ngIf="!properties.customText" class="ahem-flex-container landing-page-container">
-    <div class="landing-page-column">
-      <div class="landing-page-item" style="max-width: 600px">
+    <div class="landing-page-column" #left>
+      <div class="landing-page-item">
         <mat-card-content>
           <p>AHEM server is an ad-hoc mail server. By ad-hoc we mean that a mail box will be created for you as soon as
             an
@@ -33,7 +33,7 @@
         </p>
       </div>
     </div>
-    <div class="landing-page-column">
+    <div class="landing-page-column" #right>
       <div class="landing-page-item">
         <div class="ahem-definition-of">
           <mat-panel-title>
