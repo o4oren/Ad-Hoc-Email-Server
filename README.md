@@ -7,7 +7,7 @@ This project will provide both RESTful api and web application for consuming the
 A working example of AHEM is always available - and usable - at http://www.ahem.email
 
 
-![Alt text](http://www.ahem.email/assets/images/screemshot.png "AHEM mail server")
+![Alt text](/client/assets/images/screenshot.png?raw=true "AHEM mail server")
 
 ## Getting Started
 Ahem mail server will accept any email sent to it (on the domains specified in the configuration), and create an ad hoc mailbox as needed.
