@@ -50,6 +50,10 @@ Parameters:
 
 ### API
 
+The full api documentation is available at http://www.ahem.email/help/api.
+
+A brief list of RESTful resources:
+
 HTTP Method | URI Path | Parameters | Descritpion
 --- | --- | --- | ---
 POST | /account/autocomplete | { "prefix":"value" } | Returns a partial list of accounts
