@@ -10,7 +10,7 @@ import {DeviceService} from "../device.service";
 export class LandingPageComponent implements OnInit {
 
   properties: any = {};
-  constructor(private apiService: ApiService, public deviceService: DeviceService) { }
+  constructor(public apiService: ApiService, public deviceService: DeviceService) { }
 
   ngOnInit() {
 
