@@ -34,7 +34,7 @@ export class AccountSelectorComponent implements OnInit {
 
 
   filterAccounts(val: string): any {
-    if (typeof val !== 'undefined' && val) {
+    if (this.apiService.properties.allowAutocomplete && typeof val !== 'undefined' && val) {
       return this.apiService.listAccountsAutoComplete(val);
   } else {
       return Observable.create(observer => {

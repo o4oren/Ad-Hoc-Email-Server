@@ -18,7 +18,7 @@
     <span matSuffix style="color: grey">@{{properties.allowedDomains[0]}}</span>
   </mat-form-field>
   <mat-autocomplete #auto="matAutocomplete" >
-    <mat-option *ngIf="apiService.properties.allowAutocomplete" *ngFor="let account of accounts" [value]="account">
+    <mat-option *ngFor="let account of accounts" [value]="account">
       {{ account }}
     </mat-option>
   </mat-autocomplete>
