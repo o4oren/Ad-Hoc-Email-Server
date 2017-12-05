@@ -24,9 +24,6 @@ export class AccountSelectorComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // this.apiService.listAccountsAutoComplete('').subscribe(result => this.accounts = result);
-    this.apiService.getProperties().subscribe(properties => this.properties = properties);
-
     this.autoCompleteControl.valueChanges
       .debounceTime(300).subscribe(val => {
       this.filterAccounts(val).subscribe(result => this.accounts = result);
