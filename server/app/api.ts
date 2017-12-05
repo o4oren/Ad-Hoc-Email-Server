@@ -30,7 +30,8 @@ router.get('/properties', (req, res, next) => {
     emailDeleteInterval: req.properties.emailDeleteInterval,
     emailDeleteAge: req.properties.emailDeleteAge,
     allowedDomains: req.properties.allowedDomains,
-    customText: req.properties.customText
+    customText: req.properties.customText,
+    allowAutocomplete: req.properties.allowAutocomplete
   });
 });
 

@@ -1,9 +1,9 @@
 <div>
-  <div class="ahem-centered" *ngIf="properties.customText">
-    <mat-card-content [innerHtml]="properties.customText" class="ahem-centered">
+  <div class="ahem-centered" *ngIf="apiService.properties.customText">
+    <mat-card-content [innerHtml]="apiService.properties.customText" class="ahem-centered">
     </mat-card-content>
   </div>
-  <div *ngIf="!properties.customText" class="ahem-flex-container landing-page-container">
+  <div *ngIf="!apiService.properties.customText" class="ahem-flex-container landing-page-container">
     <div class="landing-page-column" #left>
       <div class="landing-page-item">
         <mat-card-content>
@@ -14,11 +14,11 @@
           </p>
           <p>The server serves the domains:
             <mat-list>
-              <div *ngFor="let domain of properties.allowedDomains"> {{domain}}</div>
+              <div *ngFor="let domain of apiService.properties.allowedDomains"> {{domain}}</div>
             </mat-list>
-          <p>AHEM will check in an interval of {{properties.emailDeleteInterval | amDuration:'seconds'}} for emails that
+          <p>AHEM will check in an interval of {{apiService.properties.emailDeleteInterval | amDuration:'seconds'}} for emails that
             aged over
-            {{properties.emailDeleteAge | amDuration:'seconds'}}, and if it find these, it will erase them.</p>
+            {{apiService.properties.emailDeleteAge | amDuration:'seconds'}}, and if it find these, it will erase them.</p>
           <p>So go ahead, and give it a try. Send an email to whatever@one-of-the domains above, and enter your account.<br>
             Or generate a random account.</p>
         </mat-card-content>

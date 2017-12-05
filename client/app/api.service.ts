@@ -1,4 +1,4 @@
-import { Injectable, Optional, Inject } from '@angular/core';
+import {Injectable, Optional, Inject, OnInit} from '@angular/core';
 import {Http, Response} from '@angular/http';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
@@ -6,10 +6,17 @@ import 'rxjs/add/operator/catch';
 import { APP_BASE_HREF } from '@angular/common';
 
 @Injectable()
-export class ApiService {
+export class ApiService implements OnInit {
+
   baseUri: string;
+  public properties: any = {};
+
   constructor(private http: Http, @Optional() @Inject(APP_BASE_HREF) origin: string) {
     this.baseUri = origin || '';
+  }
+
+  ngOnInit(): void {
+    this.getProperties();
   }
 
   listAccountsAutoComplete(prefix: string): any {
@@ -44,7 +51,7 @@ export class ApiService {
   }
 
   getProperties() {
-    return this.http.get(this.baseUri + '/api/properties').map(res => res.json());
+    this.http.get(this.baseUri + '/api/properties').map(res => res.json()).subscribe(properties => properties = this.properties);
   }
 
 
