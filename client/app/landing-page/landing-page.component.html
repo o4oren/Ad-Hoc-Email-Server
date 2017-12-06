@@ -1,6 +1,7 @@
 <div>
   <div class="ahem-centered" *ngIf="properties.customText">
     <mat-card-content [innerHtml]="properties.customText" class="ahem-centered">
+      <app-account-selector [isInline]="false"></app-account-selector>
     </mat-card-content>
   </div>
   <div *ngIf="!properties.customText" class="ahem-flex-container landing-page-container">
