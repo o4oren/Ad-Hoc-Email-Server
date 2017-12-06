@@ -24,8 +24,6 @@ export class MainPageComponent implements OnInit, OnDestroy{
         this.router.url !== '/' ? this.hideToolbarComponents = false : this.hideToolbarComponents = true;
         this.account = this.router.url.split('account/').pop().split('/').shift();
       });
-
-
   }
 
   ngOnInit(): void {

@@ -48,7 +48,6 @@ router.get('/account/:account', (req, res, next) => {
     }
     res.status(200).send(account.emails);
   });
-
 });
 
 /**

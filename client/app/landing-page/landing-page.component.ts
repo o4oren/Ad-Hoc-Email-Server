@@ -13,7 +13,7 @@ export class LandingPageComponent implements OnInit {
   constructor(public apiService: ApiService, public deviceService: DeviceService) { }
 
   ngOnInit() {
-
+    this.apiService.getProperties().subscribe(properties => this.properties = properties);
   }
 
   onSelected() {}

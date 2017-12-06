@@ -6,18 +6,19 @@ import 'rxjs/add/operator/catch';
 import { APP_BASE_HREF } from '@angular/common';
 
 @Injectable()
-export class ApiService implements OnInit {
+export class ApiService {
 
   baseUri: string;
-  public properties: any = {};
+  private _properties: Observable<any> = null;
 
   constructor(private http: Http, @Optional() @Inject(APP_BASE_HREF) origin: string) {
     this.baseUri = origin || '';
   }
 
-  ngOnInit(): void {
-    this.getProperties();
+  getProperties(): any {
+    return this._properties = this.http.get(this.baseUri + '/api/properties').map(res => res.json());
   }
+
 
   listAccountsAutoComplete(prefix: string): any {
     const url = this.baseUri + '/api/account/autocomplete';
@@ -49,11 +50,5 @@ export class ApiService implements OnInit {
       }
     });
   }
-
-  getProperties() {
-    this.http.get(this.baseUri + '/api/properties').map(res => res.json()).subscribe(properties => properties = this.properties);
-  }
-
-
 
 }
