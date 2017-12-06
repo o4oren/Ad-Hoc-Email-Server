@@ -1,10 +1,10 @@
 {
   "serverBaseUri": "http://myserver.address",
-  "mongoConnectUrl": "mongodb://dbadmin:eubphskV@amy.sealdoc.com:27017/test",
+  "mongoConnectUrl": "mongodb://amy.sealdoc.com:27017/ahem",
   "appListenPort": 3000,
   "smtpPort" : 25,
   "emailDeleteInterval" : 86400,
   "emailDeleteAge" : 7200,
   "allowAutocomplete" : true,
-  "allowedDomains" : ["my.domain.com","ci0700000007622.rim.net"]
+  "allowedDomains" : ["my.domain.com"]
 }
