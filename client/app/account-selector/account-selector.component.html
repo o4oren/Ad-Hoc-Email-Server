@@ -6,7 +6,7 @@
          placeholder="Account"
          (keyup.enter)="clickSubmit()"
          class="ahem-inline-input mat-elevation-z8">
-    <button mat-button matSuffix mat-icon-button aria-label="Go" routerLink="/account/{{selectedAccount}}">
+    <button mat-button matSuffix mat-icon-button aria-label="Go" routerLink="/account/{{selectedAccount | trimDomain}}">
       <mat-icon>navigate next</mat-icon>
     </button>
   <!--<span *ngIf="isInline && !deviceService.isSmallScreen()" matSuffix style="color: lightgrey">@{{properties.allowedDomains[0]}}</span>-->
@@ -22,7 +22,7 @@
       {{ account }}
     </mat-option>
   </mat-autocomplete>
-  <a mat-button routerLink="/account/{{selectedAccount}}">Submit</a>
+  <a mat-button routerLink="/account/{{selectedAccount | trimDomain}}">Submit</a>
   <a mat-button (click)="generateEmail()">Generate</a>
 </div>
 

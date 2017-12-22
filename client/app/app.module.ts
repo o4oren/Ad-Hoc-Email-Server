@@ -29,14 +29,16 @@ import { PrivacyComponent } from './privacy/privacy.component';
 import { isPlatformBrowser, APP_BASE_HREF } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { ApiDocumentationComponent } from './api-documentation/api-documentation.component';
-import {DeviceService} from "./device.service";
+import {DeviceService} from './device.service';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { TrimDomainPipe } from './trim-domain.pipe';
 
 const appRoutes: Routes = [
   { path: '', component:  LandingPageComponent},
   { path: 'privacy', component: PrivacyComponent},
   { path: 'help/api', component: ApiDocumentationComponent},
   { path: 'doc/api', component: ApiDocumentationComponent},
+  { path: 'account', component: AccountViewPageComponent},
   { path: 'account/:account', component: AccountViewPageComponent},
   { path: 'account/:account/:emailId', component: AccountViewPageComponent},
   { path: '**', component: PageNotFoundComponent }
@@ -56,7 +58,8 @@ const appRoutes: Routes = [
     FooterComponent,
     PrivacyComponent,
     ApiDocumentationComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    TrimDomainPipe
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ahem' }),
