@@ -45,7 +45,7 @@ export class AccountSelectorComponent implements OnInit {
   }
 
   clickSubmit() {
-    this.router.navigateByUrl('/account/' + this.selectedAccount.toLowerCase());
+    this.router.navigateByUrl('/account/' + this.selectedAccount.toLowerCase().split('@')[0]);
   }
 
   generateEmail() {
