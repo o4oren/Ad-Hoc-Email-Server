@@ -5,9 +5,6 @@
 
 'use strict';
 
-// Start the app
-
-
 import { ServerApp} from './server/app/serverapp';
 import { MongoClient} from 'mongodb';
 
@@ -21,6 +18,7 @@ const server = new ServerApp();
 
 console.log('properties', properties);
 
+// Start the app with a db connection
 MongoClient.connect(properties.mongoConnectUrl, function (err, db) {
   assert.equal(null, err);
   console.log('Connected successfully to mongodb server');
@@ -30,10 +28,3 @@ MongoClient.connect(properties.mongoConnectUrl, function (err, db) {
   server.start(properties, db);
   smtp.startSTMPServer(properties, baseDir, db);
 });
-
-
-
-
-
-
-

@@ -148,11 +148,3 @@ app.get('*.*', express.static(join(DIST_FOLDER, 'browser')));
     console.log('mail server listening');
   }
 }
-
-
-
-
-
-
-
-
