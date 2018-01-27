@@ -139,19 +139,6 @@ router.delete('/account/:account', (req, res) => {
   });
 });
 
-// router.delete('/dataDir', (req, res) => {
-
-//   try {
-//     req.db.collection("accounts").remove({});
-//     req.db.collection("emails").remove({});
-//     res.json({success: true});
-//   }
-//     catch (e) {
-//     console.log(e);
-//     res.status(500).send({error: "FAILED TO DELETE ALL ACCOUNTS", succes: false});
-//   }
-// });
-
 
 module.exports = router;
 
