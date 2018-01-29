@@ -48,6 +48,11 @@ Parameters:
 * customText - html string that will replace the default text in the landing page
 * allowAutocomplete - if set to false, will prevent auto completing users in the ui
 
+### Docker
+Build docker: docker build -t o4oren/ahem .
+Run docker: docker run -it -p 3000:3000 -p 25:25 -d o4oren/ahem
+Sign into docker: docker exec -it [docker_id]
+
 ### API
 
 The full api documentation is available at http://www.ahem.email/help/api.
