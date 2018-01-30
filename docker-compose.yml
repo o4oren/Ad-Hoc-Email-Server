@@ -1,17 +1,17 @@
-version: "2"
+version: "3"
 services:
   ahem:
-    container_name: ahem
-    restart: "no"
-    build: .
-    logging:
-      driver: syslog
-      options:
-        syslog-address: "udp://10.124.188.81:514"
+    image: o4oren/ahem:latest
+    deploy:
+      replicas: 2
+      restart_policy:
+        condition: on-failure
     ports:
       - "3000:3000"
       - "25:25"
     tty: true
+    networks:
+      - net
     depends_on:
       - mongo
   mongo:
@@ -21,3 +21,5 @@ services:
       - ./data:/data/db
     ports:
       - "27017:27017"
+networks:
+  net:

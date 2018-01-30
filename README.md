@@ -52,6 +52,8 @@ Parameters:
 * Build docker: docker build -t o4oren/ahem .
 * Run docker: docker run -it -p 3000:3000 -p 25:25 -d o4oren/ahem
 * Sign into docker: docker exec -it [docker_id] sh
+* start docker stackand swarm: docker swarm init && docker stack deploy -c docker-compose.yml ahemswarmc
+* stop docker stack: docker stack rm getstartedlab
 
 #### Build and run with mongodb
 * docker-compose build
