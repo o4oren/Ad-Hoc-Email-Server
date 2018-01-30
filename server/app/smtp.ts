@@ -96,7 +96,7 @@ function validateAddress(address, allowedDomains) {
   //return true always if: a) allowedDomains is empty or b) null or c) properties.json only has my.domain.com
   if(!allowedDomains || 
     (allowedDomains && allowedDomains.length ||
-      allowedDomains && allowedDomains.length === 1 && allowedDomains[0] === 'http://myserver.address'
+      (allowedDomains && allowedDomains.length === 1 && allowedDomains[0] === 'http://myserver.address')
     )) {
     return true;
   }
