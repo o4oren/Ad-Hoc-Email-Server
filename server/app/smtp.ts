@@ -93,12 +93,15 @@ module.exports = {
 }
 
 function validateAddress(address, allowedDomains) {
-  //return true always if allowedDomains is empty or null
-  if(!allowedDomains || (allowedDomains && allowedDomains.length)) {
+  //return true always if: a) allowedDomains is empty or b) null or c) properties.json only has my.domain.com
+  if(!allowedDomains || 
+    (allowedDomains && allowedDomains.length ||
+      allowedDomains && allowedDomains.length === 1 && allowedDomains[0] === 'http://myserver.address'
+    )) {
     return true;
   }
 
-  
+
   let allowed = false;
 
   allowedDomains.forEach(domain => {
