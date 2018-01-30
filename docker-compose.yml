@@ -11,9 +11,9 @@ services:
       - "25:25"
     tty: true
     networks:
-      - net
+      - net1
     depends_on:
-      - mongo
+      - mongodb
   mongo:
     container_name: mongo
     image: mongo
@@ -21,5 +21,7 @@ services:
       - ./data:/data/db
     ports:
       - "27017:27017"
+    networks:
+      - net1
 networks:
-  net:
+  net1:

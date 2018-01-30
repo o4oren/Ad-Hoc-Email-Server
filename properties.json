@@ -1,6 +1,6 @@
 {
   "serverBaseUri": "http://myserver.address",
-  "mongoConnectUrl": "mongodb://amy.sealdoc.com:27017/ahem",
+  "mongoConnectUrl": "mongodb://mongo:27017/ahem",
   "appListenPort": 3000,
   "smtpPort" : 25,
   "emailDeleteInterval" : 86400,
