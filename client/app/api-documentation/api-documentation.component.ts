@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'ahem-api-documentation',
@@ -12,7 +13,9 @@ export class ApiDocumentationComponent implements OnInit {
   dataSource = new MatTableDataSource<Element>(ELEMENT_DATA);
 
 
-  constructor() { }
+  constructor(titleService: Title) {
+    titleService.setTitle('AHEM - API Documentation');
+   }
 
   ngOnInit() {
   }

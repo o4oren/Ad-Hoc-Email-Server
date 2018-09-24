@@ -5,7 +5,7 @@ import {ActivatedRoute} from '@angular/router';
 import {Observable} from 'rxjs/Observable';
 import {EmailInfo} from '../model/email-info-model';
 import {EmailDetails} from '../model/email-details-model';
-import {DomSanitizer, SafeHtml} from '@angular/platform-browser';
+import {DomSanitizer, SafeHtml, Title} from '@angular/platform-browser';
 import {DeviceService} from "../device.service";
 
 @Component({
@@ -35,7 +35,8 @@ export class EmailViewComponent implements OnInit, OnDestroy {
 
   get email(): any { return this._email; }
 
-  constructor(private apiService: ApiService, private route: ActivatedRoute, private domSanitizer: DomSanitizer, public deviceService: DeviceService) { }
+  constructor(private apiService: ApiService, private route: ActivatedRoute, private domSanitizer: DomSanitizer, 
+    public deviceService: DeviceService, private titleService: Title) { }
 
   ngOnInit() {
     this.paramsSub = this.route.params.subscribe(params => {
@@ -54,6 +55,7 @@ export class EmailViewComponent implements OnInit, OnDestroy {
   getEmailDetails() {
     this.apiService.getEmailContent(this.account, this.email.emailId).subscribe(result => {
       this.emailDetails = result;
+      this.titleService.setTitle('AHEM - ' + this.account + ' - ' + this.emailDetails.subject);
     });
   }
 

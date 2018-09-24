@@ -16,7 +16,7 @@ That's it. No authentication. No account creation.
 
 ## Prerequisites
 ```
-nodejs > v6.11 
+nodejs > v8.9 
 angular cli installed globally (npm install -g @angular/cli)
 mongodb
 ```

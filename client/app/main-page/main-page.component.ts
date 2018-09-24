@@ -1,16 +1,16 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {ActivatedRoute, Router} from "@angular/router";
-import {DomSanitizer} from "@angular/platform-browser";
-import {Subscription} from "rxjs/Subscription";
-import {MatIconRegistry} from "@angular/material";
-import {DeviceService} from "../device.service";
+import {ActivatedRoute, Router} from '@angular/router';
+import {DomSanitizer} from '@angular/platform-browser';
+import {Subscription} from 'rxjs/Subscription';
+import {MatIconRegistry} from '@angular/material';
+import {DeviceService} from '../device.service';
 
 @Component({
   selector: 'app-main-page',
   templateUrl: './main-page.component.html',
   styleUrls: ['./main-page.component.css']
 })
-export class MainPageComponent implements OnInit, OnDestroy{
+export class MainPageComponent implements OnInit, OnDestroy {
 
   account: string;
   hideToolbarComponents = true;

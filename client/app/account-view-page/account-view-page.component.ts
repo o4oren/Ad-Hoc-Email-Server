@@ -5,6 +5,7 @@ import {ApiService} from '../api.service';
 import {EmailInfo} from '../model/email-info-model';
 import {MatSidenav} from '@angular/material/sidenav';
 import {DeviceService} from '../device.service';
+import { Title } from '@angular/platform-browser';
 
 
 enum SortBy {
@@ -34,7 +35,8 @@ export class AccountViewPageComponent implements OnInit, OnDestroy {
   constructor(private apiService: ApiService,
     private route: ActivatedRoute,
     private router: Router,
-              public deviceService: DeviceService
+              public deviceService: DeviceService,
+              private titleService: Title
   ) {}
 
   ngOnInit() {
@@ -43,6 +45,7 @@ export class AccountViewPageComponent implements OnInit, OnDestroy {
       if (!this.account || this.account.toLowerCase() !== params['account'].toLowerCase()) {
         this.account = params['account'].toLowerCase();
         this.onAccountDetermined.emit(this.account);
+        this.titleService.setTitle('AHEM - ' + this.account);
         this.getAccountEmails();
       } else {
         this.selectEmail(this.getEmailFromTimeStamp(this.emailId));

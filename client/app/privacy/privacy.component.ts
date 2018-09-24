@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'ahem-privacy',
@@ -8,7 +9,9 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 })
 export class PrivacyComponent implements OnInit {
 
-  constructor() { }
+  constructor(titleService: Title) {
+    titleService.setTitle('AHEM - Privacy Policy');
+   }
 
   ngOnInit() {
   }
