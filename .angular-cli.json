@@ -10,7 +10,8 @@
       "assets": [
         "assets",
         "favicon.ico",
-        "assets/sitemap.xml"
+        "sitemap.xml",
+        "robots.txt"
       ],
       "index": "index.html",
       "main": "main.ts",
@@ -35,7 +36,9 @@
       "outDir": "dist/server",
       "assets": [
         "assets",
-        "favicon.ico"
+        "favicon.ico",
+        "sitemap.xml",
+        "robots.txt"
       ],
       "index": "index.html",
       "main": "main.server.ts",
