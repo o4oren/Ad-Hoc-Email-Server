@@ -1,6 +1,7 @@
 {
-  "serverBaseUri": "http://myserver.address",
-  "mongoConnectUrl": "mongodb://mongo:27017/ahem",
+  "serverBaseUri": "http://localhost",
+  "mongoConnectUrl": "mongodb://127.0.0.1:27017",
+  "dbName": "ahem",
   "appListenPort": 3000,
   "smtpPort" : 25,
   "emailDeleteInterval" : 86400,

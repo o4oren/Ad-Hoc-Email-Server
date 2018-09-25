@@ -1,12 +1,11 @@
 import {Component, Input, OnDestroy, OnInit, Output} from '@angular/core';
-import {Subscription} from 'rxjs/Subscription';
 import {ApiService} from '../api.service';
 import {ActivatedRoute} from '@angular/router';
-import {Observable} from 'rxjs/Observable';
 import {EmailInfo} from '../model/email-info-model';
 import {EmailDetails} from '../model/email-details-model';
 import {DomSanitizer, SafeHtml, Title} from '@angular/platform-browser';
 import {DeviceService} from "../device.service";
+import {Subscription} from 'rxjs/internal/Subscription';
 
 @Component({
   selector: 'ahem-email-view',
@@ -35,7 +34,7 @@ export class EmailViewComponent implements OnInit, OnDestroy {
 
   get email(): any { return this._email; }
 
-  constructor(private apiService: ApiService, private route: ActivatedRoute, private domSanitizer: DomSanitizer, 
+  constructor(private apiService: ApiService, private route: ActivatedRoute, private domSanitizer: DomSanitizer,
     public deviceService: DeviceService, private titleService: Title) { }
 
   ngOnInit() {

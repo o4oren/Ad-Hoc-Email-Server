@@ -1,10 +1,10 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {ApiService} from '../api.service';
-import {Observable} from 'rxjs/Observable';
-import 'rxjs/add/operator/debounceTime';
 import {Router} from '@angular/router';
 import { DeviceService } from '../device.service';
+import {Observable} from 'rxjs/internal/Observable';
+import {debounceTime} from 'rxjs/operators';
 
 @Component({
   selector: 'app-account-selector',
@@ -24,8 +24,8 @@ export class AccountSelectorComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.autoCompleteControl.valueChanges
-      .debounceTime(300).subscribe(val => {
+    this.autoCompleteControl.valueChanges.
+      pipe(debounceTime(300)).subscribe(val => {
       this.filterAccounts(val).subscribe(result => this.accounts = result);
     });
 

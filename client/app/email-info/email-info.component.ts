@@ -22,7 +22,7 @@ export class EmailInfoComponent implements OnInit {
   }
 
   getFontIcon(isSelected: boolean): string {
-    if(isSelected)
+    if (isSelected)
       return "fa-envelope-open-o";
     return "fa-envelope-o";
   }

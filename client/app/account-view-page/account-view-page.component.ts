@@ -1,11 +1,11 @@
 import {Component, EventEmitter, OnDestroy, OnInit, Output, ViewChild, Inject, PLATFORM_ID} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import {Subscription} from 'rxjs/Subscription';
 import {ApiService} from '../api.service';
 import {EmailInfo} from '../model/email-info-model';
 import {MatSidenav} from '@angular/material/sidenav';
 import {DeviceService} from '../device.service';
 import { Title } from '@angular/platform-browser';
+import {Subscription} from 'rxjs/internal/Subscription';
 
 
 enum SortBy {

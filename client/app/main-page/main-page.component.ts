@@ -1,9 +1,9 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {DomSanitizer} from '@angular/platform-browser';
-import {Subscription} from 'rxjs/Subscription';
 import {MatIconRegistry} from '@angular/material';
 import {DeviceService} from '../device.service';
+import {Subscription} from 'rxjs/internal/Subscription';
 
 @Component({
   selector: 'app-main-page',

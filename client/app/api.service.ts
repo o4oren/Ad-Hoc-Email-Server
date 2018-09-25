@@ -1,9 +1,9 @@
 import {Injectable, Optional, Inject, OnInit} from '@angular/core';
-import {Http, Response} from '@angular/http';
-import {Observable} from 'rxjs/Observable';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/catch';
 import { APP_BASE_HREF } from '@angular/common';
+import {Observable} from 'rxjs/internal/Observable';
+import {HttpClient} from '@angular/common/http';
+import {EmailInfo} from './model/email-info-model';
+import {EmailDetails} from './model/email-details-model';
 
 @Injectable()
 export class ApiService {
@@ -11,44 +11,40 @@ export class ApiService {
   baseUri: string;
   private _properties: Observable<any> = null;
 
-  constructor(private http: Http, @Optional() @Inject(APP_BASE_HREF) origin: string) {
+  constructor(private http: HttpClient, @Optional() @Inject(APP_BASE_HREF) origin: string) {
     this.baseUri = origin || '';
   }
 
   getProperties(): any {
-    return this._properties = this.http.get(this.baseUri + '/api/properties').map(res => res.json());
+    return this._properties = this.http.get(this.baseUri + '/api/properties');
   }
 
 
   listAccountsAutoComplete(prefix: string): any {
     const url = this.baseUri + '/api/account/autocomplete';
-    return this.http.post(url, {prefix: prefix}).map(res => res.json());
+    return this.http.post(url, {prefix: prefix});
   }
 
-  listAccountsEmails(account: string) {
+  listAccountsEmails(account: string): Observable<Array<EmailInfo>> {
     const url: string = this.baseUri + '/api/account/' + account;
-    return this.http.get(url).map(res => res.json());
+    return this.http.get<Array<EmailInfo>>(url);
   }
 
-  getEmailContent(account: string, emailId: string) {
+  getEmailContent(account: string, emailId: string): Observable<EmailDetails> {
     const url: string = this.baseUri + '/api/account/' + account + '/' + emailId;
-    return this.http.get(url).map(res => res.json());
+    return this.http.get<EmailDetails>(url);
   }
 
   markAsReadOrUnread(account: string, emailId: string, isRead: boolean) {
     const url: string = this.baseUri + '/api/account/' + account + '/' + emailId;
     const body = { 'isRead': isRead};
-    return this.http.patch(url, body).map(res => res.json());
+    return this.http.patch(url, body);
   }
 
 
   deleteEmail(account: string, timestamp: string) {
     const url: string = this.baseUri + '/api/account/' + account + '/' + timestamp;
-    return this.http.delete(url).map(res => res.json()).catch((error: any) => {
-      if (error.status < 400 ||  error.status === 500) {
-        return Observable.throw(new Error(error.status));
-      }
-    });
+    return this.http.delete(url);
   }
 
 }

@@ -19,12 +19,13 @@ const server = new ServerApp();
 console.log('properties', properties);
 
 // Start the app with a db connection
-MongoClient.connect(properties.mongoConnectUrl, function (err, db) {
+console.log('connecting to db', properties.mongoConnectUrl);
+MongoClient.connect(properties.mongoConnectUrl, { useNewUrlParser: true }, function (err, client) {
   assert.equal(null, err);
   console.log('Connected successfully to mongodb server');
   // creating indexes
+  const db = client.db(properties.dbName);
   db.collection('accounts').createIndex( {'name': 1}, { unique: true } );
-
   server.start(properties, db);
   smtp.startSTMPServer(properties, baseDir, db);
 });
