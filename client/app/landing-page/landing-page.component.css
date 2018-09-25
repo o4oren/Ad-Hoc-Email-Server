@@ -11,6 +11,7 @@
   flex: 1;
   min-width: 360px;
   max-width: 500px;
+  height: 100%;
 }
 
 .landing-page-container {

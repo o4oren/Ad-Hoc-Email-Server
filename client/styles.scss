@@ -26,6 +26,16 @@ html, body, material-app, mat-sidenav-container, ahem-sidnav-content {
   //overflow: hidden;
 }
 
+h1 {
+  display: block;
+  font-size: 1.4em;
+  -webkit-margin-before: 0.83em;
+  -webkit-margin-after: 0.83em;
+  -webkit-margin-start: 0px;
+  -webkit-margin-end: 0px;
+  font-weight: bold;
+}
+
 
 ahem-landing-page, ahem-email-view, ahem-privacy, ahem-api-documentation, ahem-page-not-found {
   display: flex;
