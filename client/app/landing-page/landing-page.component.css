@@ -1,16 +1,16 @@
 .landing-page-item {
   margin: auto;
   margin-top: 20px;
-  padding-left: 20px;
-  padding-right: 20px;
+  margin-right: 40px;
+  margin-left: 40px;
   align-self: center;
-  max-width: 300px;
+  max-width: 1200px;
 }
 
 .landing-page-column {
   flex: 1;
   min-width: 360px;
-  max-width: 500px;
+  max-width: 1000px;
   height: 100%;
 }
 
