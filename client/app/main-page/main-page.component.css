@@ -8,6 +8,10 @@
   }
 }
 
+.ahem-toolbar-small {
+  font-size: 0.8em;
+}
+
 .logo {
   position: relative;
   top: 2px;

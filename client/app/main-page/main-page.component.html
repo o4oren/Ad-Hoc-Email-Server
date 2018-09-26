@@ -5,7 +5,8 @@
     <img *ngIf="!deviceService.isSmallScreen() && hideToolbarComponents" src="/assets/images/ahem-logo.png" alt="AHEM - an adc-hoc email server" class="logo">
     <img *ngIf="deviceService.isSmallScreen() || !hideToolbarComponents" src="/assets/images/ahem-logo-64.png" alt="AHEM - an adc-hoc email server">
   </span>
-  <span *ngIf="!deviceService.isSmallScreen()">AHEM - Ad Hoc Email Server</span>
+  <span *ngIf="!deviceService.isSmallScreen()">AHEM - Ad Hoc Email Address</span>
+  <span *ngIf="deviceService.isSmallScreen()" class="ahem-toolbar-small">AHEM - Ad Hoc Email</span>
   <span class="ahem-spacer"></span>
   <app-account-selector *ngIf="!hideToolbarComponents" class="ahem-account-selector ahem-account-selector-internal" [color]="'accent'" [selectedAccount]="account"></app-account-selector>
 </mat-toolbar>
