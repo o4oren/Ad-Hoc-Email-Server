@@ -32,8 +32,7 @@ export interface EmailDetails {
 export interface EmailAddress {
     'address': string;
     'name': string;
-    'emailDoamin': string;
-  }
+}
 
 
 
