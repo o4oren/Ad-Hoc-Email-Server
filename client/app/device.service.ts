@@ -29,7 +29,7 @@ export class DeviceService {
     if (substractFromResult) {
       height = height - substractFromResult;
     }
-    console.log(height.toString()+'px');
+    console.log(height.toString() + 'px');
     return height.toString() + 'px';
   }
 

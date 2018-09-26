@@ -4,9 +4,9 @@
     <!--<mat-icon svgIcon="ahem-logo" class="ahem-logo"></mat-icon>-->
     <img *ngIf="!account" src="/assets/images/ahem-logo.png" alt="AHEM - an adc-hoc email server"
          srcset="/assets/images/ahem-logo-64.png 64w, /assets/images/ahem-logo.png 128w"
-         sizes="(min-width: 720px) 128px, 64px"
+         sizes="(min-width: 1200px) 128px, 64px"
          class="logo">
-    <img *ngIf="account" src="/assets/images/ahem-logo-64.png" alt="AHEM - an adc-hoc email server"
+    <img *ngIf="account" src="/assets/images/ahem-logo.png" alt="AHEM - an adc-hoc email server"
        class="logo">
   </span>
   <span *ngIf="!deviceService.isSmallScreen()">AHEM - Ad Hoc Email Address</span>
