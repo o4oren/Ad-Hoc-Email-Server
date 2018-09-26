@@ -102,6 +102,12 @@ mat-sidenav-content > div {
   align-items: center;
 }
 
+.mat-toolbar {
+  background: -webkit-linear-gradient(bottom right, #8AC5FC, #b3e5fc); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(bottom right, #8AC5FC, #b3e5fc); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(bottom right, #8AC5FC, #b3e5fc); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(to bottom right, #8AC5FC, #b3e5fc); /* Standard syntax */
+}
 
 .ahem-toolbar {
   //height: auto !important;
@@ -119,9 +125,6 @@ mat-sidenav-content > div {
   height: 100%;
 }
 
-.mat-toolbar.mat-primary {
-
-}
 
 .footer {
   display: flex;
