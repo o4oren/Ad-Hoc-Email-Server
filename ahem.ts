@@ -20,7 +20,7 @@ console.log('properties', properties);
 
 // Start the app with a db connection
 console.log('connecting to db', properties.mongoConnectUrl);
-MongoClient.connect(properties.mongoConnectUrl, { useNewUrlParser: true }, function (err, client) {
+MongoClient.connect(properties.mongoConnectUrl, { useNewUrlParser: true, authMechanism: 'ScramSHA1' }, function (err, client) {
   assert.equal(null, err);
   console.log('Connected successfully to mongodb server');
   // creating indexes
