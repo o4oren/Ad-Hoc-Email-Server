@@ -19,20 +19,20 @@ export interface EmailDetails {
     'value': Array<EmailAddress>;
     'html': string;
     'text': string;
-  },
+  };
   'cc': {
     'value': Array<EmailAddress>;
     'html': string;
     'text': string;
-  }
+  };
   'messageId': string;
 }
 
 
-export interface EmailAddress
-  {
+export interface EmailAddress {
     'address': string;
     'name': string;
+    'emailDoamin': string;
   }
 
 
