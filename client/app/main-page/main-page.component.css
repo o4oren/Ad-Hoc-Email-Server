@@ -16,3 +16,9 @@
   position: relative;
   top: 2px;
 }
+
+.logo-small {
+  position: relative;
+  top: 2px;
+  width: 64px;
+}
