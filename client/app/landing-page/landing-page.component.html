@@ -63,10 +63,7 @@
       </div>
     </div>
   </div>
-    </div>
-    <div class="landing-page-column" #right>
-
-  <ahem-footer class="footer" [ngClass]="{'footer-fixed': !deviceService.isSmallScreen() }"></ahem-footer>
+  <ahem-footer class="footer" [ngClass]="{'footer-fixed': deviceService.isSmallScreen() }"></ahem-footer>
 </div>
 
 
