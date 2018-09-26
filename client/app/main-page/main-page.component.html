@@ -8,7 +8,7 @@
   <span *ngIf="!deviceService.isSmallScreen()">AHEM - Ad Hoc Email Address</span>
   <span *ngIf="deviceService.isSmallScreen()" class="ahem-toolbar-small">AHEM - Ad Hoc Email</span>
   <span class="ahem-spacer"></span>
-  <app-account-selector *ngIf="!hideToolbarComponents" class="ahem-account-selector ahem-account-selector-internal" [color]="'accent'" [selectedAccount]="account"></app-account-selector>
+  <!--<app-account-selector *ngIf="!hideToolbarComponents" class="ahem-account-selector ahem-account-selector-internal" [color]="'accent'" [selectedAccount]="account"></app-account-selector>-->
 </mat-toolbar>
 <router-outlet></router-outlet>
 
