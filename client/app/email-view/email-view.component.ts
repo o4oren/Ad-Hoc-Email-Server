@@ -1,4 +1,4 @@
-import {Component, Input, OnDestroy, OnInit, Output} from '@angular/core';
+import {Component, Input, OnDestroy, OnInit, Output, ViewEncapsulation} from '@angular/core';
 import {ApiService} from '../api.service';
 import {ActivatedRoute} from '@angular/router';
 import {EmailInfo} from '../model/email-info-model';
@@ -10,7 +10,8 @@ import {Subscription} from 'rxjs/internal/Subscription';
 @Component({
   selector: 'ahem-email-view',
   templateUrl: './email-view.component.html',
-  styleUrls: ['./email-view.component.css']
+  styleUrls: ['./email-view.component.css'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class EmailViewComponent implements OnInit, OnDestroy {
 
