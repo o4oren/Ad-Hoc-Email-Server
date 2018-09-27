@@ -104,7 +104,7 @@ Replace XX-XXXXXXXXX-X with your GA id.
 - [x] attachments
 - [x] allow delete emails
 - [x] migrate to mongodb
-- [] update missing emails page and loading circles
+- [x] update missing emails page and loading circles
 - [] Add apis to get account references from email, get account and email counts - both general and in account context
 
 
