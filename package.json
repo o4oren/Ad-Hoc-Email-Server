@@ -36,10 +36,10 @@
     "angular2-moment": "^1.7.0",
     "angulartics2": "^6.3.0",
     "core-js": "^2.4.1",
-    "mailparser": "^2.1.0",
+    "mailparser": "^2.3.4",
     "mongodb": "^3.1.6",
     "rxjs": "^6.3.2",
-    "smtp-server": "^3.3.0",
+    "smtp-server": "^3.4.7",
     "ts-loader": "^5.2.0",
     "zone.js": "^0.8.14"
   },
