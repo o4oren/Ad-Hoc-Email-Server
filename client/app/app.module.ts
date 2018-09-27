@@ -38,7 +38,7 @@ const appRoutes: Routes = [
   { path: 'privacy', component: PrivacyComponent},
   { path: 'help/api', component: ApiDocumentationComponent},
   { path: 'doc/api', component: ApiDocumentationComponent},
-  { path: 'account', redirectTo: '/'},
+  { path: 'account', redirectTo: '/', pathMatch: 'full'},
   { path: 'account/:account', component: AccountViewPageComponent},
   { path: 'account/:account/:emailId', component: AccountViewPageComponent},
   { path: '**', component: PageNotFoundComponent }
