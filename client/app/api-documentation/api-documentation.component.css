@@ -1,17 +1,19 @@
-.mat-column-uriPath {
-  min-width: 400px;
-}
-
-.mat-cell {
-  min-width: 100px;
-}
 
 .mat-table {
   min-width: 600px;
 }
 
-@media screen and (max-width: 720px) {
+.mat-column-httpMethod {
+  max-width: 60px;
+}
+
+.mat-column-uriPath {
+  min-width: 0px;
+}
+
+@media screen and (min-width: 720px) {
   .mat-column-uriPath {
-    min-width: 0px;
+    min-width: 400px;
   }
+
 }
