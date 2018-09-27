@@ -1,5 +1,6 @@
 <mat-sidenav-container class="ahem-sideNav-container ahem-overflow">
-  <mat-sidenav #sidenav opened="deviceService.isSmallScreen()"
+  <!-- if an account link-->
+  <mat-sidenav *ngIf="this.account" #sidenav opened="deviceService.isSmallScreen()"
                [mode]="deviceService.isSmallScreen() ? 'over' : 'side'"
                class="ahem-sideNav"
   >
@@ -12,7 +13,7 @@
     </mat-list>
   </mat-sidenav>
 
-  <div>
+  <div *ngIf="this.account">
     <mat-toolbar color="accent" class="ahem-internal-toolbar">
       <button mat-button (click)="sidenav.toggle()"><mat-icon style="height:100%" fontSet="fa" fontIcon="fa-navicon"></mat-icon></button>
       <button mat-button *ngIf="selectedEmail" (click)="deleteFile()"><mat-icon>delete forever</mat-icon>Delete</button>
@@ -20,6 +21,20 @@
     </mat-toolbar>
    <ahem-email-view [email]="selectedEmail"></ahem-email-view>
   </div>
+
+<!-- if not an account link-->
+  <div *ngIf="!this.account">
+    <div class="ahem-centered ahem-doc-api">
+      <h1>AHEM Accounts</h1>
+      <p>
+        You have reached a non existing AHEM account page. AHEM accounts are created ad-hoc when an e-mail reaches its address.
+
+      </p>
+    </div>
+    <ahem-footer class="footer"></ahem-footer>
+
+  </div>
+
 </mat-sidenav-container>
 
 
