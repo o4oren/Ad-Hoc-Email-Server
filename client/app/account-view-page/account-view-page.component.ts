@@ -42,7 +42,7 @@ export class AccountViewPageComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.paramsSub = this.route.params.subscribe(params => {
-      if (params['account'] === '') {
+      if (params['account']==null) {
         this.metaService.updateTag({ name: 'description', content: 'AHEM - accounts'});
         this.titleService.setTitle('AHEM - Accounts');
 
