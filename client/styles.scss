@@ -152,8 +152,8 @@ mat-sidenav-content > div {
 .ahem-centered {
   margin: auto;
   align-self: center;
-  padding-left: 20px;
-  padding-right: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
 }
 
 .ahem-doc-api {
@@ -161,7 +161,7 @@ mat-sidenav-content > div {
   font-size: 12px;
 }
 
-@media screen and (min-width: 720px) {
+@media screen and (min-width: 1000px) {
   .ahem-doc-api {
     min-width: 600px;
     max-width: 1200px;

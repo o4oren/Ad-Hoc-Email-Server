@@ -1,7 +1,8 @@
 
 .mat-table {
-  min-width: 600px;
+    max-width: 80vw;
 }
+
 
 .mat-column-httpMethod {
   max-width: 60px;
@@ -15,5 +16,4 @@
   .mat-column-uriPath {
     min-width: 400px;
   }
-
 }
