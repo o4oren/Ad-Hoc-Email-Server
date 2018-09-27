@@ -55,7 +55,7 @@ app-main-page {
   flex-grow: 1;
   -webkit-flex-grow: 1;
   overflow: auto;
-  width: 100%;
+  width: 100vw;
   height: 100vh;
 }
 
@@ -161,8 +161,18 @@ mat-sidenav-content > div {
 .ahem-doc-api {
   padding: 20px;
   min-width: 600px;
+  max-width: 1200px;
   font-size: 12px;
 }
+
+@media screen and (max-width: 720px) {
+  .ahem-doc-api {
+    min-width: 320px;
+    max-width: 1200px;
+    font-size: 12px;
+  }
+}
+
 
 .ahem-definition-of {
   display:inline !important;
