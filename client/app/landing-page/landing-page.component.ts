@@ -11,7 +11,7 @@ import * as propertisJson from '../assets/properties.json';
 })
 export class LandingPageComponent implements OnInit {
 
-  public const properties = propertisJson;
+  public properties = propertisJson;
 
   constructor(public apiService: ApiService, public deviceService: DeviceService, titleService: Title, metaService: Meta) {
     titleService.setTitle('AHEM - an ;Ad-Hoc Disposable Temporary Email Address');
