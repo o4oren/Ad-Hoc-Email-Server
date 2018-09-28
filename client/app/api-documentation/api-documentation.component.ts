@@ -38,6 +38,8 @@ const ELEMENT_DATA: Element[] = [
   {httpMethod: 'GET', uriPath: '/api/account/{account}/{emailId}', parameters: '', description: 'Returns the contents of a specific email'},
   {httpMethod: 'DELETE', uriPath: '/api/account/{account}/{emailId}', parameters: '', description: 'Delete an emails'},
   {httpMethod: 'PATCH', uriPath: '/api/account/{acount}/{emailId}', parameters: '{"isRead" : [boolean]}',
-    description: 'Updates the emailInfo object (representation of the email meta data in the user\'s account. Currently, only the isRead field is supported.'},
-  {httpMethod: 'GET', uriPath: '/api/account/{account}/{emailId}/attachments/{filename}', parameters: '', description: 'Downloads a specific attachment on an email'}
+    description: 'Updates the emailInfo object (representation of the email meta data in the user\'s account.'
+    + ' Currently, only the isRead field is supported.'},
+  {httpMethod: 'GET', uriPath: '/api/account/{account}/{emailId}/attachments/{filename}',
+    parameters: '', description: 'Downloads a specific attachment on an email'}
 ];
