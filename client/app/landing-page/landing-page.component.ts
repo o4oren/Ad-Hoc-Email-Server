@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ApiService} from '../api.service';
 import {DeviceService} from '../device.service';
 import {Meta, Title} from '@angular/platform-browser';
-import propertiesJson from '../assets/properties.json';
+import * as propertisJson from '../assets/properties.json';
 
 @Component({
   selector: 'ahem-landing-page',
@@ -11,7 +11,7 @@ import propertiesJson from '../assets/properties.json';
 })
 export class LandingPageComponent implements OnInit {
 
-  public properties = propertisJson;
+  public properties = propertisJson.default;
 
   constructor(public apiService: ApiService, public deviceService: DeviceService, titleService: Title, metaService: Meta) {
     titleService.setTitle('AHEM - an ;Ad-Hoc Disposable Temporary Email Address');
