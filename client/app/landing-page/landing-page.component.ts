@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ApiService} from '../api.service';
 import {DeviceService} from '../device.service';
 import {Meta, Title} from '@angular/platform-browser';
+import * as propertisJson from '../assets/properties.json';
 
 @Component({
   selector: 'ahem-landing-page',
@@ -9,7 +10,9 @@ import {Meta, Title} from '@angular/platform-browser';
   styleUrls: ['./landing-page.component.css']
 })
 export class LandingPageComponent implements OnInit {
-  public const properties = require(../assets/properties.json);
+
+  public const properties = propertisJson;
+
   constructor(public apiService: ApiService, public deviceService: DeviceService, titleService: Title, metaService: Meta) {
     titleService.setTitle('AHEM - an ;Ad-Hoc Disposable Temporary Email Address');
     metaService.updateTag({ name: 'description', content: 'AHEM - an Ad-Hoc Disposable Temporary Email Address. ' +
