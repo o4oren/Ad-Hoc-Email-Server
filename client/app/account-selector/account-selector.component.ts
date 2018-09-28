@@ -29,7 +29,7 @@ export class AccountSelectorComponent implements OnInit {
       this.filterAccounts(val).subscribe(result => this.accounts = result);
     });
 
-    this.apiService.getProperties().subscribe(properties => this.properties = properties);
+    this.properties = this.apiService.getProperties();
   }
 
 

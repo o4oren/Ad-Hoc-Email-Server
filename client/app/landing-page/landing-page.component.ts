@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {ApiService} from '../api.service';
 import {DeviceService} from '../device.service';
 import {Meta, Title} from '@angular/platform-browser';
-import * as propertisJson from '../../assets/properties.json';
 
 @Component({
   selector: 'ahem-landing-page',
@@ -10,8 +9,7 @@ import * as propertisJson from '../../assets/properties.json';
   styleUrls: ['./landing-page.component.css']
 })
 export class LandingPageComponent implements OnInit {
-
-  public properties = propertisJson.default;
+  properties: any;
 
   constructor(public apiService: ApiService, public deviceService: DeviceService, titleService: Title, metaService: Meta) {
     titleService.setTitle('AHEM - an ;Ad-Hoc Disposable Temporary Email Address');
@@ -19,6 +17,7 @@ export class LandingPageComponent implements OnInit {
       'Ad-hoc - created on demand. Disposable - ' +
       'you can throw it away. ' +
       'Temporary - your emails will be delete automatically. Don\'t expose your real E-mail. Use AHEM to fight SPAM.' });
+      this.properties = this.apiService.getProperties();
   }
 
   ngOnInit() {

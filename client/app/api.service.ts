@@ -4,19 +4,20 @@ import {Observable} from 'rxjs/internal/Observable';
 import {HttpClient} from '@angular/common/http';
 import {EmailInfo} from './model/email-info-model';
 import {EmailDetails} from './model/email-details-model';
+import * as propertiesJson from '../../assets/properties.json';
 
 @Injectable()
 export class ApiService {
 
   baseUri: string;
-  private _properties: Observable<any> = null;
+  private _properties = propertiesJson.default;
 
   constructor(private http: HttpClient, @Optional() @Inject(APP_BASE_HREF) origin: string) {
     this.baseUri = origin || '';
   }
 
   getProperties(): any {
-    return this._properties = this.http.get(this.baseUri + '/api/properties');
+    return this._properties;
   }
 
 
