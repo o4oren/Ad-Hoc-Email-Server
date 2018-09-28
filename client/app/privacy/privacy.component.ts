@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { Title } from '@angular/platform-browser';
+import {Meta, Title} from '@angular/platform-browser';
 
 @Component({
   selector: 'ahem-privacy',
@@ -9,9 +9,11 @@ import { Title } from '@angular/platform-browser';
 })
 export class PrivacyComponent implements OnInit {
 
-  constructor(titleService: Title) {
+  constructor(titleService: Title, metaService: Meta) {
     titleService.setTitle('AHEM - Privacy Policy');
-   }
+    metaService.updateTag({ name: 'description', content: 'AHEM - Temporary Disposable Email Service - Privacy Policy. '});
+
+  }
 
   ngOnInit() {
   }

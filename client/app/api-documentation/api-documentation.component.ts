@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material';
-import { Title } from '@angular/platform-browser';
+import {Meta, Title} from '@angular/platform-browser';
 
 @Component({
   selector: 'ahem-api-documentation',
@@ -13,8 +13,9 @@ export class ApiDocumentationComponent implements OnInit {
   dataSource = new MatTableDataSource<Element>(ELEMENT_DATA);
 
 
-  constructor(titleService: Title) {
+  constructor(titleService: Title, metaService: Meta) {
     titleService.setTitle('AHEM - API Documentation');
+    metaService.updateTag({ name: 'description', content: 'AHEM - an Ad-Hoc Disposable Temporary Email Service - API Documentation. '});
    }
 
   ngOnInit() {

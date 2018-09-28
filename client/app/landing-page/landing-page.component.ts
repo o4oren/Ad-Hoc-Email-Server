@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ApiService} from '../api.service';
 import {DeviceService} from '../device.service';
-import { Title } from '@angular/platform-browser';
+import {Meta, Title} from '@angular/platform-browser';
 
 @Component({
   selector: 'ahem-landing-page',
@@ -11,9 +11,13 @@ import { Title } from '@angular/platform-browser';
 export class LandingPageComponent implements OnInit {
 
   properties: any = {};
-  constructor(public apiService: ApiService, public deviceService: DeviceService, titleService: Title) {
-    titleService.setTitle('AHEM - Disposable Temporary E-Mail Address');
-   }
+  constructor(public apiService: ApiService, public deviceService: DeviceService, titleService: Title, metaService: Meta) {
+    titleService.setTitle('AHEM - an Ad-Hoc Disposable Temporary Email Address');
+    metaService.updateTag({ name: 'description', content: 'AHEM - an Ad-Hoc Disposable Temporary Email Address. ' +
+      'Ad-hoc - created on demand. Disposable - ' +
+      'you can throw it away. ' +
+      'Temporary - your emails will be delete automatically. Don\'t expose your real E-mail. Use AHEM to fight SPAM.' });
+  }
 
   ngOnInit() {
     this.apiService.getProperties().subscribe(properties => this.properties = properties);

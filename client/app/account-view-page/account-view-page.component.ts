@@ -4,7 +4,7 @@ import {ApiService} from '../api.service';
 import {EmailInfo} from '../model/email-info-model';
 import {MatSidenav} from '@angular/material/sidenav';
 import {DeviceService} from '../device.service';
-import { Title } from '@angular/platform-browser';
+import {Meta, Title} from '@angular/platform-browser';
 import {Subscription} from 'rxjs/internal/Subscription';
 
 
@@ -36,14 +36,22 @@ export class AccountViewPageComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     private router: Router,
               public deviceService: DeviceService,
-              private titleService: Title
+              private titleService: Title,
+              private metaService: Meta
   ) {}
 
   ngOnInit() {
     this.paramsSub = this.route.params.subscribe(params => {
+      if (params['account']==null) {
+        this.metaService.updateTag({ name: 'description', content: 'AHEM - accounts'});
+        this.titleService.setTitle('AHEM - Accounts');
+
+      } else {
+      }
       this.emailId = params['emailId'];
       if (!this.account || this.account.toLowerCase() !== params['account'].toLowerCase()) {
         this.account = params['account'].toLowerCase();
+        this.metaService.updateTag({ name: 'description', content: 'AHEM - ' + this.account});
         this.onAccountDetermined.emit(this.account);
         this.titleService.setTitle('AHEM - ' + this.account);
         this.getAccountEmails();

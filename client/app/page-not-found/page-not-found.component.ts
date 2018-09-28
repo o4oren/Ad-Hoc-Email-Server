@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import {DeviceService} from "../device.service";
-import { Title } from '@angular/platform-browser';
+import {Meta, Title} from '@angular/platform-browser';
 
 @Component({
   selector: 'ahem-page-not-found',
@@ -10,9 +10,11 @@ import { Title } from '@angular/platform-browser';
 })
 export class PageNotFoundComponent implements OnInit {
 
-  constructor(public deviceService: DeviceService, titleService: Title) {
+  constructor(public deviceService: DeviceService, titleService: Title, metaService: Meta) {
     titleService.setTitle('AHEM - 404 Not Found!');
-   }
+    metaService.updateTag({ name: 'description', content: 'AHEM temporary disposable email server - 404 ' });
+
+  }
 
   ngOnInit() {
   }
