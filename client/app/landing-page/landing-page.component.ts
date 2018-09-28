@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ApiService} from '../api.service';
 import {DeviceService} from '../device.service';
 import {Meta, Title} from '@angular/platform-browser';
-import * as propertisJson from '../assets/properties.json';
+import propertiesJson from '../assets/properties.json';
 
 @Component({
   selector: 'ahem-landing-page',
