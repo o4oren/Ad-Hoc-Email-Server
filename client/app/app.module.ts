@@ -10,10 +10,8 @@ import {
 } from '@angular/material';
 import { AppComponent } from './app.component';
 import {ApiService} from './api.service';
-import {HttpModule} from '@angular/http';
 import {ReactiveFormsModule} from '@angular/forms';
 import { AccountSelectorComponent } from './account-selector/account-selector.component';
-import {RouterModule, Routes} from '@angular/router';
 import { MainPageComponent } from './main-page/main-page.component';
 import { AccountViewPageComponent } from './account-view-page/account-view-page.component';
 import { EmailViewComponent } from './email-view/email-view.component';
@@ -32,17 +30,7 @@ import { ApiDocumentationComponent } from './api-documentation/api-documentation
 import {DeviceService} from './device.service';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { TrimDomainPipe } from './trim-domain.pipe';
-
-const appRoutes: Routes = [
-  { path: '', component:  LandingPageComponent},
-  { path: 'privacy', component: PrivacyComponent},
-  { path: 'help/api', component: ApiDocumentationComponent},
-  { path: 'doc/api', component: ApiDocumentationComponent},
-  { path: 'account', component: AccountViewPageComponent, pathMatch: 'full'},
-  { path: 'account/:account', component: AccountViewPageComponent},
-  { path: 'account/:account/:emailId', component: AccountViewPageComponent},
-  { path: '**', component: PageNotFoundComponent }
-];
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -63,7 +51,6 @@ const appRoutes: Routes = [
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ahem' }),
-    HttpModule,
     HttpClientModule,
     MomentModule,
     BrowserAnimationsModule,
@@ -79,8 +66,8 @@ const appRoutes: Routes = [
     MatIconModule,
     MatButtonModule,
     MatExpansionModule,
-    RouterModule.forRoot(appRoutes),
-    Angulartics2Module.forRoot([ Angulartics2GoogleAnalytics ])
+    Angulartics2Module.forRoot([ Angulartics2GoogleAnalytics ]),
+    AppRoutingModule
   ],
   providers: [ApiService, MatIconRegistry, DeviceService],
   bootstrap: [AppComponent]
