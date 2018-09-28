@@ -9,7 +9,7 @@ import {Meta, Title} from '@angular/platform-browser';
   styleUrls: ['./landing-page.component.css']
 })
 export class LandingPageComponent implements OnInit {
-  public properties = require(../assets/properties.json);
+  public const properties = require(../assets/properties.json);
   constructor(public apiService: ApiService, public deviceService: DeviceService, titleService: Title, metaService: Meta) {
     titleService.setTitle('AHEM - an ;Ad-Hoc Disposable Temporary Email Address');
     metaService.updateTag({ name: 'description', content: 'AHEM - an Ad-Hoc Disposable Temporary Email Address. ' +
