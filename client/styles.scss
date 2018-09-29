@@ -42,7 +42,6 @@ ahem-landing-page, ahem-email-view, ahem-privacy, ahem-api-documentation, ahem-p
   display: -webkit-flex;
   flex-direction: column;
   -webkit-flex-direction: column;
-  height: 100%;
 }
 
 
@@ -135,9 +134,12 @@ mat-sidenav-content > div {
   width: 100%;
 }
 
-.footer-fixed {
-  bottom: 0;
+@media screen and (max-width: 720px) {
+  .footer-mobile {
+    bottom: 0;
+  }
 }
+
 
 .ahem-account-selector {
   justify-content: center;
@@ -152,14 +154,14 @@ mat-sidenav-content > div {
 .ahem-centered {
   margin: auto;
   align-self: center;
-  margin-left: 20px;
-  margin-right: 20px;
+  padding: 20px;
 }
 
 .ahem-doc-api {
   min-width: 320px;
   font-size: 12px;
 }
+
 
 @media screen and (min-width: 1000px) {
   .ahem-doc-api {
