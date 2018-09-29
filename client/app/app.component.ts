@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
-import { HeaderComponent } from './header/header.component';
 
 @Component({
   selector: 'ahem-app-root',
