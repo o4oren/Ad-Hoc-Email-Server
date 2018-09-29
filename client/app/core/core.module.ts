@@ -73,7 +73,8 @@ import {ApiService} from './api.service';
   ],
   exports: [
     FooterComponent,
-    HeaderComponent
+    HeaderComponent,
+    RouterModule
   ],
   providers: [ApiService, MatIconRegistry, DeviceService],
 })

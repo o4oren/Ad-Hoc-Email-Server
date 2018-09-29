@@ -37,8 +37,7 @@ import {RouterModule} from '@angular/router';
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ahem' }),
-    CoreModule,
-    RouterModule
+    CoreModule
   ],
   bootstrap: [AppComponent]
 })
