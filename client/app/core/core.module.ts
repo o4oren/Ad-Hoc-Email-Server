@@ -32,6 +32,13 @@ import {AccountSelectorComponent} from '../account-selector/account-selector.com
 import {AttachmentsComponent} from '../attachments/attachments.component';
 import {DeviceService} from './device.service';
 import {ApiService} from './api.service';
+import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faMeh, faEnvelope, faEnvelopeOpen } from '@fortawesome/free-regular-svg-icons';
+import { faBars } from '@fortawesome/free-solid-svg-icons';
+
+
+library.add(faMeh, faEnvelope, faEnvelopeOpen, faBars);
 
 @NgModule({
   declarations: [
@@ -51,6 +58,7 @@ import {ApiService} from './api.service';
   imports: [
     CommonModule,
     RouterModule,
+    FontAwesomeModule,
     MatToolbarModule,
     MatIconModule,
     HttpClientModule,

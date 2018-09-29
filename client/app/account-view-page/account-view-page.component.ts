@@ -42,7 +42,7 @@ export class AccountViewPageComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.paramsSub = this.route.params.subscribe(params => {
-      if (params['account']==null) {
+      if (params['account'] == null) {
         this.metaService.updateTag({ name: 'description', content: 'AHEM - accounts'});
         this.titleService.setTitle('AHEM - Accounts');
 
@@ -98,7 +98,7 @@ export class AccountViewPageComponent implements OnInit, OnDestroy {
       }
       this.selectedEmail = emailInfo;
       this.apiService.markAsReadOrUnread(this.account, this.selectedEmail.emailId, true).subscribe();
-      this.readUnreadIcon = 'fa-envelope';
+      this.readUnreadIcon = 'envelope';
       this.readUnreadText = 'unread';
     }
   }
@@ -118,10 +118,10 @@ export class AccountViewPageComponent implements OnInit, OnDestroy {
       this.selectedEmail.isRead = !this.selectedEmail.isRead;
       this.apiService.markAsReadOrUnread(this.account, this.selectedEmail.emailId, this.selectedEmail.isRead).subscribe();
     if (this.selectedEmail.isRead) {
-      this.readUnreadIcon = 'fa-envelope';
+      this.readUnreadIcon = 'envelope';
       this.readUnreadText = 'unread';
     } else {
-      this.readUnreadIcon = 'fa-envelope-open';
+      this.readUnreadIcon = 'envelope-open';
       this.readUnreadText = 'read';
     }
       return;
