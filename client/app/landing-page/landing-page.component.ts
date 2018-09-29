@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {ApiService} from '../api.service';
-import {DeviceService} from '../device.service';
+import {ApiService} from '../core/api.service';
+import {DeviceService} from '../core/device.service';
 import {Meta, Title} from '@angular/platform-browser';
 
 @Component({

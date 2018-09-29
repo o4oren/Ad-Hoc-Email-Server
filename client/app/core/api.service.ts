@@ -2,9 +2,9 @@ import {Injectable, Optional, Inject, OnInit} from '@angular/core';
 import { APP_BASE_HREF } from '@angular/common';
 import {Observable} from 'rxjs/internal/Observable';
 import {HttpClient} from '@angular/common/http';
-import {EmailInfo} from './model/email-info-model';
-import {EmailDetails} from './model/email-details-model';
-import * as propertiesJson from '../assets/properties.json';
+import {EmailInfo} from '../model/email-info-model';
+import {EmailDetails} from '../model/email-details-model';
+import * as propertiesJson from '../../assets/properties.json';
 
 @Injectable()
 export class ApiService {

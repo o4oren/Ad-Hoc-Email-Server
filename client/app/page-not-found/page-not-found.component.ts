@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import {DeviceService} from "../device.service";
+import {DeviceService} from "../core/device.service";
 import {Meta, Title} from '@angular/platform-browser';
 
 @Component({

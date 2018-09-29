@@ -1,8 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {FormControl} from '@angular/forms';
-import {ApiService} from '../api.service';
+import {ApiService} from '../core/api.service';
 import {Router} from '@angular/router';
-import { DeviceService } from '../device.service';
+import { DeviceService } from '../core/device.service';
 import {Observable} from 'rxjs/internal/Observable';
 import {debounceTime} from 'rxjs/operators';
 

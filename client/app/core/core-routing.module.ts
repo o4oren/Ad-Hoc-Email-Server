@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
-import {AccountViewPageComponent} from './account-view-page/account-view-page.component';
-import {LandingPageComponent} from './landing-page/landing-page.component';
-import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
-import {ApiDocumentationComponent} from './api-documentation/api-documentation.component';
+import {AccountViewPageComponent} from '../account-view-page/account-view-page.component';
+import {LandingPageComponent} from '../landing-page/landing-page.component';
+import {PageNotFoundComponent} from '../page-not-found/page-not-found.component';
+import {ApiDocumentationComponent} from '../api-documentation/api-documentation.component';
 import {RouterModule, Routes} from '@angular/router';
 
 const appRoutes: Routes = [
@@ -28,5 +28,5 @@ const appRoutes: Routes = [
 
 
 
-export class AppRoutingModule {
+export class CoreRoutingModule {
 }

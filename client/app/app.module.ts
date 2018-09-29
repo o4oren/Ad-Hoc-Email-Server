@@ -9,14 +9,14 @@ import {
 
 } from '@angular/material';
 import { AppComponent } from './app.component';
-import {ApiService} from './api.service';
+import {ApiService} from './core/api.service';
 import {ReactiveFormsModule} from '@angular/forms';
 import { AccountSelectorComponent } from './account-selector/account-selector.component';
 import { AccountViewPageComponent } from './account-view-page/account-view-page.component';
 import { EmailViewComponent } from './email-view/email-view.component';
 import { EmailInfoComponent } from './email-info/email-info.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
-import { HtmlSanitizerPipe } from './pipe/html-sanitizer.pipe';
+import { HtmlSanitizerPipe } from './core/pipe/html-sanitizer.pipe';
 import { AttachmentsComponent } from './attachments/attachments.component';
 import {MomentModule} from 'angular2-moment';
 import { Angulartics2, Angulartics2Module } from 'angulartics2';
@@ -24,48 +24,22 @@ import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 import { isPlatformBrowser, APP_BASE_HREF } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { ApiDocumentationComponent } from './api-documentation/api-documentation.component';
-import {DeviceService} from './device.service';
+import {DeviceService} from './core/device.service';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { TrimDomainPipe } from './trim-domain.pipe';
-import { AppRoutingModule } from './app-routing.module';
+import { TrimDomainPipe } from './core/pipe/trim-domain.pipe';
+import { CoreRoutingModule } from './core/core-routing.module';
 import {CoreModule} from './core/core.module';
+import {RouterModule} from '@angular/router';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AccountSelectorComponent,
-    AccountViewPageComponent,
-    EmailViewComponent,
-    EmailInfoComponent,
-    LandingPageComponent,
-    HtmlSanitizerPipe,
-    AttachmentsComponent,
-    ApiDocumentationComponent,
-    PageNotFoundComponent,
-    TrimDomainPipe
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ahem' }),
-    HttpClientModule,
-    MomentModule,
-    BrowserAnimationsModule,
-    MatButtonModule,
-    MatToolbarModule,
-    MatInputModule,
-    MatTableModule,
-    MatAutocompleteModule,
-    MatCardModule,
-    MatSidenavModule,
-    ReactiveFormsModule,
-    MatListModule,
-    MatIconModule,
-    MatButtonModule,
-    MatExpansionModule,
-    Angulartics2Module.forRoot([ Angulartics2GoogleAnalytics ]),
     CoreModule,
-    AppRoutingModule
+    RouterModule
   ],
-  providers: [ApiService, MatIconRegistry, DeviceService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
