@@ -4,7 +4,7 @@ import {ActivatedRoute} from '@angular/router';
 import {EmailInfo} from '../model/email-info-model';
 import {EmailDetails} from '../model/email-details-model';
 import {DomSanitizer, SafeHtml, Title} from '@angular/platform-browser';
-import {DeviceService} from "../core/device.service";
+import {DeviceService} from '../core/device.service';
 import {Subscription} from 'rxjs/internal/Subscription';
 
 @Component({

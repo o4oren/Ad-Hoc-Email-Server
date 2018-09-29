@@ -45,7 +45,7 @@ ahem-landing-page, ahem-email-view, ahem-privacy, ahem-api-documentation, ahem-p
 }
 
 
-ahem-app {
+.ahem-app {
   position: absolute;
   display: flex;
   display: -webkit-flex;
@@ -55,7 +55,7 @@ ahem-app {
   -webkit-flex-grow: 1;
   overflow: auto;
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
 }
 
 //@media screen and (min-width: 720px) {
@@ -76,17 +76,20 @@ height: 100%;
 }
 
 app-account-view-page {
+  display: flex;
+  flex-direction: column;
   flex:1;
   -webkit-flex: 1;
   overflow: auto;
   height: 100%;
 }
 
-.ahem-sidnav-content {
-
+.ahem-sideNav-container {
+  flex-grow: 1;
 }
 
 mat-sidenav-content > div {
+  flex-grow: 1;
   display: flex;
   display: -webkit-flex;
   flex-direction: column;
@@ -95,6 +98,7 @@ mat-sidenav-content > div {
 }
 
 .ahem-flex-container {
+  flex-grow: 1;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;

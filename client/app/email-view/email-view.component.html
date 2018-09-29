@@ -24,7 +24,10 @@
   </div>
   <div *ngIf="!emailDetails">
     <mat-card>
-        <mat-card-title> <mat-icon fontSet="fa" fontIcon="fa-meh-o"></mat-icon></mat-card-title>
+        <mat-card-title> <div style="text-align:center">
+          <fa-icon [icon]="['far','meh']"></fa-icon>
+        </div>
+        </mat-card-title>
     </mat-card>
   </div>
 </div>
