@@ -1,10 +1,10 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {FormControl} from '@angular/forms';
-import {ApiService} from '../core/api.service';
-import {Router} from '@angular/router';
-import { DeviceService } from '../core/device.service';
-import {Observable} from 'rxjs/internal/Observable';
 import {debounceTime} from 'rxjs/operators';
+import {DeviceService} from '../../core/device.service';
+import {ApiService} from '../../core/api.service';
+import {Observable} from 'rxjs/internal/Observable';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-account-selector',
@@ -12,6 +12,7 @@ import {debounceTime} from 'rxjs/operators';
   styleUrls: ['./account-selector.component.css']
 })
 export class AccountSelectorComponent implements OnInit {
+
   autoCompleteControl: FormControl;
   accounts: string[];
   @Input() selectedAccount = '';
@@ -25,7 +26,7 @@ export class AccountSelectorComponent implements OnInit {
 
   ngOnInit(): void {
     this.autoCompleteControl.valueChanges.
-      pipe(debounceTime(300)).subscribe(val => {
+    pipe(debounceTime(300)).subscribe(val => {
       this.filterAccounts(val).subscribe(result => this.accounts = result);
     });
 
@@ -36,7 +37,7 @@ export class AccountSelectorComponent implements OnInit {
   filterAccounts(val: string): any {
     if (this.properties.allowAutocomplete && typeof val !== 'undefined' && val) {
       return this.apiService.listAccountsAutoComplete(val);
-  } else {
+    } else {
       return Observable.create(observer => {
         observer.next([]);
         observer.complete();

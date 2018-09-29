@@ -21,13 +21,9 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import {AccountViewPageComponent} from '../account-view-page/account-view-page.component';
-import {LandingPageComponent} from '../landing-page/landing-page.component';
 import {EmailViewComponent} from '../email-view/email-view.component';
 import {EmailInfoComponent} from '../email-info/email-info.component';
-import {HtmlSanitizerPipe} from './pipe/html-sanitizer.pipe';
 import {ApiDocumentationComponent} from '../api-documentation/api-documentation.component';
-import {TrimDomainPipe} from './pipe/trim-domain.pipe';
-import {AccountSelectorComponent} from '../account-selector/account-selector.component';
 import {AttachmentsComponent} from '../attachments/attachments.component';
 import {DeviceService} from './device.service';
 import {ApiService} from './api.service';
@@ -35,6 +31,7 @@ import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { faMeh, faEnvelope, faEnvelopeOpen } from '@fortawesome/free-regular-svg-icons';
+import {SharedModule} from '../shared/shared.module';
 
 
 library.add(faMeh, faEnvelope, faEnvelopeOpen, faBars);
@@ -43,15 +40,11 @@ library.add(faMeh, faEnvelope, faEnvelopeOpen, faBars);
   declarations: [
     FooterComponent,
     HeaderComponent,
-    AccountSelectorComponent,
     AccountViewPageComponent,
     EmailViewComponent,
     EmailInfoComponent,
-    LandingPageComponent,
-    HtmlSanitizerPipe,
     AttachmentsComponent,
     ApiDocumentationComponent,
-    TrimDomainPipe
   ],
   imports: [
     CommonModule,
@@ -75,13 +68,18 @@ library.add(faMeh, faEnvelope, faEnvelopeOpen, faBars);
     MatButtonModule,
     MatExpansionModule,
     Angulartics2Module.forRoot([ Angulartics2GoogleAnalytics ]),
+    SharedModule,
     CoreRoutingModule
   ],
   exports: [
     FooterComponent,
     HeaderComponent,
-    RouterModule
+    RouterModule,
+    SharedModule
   ],
-  providers: [ApiService, MatIconRegistry, DeviceService],
+  providers: [
+    ApiService,
+    MatIconRegistry,
+    DeviceService],
 })
 export class CoreModule { }

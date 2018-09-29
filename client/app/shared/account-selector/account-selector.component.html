@@ -1,14 +1,14 @@
 <div *ngIf="isInline" class="ahem-inline-input-div">
-  <input  type="email" matInput
-         [matAutocomplete]="auto"
-         [formControl]="autoCompleteControl"
-         [(ngModel)]="selectedAccount"
-         placeholder="Account"
-         (keyup.enter)="clickSubmit()"
-         class="ahem-inline-input mat-elevation-z8">
-    <button mat-button matSuffix mat-icon-button aria-label="Go" routerLink="/account/{{selectedAccount | trimDomain}}">
-      <mat-icon>navigate next</mat-icon>
-    </button>
+  <input  type="text" matInput
+          [matAutocomplete]="auto"
+          [formControl]="autoCompleteControl"
+          [(ngModel)]="selectedAccount"
+          placeholder="Account"
+          (keyup.enter)="clickSubmit()"
+          class="ahem-inline-input mat-elevation-z8">
+  <button mat-button matSuffix mat-icon-button aria-label="Go" routerLink="/account/{{selectedAccount | trimDomain}}">
+    <mat-icon>navigate next</mat-icon>
+  </button>
   <!--<span *ngIf="isInline && !deviceService.isSmallScreen()" matSuffix style="color: lightgrey">@{{properties.allowedDomains[0]}}</span>-->
 </div>
 
