@@ -14,7 +14,7 @@ const appRoutes: Routes = [
   { path: 'account/:account/:emailId', component: AccountViewPageComponent},
   {
     path: 'privacy',
-    loadChildren: './privacy/privacy.module#PrivacyModule',
+    loadChildren: '../privacy/privacy.module#PrivacyModule',
   },
   { path: '**', component: PageNotFoundComponent }
 ];
