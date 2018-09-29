@@ -1,16 +1,16 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {ActivatedRoute, Router} from '@angular/router';
-import {DomSanitizer} from '@angular/platform-browser';
-import {MatIconRegistry} from '@angular/material';
 import {DeviceService} from '../device.service';
+import {MatIconRegistry} from '@angular/material';
 import {Subscription} from 'rxjs/internal/Subscription';
+import {DomSanitizer} from '@angular/platform-browser';
+import {Router} from '@angular/router';
 
 @Component({
-  selector: 'app-main-page',
-  templateUrl: './main-page.component.html',
-  styleUrls: ['./main-page.component.css']
+  selector: 'app-header',
+  templateUrl: './header.component.html',
+  styleUrls: ['./header.component.css']
 })
-export class MainPageComponent implements OnInit, OnDestroy {
+export class HeaderComponent implements OnInit, OnDestroy {
 
   account: string;
   hideToolbarComponents = true;
@@ -20,15 +20,17 @@ export class MainPageComponent implements OnInit, OnDestroy {
     iconRegistry.addSvgIcon(
       'ahem-logo',
       sanitizer.bypassSecurityTrustResourceUrl('assets/images/ahem_logo_icon.svg'));
-      this.routerSub = this.router.events.subscribe(val => {
-        this.router.url !== '/' ? this.hideToolbarComponents = false : this.hideToolbarComponents = true;
-        this.account = this.router.url.split('account/').pop().split('/').shift();
-      });
+    this.routerSub = this.router.events.subscribe(val => {
+      this.router.url !== '/' ? this.hideToolbarComponents = false : this.hideToolbarComponents = true;
+      this.account = this.router.url.split('account/').pop().split('/').shift();
+    });
   }
 
   ngOnInit(): void {
   }
+
   ngOnDestroy(): void {
     this.routerSub.unsubscribe();
   }
+
 }

@@ -1,0 +1,22 @@
+/*.ahem-centered {*/
+  /*margin: auto;*/
+  /*align-self: center;*/
+  /*margin-left: 20px;*/
+  /*margin-right: 20px;*/
+/*}*/
+
+/*.ahem-doc-api {*/
+  /*min-width: 320px;*/
+  /*font-size: 12px;*/
+/*}*/
+
+/*@media screen and (min-width: 1000px) {*/
+  /*.ahem-doc-api {*/
+    /*min-width: 600px;*/
+    /*max-width: 1200px;*/
+  /*}*/
+  /*.ahem-centered{*/
+    /*padding-left: 200px;*/
+    /*padding-right: 200px;*/
+  /*}*/
+/*}*/

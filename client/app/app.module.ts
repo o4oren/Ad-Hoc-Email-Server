@@ -12,7 +12,6 @@ import { AppComponent } from './app.component';
 import {ApiService} from './api.service';
 import {ReactiveFormsModule} from '@angular/forms';
 import { AccountSelectorComponent } from './account-selector/account-selector.component';
-import { MainPageComponent } from './main-page/main-page.component';
 import { AccountViewPageComponent } from './account-view-page/account-view-page.component';
 import { EmailViewComponent } from './email-view/email-view.component';
 import { EmailInfoComponent } from './email-info/email-info.component';
@@ -30,12 +29,12 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { TrimDomainPipe } from './trim-domain.pipe';
 import { AppRoutingModule } from './app-routing.module';
 import {FooterModule} from './footer/footer.module';
+import {HeaderModule} from './header/header.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     AccountSelectorComponent,
-    MainPageComponent,
     AccountViewPageComponent,
     EmailViewComponent,
     EmailInfoComponent,
@@ -65,6 +64,7 @@ import {FooterModule} from './footer/footer.module';
     MatExpansionModule,
     Angulartics2Module.forRoot([ Angulartics2GoogleAnalytics ]),
     FooterModule,
+    HeaderModule,
     AppRoutingModule
   ],
   providers: [ApiService, MatIconRegistry, DeviceService],

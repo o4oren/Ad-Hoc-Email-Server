@@ -1,4 +1,3 @@
-<!--The content below is only a placeholder and can be replaced.-->
 <mat-toolbar class="ahem-toolbar">
   <span routerLink="" class="ahem-hand-pointer ahem-logo-span">
     <!--<mat-icon svgIcon="ahem-logo" class="ahem-logo"></mat-icon>-->
@@ -7,13 +6,10 @@
          sizes="(min-width: 1200px) 128px, 64px"
          class="logo">
     <img *ngIf="account" src="/assets/images/ahem-logo.png" alt="AHEM - an adc-hoc email server"
-       class="logo-small">
+         class="logo-small">
   </span>
   <span *ngIf="!deviceService.isSmallScreen()">AHEM - Ad Hoc Email Address</span>
   <span *ngIf="deviceService.isSmallScreen()" class="ahem-toolbar-small">AHEM - Ad Hoc Email</span>
   <span class="ahem-spacer"></span>
   <!--<app-account-selector *ngIf="!hideToolbarComponents" class="ahem-account-selector ahem-account-selector-internal" [color]="'accent'" [selectedAccount]="account"></app-account-selector>-->
 </mat-toolbar>
-<router-outlet></router-outlet>
-
-
