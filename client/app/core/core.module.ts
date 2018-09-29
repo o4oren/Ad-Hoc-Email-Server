@@ -24,7 +24,6 @@ import {AccountViewPageComponent} from '../account-view-page/account-view-page.c
 import {LandingPageComponent} from '../landing-page/landing-page.component';
 import {EmailViewComponent} from '../email-view/email-view.component';
 import {EmailInfoComponent} from '../email-info/email-info.component';
-import {PageNotFoundComponent} from '../page-not-found/page-not-found.component';
 import {HtmlSanitizerPipe} from './pipe/html-sanitizer.pipe';
 import {ApiDocumentationComponent} from '../api-documentation/api-documentation.component';
 import {TrimDomainPipe} from './pipe/trim-domain.pipe';
@@ -52,7 +51,6 @@ library.add(faMeh, faEnvelope, faEnvelopeOpen, faBars);
     HtmlSanitizerPipe,
     AttachmentsComponent,
     ApiDocumentationComponent,
-    PageNotFoundComponent,
     TrimDomainPipe
   ],
   imports: [

@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import {AccountViewPageComponent} from '../account-view-page/account-view-page.component';
 import {LandingPageComponent} from '../landing-page/landing-page.component';
-import {PageNotFoundComponent} from '../page-not-found/page-not-found.component';
 import {ApiDocumentationComponent} from '../api-documentation/api-documentation.component';
 import {RouterModule, Routes} from '@angular/router';
 
@@ -16,8 +15,10 @@ const appRoutes: Routes = [
     path: 'privacy',
     loadChildren: '../privacy/privacy.module#PrivacyModule',
   },
-  { path: '**', component: PageNotFoundComponent }
-];
+  {
+    path: '**',
+    loadChildren: '../page-not-found/page-not-found.module#PageNotFoundModule',
+  }];
 
 @NgModule({
   imports: [ RouterModule.forRoot(appRoutes) ],
