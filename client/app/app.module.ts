@@ -22,8 +22,6 @@ import { AttachmentsComponent } from './attachments/attachments.component';
 import {MomentModule} from 'angular2-moment';
 import { Angulartics2, Angulartics2Module } from 'angulartics2';
 import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
-import { FooterComponent } from './footer/footer.component';
-import { PrivacyComponent } from './privacy/privacy.component';
 import { isPlatformBrowser, APP_BASE_HREF } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { ApiDocumentationComponent } from './api-documentation/api-documentation.component';
@@ -31,6 +29,7 @@ import {DeviceService} from './device.service';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { TrimDomainPipe } from './trim-domain.pipe';
 import { AppRoutingModule } from './app-routing.module';
+import {FooterModule} from './footer/footer.module';
 
 @NgModule({
   declarations: [
@@ -43,8 +42,6 @@ import { AppRoutingModule } from './app-routing.module';
     LandingPageComponent,
     HtmlSanitizerPipe,
     AttachmentsComponent,
-    FooterComponent,
-    PrivacyComponent,
     ApiDocumentationComponent,
     PageNotFoundComponent,
     TrimDomainPipe
@@ -67,6 +64,7 @@ import { AppRoutingModule } from './app-routing.module';
     MatButtonModule,
     MatExpansionModule,
     Angulartics2Module.forRoot([ Angulartics2GoogleAnalytics ]),
+    FooterModule,
     AppRoutingModule
   ],
   providers: [ApiService, MatIconRegistry, DeviceService],
@@ -76,8 +74,7 @@ export class AppModule {
   constructor(
     @Inject(PLATFORM_ID) private platformId: Object,
     @Inject(APP_ID) private appId: string,
-    @Optional() @Inject(APP_BASE_HREF) origin: string,
-    apiService: ApiService) {
+    @Optional() @Inject(APP_BASE_HREF) origin: string) {
       const platform = isPlatformBrowser(platformId) ? 'in the browser' : 'on the server';
     console.log(`Running ${platform} with appId=${appId} with baseURI ${origin}`);
   }

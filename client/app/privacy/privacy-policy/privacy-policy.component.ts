@@ -2,12 +2,13 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import {Meta, Title} from '@angular/platform-browser';
 
 @Component({
-  selector: 'ahem-privacy',
-  templateUrl: './privacy.component.html',
-  styleUrls: ['./privacy.component.css'],
+  selector: 'app-privacy-policy',
+  templateUrl: './privacy-policy.component.html',
+  styleUrls: ['./privacy-policy.component.css'],
   encapsulation: ViewEncapsulation.None
 })
-export class PrivacyComponent implements OnInit {
+export class PrivacyPolicyComponent implements OnInit {
+
 
   constructor(titleService: Title, metaService: Meta) {
     titleService.setTitle('AHEM - Privacy Policy');
