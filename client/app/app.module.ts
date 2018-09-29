@@ -28,8 +28,7 @@ import {DeviceService} from './device.service';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { TrimDomainPipe } from './trim-domain.pipe';
 import { AppRoutingModule } from './app-routing.module';
-import {FooterModule} from './footer/footer.module';
-import {HeaderModule} from './header/header.module';
+import {CoreModule} from './core/core.module';
 
 @NgModule({
   declarations: [
@@ -63,8 +62,7 @@ import {HeaderModule} from './header/header.module';
     MatButtonModule,
     MatExpansionModule,
     Angulartics2Module.forRoot([ Angulartics2GoogleAnalytics ]),
-    FooterModule,
-    HeaderModule,
+    CoreModule,
     AppRoutingModule
   ],
   providers: [ApiService, MatIconRegistry, DeviceService],

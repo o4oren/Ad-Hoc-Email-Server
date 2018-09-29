@@ -2,10 +2,6 @@
   router-outlet {
     margin-top: 56px;
   }
-  mat-toolbar {
-    position: fixed;
-    top: 0;
-  }
 }
 
 .ahem-toolbar-small {

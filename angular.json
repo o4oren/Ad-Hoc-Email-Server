@@ -134,11 +134,11 @@
   "defaultProject": "ahem-universal",
   "schematics": {
     "@schematics/angular:component": {
-      "prefix": "ahem",
+      "prefix": "app",
       "styleext": "css"
     },
     "@schematics/angular:directive": {
-      "prefix": "ahem"
+      "prefix": "app"
     }
   }
 }

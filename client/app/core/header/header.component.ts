@@ -1,5 +1,5 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
-import {DeviceService} from '../device.service';
+import { Component, OnInit } from '@angular/core';
+import {DeviceService} from '../../device.service';
 import {MatIconRegistry} from '@angular/material';
 import {Subscription} from 'rxjs/internal/Subscription';
 import {DomSanitizer} from '@angular/platform-browser';
@@ -10,7 +10,7 @@ import {Router} from '@angular/router';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent implements OnInit, OnDestroy {
+export class HeaderComponent implements OnInit {
 
   account: string;
   hideToolbarComponents = true;
