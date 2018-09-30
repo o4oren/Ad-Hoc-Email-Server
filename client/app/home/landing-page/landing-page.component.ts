@@ -13,7 +13,7 @@ export class LandingPageComponent implements OnInit {
   properties: any;
 
   constructor(public apiService: ApiService, public deviceService: DeviceService, titleService: Title, metaService: Meta) {
-    titleService.setTitle('AHEM - an ;Ad-Hoc Disposable Temporary Email Address');
+    titleService.setTitle('AHEM - an Ad-Hoc Disposable Temporary Email Address');
     metaService.updateTag({ name: 'description', content: 'AHEM - an Ad-Hoc Disposable Temporary Email Address. ' +
       'Ad-hoc - created on demand. Disposable - ' +
       'you can throw it away. ' +
