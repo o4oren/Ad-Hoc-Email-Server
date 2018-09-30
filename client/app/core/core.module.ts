@@ -32,6 +32,7 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { faBars, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { faMeh, faEnvelope, faEnvelopeOpen } from '@fortawesome/free-regular-svg-icons';
 import {SharedModule} from '../shared/shared.module';
+import {HomeModule} from '../home/home.module';
 
 
 library.add(faMeh, faEnvelope, faEnvelopeOpen, faBars, faTrash);
@@ -67,6 +68,7 @@ library.add(faMeh, faEnvelope, faEnvelopeOpen, faBars, faTrash);
     MatButtonModule,
     MatExpansionModule,
     Angulartics2Module.forRoot([ Angulartics2GoogleAnalytics ]),
+    HomeModule,
     SharedModule,
     CoreRoutingModule
   ],
