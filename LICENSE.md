@@ -1,4 +1,4 @@
-(c) Copyright 2018 Oren Geva
+(c) Copyright 2017 - 2018 ahem.email
 All Rights reserved
 
 Everyone is permitted to clone, install and use the code in this repository locally.
