@@ -8,10 +8,13 @@
     <div class="landing-page-column" #left>
       <div class="landing-page-item">
         <mat-card-content>
-          <h1>AHEM: Ad-Hoc Temporary Email Address</h1>
-          <p>AHEM is an ad-hoc Email server. <br>
-            Ad-hoc means that a mail that a mailbox is created for you as soon as you need it.
-            Others call it disposable mail or a temporary email address.
+          <h1>AHEM: Ad-Hoc Disposable Temporary Email Address</h1>
+          <p>AHEM is a free ad-hoc disposable temporary Email service. <br>
+            <br>
+            <strong>Ad-hoc</strong> - a mail that a mailbox is created for you as soon as you need it.<br>
+            <b>Disposable</b> - you can throw it right away. Not strings attached.<br>
+            <b>Temporary</b> - the emails recieved will be deleted by the system after a predefined time period.<br>
+            <b>Free</b> - you know what that means!
             <br>
           </p>
           <p>The server serves the domains:
@@ -21,8 +24,8 @@
           <p>AHEM will check in an interval of {{properties.emailDeleteInterval | amDuration:'seconds'}} for emails that
             aged over
             {{properties.emailDeleteAge | amDuration: 'seconds'}}, and if it find these, it will erase them.</p>
-          <p>So go ahead, and give it a try. Send an email to whatever@one-of-the domains above, and enter your account.<br>
-            Or generate a random account.</p>
+          <p>Go ahead, and give it a try. Send an email to whatever-you-choose@one-of-the domains above - or generate a random mailbox - and enter the account to view the email.<br>
+          </p>
         </mat-card-content>
         <app-account-selector [isInline]="false"></app-account-selector>
       </div>
