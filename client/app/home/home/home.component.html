@@ -1,0 +1,74 @@
+<div>
+  <div class="ahem-centered" *ngIf="properties.customText">
+    <mat-card-content [innerHtml]="properties.customText" class="ahem-centered">
+    </mat-card-content>
+    <app-account-selector [isInline]="false"></app-account-selector>
+  </div>
+  <div *ngIf="!properties.customText" class="ahem-flex-container landing-page-container">
+    <div class="landing-page-column" #left>
+      <div class="landing-page-item">
+        <mat-card-content>
+          <h1>AHEM: Ad-Hoc Disposable Temporary Email Address</h1>
+          <p>AHEM is a free ad-hoc disposable temporary Email service. <br>
+            <br>
+            <strong>Ad-hoc</strong> - a mail that a mailbox is created for you as soon as you need it.<br>
+            <b>Disposable</b> - you can throw it right away. Not strings attached.<br>
+            <b>Temporary</b> - the emails recieved will be deleted by the system after a predefined time period.<br>
+            <b>Free</b> - you know what that means!
+            <br>
+          </p>
+          <p>The server serves the domains:
+            <mat-list>
+              <div *ngFor="let domain of properties.allowedDomains"> {{domain}}</div>
+            </mat-list>
+          <p>AHEM will check in an interval of {{properties.emailDeleteInterval | amDuration:'seconds'}} for emails that
+            aged over
+            {{properties.emailDeleteAge | amDuration: 'seconds'}}, and if it find these, it will erase them.</p>
+          <p>Go ahead, and give it a try. Send an email to whatever-you-choose@one-of-the domains above - or generate a random mailbox - and enter the account to view the email.<br>
+          </p>
+        </mat-card-content>
+        <app-account-selector [isInline]="false"></app-account-selector>
+      </div>
+      <div class="landing-page-item">
+        <h2>What is an AHEM disposable temporary Email address?</h2>
+        <p>
+          A temporary disposable Email service allows you to receive mail at a temporary mail address created ad-hoc, when you need it.<br>
+          You can use a disposable Email service to avoid exposing your real email when using services that require Email registration,
+          such as wifi providers, forums or other services. <br>
+          In addition, using disposable mailboxes is a great way to test software that relies on email. <br>
+          AHEM even provides a very simple and powerful RESTful API to consume Email.
+        </p>
+      </div>
+      <div class=landing-page-item>
+        <h2>AHEM Email Server Features</h2>
+        <ul>
+          <li>Prevent spam - use an AHEM mailbox when signing up to wifi networks, forums and sites and prevent unwanted spam.</li>
+          <li>Software testing - need for an ad hoc temporary disposable mailbox?</li>
+          <li>Install an on prem version of this services easily!</li>
+          <li>Emails are automatically deleted after a few hours.</li>
+          <li>Auto generated or selected email address.</li>
+        </ul>
+      </div>
+      <div class="landing-page-item">
+        <div class="ahem-definition-of">
+          <mat-panel-description>
+            Definition of ahem
+          </mat-panel-description>
+          <mat-card-content>
+            <p>From <a href="https://www.merriam-webster.com/dictionary/ahem" target="_blank">Merriam-Webster</a>:</p>
+          </mat-card-content>
+          <h2>ahem</h2>
+          <mat-card-subtitle>interjection \ a throat-clearing sound; often read as ə-ˈhem ; \</mat-card-subtitle>
+          <mat-card-content>
+            <p>—used especially to attract attention or to express disapproval or embarrassment</p>
+          </mat-card-content>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
