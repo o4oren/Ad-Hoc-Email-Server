@@ -16,8 +16,8 @@
   <div *ngIf="this.account">
     <mat-toolbar color="accent" class="ahem-internal-toolbar">
       <button mat-button (click)="sidenav.toggle()"><fa-icon [icon]="['fas', 'bars']"></fa-icon></button>
-      <button mat-button *ngIf="selectedEmail" (click)="deleteFile()"><mat-icon>delete forever</mat-icon>Delete</button>
-      <button mat-button *ngIf="selectedEmail" (click)="markAsReadOrUnread()"><fa-icon [icon]="['far', readUnreadIcon]"></fa-icon>Mark as {{readUnreadText}}</button>
+      <button mat-button *ngIf="selectedEmail" (click)="deleteFile()"><fa-icon [icon]="['fas', readUnreadIcon]"></fa-icon>> Delete</button>
+      <button mat-button *ngIf="selectedEmail" (click)="markAsReadOrUnread()"><fa-icon [icon]="['far', readUnreadIcon]"></fa-icon> Mark as {{readUnreadText}}</button>
     </mat-toolbar>
    <ahem-email-view [email]="selectedEmail"></ahem-email-view>
   </div>
