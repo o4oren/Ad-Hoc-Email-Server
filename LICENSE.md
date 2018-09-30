@@ -1,4 +1,5 @@
-Some Rights reserved
+(c) Copyright 2018 Oren Geva
+All Rights reserved
 
 Everyone is permitted to clone, install and use the code in this repository locally.
 You may change, alter, update - as long as you are not providing AHEM disposable email service to the general public.
