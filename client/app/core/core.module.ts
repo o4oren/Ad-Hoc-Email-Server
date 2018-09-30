@@ -51,7 +51,6 @@ library.add(faMeh, faEnvelope, faEnvelopeOpen, faBars, faTrash);
     RouterModule,
     FontAwesomeModule,
     MatToolbarModule,
-    MatIconModule,
     HttpClientModule,
     MomentModule,
     BrowserAnimationsModule,
