@@ -29,8 +29,8 @@ import {DeviceService} from './services/device.service';
 import {ApiService} from './services/api.service';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faBars, faTrash } from '@fortawesome/free-solid-svg-icons';
-import { faMeh, faEnvelope, faEnvelopeOpen } from '@fortawesome/free-regular-svg-icons';
+import { faBars, faTrash, faDove } from '@fortawesome/free-solid-svg-icons';
+import { faMeh, faEnvelope, faEnvelopeOpen, faTrashAlt, faClock, faPaperPlane } from '@fortawesome/free-regular-svg-icons';
 import {SharedModule} from '../shared/shared.module';
 import {HomeModule} from '../home/home.module';
 import {ConfigService} from './services/config.service';
@@ -40,7 +40,7 @@ export function initializeApp(ahemProperties: ConfigService) {
 }
 
 
-library.add(faMeh, faEnvelope, faEnvelopeOpen, faBars, faTrash);
+library.add(faMeh, faEnvelope, faEnvelopeOpen, faBars, faTrash, faTrashAlt, faClock, faPaperPlane, faDove);
 
 @NgModule({
   declarations: [

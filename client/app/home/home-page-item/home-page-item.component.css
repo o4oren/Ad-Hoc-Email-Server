@@ -1,0 +1,19 @@
+fa-icon {
+  font-size: 30px;
+  align-self: center;
+}
+
+.home-item {
+  width: 180px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.title {
+  margin-top: 20px;
+}
+
+.text {
+  margin-top: 20px;
+}
