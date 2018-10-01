@@ -10,14 +10,19 @@ import * as propertiesJson from '../../assets/properties.json';
 export class ApiService {
 
   baseUri: string;
-  private _properties = propertiesJson.default;
+  private _properties: any;
 
-  constructor(private http: HttpClient, @Optional() @Inject(APP_BASE_HREF) origin: string) {
-    this.baseUri = origin || '';
+  constructor(private http: HttpClient,
+              @Optional() @Inject(APP_BASE_HREF) origin: string) {
+    this._properties = propertiesJson.default;
+    this.baseUri = origin;
+    console.log('base uri ' + this.baseUri);
+    console.log('properties - from constructor:', this._properties);
   }
 
   getProperties(): any {
     return this._properties;
+    console.log('properties - from get method:', this._properties);
   }
 
 

@@ -30,6 +30,7 @@ import { ngExpressEngine } from '@nguniversal/express-engine';
 // Import module map for lazy loading
 import { provideModuleMap } from '@nguniversal/module-map-ngfactory-loader';
 import {renderModuleFactory} from '@angular/platform-server';
+import {APP_BASE_HREF} from '@angular/common';
 
 
 export class ServerApp {
@@ -43,7 +44,8 @@ export class ServerApp {
         url: options.req.url,
         // DI so that we can get lazy-loading to work differently (since we need it to just instantly render it)
         extraProviders: [
-          provideModuleMap(LAZY_MODULE_MAP)
+          provideModuleMap(LAZY_MODULE_MAP),
+          {provide: APP_BASE_HREF, useValue: properties.serverBaseUri}
         ]
       }).then(html => {
         callback(null, html);
@@ -93,7 +95,7 @@ app.get('*.*', express.static(join(DIST_FOLDER, 'browser')));
 
 // All regular routes use the Universal engine
     app.get('*', (req, res) => {
-      res.render(join(DIST_FOLDER, 'browser', 'index.html'), {req});
+      res.render('index', { req });
     });
 
 // error handler

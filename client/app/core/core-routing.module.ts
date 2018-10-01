@@ -2,12 +2,11 @@ import { NgModule } from '@angular/core';
 import {AccountViewPageComponent} from '../account-view-page/account-view-page.component';
 import {ApiDocumentationComponent} from '../api-documentation/api-documentation.component';
 import {RouterModule, Routes} from '@angular/router';
-import {HomeComponent} from '../home/home/home.component';
 
 const appRoutes: Routes = [
   {
     path: '',
-    component: HomeComponent,
+    loadChildren: '../home/home.module#HomeModule',
   },
   { path: 'help/api', component: ApiDocumentationComponent},
   { path: 'doc/api', component: ApiDocumentationComponent},

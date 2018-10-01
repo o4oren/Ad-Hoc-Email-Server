@@ -29,7 +29,7 @@
     "@angular/material": "^6.4.7",
     "@angular/platform-browser": "^6.1.8",
     "@angular/platform-browser-dynamic": "^6.1.8",
-    "@angular/platform-server": "^6.1.8",
+    "@angular/platform-server": "^6.1.9",
     "@angular/router": "^6.1.8",
     "@fortawesome/angular-fontawesome": "^0.2.0",
     "@fortawesome/fontawesome-svg-core": "^1.2.4",
@@ -45,7 +45,7 @@
     "mongodb": "^3.1.6",
     "rxjs": "^6.3.2",
     "smtp-server": "^3.4.7",
-    "ts-loader": "^5.2.0",
+    "ts-loader": "^5.2.1",
     "zone.js": "^0.8.14"
   },
   "devDependencies": {

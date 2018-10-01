@@ -5,6 +5,7 @@ import {MatCardModule, MatExpansionModule, MatFormFieldModule, MatListModule} fr
 import {SharedModule} from '../shared/shared.module';
 import {MomentModule} from 'angular2-moment';
 import { HomeComponent } from './home/home.component';
+import {HomeRoutingModule} from './home-routing.module';
 
 @NgModule({
   imports: [
@@ -13,9 +14,10 @@ import { HomeComponent } from './home/home.component';
     SharedModule,
     MatListModule,
     MatExpansionModule,
-    MomentModule
+    MomentModule,
+    HomeRoutingModule
   ],
   declarations: [HomeComponent],
-  exports: [HomeComponent]
+  exports: []
 })
 export class HomeModule { }
