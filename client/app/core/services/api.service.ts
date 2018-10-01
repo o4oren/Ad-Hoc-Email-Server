@@ -2,9 +2,9 @@ import {Injectable, Optional, Inject, OnInit} from '@angular/core';
 import { APP_BASE_HREF } from '@angular/common';
 import {Observable} from 'rxjs/internal/Observable';
 import {HttpClient} from '@angular/common/http';
-import {EmailInfo} from '../model/email-info-model';
-import {EmailDetails} from '../model/email-details-model';
-import * as propertiesJson from '../../assets/properties.json';
+import {EmailInfo} from '../../model/email-info-model';
+import {EmailDetails} from '../../model/email-details-model';
+import {ConfigService} from './config.service';
 
 @Injectable()
 export class ApiService {
@@ -14,15 +14,12 @@ export class ApiService {
 
   constructor(private http: HttpClient,
               @Optional() @Inject(APP_BASE_HREF) origin: string) {
-    this._properties = propertiesJson.default;
+    this._properties = ConfigService.properties;
     this.baseUri = origin || '';
-    console.log('base uri ' + this.baseUri);
-    console.log('properties - from constructor:', this._properties);
   }
 
   getProperties(): any {
     return this._properties;
-    console.log('properties - from get method:', this._properties);
   }
 
 

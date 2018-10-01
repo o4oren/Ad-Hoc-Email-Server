@@ -1,6 +1,6 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {Meta, Title} from '@angular/platform-browser';
-import {DeviceService} from '../../core/device.service';
+import {DeviceService} from '../../core/services/device.service';
 
 @Component({
   selector: 'app-page-not-found',

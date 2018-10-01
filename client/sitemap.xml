@@ -12,7 +12,7 @@
        <image:loc>http://www.ahem.email/assets/images/screenshot.png</image:loc>
        <image:caption>AHEM - an ad-hoc email server</image:caption>
     </image:image>
-        <image:image>
+    <image:image>
        <image:loc>http://www.ahem.email/assets/images/ahem-large.png</image:loc>
        <image:caption>AHEM logo</image:caption>
     </image:image>

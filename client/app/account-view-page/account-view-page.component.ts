@@ -1,9 +1,9 @@
 import {Component, EventEmitter, OnDestroy, OnInit, Output, ViewChild, Inject, PLATFORM_ID} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import {ApiService} from '../core/api.service';
+import {ApiService} from '../core/services/api.service';
 import {EmailInfo} from '../model/email-info-model';
 import {MatSidenav} from '@angular/material/sidenav';
-import {DeviceService} from '../core/device.service';
+import {DeviceService} from '../core/services/device.service';
 import {Meta, Title} from '@angular/platform-browser';
 import {Subscription} from 'rxjs/internal/Subscription';
 

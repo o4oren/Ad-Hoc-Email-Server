@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import {APP_INITIALIZER, NgModule} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FooterComponent } from './footer/footer.component';
 import {RouterModule} from '@angular/router';
@@ -25,14 +25,19 @@ import {EmailViewComponent} from '../email-view/email-view.component';
 import {EmailInfoComponent} from '../email-info/email-info.component';
 import {ApiDocumentationComponent} from '../api-documentation/api-documentation.component';
 import {AttachmentsComponent} from '../attachments/attachments.component';
-import {DeviceService} from './device.service';
-import {ApiService} from './api.service';
+import {DeviceService} from './services/device.service';
+import {ApiService} from './services/api.service';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faBars, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { faMeh, faEnvelope, faEnvelopeOpen } from '@fortawesome/free-regular-svg-icons';
 import {SharedModule} from '../shared/shared.module';
 import {HomeModule} from '../home/home.module';
+import {ConfigService} from './services/config.service';
+
+export function initializeApp(ahemProperties: ConfigService) {
+  return () => ahemProperties.load();
+}
 
 
 library.add(faMeh, faEnvelope, faEnvelopeOpen, faBars, faTrash);
@@ -79,6 +84,10 @@ library.add(faMeh, faEnvelope, faEnvelopeOpen, faBars, faTrash);
     SharedModule
   ],
   providers: [
+    ConfigService,
+    { provide: APP_INITIALIZER,
+      useFactory: initializeApp,
+      deps: [ConfigService], multi: true },
     ApiService,
     MatIconRegistry,
     DeviceService],

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {DeviceService} from '../device.service';
+import {DeviceService} from '../services/device.service';
 import {MatIconRegistry} from '@angular/material';
 import {Subscription} from 'rxjs/internal/Subscription';
 import {DomSanitizer} from '@angular/platform-browser';

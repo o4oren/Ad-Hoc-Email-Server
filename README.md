@@ -108,6 +108,7 @@ Replace XX-XXXXXXXXX-X with your GA id.
 - [x] update missing emails page and loading circles
 - []  sort out logging
 - [] separate  account view from email view pages 
+- [] separate  server and webapp properties 
 - [] better home page
 - [] Add apis to get account references from email, get account and email counts - both general and in account context
 
