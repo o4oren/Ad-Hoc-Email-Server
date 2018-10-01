@@ -15,7 +15,7 @@ export class ApiService {
   constructor(private http: HttpClient,
               @Optional() @Inject(APP_BASE_HREF) origin: string) {
     this._properties = propertiesJson.default;
-    this.baseUri = origin;
+    this.baseUri = origin || '';
     console.log('base uri ' + this.baseUri);
     console.log('properties - from constructor:', this._properties);
   }
