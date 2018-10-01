@@ -1,11 +1,6 @@
 
 
 .ahem-internal-toolbar {
-    background: #b3e5fc;
-    background: -webkit-linear-gradient(left top,#8AC5FC, #b3e5fc ); /* For Safari 5.1 to 6.0 */
-    background: -o-linear-gradient(bottom right, #8AC5FC, #b3e5fc); /* For Opera 11.1 to 12.0 */
-    background: -moz-linear-gradient(bottom right, #8AC5FC, #b3e5fc); /* For Firefox 3.6 to 15 */
-    background: linear-gradient(to bottom right, #8AC5FC, #b3e5fc); /* Standard syntax */
-    box-shadow: 0 3px 5px -1px rgba(0,0,0,.2), 0 6px 10px 0 rgba(0,0,0,.14), 0 1px 18px 0 rgba(0,0,0,.12);
+    background: #94aace;
     z-index: 10;
   }

@@ -4,11 +4,7 @@
 
 .footer-internal {
   border-top: 1px solid #9cc9d6;
-  background: #b3e5fc;
-  background: -webkit-linear-gradient(left top, #b3e5fc, #8AC5FC); /* For Safari 5.1 to 6.0 */
-  background: -o-linear-gradient(bottom right, #b3e5fc, #8AC5FC); /* For Opera 11.1 to 12.0 */
-  background: -moz-linear-gradient(bottom right, #b3e5fc, #8AC5FC); /* For Firefox 3.6 to 15 */
-  background: linear-gradient(to bottom right, #b3e5fc, #8AC5FC); /* Standard syntax */
+  background: #94aace;
   font-size: 12px;
   display: flex;
   flex-wrap: wrap;
@@ -21,4 +17,8 @@
   display: -webkit-flex; /* Safari */
 }
 
+/*background: -webkit-linear-gradient(left top, #b3e5fc, #8AC5FC); !* For Safari 5.1 to 6.0 *!*/
+/*background: -o-linear-gradient(bottom right, #b3e5fc, #8AC5FC); !* For Opera 11.1 to 12.0 *!*/
+/*background: -moz-linear-gradient(bottom right, #b3e5fc, #8AC5FC); !* For Firefox 3.6 to 15 *!*/
+/*background: linear-gradient(to bottom right, #b3e5fc, #8AC5FC); !* Standard syntax *!*/
 

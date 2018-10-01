@@ -1,9 +1,9 @@
 .banner {
-  background: darkslateblue;
+  background: #515f77;
   height: 300px;
   width: 100%;
   text-align: center ;
-  margin-bottom: 30px;
+  margin-bottom: 80px;
 }
 
 h1 {
@@ -31,11 +31,10 @@ h2 {
 
 .selector {
   padding: 20px;
-  background: lightgray;
-  border-radius: 8px;
+  background: #dbeaff;
   width: 300px;
   margin: auto;
-  margin-top: 20px;
+  margin-top: 116px;
 
 }
 
