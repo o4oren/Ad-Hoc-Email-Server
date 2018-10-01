@@ -23,4 +23,7 @@
   <url>
 	<loc>http://www.ahem.email/help/api</loc>
   </url>
+  <url>
+    <loc>http://www.ahem.email/account</loc>
+  </url>
 </urlset>
