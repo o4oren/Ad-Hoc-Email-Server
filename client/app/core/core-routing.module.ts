@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import {AccountViewPageComponent} from '../account-view-page/account-view-page.component';
 import {ApiDocumentationComponent} from '../api-documentation/api-documentation.component';
 import {RouterModule, Routes} from '@angular/router';
 
