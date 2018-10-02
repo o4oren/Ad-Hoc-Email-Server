@@ -9,13 +9,13 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="590mm"
-   height="205mm"
-   viewBox="0 0 590 205"
+   width="460mm"
+   height="200mm"
+   viewBox="0 0 460 200"
    version="1.1"
    id="svg5262"
    inkscape:version="0.92.3 (2405546, 2018-03-11)"
-   sodipodi:docname="icon-test.svg">
+   sodipodi:docname="ahem-logo.svg">
   <defs
      id="defs5256" />
   <sodipodi:namedview
@@ -26,7 +26,7 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.35"
-     inkscape:cx="400"
+     inkscape:cx="916.4628"
      inkscape:cy="560"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
@@ -54,29 +54,29 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(0,-92)">
+     transform="translate(0,-97)">
     <rect
-       style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:2.4038856;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:2.19505787;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="rect4078"
-       width="569.45654"
-       height="190.71846"
-       x="9.4106741"
-       y="99.238571" />
+       width="457.80493"
+       height="197.80495"
+       x="1.0975289"
+       y="98.097527" />
     <text
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:55.94824219px;line-height:1.25;font-family:'Guttman Mantova-Decor';-inkscape-font-specification:'Guttman Mantova-Decor';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.65564334"
-       x="215.55359"
-       y="200.27254"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:62.6704216px;line-height:1.25;font-family:'Guttman Mantova-Decor';-inkscape-font-specification:'Guttman Mantova-Decor';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.73441881"
+       x="214.71361"
+       y="212.02269"
        id="text3919"
-       transform="scale(0.91402999,1.094056)"><tspan
+       transform="scale(0.87937476,1.1371716)"><tspan
          sodipodi:role="line"
          id="tspan3917"
-         x="215.55359"
-         y="200.27254"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:125.88354492px;font-family:'Tempus Sans ITC';-inkscape-font-specification:'Tempus Sans ITC';stroke-width:0.65564334">AHEM</tspan></text>
+         x="214.71361"
+         y="212.02269"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:141.00845337px;font-family:'Burbank Big Condensed';-inkscape-font-specification:'Burbank Big Condensed, ';stroke-width:0.73441881">AHEM</tspan></text>
     <g
        style="fill:#000000;stroke:none;stroke-width:14.24538994;stroke-miterlimit:4;stroke-dasharray:none"
-       transform="matrix(0.0543113,0,0,-0.05401421,28.494994,258.10124)"
+       transform="matrix(0.0543113,0,0,-0.05401421,20.286263,263.94226)"
        id="g3953">
       <path
          inkscape:connector-curvature="0"
@@ -107,13 +107,13 @@
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:29.07556915px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.90861154"
-       x="197.43031"
-       y="269.26584"
+       x="217.94778"
+       y="275.86282"
        id="text4074"><tspan
          sodipodi:role="line"
          id="tspan4072"
-         x="197.43031"
-         y="269.26584"
+         x="217.94778"
+         y="275.86282"
          style="stroke-width:0.90861154">Ad Hoc Email</tspan></text>
   </g>
 </svg>
