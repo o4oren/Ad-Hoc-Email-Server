@@ -13,6 +13,18 @@
   top: 2px;
 }
 
+.mat-icon.ahem-logo {
+  width: 64px;
+  height: 64px;
+}
+
+@media screen and (min-width: 720px) {
+  .mat-icon.ahem-logo {
+    width: 128px;
+    height: 128px;
+  }
+}
+
 .logo-small {
   position: relative;
   top: 2px;

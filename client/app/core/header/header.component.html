@@ -1,15 +1,8 @@
 <mat-toolbar class="ahem-toolbar" color="primary">
   <span routerLink="" class="ahem-hand-pointer ahem-logo-span">
-    <!--<mat-icon svgIcon="ahem-logo" class="ahem-logo"></mat-icon>-->
-    <img *ngIf="!account" src="/assets/images/ahem-logo.png" alt="AHEM - an adc-hoc email server"
-         srcset="/assets/images/ahem-logo.png 64w, /assets/images/ahem-logo.png 128w"
-         sizes="(min-width: 1200px) 128px, 64px"
-         class="logo">
-    <img *ngIf="account" src="/assets/images/ahem-logo.png" alt="AHEM - an adc-hoc email server"
-         class="logo-small">
-    <!--<mat-icon svgIcon="ahem-logo"></mat-icon>-->
+    <mat-icon svgIcon="ahem-logo" class="ahem-logo"></mat-icon>
   </span>
-  <span *ngIf="!deviceService.isSmallScreen()">AHEM - Ad Hoc Email Address</span>
+  <span *ngIf="!deviceService.isSmallScreen()">AHEM - Ad Hoc Email</span>
   <span *ngIf="deviceService.isSmallScreen()" class="ahem-toolbar-small">AHEM - Ad Hoc Email</span>
   <span class="ahem-spacer"></span>
   <!--<app-account-selector *ngIf="!hideToolbarComponents" class="ahem-account-selector ahem-account-selector-internal" [color]="'accent'" [selectedAccount]="account"></app-account-selector>-->
