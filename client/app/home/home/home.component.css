@@ -48,11 +48,11 @@ h2 {
 
 .home-content-container {
   width: 85%;
+  max-width: 1200px;
   flex: 1;
   flex-wrap: wrap;
   display: flex;
   margin: auto;
   justify-content: space-around;
+  padding-top: 20px;
 }
-
-
