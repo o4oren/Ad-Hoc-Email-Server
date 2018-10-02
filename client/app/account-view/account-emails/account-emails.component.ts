@@ -48,6 +48,7 @@ export class AccountEmailsComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
+    this.paramsSub.unsubscribe();
   }
 
   getAccountEmails(): any {
@@ -73,6 +74,10 @@ export class AccountEmailsComponent implements OnInit, OnDestroy {
 
   private getEmailFromTimeStamp(emailId: string): EmailInfo {
     return this.emails.filter(email => email.emailId === emailId)[0];
+  }
+
+  clickedEmail(email) {
+    this.router.navigateByUrl('/account/' + this.account + '/' + email.emailId);
   }
 
 }
