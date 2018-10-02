@@ -5,6 +5,18 @@
   <url>
     <loc>http://www.ahem.email</loc>
     <image:image>
+      <image:loc>http://www.ahem.email/assets/svg/ahem-bluish.svg</image:loc>
+      <image:caption>AHEM - an ad-hoc email server</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>http://www.ahem.email/assets/svg/ahem-text.svg</image:loc>
+      <image:caption>AHEM - an ad-hoc email logo text</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>http://www.ahem.email/assets/svg/ahem-sm-bottom-text.svg</image:loc>
+      <image:caption>AHEM - an ad-hoc email server</image:caption>
+    </image:image>
+    <image:image>
        <image:loc>http://www.ahem.email/assets/images/ahem-logo.png</image:loc>
        <image:caption>AHEM - an ad-hoc email server</image:caption>
     </image:image>

@@ -2,8 +2,9 @@
   <span routerLink="" class="ahem-hand-pointer ahem-logo-span">
     <mat-icon svgIcon="ahem-logo" class="ahem-logo"></mat-icon>
   </span>
-  <span *ngIf="!deviceService.isSmallScreen()">AHEM - Ad Hoc Email</span>
-  <span *ngIf="deviceService.isSmallScreen()" class="ahem-toolbar-small">AHEM - Ad Hoc Email</span>
+  <mat-icon svgIcon="ahem-logo-text" class="ahem-logo-text"></mat-icon>
+
+  <!--<span *ngIf="deviceService.isSmallScreen()" class="ahem-toolbar-small">AHEM - Ad Hoc Email</span>-->
   <span class="ahem-spacer"></span>
   <!--<app-account-selector *ngIf="!hideToolbarComponents" class="ahem-account-selector ahem-account-selector-internal" [color]="'accent'" [selectedAccount]="account"></app-account-selector>-->
 </mat-toolbar>

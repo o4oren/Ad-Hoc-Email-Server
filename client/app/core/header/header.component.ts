@@ -20,6 +20,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
     iconRegistry.addSvgIcon(
       'ahem-logo',
       sanitizer.bypassSecurityTrustResourceUrl('assets/svg/ahem-bluish.svg'));
+    iconRegistry.addSvgIcon(
+      'ahem-logo-text',
+      sanitizer.bypassSecurityTrustResourceUrl('assets/svg/ahem-sm-side-text.svg'));
     this.routerSub = this.router.events.subscribe(val => {
       this.router.url !== '/' ? this.hideToolbarComponents = false : this.hideToolbarComponents = true;
       this.account = this.router.url.split('account/').pop().split('/').shift();

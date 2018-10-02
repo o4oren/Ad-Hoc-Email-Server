@@ -8,25 +8,30 @@
   font-size: 0.8em;
 }
 
-.logo {
-  position: relative;
-  top: 2px;
-}
-
 .mat-icon.ahem-logo {
   width: 64px;
   height: 64px;
 }
+
+.mat-icon.ahem-logo-text {
+  margin-left: 40px;
+  height: 64px;
+  width: 128px;
+}
+
+:host ::ng-deep path {
+  fill: #dbeaff;
+}
+
 
 @media screen and (min-width: 720px) {
   .mat-icon.ahem-logo {
     width: 128px;
     height: 128px;
   }
+  .mat-icon.ahem-logo-text {
+    height: 128px;
+    width: 256px;
+  }
 }
 
-.logo-small {
-  position: relative;
-  top: 2px;
-  width: 64px;
-}
