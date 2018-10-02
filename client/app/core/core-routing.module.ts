@@ -9,10 +9,9 @@ const appRoutes: Routes = [
     loadChildren: '../home/home.module#HomeModule',
   },
   { path: 'help/api', component: ApiDocumentationComponent},
-  { path: 'doc/api', component: ApiDocumentationComponent},
-  { path: 'account', component: AccountViewPageComponent, pathMatch: 'full'},
-  { path: 'account/:account', component: AccountViewPageComponent},
-  { path: 'account/:account/:emailId', component: AccountViewPageComponent},
+  {
+    path: 'account',
+    loadChildren: '../account-view/account-view.module#AccountViewModule'},
   {
     path: 'privacy',
     loadChildren: '../privacy/privacy.module#PrivacyModule',

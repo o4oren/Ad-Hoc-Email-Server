@@ -1,6 +1,6 @@
 {
   "serverBaseUri": "http://localhost:3000",
-  "mongoConnectUrl": "mongodb://127.0.0.1:27017",
+  "mongoConnectUrl": "mongodb://dbadmin:eubphskV@localhost:27017/?authMechanism=MONGODB-CR&authSource=test",
   "dbName": "ahem",
   "appListenPort": 3000,
   "smtpPort" : 25,

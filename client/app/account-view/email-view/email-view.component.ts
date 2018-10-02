@@ -1,10 +1,10 @@
 import {Component, Input, OnDestroy, OnInit, Output, ViewEncapsulation} from '@angular/core';
-import {ApiService} from '../core/services/api.service';
+import {ApiService} from '../../core/services/api.service';
 import {ActivatedRoute} from '@angular/router';
-import {EmailInfo} from '../model/email-info-model';
-import {EmailDetails} from '../model/email-details-model';
+import {EmailInfo} from '../../model/email-info-model';
+import {EmailDetails} from '../../model/email-details-model';
 import {DomSanitizer, SafeHtml, Title} from '@angular/platform-browser';
-import {DeviceService} from '../core/services/device.service';
+import {DeviceService} from '../../core/services/device.service';
 import {Subscription} from 'rxjs/internal/Subscription';
 
 @Component({

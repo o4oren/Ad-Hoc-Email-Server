@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {EmailInfo} from "../model/email-info-model";
+import {EmailInfo} from '../../model/email-info-model';
 
 @Component({
   selector: 'ahem-email-info',

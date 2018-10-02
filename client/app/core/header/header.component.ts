@@ -29,6 +29,18 @@ export class HeaderComponent implements OnInit, OnDestroy {
     });
   }
 
+  updateClassesForAccountPage(): any {
+    if (this.account) {
+      return {
+        'on-account-page': true,
+        'ahem-logo-text': false,
+        'ahem-logo': false
+      };
+    }
+
+    return {};
+}
+
   ngOnInit(): void {
   }
 
