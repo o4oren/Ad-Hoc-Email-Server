@@ -1,7 +1,7 @@
 
 <div class="ahem-email-content-container">
   <div *ngIf="emailDetails">
-    <mat-card>
+    <div>
       <mat-card-header>
         <mat-card-title>From: {{emailDetails.from.text}}</mat-card-title>
         <mat-card-title>Date: {{emailDetails.timestamp | date:'medium'}}</mat-card-title>
@@ -20,14 +20,14 @@
         <div *ngIf="emailDetails.html" [innerHTML]="emailDetails.html | htmlSanitizer"> </div>
         <div *ngIf="!emailDetails.html" [innerHTML]="emailDetails.textAsHtml"> </div>
       </mat-card-content>
-    </mat-card>
+    </div>
   </div>
   <div *ngIf="!emailDetails">
-    <mat-card>
+    <div>
         <mat-card-title> <div style="text-align:center">
           <fa-icon [icon]="['far','meh']"></fa-icon>
         </div>
         </mat-card-title>
-    </mat-card>
+    </div>
   </div>
 </div>

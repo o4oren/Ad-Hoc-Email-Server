@@ -1,1 +1,9 @@
+.ahem-email-content-container {
+  margin: auto;
+  font-size: smaller;
+}
 
+.ahem-email-content {
+  padding: 20px;
+  overflow: auto;
+}
