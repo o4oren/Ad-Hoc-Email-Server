@@ -15,12 +15,9 @@ import {Subscription} from 'rxjs/internal/Subscription';
 })
 export class EmailViewComponent implements OnInit, OnDestroy {
 
-  _email: EmailInfo;
   emailDetails: EmailDetails;
   paramsSub: Subscription;
   account: string;
-
-  get email(): any { return this._email; }
 
   constructor(private apiService: ApiService, private route: ActivatedRoute, private domSanitizer: DomSanitizer,
     public deviceService: DeviceService, private titleService: Title) { }
@@ -28,8 +25,9 @@ export class EmailViewComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.paramsSub = this.route.params.subscribe(params => {
       this.account = params['account'];
+      const emailId = params['emailId'];
+      this.getEmailDetails(emailId);
     });
-    this.getEmailDetails();
   }
 
   getSafeHtml(htmlString): SafeHtml {
@@ -40,8 +38,8 @@ export class EmailViewComponent implements OnInit, OnDestroy {
     this.paramsSub.unsubscribe();
   }
 
-  getEmailDetails() {
-    this.apiService.getEmailContent(this.account, this.email.emailId).subscribe(result => {
+  getEmailDetails(emailId:  string) {
+    this.apiService.getEmailContent(this.account, emailId).subscribe(result => {
       this.emailDetails = result;
       this.titleService.setTitle('AHEM - ' + this.account + ' - ' + this.emailDetails.subject);
     });
