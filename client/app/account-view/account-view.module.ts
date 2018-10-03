@@ -5,7 +5,7 @@ import { AccountViewRoutingModule } from './account-view-routing.module';
 import { AccountViewComponent } from './account-view/account-view.component';
 import { AccountEmailsComponent } from './account-emails/account-emails.component';
 import {EmailViewComponent} from './email-view/email-view.component';
-import {MatCardModule, MatDividerModule, MatIconModule, MatListModule, MatToolbarModule} from '@angular/material';
+import {MatButtonModule, MatCardModule, MatDividerModule, MatIconModule, MatListModule, MatToolbarModule} from '@angular/material';
 import {AttachmentsComponent} from './attachments/attachments.component';
 import {SharedModule} from '../shared/shared.module';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
@@ -21,6 +21,7 @@ import {MomentModule} from 'angular2-moment';
     MatListModule,
     MatIconModule,
     SharedModule,
+    MatButtonModule,
     MomentModule,
     MatToolbarModule,
     FontAwesomeModule,
