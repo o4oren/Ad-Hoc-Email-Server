@@ -15,7 +15,7 @@ import {EmailInfo} from '../../model/email-info-model';
 })
 export class EmailViewComponent implements OnInit, OnDestroy {
 
-  emailDetails: EmailDetails;
+  @Input() emailDetails: EmailDetails;
   paramsSub: Subscription;
   readUnreadIcon: string;
   readUnreadText: string;

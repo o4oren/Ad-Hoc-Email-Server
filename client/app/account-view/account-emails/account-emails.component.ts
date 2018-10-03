@@ -43,6 +43,8 @@ export class AccountEmailsComponent implements OnInit, OnDestroy {
         this.metaService.updateTag({ name: 'description', content: 'AHEM - ' + this.account});
         this.titleService.setTitle('AHEM - ' + this.account);
         this.getAccountEmails();
+      } else {
+        this.selectEmail(this.getEmailFromTimeStamp(this.emailId));
       }
     });
   }
@@ -55,6 +57,9 @@ export class AccountEmailsComponent implements OnInit, OnDestroy {
     this.apiService.listAccountsEmails(this.account).subscribe(
       emails => {
         this.emails = this.sortEmails(emails, SortBy.Timestamp, true);
+        if (this.emailId) {
+          this.selectEmail(this.getEmailFromTimeStamp(this.emailId));
+        }
       }, err => {
         this.emails = [];
         this.selectedEmail = null;
@@ -72,21 +77,37 @@ export class AccountEmailsComponent implements OnInit, OnDestroy {
     return emailsArrary;
   }
 
+  selectEmail(emailInfo: EmailInfo) {
+    if (emailInfo) {
+      if (!emailInfo.isRead) {
+        emailInfo.isRead = true;
+      }
+      this.selectedEmail = emailInfo;
+      this.apiService.markAsReadOrUnread(this.account, this.selectedEmail.emailId, true).subscribe();
+      this.readUnreadIcon = 'envelope';
+      this.readUnreadText = 'unread';
+    }
+  }
+
   private getEmailFromTimeStamp(emailId: string): EmailInfo {
     return this.emails.filter(email => email.emailId === emailId)[0];
   }
 
   clickedEmail(email: EmailInfo) {
-    if (email) {
-      if (!email.isRead) {
-        email.isRead = true;
-      }
-      this.selectedEmail = email;
-      this.apiService.markAsReadOrUnread(this.account, this.selectedEmail.emailId, true).subscribe();
-      this.readUnreadIcon = 'envelope';
-      this.readUnreadText = 'unread';
       this.router.navigateByUrl('/account/' + this.account + '/' + email.emailId);
-    }
   }
+
+  deleteFile() {
+    this.apiService.deleteEmail(this.account, this.selectedEmail.emailId).subscribe(
+      result => {
+        this.getAccountEmails();
+        this.selectedEmail = null;
+      },
+      err => {
+        console.log('error!!!!', err); // TODO popup message
+      }
+    );
+  }
+
 
 }

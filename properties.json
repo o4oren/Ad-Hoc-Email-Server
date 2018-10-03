@@ -1,11 +1,11 @@
 {
   "serverBaseUri": "http://localhost:3000",
-  "mongoConnectUrl": "mongodb://127.0.0.1:27017",
-  "dbName": "ahem",
-  "appListenPort": 3000,
-  "smtpPort" : 25,
-  "emailDeleteInterval" : 86400,
-  "emailDeleteAge" : 7200,
-  "allowAutocomplete" : true,
-  "allowedDomains" : ["my.domain.com"]
+"mongoConnectUrl": "mongodb://dbadmin:eubphskV@amy.sealdoc.com:27017/?authMechanism=MONGODB-CR&authSource=test",
+"dbName": "test",
+"appListenPort": 3000,
+"smtpPort" : 25,
+"emailDeleteInterval" : 86400,
+"emailDeleteAge" : 7200,
+"allowAutocomplete" : true,
+"allowedDomains" : ["my.domain.com"]
 }

@@ -16,7 +16,7 @@ const routes: Routes = [
   },
   {
     path: ':account/:emailId',
-    component: EmailViewComponent
+    component: AccountEmailsComponent
   }
 
 ];

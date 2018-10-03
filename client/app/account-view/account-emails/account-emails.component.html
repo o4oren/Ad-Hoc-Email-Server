@@ -1,9 +1,10 @@
 <div class="ahem-centered">
-  <mat-list class="ahem-email-list">
+  <mat-list *ngIf="!selectedEmail" class="ahem-email-list">
     <!-- used for the sake of pushing the sidenav downwards when it is in hover mode for mobile-->
     <div *ngFor='let email of emails' (click)="clickedEmail(email)" class="ahem-email-list-item" [ngClass]="{'ahem-email-selected': email.isSelected }">
       <app-email-info [emailInfo]="email"></app-email-info>
       <mat-divider></mat-divider>
     </div>
   </mat-list>
+  <app-email-view *ngIf="selectedEmail" [emailDetails]="selectedEmail"></app-email-view>
 </div>
