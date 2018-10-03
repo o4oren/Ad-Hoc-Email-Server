@@ -1,6 +1,6 @@
-<mat-toolbar color="accent" class="ahem-internal-toolbar">
+<mat-toolbar *ngIf="selectedEmail" color="primary" class="ahem-internal-toolbar">
   <button mat-button *ngIf="selectedEmail" (click)="deleteFile()"><fa-icon [icon]="['fas', 'trash']"></fa-icon> Delete</button>
-  <button mat-button *ngIf="selectedEmail" (click)="markAsReadOrUnread()"><fa-icon [icon]="['far', readUnreadIcon]"></fa-icon> Mark as {{readUnreadText}}</button>
+  <button mat-button *ngIf="selectedEmail" (click)="markAsReadOrUnread()"><fa-icon [icon]="['far', selectedEmail.isRead ? 'envelope' : 'envelope-open']"></fa-icon> Mark as {{selectedEmail.isRead ? 'unread' : 'read'}}</button>
 </mat-toolbar>
 <div class="ahem-centered ahem-overflow">
   <mat-list *ngIf="!selectedEmail" class="ahem-email-list">

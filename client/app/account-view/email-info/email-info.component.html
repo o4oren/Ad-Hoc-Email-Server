@@ -1,5 +1,5 @@
 <mat-list-item  class="ahem-hand-pointer" (click)="onClicked()" [ngClass]="{'ahem-email-unread': !emailInfo.isRead}">
-  <fa-icon [icon]="['far', getFontIcon(emailInfo.isRead)]"></fa-icon>
+  <fa-icon [icon]="['far', emailInfo.isRead ? 'envelope-open' : 'envelope']"></fa-icon>
   <h2 mat-line>{{emailInfo.sender.name || emailInfo.sender.address}}</h2>
     <p mat-line>{{emailInfo.subject}}</p>
     <p mat-line>{{emailInfo.timestamp | amTimeAgo}}</p>

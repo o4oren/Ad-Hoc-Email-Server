@@ -21,11 +21,4 @@ export class EmailInfoComponent implements OnInit {
     this.emailClicked.emit(this.emailInfo);
   }
 
-  getFontIcon(isRead: boolean): string {
-    if (isRead) {
-      return 'envelope-open';
-    }
-    return 'envelope';
-  }
-
 }

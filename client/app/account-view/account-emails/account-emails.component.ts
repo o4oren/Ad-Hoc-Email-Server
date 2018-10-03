@@ -19,8 +19,6 @@ export class AccountEmailsComponent implements OnInit, OnDestroy {
   account: string;
   emails: Array<EmailInfo>;
   selectedEmail: EmailInfo;
-  readUnreadIcon: string;
-  readUnreadText: string;
   emailId: string;
 
   constructor(private apiService: ApiService,
@@ -84,8 +82,6 @@ export class AccountEmailsComponent implements OnInit, OnDestroy {
       }
       this.selectedEmail = emailInfo;
       this.apiService.markAsReadOrUnread(this.account, this.selectedEmail.emailId, true).subscribe();
-      this.readUnreadIcon = 'envelope-open';
-      this.readUnreadText = 'unread';
     }
   }
 
@@ -94,7 +90,8 @@ export class AccountEmailsComponent implements OnInit, OnDestroy {
   }
 
   clickedEmail(email: EmailInfo) {
-      this.router.navigateByUrl('/account/' + this.account + '/' + email.emailId);
+    this.selectEmail(email);
+    this.router.navigateByUrl('/account/' + this.account + '/' + email.emailId);
   }
 
   deleteFile() {
@@ -114,10 +111,10 @@ export class AccountEmailsComponent implements OnInit, OnDestroy {
       if (this.selectedEmail) {
         if (!this.selectedEmail.isRead) {
           this.selectedEmail.isRead = true;
+        } else {
+          this.selectedEmail.isRead = false;
         }
-        this.apiService.markAsReadOrUnread(this.account, this.selectedEmail.emailId, true).subscribe();
-        this.readUnreadIcon = 'envelope';
-        this.readUnreadText = 'unread';
+        this.apiService.markAsReadOrUnread(this.account, this.selectedEmail.emailId, this.selectedEmail.isRead).subscribe();
       }
   }
 

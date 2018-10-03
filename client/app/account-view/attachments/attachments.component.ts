@@ -22,34 +22,37 @@ export class AttachmentsComponent implements OnInit {
     const ext = (/[.]/.exec(filename)) ? /[^.]+$/.exec(filename) : '';
 
     switch (ext[0]) {
-      case 'zip': {
-        return 'fa-file-zip-o';
+      case 'zip':
+      case 'tar':
+      case 'gz':
+      case '7z': {
+        return 'file-archive';
       }
       case 'xlsx':
       case 'xls': {
-        return 'fa-file-excel-o';
+        return 'file-excel';
       }
       case 'ppt':
       case 'pptx': {
-        return 'fa-file-powerpoint-o';
+        return 'file-powerpoint';
       }
       case 'doc':
       case 'docx': {
-        return 'fa-file-word-o';
+        return 'file-word';
       }
       case 'csv':
       case 'txt': {
-        return 'fa-file-text-o';
+        return 'file-text';
       }
       case 'pdf': {
-        return 'fa-file-pdf-o';
+        return 'file-pdf';
       }
       case 'png':
       case 'jpg':
       case 'jpeg':
       case 'bmp':
       case 'gif': {
-        return 'fa-file-image-o';
+        return 'file-image';
       }
       case 'mp4':
       case 'flac':
@@ -57,15 +60,15 @@ export class AttachmentsComponent implements OnInit {
       case 'flv':
       case 'mpeg':
       case 'avi': {
-        return 'fa-file-video-o';
+        return 'file-video';
       }
       case 'mp3':
       case 'ogg':
       case 'wav': {
-        return 'fa-file-audio-o';
+        return 'file-audio';
       }
       default: {
-        return 'fa-file-o';
+        return 'file';
       }
     }
   }

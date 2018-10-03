@@ -26,11 +26,11 @@ export class EmailViewComponent implements OnInit, OnDestroy {
     console.log(email);
     this.emailDetails = null;
     this._email = email;
-    if (this.email) {
-      this.getEmailDetails();
-    } else {
-      this.emailDetails = null;
-    }
+    // if (this.email) {
+    //   this.getEmailDetails();
+    // } else {
+    //   this.emailDetails = null;
+    // }
   }
 
   get email(): any { return this._email; }
@@ -38,8 +38,7 @@ export class EmailViewComponent implements OnInit, OnDestroy {
   readUnreadIcon: string;
   readUnreadText: string;
 
-  constructor(private apiService: ApiService, private route: ActivatedRoute, private domSanitizer: DomSanitizer,
-    public deviceService: DeviceService, private titleService: Title) { }
+  constructor(private apiService: ApiService, private route: ActivatedRoute, private domSanitizer: DomSanitizer, private titleService: Title) { }
 
   ngOnInit() {
     this.paramsSub = this.route.params.subscribe(params => {
