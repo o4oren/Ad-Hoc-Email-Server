@@ -1,12 +1,24 @@
 .ahem-inline-input {
   background: white;
-  color: black;
+  color: #b0bec9;
   border-radius: 1px;
   font-size: 16px;
   padding: 5px;
   border: 0;
   height: 20px;
   max-width: 300px;
+}
+
+.background {
+  border: 1px solid #b0bec9;
+  border-radius: 5px;
+  padding: 20px;
+  background: #e2f1fc;
+  margin: auto;
+  margin-top: -146px;
+  position: relative;
+  z-index: 1;
+  width: 300px;
 }
 
 .ahem-inline-input-div {
@@ -19,7 +31,11 @@ input:focus {
 }
 
 input::placeholder {
-  color: lightgray;
+  color: #b0bec9;
+}
+
+.suffix {
+  color: #b0bec9;
 }
 
 

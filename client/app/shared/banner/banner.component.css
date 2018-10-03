@@ -25,15 +25,6 @@ h2 {
   background-size: cover;
 }
 
-.selector {
-  padding: 20px;
-  background: #dbeaff;
-  margin: auto;
-  margin-top: -146px;
-  position: relative;
-  z-index: 1;
-}
-
 mat-icon {
   width: 300px;
   height: 300px;
@@ -42,7 +33,7 @@ mat-icon {
 }
 
 @media screen and (min-width: 425px){
-  .selector {
+  app-account-selector {
     width: 300px;
   }
   h2 {
@@ -59,25 +50,8 @@ mat-icon {
   }
 
   mat-icon {
-    top: 150px;
+    top: 170px;
+    left: 10px;
   }
 }
 
-.home-container {
-  width: 100%;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.home-content-container {
-  width: 85%;
-  max-width: 1200px;
-  flex: 1;
-  flex-wrap: wrap;
-  display: flex;
-  margin: auto;
-  justify-content: space-around;
-  padding-top: 20px;
-}

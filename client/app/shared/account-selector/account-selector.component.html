@@ -13,16 +13,18 @@
 </div>
 
 <div *ngIf="!isInline">
-  <mat-form-field color="{{color}}">
-    <input type="email" matInput  [matAutocomplete]="auto" [formControl]="autoCompleteControl" [(ngModel)]="selectedAccount" placeholder="Account" (keyup.enter)="clickSubmit()">
-    <span matSuffix style="color: grey">@{{properties.allowedDomains[0]}}</span>
-  </mat-form-field>
-  <mat-autocomplete #auto="matAutocomplete" >
-    <mat-option *ngFor="let account of accounts" [value]="account">
-      {{ account }}
-    </mat-option>
-  </mat-autocomplete>
-  <a mat-button routerLink="/account/{{selectedAccount | trimDomain}}">Submit</a>
-  <a mat-button (click)="generateEmail()">Generate</a>
+  <div class="background">
+    <mat-form-field color="{{color}}">
+      <input type="email" matInput  [matAutocomplete]="auto" [formControl]="autoCompleteControl" [(ngModel)]="selectedAccount" placeholder="Account" (keyup.enter)="clickSubmit()">
+      <span matSuffix class="suffix">@{{properties.allowedDomains[0]}}</span>
+    </mat-form-field>
+    <mat-autocomplete #auto="matAutocomplete" >
+      <mat-option *ngFor="let account of accounts" [value]="account">
+        {{ account }}
+      </mat-option>
+    </mat-autocomplete>
+    <button mat-button routerLink="/account/{{selectedAccount | trimDomain}}">Submit</button>
+    <button mat-button (click)="generateEmail()">Generate</button>
+  </div>
 </div>
 

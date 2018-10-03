@@ -6,6 +6,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {HtmlSanitizerPipe} from './pipes/html-sanitizer.pipe';
 import {TrimDomainPipe} from './pipes/trim-domain.pipe';
+import { BannerComponent } from './banner/banner.component';
 
 @NgModule({
   imports: [
@@ -22,10 +23,12 @@ import {TrimDomainPipe} from './pipes/trim-domain.pipe';
   declarations: [
     AccountSelectorComponent,
     HtmlSanitizerPipe,
-    TrimDomainPipe
+    TrimDomainPipe,
+    BannerComponent
   ],
   exports: [
     AccountSelectorComponent,
+    BannerComponent,
     HtmlSanitizerPipe,
     TrimDomainPipe
   ]
