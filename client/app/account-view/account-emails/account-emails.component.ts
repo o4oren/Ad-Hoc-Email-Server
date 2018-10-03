@@ -76,8 +76,17 @@ export class AccountEmailsComponent implements OnInit, OnDestroy {
     return this.emails.filter(email => email.emailId === emailId)[0];
   }
 
-  clickedEmail(email) {
-    this.router.navigateByUrl('/account/' + this.account + '/' + email.emailId);
+  clickedEmail(email: EmailInfo) {
+    if (email) {
+      if (!email.isRead) {
+        email.isRead = true;
+      }
+      this.selectedEmail = email;
+      this.apiService.markAsReadOrUnread(this.account, this.selectedEmail.emailId, true).subscribe();
+      this.readUnreadIcon = 'envelope';
+      this.readUnreadText = 'unread';
+      this.router.navigateByUrl('/account/' + this.account + '/' + email.emailId);
+    }
   }
 
 }
