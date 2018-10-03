@@ -1,14 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import {Meta, Title} from '@angular/platform-browser';
+import {DomSanitizer, Meta, Title} from '@angular/platform-browser';
 import {DeviceService} from '../../core/services/device.service';
 import {ConfigService} from '../../core/services/config.service';
 import {AhemProperties} from '../../model/properties-model';
 import {HomePageItem} from '../home-page-item/home-page-item.component';
+import {MatIconRegistry} from '@angular/material';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
 
@@ -41,7 +42,15 @@ export class HomeComponent implements OnInit {
      },
    ];
 
-  constructor(public deviceService: DeviceService, titleService: Title, metaService: Meta) {
+  constructor(public deviceService: DeviceService, titleService: Title, metaService: Meta,
+              iconRegistry: MatIconRegistry, sanitizer: DomSanitizer) {
+    iconRegistry.addSvgIcon(
+      'envelopes',
+      sanitizer.bypassSecurityTrustResourceUrl('assets/svg/envelopes.svg'));
+    iconRegistry.addSvgIcon(
+      'sky',
+      sanitizer.bypassSecurityTrustResourceUrl('assets/svg/sky.svg'));
+
     titleService.setTitle('AHEM - an Ad-Hoc Disposable Temporary Email Address');
     metaService.updateTag({ name: 'description', content: 'AHEM - an Ad-Hoc Disposable Temporary Email Address. ' +
       'Ad-hoc - created on demand. Disposable - ' +

@@ -7,54 +7,22 @@
 @include mat-core();
 
 //define custom palette
-$ahem-dark: (
-  50: #515f77,
-  100: #515f77,
-  200: #515f77,
-  300: #515f77,
+
+$ahem-primary: (
+  50: #7e8ca6,
+  100: #7e8ca6,
+  200: #7e8ca6,
+  300: #7e8ca6,
   400: #515f77,
   500: #515f77,
   600: #515f77,
   700: #515f77,
   800: #515f77,
   900: #515f77,
-  A100: #515f77,
-  A200: #515f77,
-  A400: #515f77,
-  A700: #515f77,
-  contrast: (
-    50: white,
-    100: white,
-    200: #dbeaff,
-    300: #dbeaff,
-    400: #dbeaff,
-    500: #dbeaff,
-    600: #dbeaff,
-    700: #dbeaff,
-    800: #dbeaff,
-    900: #dbeaff,
-    A100: #dbeaff,
-    A200: #dbeaff,
-    A400: #dbeaff,
-    A700: #dbeaff,
-  )
-);
-
-$ahem-med: (
-  50: #94aace,
-  100: #94aace,
-  200: #94aace,
-  300: #94aace,
-  400: #94aace,
-  500: #94aace,
-  600: #94aace,
-  700: #94aace,
-  800: #94aace,
-  900: #94aace,
-  A100: #94aace,
-  A200: #94aace,
-  A400: #94aace,
-  A700: #94aace,
+  A100: #27354b,
+  A200: #27354b,
+  A400: #27354b,
+  A700: #27354b,
   contrast: (
     50: white,
     100: white,
@@ -66,53 +34,21 @@ $ahem-med: (
     700: white,
     800: white,
     900: white,
-    A100: black,
-    A200: black,
-    A400: black,
-    A700: black,
+    A100: white,
+    A200: white,
+    A400: white,
+    A700: white,
   )
 );
 
-$ahem-light: (
-  50: #dbeaff,
-  100: #dbeaff,
-  200: #dbeaff,
-  300: #dbeaff,
-  400: #dbeaff,
-  500: #dbeaff,
-  600: #dbeaff,
-  700: #dbeaff,
-  800: #dbeaff,
-  900: #dbeaff,
-  A100: #dbeaff,
-  A200: #dbeaff,
-  A400: #dbeaff,
-  A700: #dbeaff,
-  contrast: (
-    50: #515f77,
-    100: #515f77,
-    200: #515f77,
-    300: #515f77,
-    400: #515f77,
-    500: #515f77,
-    600: #515f77,
-    700: #515f77,
-    800: #515f77,
-    900: #515f77,
-    A100: #515f77,
-    A200: #515f77,
-    A400: #515f77,
-    A700: #515f77,
-  )
-);
 
 
 // below creates a primary palette with three shades of blue
 //$my-primary: mat-palette($my-blue, 100, 50, 200);
 
 // Define a theme.
-$ahem-app-primary: mat-palette($ahem-med, A400, A700);
-$ahem-app-accent:  mat-palette($ahem-dark, 100, 100, A400);
+$ahem-app-primary: mat-palette($ahem-primary, 600, 100, A700);
+$ahem-app-accent:  mat-palette($mat-blue, 50, 50, 700);
 $ahem-app-warn:    mat-palette($mat-red);
 
 $ahem-app-theme: mat-light-theme($ahem-app-primary, $ahem-app-accent, $ahem-app-warn);
@@ -122,11 +58,12 @@ $ahem-app-theme: mat-light-theme($ahem-app-primary, $ahem-app-accent, $ahem-app-
 
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 
-html, body, material-app, mat-sidenav-container, ahem-sidnav-content {
+html, body, material-app {
   margin: 0;
   width: 100%;
   height: 100%;
   font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-color: #f5f5f6;
   //overflow: hidden;
 }
 
