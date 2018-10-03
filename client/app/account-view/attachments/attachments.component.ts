@@ -19,7 +19,7 @@ export class AttachmentsComponent implements OnInit {
   }
 
   getIconName(filename: string): string {
-    let ext = (/[.]/.exec(filename)) ? /[^.]+$/.exec(filename) : '';
+    const ext = (/[.]/.exec(filename)) ? /[^.]+$/.exec(filename) : '';
 
     switch (ext[0]) {
       case 'zip': {
