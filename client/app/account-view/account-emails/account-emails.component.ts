@@ -102,6 +102,7 @@ export class AccountEmailsComponent implements OnInit, OnDestroy {
       result => {
         this.getAccountEmails();
         this.selectedEmail = null;
+        this.router.navigateByUrl('/account/' + this.account);
       },
       err => {
         console.log('error!!!!', err); // TODO popup message
