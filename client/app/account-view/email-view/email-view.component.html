@@ -1,5 +1,9 @@
 
 <div class="ahem-email-content-container">
+  <mat-toolbar color="accent" class="ahem-internal-toolbar">
+    <button mat-button *ngIf="emailDetails" (click)="deleteFile()"><fa-icon [icon]="['fas', 'trash']"></fa-icon> Delete</button>
+    <button mat-button *ngIf="emailDetails" (click)="markAsReadOrUnread()"><fa-icon [icon]="['far', readUnreadIcon]"></fa-icon> Mark as {{readUnreadText}}</button>
+  </mat-toolbar>
   <div *ngIf="emailDetails">
     <mat-card>
       <mat-card-header>

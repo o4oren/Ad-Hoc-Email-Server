@@ -1,11 +1,11 @@
 import {Component, Input, OnDestroy, OnInit, Output, ViewEncapsulation} from '@angular/core';
 import {ApiService} from '../../core/services/api.service';
 import {ActivatedRoute} from '@angular/router';
-import {EmailInfo} from '../../model/email-info-model';
 import {EmailDetails} from '../../model/email-details-model';
 import {DomSanitizer, SafeHtml, Title} from '@angular/platform-browser';
 import {DeviceService} from '../../core/services/device.service';
 import {Subscription} from 'rxjs/internal/Subscription';
+import {EmailInfo} from '../../model/email-info-model';
 
 @Component({
   selector: 'app-email-view',
@@ -17,6 +17,8 @@ export class EmailViewComponent implements OnInit, OnDestroy {
 
   emailDetails: EmailDetails;
   paramsSub: Subscription;
+  readUnreadIcon: string;
+  readUnreadText: string;
   account: string;
 
   constructor(private apiService: ApiService, private route: ActivatedRoute, private domSanitizer: DomSanitizer,
@@ -43,6 +45,22 @@ export class EmailViewComponent implements OnInit, OnDestroy {
       this.emailDetails = result;
       this.titleService.setTitle('AHEM - ' + this.account + ' - ' + this.emailDetails.subject);
     });
+  }
+
+  deleteFile() {
+    this.apiService.deleteEmail(this.account, this.emailDetails._id);
+  }
+
+  selectEmail(emailInfo: EmailInfo) {
+    if (emailInfo) {
+      if (!emailInfo.isRead) {
+        emailInfo.isRead = true;
+      }
+      // this.selectedEmail = emailInfo;
+      // this.apiService.markAsReadOrUnread(this.account, this.selectedEmail.emailId, true).subscribe();
+      this.readUnreadIcon = 'envelope';
+      this.readUnreadText = 'unread';
+    }
   }
 
 }

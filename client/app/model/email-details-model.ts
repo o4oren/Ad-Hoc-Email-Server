@@ -6,7 +6,7 @@ export interface EmailDetails {
   'attachments':  Array<any>;
   'headers':  any;
   'html':  string;
-  'text': string,
+  'text': string;
   'textAsHtml': string;
   'subject': string;
   'date': string;
