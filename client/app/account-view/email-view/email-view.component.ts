@@ -8,7 +8,7 @@ import {DeviceService} from '../../core/services/device.service';
 import {Subscription} from 'rxjs/internal/Subscription';
 
 @Component({
-  selector: 'ahem-email-view',
+  selector: 'app-email-view',
   templateUrl: './email-view.component.html',
   styleUrls: ['./email-view.component.css'],
   encapsulation: ViewEncapsulation.None,
@@ -20,19 +20,6 @@ export class EmailViewComponent implements OnInit, OnDestroy {
   paramsSub: Subscription;
   account: string;
 
-
-  @Input()
-  set email(email) {
-    console.log(email);
-    this.emailDetails = null;
-    this._email = email;
-    if (this.email) {
-      this.getEmailDetails();
-    } else {
-      this.emailDetails = null;
-    }
-  }
-
   get email(): any { return this._email; }
 
   constructor(private apiService: ApiService, private route: ActivatedRoute, private domSanitizer: DomSanitizer,
@@ -42,6 +29,7 @@ export class EmailViewComponent implements OnInit, OnDestroy {
     this.paramsSub = this.route.params.subscribe(params => {
       this.account = params['account'];
     });
+    this.getEmailDetails();
   }
 
   getSafeHtml(htmlString): SafeHtml {
