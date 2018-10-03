@@ -84,7 +84,7 @@ export class AccountEmailsComponent implements OnInit, OnDestroy {
       }
       this.selectedEmail = emailInfo;
       this.apiService.markAsReadOrUnread(this.account, this.selectedEmail.emailId, true).subscribe();
-      this.readUnreadIcon = 'envelope';
+      this.readUnreadIcon = 'envelope-open';
       this.readUnreadText = 'unread';
     }
   }
@@ -109,5 +109,15 @@ export class AccountEmailsComponent implements OnInit, OnDestroy {
     );
   }
 
+  markAsReadOrUnread() {
+      if (this.selectedEmail) {
+        if (!this.selectedEmail.isRead) {
+          this.selectedEmail.isRead = true;
+        }
+        this.apiService.markAsReadOrUnread(this.account, this.selectedEmail.emailId, true).subscribe();
+        this.readUnreadIcon = 'envelope';
+        this.readUnreadText = 'unread';
+      }
+  }
 
 }

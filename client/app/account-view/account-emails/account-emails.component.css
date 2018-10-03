@@ -12,3 +12,13 @@
   max-width: 600px;
   margin: auto;
 }
+
+.ahem-internal-toolbar {
+  padding-left: 20px;
+}
+
+@media screen and (min-width: 720px){
+  .ahem-internal-toolbar {
+    padding-left: 168px;
+  }
+}

@@ -15,11 +15,28 @@ import {EmailInfo} from '../../model/email-info-model';
 })
 export class EmailViewComponent implements OnInit, OnDestroy {
 
-  @Input() emailDetails: EmailDetails;
+  _email: EmailInfo;
+  emailDetails: EmailDetails;
   paramsSub: Subscription;
+  account: string;
+
+
+  @Input()
+  set email(email) {
+    console.log(email);
+    this.emailDetails = null;
+    this._email = email;
+    if (this.email) {
+      this.getEmailDetails();
+    } else {
+      this.emailDetails = null;
+    }
+  }
+
+  get email(): any { return this._email; }
+
   readUnreadIcon: string;
   readUnreadText: string;
-  account: string;
 
   constructor(private apiService: ApiService, private route: ActivatedRoute, private domSanitizer: DomSanitizer,
     public deviceService: DeviceService, private titleService: Title) { }
@@ -28,7 +45,7 @@ export class EmailViewComponent implements OnInit, OnDestroy {
     this.paramsSub = this.route.params.subscribe(params => {
       this.account = params['account'];
       const emailId = params['emailId'];
-      this.getEmailDetails(emailId);
+      this.getEmailDetails();
     });
   }
 
@@ -40,8 +57,8 @@ export class EmailViewComponent implements OnInit, OnDestroy {
     this.paramsSub.unsubscribe();
   }
 
-  getEmailDetails(emailId:  string) {
-    this.apiService.getEmailContent(this.account, emailId).subscribe(result => {
+  getEmailDetails() {
+    this.apiService.getEmailContent(this.account, this.email.emailId).subscribe(result => {
       this.emailDetails = result;
       this.titleService.setTitle('AHEM - ' + this.account + ' - ' + this.emailDetails.subject);
     });
@@ -49,19 +66,6 @@ export class EmailViewComponent implements OnInit, OnDestroy {
 
   deleteFile() {
     this.apiService.deleteEmail(this.account, this.emailDetails._id);
-  }
-
-  markAsReadOrUnread() {
-    // TODO implement
-  //   const emailInfo = {};
-  //   if (emailInfo) {
-  //     if (!emailInfo.isRead) {
-  //       emailInfo.isRead = true;
-  //     }
-  //     this.apiService.markAsReadOrUnread(this.account, this.selectedEmail.emailId, true).subscribe();
-  //     this.readUnreadIcon = 'envelope';
-  //     this.readUnreadText = 'unread';
-  //   }
   }
 
 }

@@ -1,4 +1,8 @@
-<div class="ahem-centered">
+<mat-toolbar color="accent" class="ahem-internal-toolbar">
+  <button mat-button *ngIf="selectedEmail" (click)="deleteFile()"><fa-icon [icon]="['fas', 'trash']"></fa-icon> Delete</button>
+  <button mat-button *ngIf="selectedEmail" (click)="markAsReadOrUnread()"><fa-icon [icon]="['far', readUnreadIcon]"></fa-icon> Mark as {{readUnreadText}}</button>
+</mat-toolbar>
+<div class="ahem-centered ahem-overflow">
   <mat-list *ngIf="!selectedEmail" class="ahem-email-list">
     <!-- used for the sake of pushing the sidenav downwards when it is in hover mode for mobile-->
     <div *ngFor='let email of emails' (click)="clickedEmail(email)" class="ahem-email-list-item" [ngClass]="{'ahem-email-selected': email.isSelected }">
@@ -6,5 +10,5 @@
       <mat-divider></mat-divider>
     </div>
   </mat-list>
-  <app-email-view *ngIf="selectedEmail" [emailDetails]="selectedEmail"></app-email-view>
+  <app-email-view *ngIf="selectedEmail" [email]="selectedEmail"></app-email-view>
 </div>
