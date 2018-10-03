@@ -1,7 +1,7 @@
 {
   "serverBaseUri": "http://localhost:3000",
-  "mongoConnectUrl": "mongodb://dbadmin:eubphskV@amy.sealdoc.com:27017/?authMechanism=MONGODB-CR&authSource=test",
-  "dbName": "test",
+  "mongoConnectUrl": "mongodb://localhost:27017/",
+  "dbName": "ahem",
   "appListenPort": 3000,
   "smtpPort" : 25,
   "emailDeleteInterval" : 86400,
