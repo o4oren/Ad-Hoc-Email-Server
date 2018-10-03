@@ -51,16 +51,17 @@ export class EmailViewComponent implements OnInit, OnDestroy {
     this.apiService.deleteEmail(this.account, this.emailDetails._id);
   }
 
-  selectEmail(emailInfo: EmailInfo) {
-    if (emailInfo) {
-      if (!emailInfo.isRead) {
-        emailInfo.isRead = true;
-      }
-      // this.selectedEmail = emailInfo;
-      // this.apiService.markAsReadOrUnread(this.account, this.selectedEmail.emailId, true).subscribe();
-      this.readUnreadIcon = 'envelope';
-      this.readUnreadText = 'unread';
-    }
+  markAsReadOrUnread() {
+    // TODO implement
+  //   const emailInfo = {};
+  //   if (emailInfo) {
+  //     if (!emailInfo.isRead) {
+  //       emailInfo.isRead = true;
+  //     }
+  //     this.apiService.markAsReadOrUnread(this.account, this.selectedEmail.emailId, true).subscribe();
+  //     this.readUnreadIcon = 'envelope';
+  //     this.readUnreadText = 'unread';
+  //   }
   }
 
 }

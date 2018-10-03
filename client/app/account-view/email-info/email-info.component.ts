@@ -2,7 +2,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {EmailInfo} from '../../model/email-info-model';
 
 @Component({
-  selector: 'ahem-email-info',
+  selector: 'app-email-info',
   templateUrl: './email-info.component.html',
   styleUrls: ['./email-info.component.css']
 })
@@ -21,10 +21,11 @@ export class EmailInfoComponent implements OnInit {
     this.emailClicked.emit(this.emailInfo);
   }
 
-  getFontIcon(isSelected: boolean): string {
-    if (isSelected)
-      return "fa-envelope-open-o";
-    return "fa-envelope-o";
+  getFontIcon(isRead: boolean): string {
+    if (isRead) {
+      return 'envelope-open';
+    }
+    return 'envelope';
   }
 
 }

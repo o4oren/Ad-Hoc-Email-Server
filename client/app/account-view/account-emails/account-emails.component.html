@@ -2,7 +2,7 @@
   <mat-list class="ahem-email-list">
     <!-- used for the sake of pushing the sidenav downwards when it is in hover mode for mobile-->
     <div *ngFor='let email of emails' (click)="clickedEmail(email)" class="ahem-email-list-item" [ngClass]="{'ahem-email-selected': email.isSelected }">
-      <ahem-email-info [emailInfo]="email"></ahem-email-info>
+      <app-email-info [emailInfo]="email"></app-email-info>
       <mat-divider></mat-divider>
     </div>
   </mat-list>
