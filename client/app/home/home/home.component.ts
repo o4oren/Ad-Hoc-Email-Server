@@ -37,7 +37,7 @@ export class HomeComponent implements OnInit {
     this.items = [
       {
         title: 'Ad Hoc',
-        text: 'No sign in! No registration! No password! An ad hoc mailbox is created by just sending an email to its address.',
+        text: 'No sign in page! No registration! No password! An ad hoc mailbox is created by just sending an email to its address.',
         iconName: 'paper-plane',
         iconGroup: 'far'
       },
@@ -49,7 +49,8 @@ export class HomeComponent implements OnInit {
       },
       {
         title: 'Temporary',
-        text: 'Received emails are automatically deleted after ' + this.durationPipe.transform(this.properties.emailDeleteAge + this.properties.emailDeleteInterval, 'seconds') + '.',
+        text: 'Received emails are automatically deleted after '
+        + this.durationPipe.transform(this.properties.emailDeleteAge + this.properties.emailDeleteInterval, 'seconds') + '.',
         iconName: 'clock',
         iconGroup: 'far'
       },
