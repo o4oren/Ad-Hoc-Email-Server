@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { HelpRoutingModule } from './help-routing.module';
 import {ApiDocumentationComponent} from './api-documentation/api-documentation.component';
 import {SharedModule} from '../shared/shared.module';
-import {MatTableModule} from '@angular/material';
+import {MatCardModule, MatTableModule} from '@angular/material';
 import { FaqComponent } from './faq/faq.component';
 import {MomentModule} from 'ngx-moment';
 
@@ -13,6 +13,7 @@ import {MomentModule} from 'ngx-moment';
     CommonModule,
     SharedModule,
     MatTableModule,
+    MatCardModule,
     MomentModule,
     HelpRoutingModule
   ],
