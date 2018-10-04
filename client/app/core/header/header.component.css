@@ -14,9 +14,9 @@
 }
 
 .ahem-logo-text {
-  margin-left: 40px;
+  margin-left: 20px;
   height: 64px;
-  width: 128px;
+  width: 200px;
 }
 
 :host .ahem-logo-text ::ng-deep path {
@@ -30,7 +30,8 @@
     height: 128px;
   }
   .ahem-logo-text {
-    height: 128px;
+    margin-left: 30px;
+    height: 200px;
     width: 256px;
   }
 }
