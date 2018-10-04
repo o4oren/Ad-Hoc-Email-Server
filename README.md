@@ -67,7 +67,7 @@ https://material.io/tools/color/#!/?view.left=0&view.right=0&primary.color=515f7
 
 ### API
 
-The full api documentation is available [here](http://www.ahem.email/help/api "AHEM - API Help").
+The full api documentation is available [here](https://www.ahem.email/help/api "AHEM - API Help").
 
 A brief list of RESTful resources:
 
