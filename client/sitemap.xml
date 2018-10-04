@@ -3,10 +3,10 @@
   xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
   xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
   <url>
-    <loc>http://www.ahem.email</loc>
+    <loc>http://www.ahem.email/</loc>
     <image:image>
       <image:loc>http://www.ahem.email/assets/svg/ahem-bluish.svg</image:loc>
-      <image:caption>AHEM - an ad-hoc email server</image:caption>
+      <image:caption>AHEM - an ad-hoc email logo</image:caption>
     </image:image>
     <image:image>
       <image:loc>http://www.ahem.email/assets/svg/ahem-text.svg</image:loc>
@@ -14,11 +14,11 @@
     </image:image>
     <image:image>
       <image:loc>http://www.ahem.email/assets/svg/ahem-sm-bottom-text.svg</image:loc>
-      <image:caption>AHEM - an ad-hoc email server</image:caption>
+      <image:caption>AHEM - an ad-hoc email</image:caption>
     </image:image>
     <image:image>
        <image:loc>http://www.ahem.email/assets/images/ahem-logo.png</image:loc>
-       <image:caption>AHEM - an ad-hoc email server</image:caption>
+       <image:caption>AHEM - an ad-hoc email</image:caption>
     </image:image>
     <image:image>
        <image:loc>http://www.ahem.email/assets/images/screenshot.png</image:loc>
@@ -33,7 +33,10 @@
   	<loc>http://www.ahem.email/privacy</loc>
   </url>
   <url>
-	<loc>http://www.ahem.email/help/api</loc>
+	  <loc>http://www.ahem.email/help/api</loc>
+  </url>
+  <url>
+    <loc>http://www.ahem.email/help/faq</loc>
   </url>
   <url>
     <loc>http://www.ahem.email/account</loc>

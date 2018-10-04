@@ -20,7 +20,7 @@ import {Angulartics2Module} from 'angulartics2';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
-import {ApiDocumentationComponent} from '../api-documentation/api-documentation.component';
+import {ApiDocumentationComponent} from '../help/api-documentation/api-documentation.component';
 import {DeviceService} from './services/device.service';
 import {ApiService} from './services/api.service';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
@@ -46,7 +46,6 @@ library.add(faMeh, faEnvelope, faEnvelopeOpen, faBars, faTrash, faTrashAlt, faCl
   declarations: [
     FooterComponent,
     HeaderComponent,
-    ApiDocumentationComponent,
   ],
   imports: [
     CommonModule,

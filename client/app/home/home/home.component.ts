@@ -17,19 +17,19 @@ export class HomeComponent implements OnInit {
    items: Array<HomePageItem> = [
      {
        title: 'Ad Hoc',
-       text: 'No sign in! No registration! No password! An ad hoc mailbox is created just by sending an email to its address.',
+       text: 'No sign in! No registration! No password! An ad hoc mailbox is created by just sending an email to its address.',
        iconName: 'paper-plane',
        iconGroup: 'far'
      },
      {
        title: 'Disposable',
-       text: 'Do not expose your real email, dispose received emails. No strings attached.',
+       text: 'Do not expose your real email. Dispose received emails. No strings attached.',
        iconName: 'trash-alt',
        iconGroup: 'far'
      },
      {
        title: 'Temporary',
-       text: 'Received emails with be automatically deleted after 24 hours.',
+       text: 'Received emails are automatically deleted after 24 hours.',
        iconName: 'clock',
        iconGroup: 'far'
      },

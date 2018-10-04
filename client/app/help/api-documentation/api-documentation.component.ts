@@ -3,12 +3,13 @@ import { MatTableDataSource } from '@angular/material';
 import {Meta, Title} from '@angular/platform-browser';
 
 @Component({
-  selector: 'ahem-api-documentation',
+  selector: 'app-api-documentation',
   templateUrl: './api-documentation.component.html',
   styleUrls: ['./api-documentation.component.css']
 })
 export class ApiDocumentationComponent implements OnInit {
-
+  h1 = 'AHEM - Ad-Hoc Temporary Email Server API Documentation';
+  h2 = '';
   displayedColumns = ['httpMethod', 'uriPath', 'parameters', 'description'];
   dataSource = new MatTableDataSource<Element>(ELEMENT_DATA);
 

@@ -62,6 +62,9 @@ Parameters:
 * docker-compose build
 * docker-compose up
 
+#### palette ####
+https://material.io/tools/color/#!/?view.left=0&view.right=0&primary.color=515f77&secondary.color=E3F2FD
+
 ### API
 
 The full api documentation is available [here](http://www.ahem.email/help/api "AHEM - API Help").
@@ -108,11 +111,11 @@ Replace XX-XXXXXXXXX-X with your GA id.
 - [x] allow delete emails
 - [x] migrate to mongodb
 - [x] update missing emails page and loading circles
-- []  sort out logging
-- [] separate  account view from email view pages 
-- [] separate  server and webapp properties 
-- [] better home page
-- [] Add apis to get account references from email, get account and email counts - both general and in account context
+- [ ]  sort out logging
+- [ ] separate  account view from email view pages 
+- [ ] separate  server and webapp properties 
+- [ ] better home page
+- [ ] Add apis to get account references from email, get account and email counts - both general and in account context
 
 
 ## Authors

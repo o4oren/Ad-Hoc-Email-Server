@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import {ApiDocumentationComponent} from '../api-documentation/api-documentation.component';
+import {ApiDocumentationComponent} from '../help/api-documentation/api-documentation.component';
 import {RouterModule, Routes} from '@angular/router';
 
 const appRoutes: Routes = [
@@ -7,7 +7,10 @@ const appRoutes: Routes = [
     path: '',
     loadChildren: '../home/home.module#HomeModule',
   },
-  { path: 'help/api', component: ApiDocumentationComponent},
+  {
+    path: 'help',
+    loadChildren: '../help/help.module#HelpModule',
+  },
   {
     path: 'account',
     loadChildren: '../account-view/account-view.module#AccountViewModule'},
