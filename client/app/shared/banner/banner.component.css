@@ -49,6 +49,10 @@ mat-icon {
     height: 300px;
   }
 
+  .banner.sky {
+    position: sticky;
+  }
+
   mat-icon {
     top: 170px;
     left: 10px;
