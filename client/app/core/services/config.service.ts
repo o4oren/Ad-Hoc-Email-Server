@@ -15,16 +15,14 @@ export class ConfigService {
   }
 
   load() {
-    const jsonFile = `/assets/properties.json`;
-    const path = this.baseUri + jsonFile;
-    console.log('path', path);
     return new Promise<void>((resolve, reject) => {
-      this.http.get(path).toPromise().then(
+      this.http.get(this.baseUri + '/api/properties')
+        .toPromise().then(
         res => { // Success
           ConfigService.properties = <AhemProperties>res;
           resolve();
         }).catch((res: any) => {
-        reject(`Could not load file '${path}': ${(res)}`);
+        reject(res);
       });
     });
 

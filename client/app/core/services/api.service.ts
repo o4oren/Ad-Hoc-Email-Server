@@ -19,9 +19,8 @@ export class ApiService {
   }
 
   getProperties(): any {
-    return this._properties;
+    return this._properties = this.http.get(this.baseUri + '/api/properties');
   }
-
 
   listAccountsAutoComplete(prefix: string): any {
     const url = this.baseUri + '/api/account/autocomplete';
