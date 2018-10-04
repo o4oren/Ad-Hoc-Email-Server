@@ -2,37 +2,51 @@
 
 <div class="ahem-centered">
 
-  <h2>What is the AHEM Ad Hoc Email service exactly?</h2>
+  <h2>What is AHEM Ad Hoc Email exactly?</h2>
   <p>
     AHEM is a free ad-hoc disposable temporary Email service.
 
     Ad-hoc - a mail that a mailbox is created for you as soon as you need it.
     Disposable - you can throw it right away. Not strings attached.
-    Temporary - the emails recieved will be deleted by the system after a predefined time period.
+    Temporary - the emails received will be deleted by the system after a certain time elapses.
     Free - you know what that means!
+    <br>
+    Others call it tempmail, 10minutemail, throwaway email, fake-mail or trash-mail.
+    <br>
+    When using forums, connecting to public Wi-Fi, many times users are asked to register before they can use the service.<br>
+    Manny websites and blogs ask users to register before they can view content, contribute or download.<br>
+    Well, sometimes we don't have a choice, and sometimes we are interested in exposing our identity to a service provider.
+    <br>
+    But when we do not - or don't even care - storing your email address in any additional data base increases the risk for it to be leaked.
+    AHEM is a service that allows you to register easily without exposing your real email address, so that you can avoid spam and stay safe.
   </p>
 
-  <h2>Can I only user @ahem.email addresses with the service?</h2>
+  <h2>Can I only use @ahem.email addresses with the service?</h2>
   <p>
   The AHEM server currently serves the domains:
   <ul>
     <li *ngFor="let domain of properties.allowedDomains">{{domain}}</li>
   </ul>
-  ahem.email
-  mail.ahem.email
-  ahem-email.com
 
   Sending an email to any of the above domains will be accepted by the AHEM mail service.
 
   <h2>How long does an email remain on the AHEM mail server?</h2>
   <p>
-    An email remains on the AHEM server for {{properties.emailDeleteAge}} seconds.
+    An email remains on the AHEM server at least {{ properties.emailDeleteInterval / 3600 | amDuration: 'hours' }}, and up to {{properties.emailDeleteAge / 3600 + properties.emailDeleteInterval / 3600 | amDuration: 'hours' }}.
   </p>
 
-  <h2>Can I delete my emails?</h2>
+  <h2>Can I delete my emails immediately?</h2>
   <p>
     Yes.
   </p>
+
+  <h2>What personal information do you save and how do you use it?</h2>
+  <p>
+    We do not keep any personal information. However, the emails are publically available, so be mindful of how you use the service.
+    <br>
+    We recommend that you read the <a href="/privacy">privacy policy</a>.
+  </p>
+
 
   <h2>What personal information do you save and how do you use it?</h2>
   <p>

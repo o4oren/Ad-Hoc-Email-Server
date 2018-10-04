@@ -4,8 +4,8 @@
   "dbName": "ahem",
   "appListenPort": 3000,
   "smtpPort" : 25,
-  "emailDeleteInterval" : 86400,
-  "emailDeleteAge" : 7200,
+  "emailDeleteInterval" : 3600,
+  "emailDeleteAge" : 86400,
   "allowAutocomplete" : true,
   "allowedDomains" : ["my.domain.com"]
 }
