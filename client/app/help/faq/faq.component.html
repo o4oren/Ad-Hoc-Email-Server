@@ -32,7 +32,7 @@
 
   <h2>How long does an email remain on the AHEM mail server?</h2>
   <p>
-    An email remains on the AHEM server at least {{ properties.emailDeleteInterval / 3600 | amDuration: 'hours' }}, and up to {{properties.emailDeleteAge / 3600 + properties.emailDeleteInterval / 3600 | amDuration: 'hours' }}.
+    An email remains on the AHEM server at least {{ min(properties.emailDeleteInterval, properties.emailDeleteAge) / 3600 | amDuration: 'hours' }}, and up to {{properties.emailDeleteAge / 3600 + properties.emailDeleteInterval / 3600 | amDuration: 'hours' }}.
   </p>
 
   <h2>Can I delete my emails immediately?</h2>

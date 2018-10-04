@@ -11,7 +11,6 @@ export class FaqComponent implements OnInit {
 
   h1 = 'AHEM - Ad Hoc Disposable Temporary Email FAQ';
   h2 = 'Frequently Asked Questions';
-
   properties = ConfigService.properties;
 
   constructor(titleService: Title, metaService: Meta) {
@@ -23,5 +22,9 @@ export class FaqComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  min(int1: number, int2: number): number {
+    return Math.min(int1, int2);
   }
 }

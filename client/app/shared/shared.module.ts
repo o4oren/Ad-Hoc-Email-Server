@@ -24,7 +24,7 @@ import { BannerComponent } from './banner/banner.component';
     AccountSelectorComponent,
     HtmlSanitizerPipe,
     TrimDomainPipe,
-    BannerComponent
+    BannerComponent,
   ],
   exports: [
     AccountSelectorComponent,

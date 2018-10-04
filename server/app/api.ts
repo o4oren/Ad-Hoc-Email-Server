@@ -4,6 +4,7 @@
 const express = require('express');
 const router = express.Router();
 const ObjectID = require('mongodb').ObjectID;
+const properties = null;
 
 
 // indicates the api server is up
