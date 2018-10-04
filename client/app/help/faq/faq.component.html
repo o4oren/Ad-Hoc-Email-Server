@@ -19,6 +19,7 @@
     embarassed on your behalf.
   </p>
 
+  <mat-divider></mat-divider>
   <h2>Come on! Seriously, what is AHEM Ad Hoc Disposable Temporary Email?!</h2>
   <p>
     AHEM is a free ad-hoc disposable temporary Email service.
@@ -41,7 +42,7 @@
     AHEM is a service that allows you to register easily without exposing your real email address, so that you can avoid
     spam and stay safe.
   </p>
-
+  <mat-divider></mat-divider>
   <h2>Can I only use @ahem.email addresses with the service?</h2>
   <p>
     The AHEM server currently serves the domains:
@@ -50,19 +51,19 @@
   </ul>
 
   Sending an email to any of the above domains will be accepted by the AHEM mail service.
-
+  <mat-divider></mat-divider>
   <h2>How long does an email remain on the AHEM mail server?</h2>
   <p>
     An email remains on the AHEM server at least {{ min(properties.emailDeleteInterval, properties.emailDeleteAge) |
     amDuration: 'seconds' }}, and up to {{properties.emailDeleteAge + properties.emailDeleteInterval | amDuration:
     'seconds' }}.
   </p>
-
+  <mat-divider></mat-divider>
   <h2>Can I delete my emails immediately?</h2>
   <p>
     Yes.
   </p>
-
+  <mat-divider></mat-divider>
   <h2>What personal information do you save and how do you use it?</h2>
   <p>
     We do not keep any personal information. However, the emails are publically available, so be mindful of how you use
