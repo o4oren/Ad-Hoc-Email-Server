@@ -7,6 +7,7 @@ import { HomeComponent } from './home/home.component';
 import {HomeRoutingModule} from './home-routing.module';
 import { HomePageItemComponent } from './home-page-item/home-page-item.component';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
+import {MomentModule} from 'ngx-moment';
 
 @NgModule({
   imports: [

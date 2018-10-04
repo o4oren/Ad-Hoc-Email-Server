@@ -11,7 +11,7 @@ import {SharedModule} from '../shared/shared.module';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import {EmailInfo} from '../model/email-info-model';
 import {EmailInfoComponent} from './email-info/email-info.component';
-import {MomentModule} from 'angular2-moment';
+import {MomentModule} from 'ngx-moment';
 
 @NgModule({
   imports: [
