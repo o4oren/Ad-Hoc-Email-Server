@@ -5,6 +5,7 @@ import {DeviceService} from '../../core/services/device.service';
 import {ApiService} from '../../core/services/api.service';
 import {Observable} from 'rxjs/internal/Observable';
 import {Router} from '@angular/router';
+import {ConfigService} from '../../core/services/config.service';
 
 @Component({
   selector: 'app-account-selector',
@@ -16,7 +17,7 @@ export class AccountSelectorComponent implements OnInit {
   autoCompleteControl: FormControl;
   accounts: string[];
   @Input() selectedAccount = '';
-  @Input() color = 'primary';
+  @Input() color = 'accent';
   @Input() isInline = true;
   properties: any = {allowedDomains: ['']};
 
@@ -30,7 +31,7 @@ export class AccountSelectorComponent implements OnInit {
       this.filterAccounts(val).subscribe(result => this.accounts = result);
     });
 
-    this.properties = this.apiService.getProperties();
+    this.properties = ConfigService.properties;
   }
 
 

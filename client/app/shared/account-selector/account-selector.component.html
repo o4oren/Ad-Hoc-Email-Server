@@ -14,8 +14,13 @@
 
 <div *ngIf="!isInline">
   <div class="background">
-    <mat-form-field color="{{color}}">
-      <input type="email" matInput  [matAutocomplete]="auto" [formControl]="autoCompleteControl" [(ngModel)]="selectedAccount" placeholder="Account" (keyup.enter)="clickSubmit()">
+    <mat-form-field color="primary">
+      <input type="text" matInput
+             [matAutocomplete]="auto"
+             [formControl]="autoCompleteControl"
+             [(ngModel)]="selectedAccount"
+             placeholder="Account"
+             (keyup.enter)="clickSubmit()">
       <span matSuffix class="suffix">@{{properties.allowedDomains[0]}}</span>
     </mat-form-field>
     <mat-autocomplete #auto="matAutocomplete" >

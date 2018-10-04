@@ -31,6 +31,6 @@ import { BannerComponent } from './banner/banner.component';
     BannerComponent,
     HtmlSanitizerPipe,
     TrimDomainPipe
-  ]
+  ],
 })
 export class SharedModule { }

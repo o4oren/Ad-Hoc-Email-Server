@@ -14,7 +14,6 @@ import {
   MatToolbarModule
 } from '@angular/material';
 import {CoreRoutingModule} from './core-routing.module';
-import {MomentModule} from 'angular2-moment';
 import {Angulartics2GoogleAnalytics} from 'angulartics2/ga';
 import {Angulartics2Module} from 'angulartics2';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -32,6 +31,7 @@ import { faMeh, faEnvelope, faEnvelopeOpen, faTrashAlt, faClock, faPaperPlane, f
 import {SharedModule} from '../shared/shared.module';
 import {HomeModule} from '../home/home.module';
 import {ConfigService} from './services/config.service';
+import {DurationPipe, MomentModule} from 'ngx-moment';
 
 export function initializeApp(ahemProperties: ConfigService) {
   return () => ahemProperties.load();
@@ -83,6 +83,7 @@ library.add(faMeh, faEnvelope, faEnvelopeOpen, faBars, faTrash, faTrashAlt, faCl
     { provide: APP_INITIALIZER,
       useFactory: initializeApp,
       deps: [ConfigService], multi: true },
+    DurationPipe,
     ApiService,
     MatIconRegistry,
     DeviceService],
