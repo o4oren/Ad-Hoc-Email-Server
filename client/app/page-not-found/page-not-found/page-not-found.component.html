@@ -1,14 +1,8 @@
+<app-banner [showAccountSelector]="false" h1="404 - Ahem... page not found..." h2="The page you were looking for was not found"><</app-banner>
 <div class="ahem-centered">
-  <h1>
-    AHEM - Ad Hoc Temporary Email Address
-  </h1>
-  <img src="assets/images/ahem-fumbled.png" alt="404 - Page not found!">
-  <h2>
-    The page you are looking for does not exist.
-  </h2>
-
+  <img src="assets/svg/fumbled-bluish.svg" alt="404 - page not found" class="fumbled">
   <p>
-    Please use one of the links below to continue.
+    Please use one of the links below to continue:
   <ul>
     <li>
       <a [routerLink]="['/']">

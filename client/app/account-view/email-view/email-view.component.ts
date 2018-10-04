@@ -38,7 +38,10 @@ export class EmailViewComponent implements OnInit, OnDestroy {
   readUnreadIcon: string;
   readUnreadText: string;
 
-  constructor(private apiService: ApiService, private route: ActivatedRoute, private domSanitizer: DomSanitizer, private titleService: Title) { }
+  constructor(private apiService: ApiService,
+              private route: ActivatedRoute,
+              private domSanitizer: DomSanitizer,
+              private titleService: Title) { }
 
   ngOnInit() {
     this.paramsSub = this.route.params.subscribe(params => {

@@ -1,8 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {EmailDetails} from "../../model/email-details-model";
+import {EmailDetails} from '../../model/email-details-model';
 
 @Component({
-  selector: 'attachments',
+  selector: 'app-attachments',
   templateUrl: './attachments.component.html',
   styleUrls: ['./attachments.component.css']
 })

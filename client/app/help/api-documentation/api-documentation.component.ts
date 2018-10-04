@@ -2,6 +2,21 @@ import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material';
 import {Meta, Title} from '@angular/platform-browser';
 
+const ELEMENT_DATA: Element[] = [
+  {httpMethod: 'POST', uriPath: '/api/account/autocomplete', parameters: '{ "prefix":[string] }',
+    description: 'Returns a list of accounts starting with the prefix'},
+  {httpMethod: 'GET', uriPath: '/api/properties', parameters: '', description: 'Returns various server properties and settings'},
+  {httpMethod: 'GET', uriPath: '/api/account/{account}', parameters: '', description: 'returns a list of the email objects in the account'},
+  {httpMethod: 'DELETE', uriPath: '/api/account/{account}', parameters: '', description: 'Deletes a whole account'},
+  {httpMethod: 'GET', uriPath: '/api/account/{account}/{emailId}', parameters: '', description: 'Returns the contents of a specific email'},
+  {httpMethod: 'DELETE', uriPath: '/api/account/{account}/{emailId}', parameters: '', description: 'Delete an emails'},
+  {httpMethod: 'PATCH', uriPath: '/api/account/{acount}/{emailId}', parameters: '{"isRead" : [boolean]}',
+    description: 'Updates the emailInfo object (representation of the email meta data in the user\'s account.'
+    + ' Currently, only the isRead field is supported.'},
+  {httpMethod: 'GET', uriPath: '/api/account/{account}/{emailId}/attachments/{filename}',
+    parameters: '', description: 'Downloads a specific attachment on an email'}
+];
+
 @Component({
   selector: 'app-api-documentation',
   templateUrl: './api-documentation.component.html',
@@ -31,17 +46,3 @@ export interface Element {
   description: string;
 }
 
-const ELEMENT_DATA: Element[] = [
-  {httpMethod: 'POST', uriPath: '/api/account/autocomplete', parameters: '{ "prefix":[string] }',
-    description: 'Returns a list of accounts starting with the prefix'},
-  {httpMethod: 'GET', uriPath: '/api/properties', parameters: '', description: 'Returns various server properties and settings'},
-  {httpMethod: 'GET', uriPath: '/api/account/{account}', parameters: '', description: 'returns a list of the email objects in the account'},
-  {httpMethod: 'DELETE', uriPath: '/api/account/{account}', parameters: '', description: 'Deletes a whole account'},
-  {httpMethod: 'GET', uriPath: '/api/account/{account}/{emailId}', parameters: '', description: 'Returns the contents of a specific email'},
-  {httpMethod: 'DELETE', uriPath: '/api/account/{account}/{emailId}', parameters: '', description: 'Delete an emails'},
-  {httpMethod: 'PATCH', uriPath: '/api/account/{acount}/{emailId}', parameters: '{"isRead" : [boolean]}',
-    description: 'Updates the emailInfo object (representation of the email meta data in the user\'s account.'
-    + ' Currently, only the isRead field is supported.'},
-  {httpMethod: 'GET', uriPath: '/api/account/{account}/{emailId}/attachments/{filename}',
-    parameters: '', description: 'Downloads a specific attachment on an email'}
-];
