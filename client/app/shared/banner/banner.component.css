@@ -18,9 +18,12 @@ h2 {
 }
 
 .sky {
-  background: url(../../../assets/images/sky-sm.png) no-repeat;
+  background: url(../../../assets/svg/sky.svg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
   background-attachment: fixed;
-  background-size: auto ,300px;
 }
 
 mat-icon {
@@ -45,10 +48,6 @@ mat-icon {
 
   .banner {
     height: 300px;
-  }
-
-  .sky {
-    background: url(../../../assets/images/sky.png) no-repeat;
   }
 
   mat-icon {
