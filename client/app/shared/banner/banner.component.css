@@ -17,21 +17,21 @@ h2 {
   display: none;
 }
 
-.sky {
-  background: url(../../../assets/svg/sky.svg) no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  background-attachment: fixed;
-}
-
 mat-icon {
   width: 300px;
   height: 300px;
   position: absolute;
   top: 70px;
 }
+
+.sky {
+  background: url(../../../assets/svg/sky.svg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover, 250px;
+}
+
 
 @media screen and (min-width: 425px){
   app-account-selector {
@@ -48,6 +48,10 @@ mat-icon {
 
   .banner {
     height: 300px;
+  }
+
+  .sky {
+    background-size: cover, 250px;
   }
 
   mat-icon {
