@@ -1,9 +1,14 @@
 .banner {
-  background: #e1e2e1;
   height: 250px;
   width: 100%;
   text-align: center ;
   margin-bottom: 80px;
+}
+
+.banner-no-account-selector {
+  height: 250px;
+  width: 100%;
+  text-align: center ;
 }
 
 h1 {
@@ -37,6 +42,11 @@ mat-icon {
   app-account-selector {
     width: 300px;
   }
+  h1 {
+    max-width: 500px;
+    margin-right: auto;
+    margin-left: auto;
+  }
   h2 {
     margin: 0px;
     padding-top: 40px;
@@ -52,6 +62,10 @@ mat-icon {
 
   .sky {
     background-size: cover, 250px;
+  }
+
+  .banner-no-account-selector {
+    margin-bottom: 40px;
   }
 
   mat-icon {

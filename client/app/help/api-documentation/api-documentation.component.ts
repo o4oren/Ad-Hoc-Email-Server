@@ -31,7 +31,7 @@ export class ApiDocumentationComponent implements OnInit {
 
   constructor(titleService: Title, metaService: Meta) {
     titleService.setTitle('AHEM - API Documentation');
-    metaService.updateTag({ name: 'description', content: 'AHEM - an Ad-Hoc Disposable Temporary Email Service - API Documentation. '});
+    metaService.updateTag({ name: 'description', content: 'AHEM - Ad-Hoc Email - API Documentation. '});
    }
 
   ngOnInit() {

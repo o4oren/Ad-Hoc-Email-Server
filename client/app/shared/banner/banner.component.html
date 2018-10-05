@@ -1,4 +1,4 @@
-<div class="banner sky">
+<div class="sky" [ngClass]="{'banner': showAccountSelector, 'banner-no-account-selector': !showAccountSelector}">
   <h1>{{h1}}</h1>
   <h2 class="large-screen">{{h2}}</h2>
 </div>
