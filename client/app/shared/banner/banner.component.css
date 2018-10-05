@@ -23,6 +23,7 @@ h2 {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  background-attachment: fixed;
 }
 
 mat-icon {
@@ -47,10 +48,6 @@ mat-icon {
 
   .banner {
     height: 300px;
-  }
-
-  .banner.sky {
-    position: sticky;
   }
 
   mat-icon {

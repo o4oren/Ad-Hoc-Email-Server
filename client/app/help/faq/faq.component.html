@@ -2,47 +2,72 @@
 
 <div class="ahem-centered">
 
-  <h2>What is AHEM Ad Hoc Disposable Temporary Email?</h2>
+  <h2>What is AHEM?</h2>
   <p>
-    AHEM is a free ad-hoc disposable temporary Email service.
-
-    Ad-hoc - a mail that a mailbox is created for you as soon as you need it.
-    Disposable - you can throw it right away. Not strings attached.
-    Temporary - the emails received will be deleted by the system after a certain time elapses.
-    Free - you know what that means!
-    <br>
-    Others call it tempmail, 10minutemail, throwaway email, fake-mail or trash-mail.
-    <br>
-    When using forums, connecting to public Wi-Fi, many times users are asked to register before they can use the service.<br>
-    Manny websites and blogs ask users to register before they can view content, contribute or download.<br>
-    Well, sometimes we don't have a choice, and sometimes we are interested in exposing our identity to a service provider.
-    <br>
-    But when we do not - or don't even care - storing your email address in any additional data base increases the risk for it to be leaked.
-    AHEM is a service that allows you to register easily without exposing your real email address, so that you can avoid spam and stay safe.
+    <div class="ahem-definition-of">
+  <p>According to <a href="https://www.merriam-webster.com/dictionary/ahem" target="_blank">Merriam-Webster</a>, the
+    definition of AHEM is:</p>
+  <mat-card>
+    <mat-card-title>ahem</mat-card-title>
+    <mat-card-content>
+      <span>interjection \ a throat-clearing sound; often read as ə-ˈhem ; \</span>
+      <p>—used especially to attract attention or to express disapproval or embarrassment</p>
+    </mat-card-content>
+  </mat-card>
+  <p>
+    As defined above, AHEM comes and goes like a throat clearing sound. It wants you attention, but it disapproved or
+    embarassed on your behalf.
   </p>
 
+  <mat-divider></mat-divider>
+  <h2>Come on! Seriously, what is AHEM Ad Hoc Disposable Temporary Email?!</h2>
+  <p>
+    AHEM is a free ad-hoc disposable temporary Email service.
+  <br>
+    <b>Ad-hoc</b> - a mail that a mailbox is created for you as soon as you need it.<br>
+    <b>Disposable</b> - you can throw it right away. Not strings attached.<br>
+    <b>Temporary</b> - the emails received will be deleted by the system after a certain time elapses.<br>
+    <b>Free</b> - you know what that means!<br>
+    <br>
+    Others call it tempmail, 10minutemail, throwaway email, fake-mail or trash-mail.<br>
+    <br>
+    When using forums, connecting to public Wi-Fi, many times users are asked to register before they can use the
+    service.<br>
+    Many websites and blogs ask users to register before they can view content, contribute or download.<br>
+    Well, sometimes we don't have a choice, and sometimes we are interested in exposing our identity to a service
+    provider.<br>
+    <br>
+    But when we do not - or don't even care - storing your email address in any additional data base increases the risk
+    for it to be leaked.
+    AHEM is a service that allows you to register easily without exposing your real email address, so that you can avoid
+    spam and stay safe.
+  </p>
+  <mat-divider></mat-divider>
   <h2>Can I only use @ahem.email addresses with the service?</h2>
   <p>
-  The AHEM server currently serves the domains:
+    The AHEM server currently serves the domains:
   <ul>
     <li *ngFor="let domain of properties.allowedDomains">{{domain}}</li>
   </ul>
 
   Sending an email to any of the above domains will be accepted by the AHEM mail service.
-
+  <mat-divider></mat-divider>
   <h2>How long does an email remain on the AHEM mail server?</h2>
   <p>
-    An email remains on the AHEM server at least {{ min(properties.emailDeleteInterval, properties.emailDeleteAge) | amDuration: 'seconds' }}, and up to {{properties.emailDeleteAge + properties.emailDeleteInterval | amDuration: 'seconds' }}.
+    An email remains on the AHEM server at least {{ min(properties.emailDeleteInterval, properties.emailDeleteAge) |
+    amDuration: 'seconds' }}, and up to {{properties.emailDeleteAge + properties.emailDeleteInterval | amDuration:
+    'seconds' }}.
   </p>
-
+  <mat-divider></mat-divider>
   <h2>Can I delete my emails immediately?</h2>
   <p>
     Yes.
   </p>
-
+  <mat-divider></mat-divider>
   <h2>What personal information do you save and how do you use it?</h2>
   <p>
-    We do not keep any personal information. However, the emails are publically available, so be mindful of how you use the service.
+    We do not keep any personal information. However, the emails are publically available, so be mindful of how you use
+    the service.
     <br>
     We recommend that you read the <a href="/privacy">privacy policy</a>.
   </p>

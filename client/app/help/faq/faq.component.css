@@ -1,0 +1,7 @@
+:host {
+  font-weight: 100;
+}
+
+mat-card {
+  max-width: 400px;
+}

@@ -4,6 +4,18 @@
   }
 }
 
+.fumbled {
+  margin-top: -200px;
+  z-index: 11;
+  position: relative;
+}
+
+@media screen and (min-width: 720px){
+  .fumbled {
+    padding-left: 200px;
+  }
+}
+
 div {
   margin: auto;
 }

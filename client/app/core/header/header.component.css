@@ -8,34 +8,35 @@
   font-size: 0.8em;
 }
 
-.mat-icon.ahem-logo {
+.ahem-logo {
   width: 64px;
   height: 64px;
 }
 
-.mat-icon.ahem-logo-text {
-  margin-left: 40px;
+.ahem-logo-text {
+  margin-left: 20px;
   height: 64px;
-  width: 128px;
+  width: 200px;
 }
 
-:host ::ng-deep path {
-  fill: #dbeaff;
-}
+:host .ahem-logo-text ::ng-deep path {
+   fill: #dbeaff;
+ }
 
 
 @media screen and (min-width: 720px) {
-  .mat-icon.ahem-logo {
+  .ahem-logo {
     width: 128px;
     height: 128px;
   }
-  .mat-icon.ahem-logo-text {
-    height: 128px;
+  .ahem-logo-text {
+    margin-left: 30px;
+    height: 200px;
     width: 256px;
   }
 }
 
-.mat-icon.on-account-page {
+.on-account-page {
   margin-left: 40px;
   height: 64px;
   width: 128px;
