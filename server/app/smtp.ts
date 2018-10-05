@@ -13,62 +13,63 @@ module.exports = {
         authOptional: true,
         disabledCommands: ['AUTH'],
         disableReverseLookup: true,
-        onConnect(session, callback){
-          console.log("Connection started.")
+        onConnect(session, callback) {
+          console.log('Connection started.');
           return callback(); // Accept the connection
         },
-        onRcptTo(address, session, callback){
+        onRcptTo(address, session, callback) {
           if (!validateAddress(address, properties.allowedDomains)) {
             return callback(new Error('Only the domains ' + [JSON.stringify(properties.allowedDomains)] + ' are allowed to receive mail'));
           }
           return callback(); // Accept the address
         },
-        onData(stream, session, callback){
+        onData(stream, session, callback) {
           let mailDataString = '';
           const rcptTo = session.envelope.rcptTo;
 
-          stream.on("data", function (chunk) {
+          stream.on('data', function (chunk) {
             mailDataString += chunk;
           });
 
-          stream.on("end", function () {
+          stream.on('end', function () {
 
             simpleParser(mailDataString, (err, mail) => {
               mail.timestamp = new Date().getTime();
 
-              //replace header map with one in which  . in the header keys are changed to _ due to insertion probelm
+              // replace header map with one in which  . in the header keys are changed to _ due to insertion probelm
               mail.headers.forEach(function(value, key) {
-                if(key.includes('.')){
-                  let newkey = key.replace(/\./g, '_');
+                if (key.includes('.')) {
+                  const newkey = key.replace(/\./g, '_');
                   mail.headers.set(newkey, mail.headers.get(key));
                   mail.headers.delete(key);
                 }
               });
 
-              db.collection('emails').insertOne(mail, function (err, result) {
+              db.collection('emails').insertOne(mail, function (err1, result) {
 
-                if (err) {
-                  console.error("Error in writing email", err);
+                if (err1) {
+                  console.error('Error in writing email', err1);
                   return;
                 }
 
                 mail.to.value.forEach(recipient => {
-                  let nameAndDomain = recipient.address.split('@');
+                  const nameAndDomain = recipient.address.split('@');
                   if (properties.allowedDomains.indexOf(nameAndDomain[1].toLowerCase()) > -1) {
-                    db.collection('accounts').updateOne({"name": nameAndDomain[0].toLowerCase()}, {
+                    db.collection('accounts').updateOne({'name': nameAndDomain[0].toLowerCase()}, {
                       $push: {
-                        "emails": {
-                          "emailId": mail._id,
-                          "sender": mail.from.value[0],
-                          "subject": mail.subject,
-                          "timestamp": mail.timestamp,
-                          "isRead":false
+                        'emails': {
+                          'emailId': mail._id,
+                          'sender': mail.from.value[0],
+                          'subject': mail.subject,
+                          'timestamp': mail.timestamp,
+                          'isRead': false
                         }
                       }
-                    }, {upsert: true}, function (err, res) {
-                      if (err)
-                        console.error("Error in writing to account", err);
-                      console.log("Inserted results into the collection.");
+                    }, {upsert: true}, function (err2, res) {
+                      if (err) {
+                        console.error('Error in writing to account', err2);
+                      }
+                      console.log('Inserted results into the collection.');
                     });
                   }
 
@@ -90,13 +91,13 @@ module.exports = {
 
     return mailserver;
   }
-}
+};
 
 function validateAddress(address, allowedDomains) {
-  //return true always if: a) allowedDomains is empty or b) null or c) properties.json only has my.domain.com
-  if(!allowedDomains || 
+  // return true always if: a) allowedDomains is empty or b) null or c) properties.json only has my.domain.com
+  if (!allowedDomains ||
     (allowedDomains && allowedDomains.length ||
-      (allowedDomains && allowedDomains.length === 1 && allowedDomains[0] === 'http://myserver.address')
+      (allowedDomains && allowedDomains.length === 1 && allowedDomains[0] === 'my.domain.com')
     )) {
     return true;
   }

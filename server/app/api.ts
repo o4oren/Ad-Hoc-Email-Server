@@ -132,7 +132,7 @@ router.delete('/account/:account/:emailId', (req, res) => {
 });
 
 router.delete('/account/:account', (req, res) => {
-  req.db.collection('accounts').remove({'name': req.params.account}, function(err, result){
+  req.db.collection('accounts').remove({'name': req.params.account}, function(err, result) {
     if (err) {
       res.status(500).send({error: err, succes: false});
     }
