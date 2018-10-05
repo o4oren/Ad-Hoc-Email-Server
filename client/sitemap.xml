@@ -9,7 +9,7 @@
       <image:caption>AHEM - an ad-hoc email logo</image:caption>
     </image:image>
     <image:image>
-      <image:loc>https://www.ahem.email/assets/svg/ahem-text.svg</image:loc>
+      <image:loc>https://www.ahem.email/assets/svg/ahem-logo-text.svg</image:loc>
       <image:caption>AHEM - an ad-hoc email logo text</image:caption>
     </image:image>
     <image:image>
@@ -25,8 +25,8 @@
        <image:caption>AHEM - an ad-hoc email server</image:caption>
     </image:image>
     <image:image>
-       <image:loc>https://www.ahem.email/assets/images/ahem-large.png</image:loc>
-       <image:caption>AHEM logo</image:caption>
+       <image:loc>https://www.ahem.email/assets/images/ahem-large.jpg</image:loc>
+       <image:caption>AHEM old logo</image:caption>
     </image:image>
   </url>
   <url>
