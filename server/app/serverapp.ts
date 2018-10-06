@@ -7,8 +7,10 @@ import {enableProdMode} from '@angular/core';
 import {join} from 'path';
 import {readFileSync} from 'fs';
 
+
 enableProdMode();
 const app = express();
+const morgan = require('morgan');
 const ObjectID = require('mongodb').ObjectID;
 const path = require('path'),
   http = require('http'),
@@ -69,6 +71,9 @@ export class ServerApp {
 
 // Point static path to dist
     app.use(express.static(path.join(__dirname, 'dist')));
+
+    // use morgan to log api calls
+    app.use(morgan());
 
 // Set our api routes
     app.use('/api', api);
