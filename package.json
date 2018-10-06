@@ -48,6 +48,7 @@
     "rxjs": "^6.3.2",
     "smtp-server": "^3.4.7",
     "ts-loader": "^5.2.1",
+    "winston": "^3.1.0",
     "zone.js": "^0.8.14"
   },
   "devDependencies": {

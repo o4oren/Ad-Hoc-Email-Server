@@ -6,7 +6,7 @@ const SMTPServer = require('smtp-server').SMTPServer;
 const simpleParser = require('mailparser').simpleParser;
 
 module.exports = {
-  startSTMPServer: function startSTMPServer(properties, baseDir, db) {
+  startSTMPServer: function startSTMPServer(properties, baseDir, db, logger) {
     const smtpPort = properties.smtpPort;
     const mailserver = new SMTPServer({
         logger: true,
@@ -14,11 +14,12 @@ module.exports = {
         disabledCommands: ['AUTH'],
         disableReverseLookup: true,
         onConnect(session, callback) {
-          console.log('Connection started.');
+          logger.info('email transport started.');
           return callback(); // Accept the connection
         },
         onRcptTo(address, session, callback) {
           if (!validateAddress(address, properties.allowedDomains)) {
+            logger.error(address + ' is not allowed!')
             return callback(new Error('Only the domains ' + [JSON.stringify(properties.allowedDomains)] + ' are allowed to receive mail'));
           }
           return callback(); // Accept the address
@@ -48,7 +49,7 @@ module.exports = {
               db.collection('emails').insertOne(mail, function (err1, result) {
 
                 if (err1) {
-                  console.error('Error in writing email', err1);
+                  logger.error('Error in writing email', err1);
                   return;
                 }
 
@@ -67,9 +68,9 @@ module.exports = {
                       }
                     }, {upsert: true}, function (err2, res) {
                       if (err) {
-                        console.error('Error in writing to account', err2);
+                        logger.error('Error in writing to account', err2);
                       }
-                      console.log('Inserted results into the collection.');
+                      logger.info('updated email content in db.');
                     });
                   }
 
@@ -84,7 +85,7 @@ module.exports = {
     ;
 
     mailserver.on('error', err => {
-      console.log('Error %s', err.message);
+      logger.error('Error %s', err.message);
     });
 
     mailserver.listen(smtpPort);
@@ -113,7 +114,6 @@ function validateAddress(address, allowedDomains) {
       allowed = true;
     }
   });
-  console.log(allowed);
   return allowed;
 }
 

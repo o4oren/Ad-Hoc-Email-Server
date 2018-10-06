@@ -37,7 +37,7 @@ import {APP_BASE_HREF} from '@angular/common';
 
 export class ServerApp {
 
-  public start(properties, db) {
+  public start(properties, db, logger) {
 
     app.engine('html', (_, options, callback) => {
       renderModuleFactory(AppServerModuleNgFactory, {
@@ -73,11 +73,10 @@ export class ServerApp {
     app.use(express.static(path.join(__dirname, 'dist')));
 
     // use morgan to log api calls
-    app.use(morgan());
+    app.use(morgan('short', { 'stream': logger.stream }));
 
 // Set our api routes
     app.use('/api', api);
-
 // Server static files from /browser
 app.get('*.*', express.static(join(DIST_FOLDER, 'browser')));
 
@@ -88,7 +87,7 @@ app.get('*.*', express.static(join(DIST_FOLDER, 'browser')));
 
 // error handler
     app.use(function (err, req, res, next) {
-      console.log(err);
+      logger.error(err);
       res.status(500).send({error: err.message});
     });
 
@@ -108,25 +107,25 @@ app.get('*.*', express.static(join(DIST_FOLDER, 'browser')));
      */
 
     server.listen(port, function () {
-      console.log('ad-hoc-mail service started!');
+      logger.info('ad-hoc-mail service started!');
     });
 
 // delete emails every interval
     setInterval(function () {
-      console.log('checking for emails older than ' + properties.emailDeleteAge + ' seconds');
+      logger.info('checking for emails older than ' + properties.emailDeleteAge + ' seconds');
       db.collection('emails').find({'timestamp': {$lt: (new Date().getTime() - (properties.emailDeleteAge * 1000))}},
         {'_id': 1}).toArray(function (err, emailsToDelete) {
-        console.log(emailsToDelete.length + ' emails with age > ' + properties.emailDeleteAge + ' seconds where found');
+        logger.info(emailsToDelete.length + ' emails with age > ' + properties.emailDeleteAge + ' seconds where found');
         emailsToDelete.forEach(email => {
           db.collection('accounts').update(
             {'emails.emailId': email._id},
             {$pull: {'emails': {'emailId': email._id}}},
             {'multi': true}
             , function (err1, numberRemoved) {
-              if (err) {
-                console.log(err1);
+              if (err1) {
+                logger.error(err1);
               }
-              console.log('Removing ' + email._id.toString()
+              logger.info('Removing ' + email._id.toString()
                 + ' has been removed from '
                 + JSON.parse(numberRemoved).nModified + ' accounts.');
 
@@ -135,9 +134,9 @@ app.get('*.*', express.static(join(DIST_FOLDER, 'browser')));
 
           db.collection('emails').remove({'_id': email._id}, function (err1, result) {
             if (err1) {
-              console.log(err1);
+              logger.error(err1);
             } else {
-              console.log('Delete email', result.result);
+              logger.info('Delete email', result.result);
             }
           });
         });
@@ -145,14 +144,14 @@ app.get('*.*', express.static(join(DIST_FOLDER, 'browser')));
 
       db.collection('accounts').remove({'emails': {$exists: true, $ne: '[]'}}, function (err, result) {
         if (err) {
-          console.log(err);
+          logger.error(err);
         } else {
-          console.log('Removed empty accounts', result.result);
+          logger.info('Removed empty accounts', result.result);
         }
       });
 
     }, properties.emailDeleteInterval * 1000);
 
-    console.log('mail server listening');
+    logger.info('mail server listening');
   }
 }
