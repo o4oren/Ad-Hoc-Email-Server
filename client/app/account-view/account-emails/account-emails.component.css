@@ -17,6 +17,11 @@
   padding-left: 20px;
 }
 
+.fumbled {
+  margin-top: 20px;
+  width: 100%;
+}
+
 @media screen and (min-width: 720px){
   .ahem-internal-toolbar {
     padding-left: 168px;

@@ -4,6 +4,7 @@ import {ApiService} from '../../core/services/api.service';
 import {Meta, Title} from '@angular/platform-browser';
 import {EmailInfo} from '../../model/email-info-model';
 import {Subscription} from 'rxjs/internal/Subscription';
+import {ConfigService} from '../../core/services/config.service';
 
 enum SortBy {
   Timestamp, Sender, Subject
@@ -17,7 +18,7 @@ enum SortBy {
 export class AccountEmailsComponent implements OnInit, OnDestroy {
   paramsSub: Subscription;
   account: string;
-  emails: Array<EmailInfo>;
+  emails: Array<EmailInfo> = [];
   selectedEmail: EmailInfo;
   emailId: string;
 
@@ -116,6 +117,10 @@ export class AccountEmailsComponent implements OnInit, OnDestroy {
         }
         this.apiService.markAsReadOrUnread(this.account, this.selectedEmail.emailId, this.selectedEmail.isRead).subscribe();
       }
+  }
+
+  getEmptyAccountText(): string {
+    return this.account + '@' + ConfigService.properties.allowedDomains[0];
   }
 
 }

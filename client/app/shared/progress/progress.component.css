@@ -1,0 +1,22 @@
+div {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+}
+
+.fumbled {
+  width: 100px;
+  height: 100px;
+  margin-right: auto;
+  margin-left: auto;
+
+}
+
+.loading {
+  width: 200px;
+  height: 80px;
+}
+
+mat-progress-bar {
+  width: 200px;
+}

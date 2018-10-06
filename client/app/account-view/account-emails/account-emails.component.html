@@ -4,11 +4,47 @@
 </mat-toolbar>
 <div class="ahem-centered ahem-overflow">
   <mat-list *ngIf="!selectedEmail" class="ahem-email-list">
-    <!-- used for the sake of pushing the sidenav downwards when it is in hover mode for mobile-->
-    <div *ngFor='let email of emails' (click)="clickedEmail(email)" class="ahem-email-list-item" [ngClass]="{'ahem-email-selected': email.isSelected }">
-      <app-email-info [emailInfo]="email"></app-email-info>
-      <mat-divider></mat-divider>
+    <div *ngIf="emails.length>0">
+      <div *ngFor='let email of emails' (click)="clickedEmail(email)" class="ahem-email-list-item" [ngClass]="{'ahem-email-selected': email.isSelected }">
+        <app-email-info [emailInfo]="email"></app-email-info>
+        <mat-divider></mat-divider>
+      </div>
     </div>
+    <div *ngIf="emails.length===0">
+      <div>
+        This account is currently empty.
+        EMails sent to {{getEmptyAccountText()}} will be listed here.
+        <br>
+      </div>
+      <img src="assets/svg/fumbled-bluish.svg" class="fumbled">
+      <div>
+        <p>
+          To continue, send an email to: {{getEmptyAccountText()}}, or use one of the following links:
+        <ul>
+          <li>
+            <a [routerLink]="['/']">
+              AHEM Home
+            </a>
+          </li>
+          <li>
+            <a [routerLink]="['/privacy']">
+              Privacy policy
+            </a>
+          </li>
+          <li>
+            <a [routerLink]="['/help/api']">
+              API Documentation
+            </a>
+          </li>
+          <li>
+            <a href="https://github.com/o4oren/Ad-Hoc-Email-Server" target="_blank">
+              Our GitHub Home
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
   </mat-list>
   <app-email-view *ngIf="selectedEmail" [email]="selectedEmail"></app-email-view>
 </div>
