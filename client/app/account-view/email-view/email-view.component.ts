@@ -3,7 +3,6 @@ import {ApiService} from '../../core/services/api.service';
 import {ActivatedRoute} from '@angular/router';
 import {EmailDetails} from '../../model/email-details-model';
 import {DomSanitizer, SafeHtml, Title} from '@angular/platform-browser';
-import {DeviceService} from '../../core/services/device.service';
 import {Subscription} from 'rxjs/internal/Subscription';
 import {EmailInfo} from '../../model/email-info-model';
 
@@ -19,6 +18,7 @@ export class EmailViewComponent implements OnInit, OnDestroy {
   emailDetails: EmailDetails;
   paramsSub: Subscription;
   account: string;
+  isLoading = true;
 
 
   @Input()
@@ -61,6 +61,7 @@ export class EmailViewComponent implements OnInit, OnDestroy {
 
   getEmailDetails() {
     this.apiService.getEmailContent(this.account, this.email.emailId).subscribe(result => {
+      // this.isLoading = false;
       this.emailDetails = result;
       this.titleService.setTitle('AHEM - ' + this.account + ' - ' + this.emailDetails.subject);
     });
