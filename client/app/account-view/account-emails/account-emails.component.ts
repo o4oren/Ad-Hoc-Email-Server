@@ -123,4 +123,8 @@ export class AccountEmailsComponent implements OnInit, OnDestroy {
     return this.account + '@' + ConfigService.properties.allowedDomains[0];
   }
 
+  navigateToAccount() {
+    this.router.navigateByUrl('account/' + this.account);
+  }
+
 }
