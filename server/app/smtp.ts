@@ -15,14 +15,14 @@ module.exports = {
         disableReverseLookup: true,
         maxClients: 5,
         onConnect(session, callback) {
-          logger.info('SMTP Connect from ' + session.remoteAddress + ' HELO as ' + session.hostNameAppearsAs);
+          logger.info('SMTP Connect from ' + session.remoteAddress + ' HELO as ' + JSON.stringify(session));
           return callback(); // Accept the connection
         },
         onMailFrom(address, session, callback) {
-          logger.info('SMTP MAIL FROM: ' + address);
+          logger.info('SMTP MAIL FROM: ' + JSON.stringify(address));
         },
         onRcptTo(address, session, callback) {
-          logger.info('SMTP RCPT TO: ' + address);
+          logger.info('SMTP RCPT TO: ' + JSON.stringify(address));
           if (!validateAddress(address, properties.allowedDomains)) {
             logger.error(address + ' is not allowed!');
             return callback(new Error('Only the domains ' + [JSON.stringify(properties.allowedDomains)] + ' are allowed to receive mail'));
