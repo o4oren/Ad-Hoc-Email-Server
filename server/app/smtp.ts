@@ -20,6 +20,7 @@ module.exports = {
         },
         onMailFrom(address, session, callback) {
           logger.info('SMTP MAIL FROM: ' + JSON.stringify(address));
+          return callback();
         },
         onRcptTo(address, session, callback) {
           logger.info('SMTP RCPT TO: ' + JSON.stringify(address));
@@ -74,6 +75,7 @@ module.exports = {
                     }, {upsert: true}, function (err2, res) {
                       if (err2) {
                         logger.error('Error in writing to account db', err2);
+                        return;
                       }
                       logger.info('updated email content in db.');
                     });
@@ -82,7 +84,7 @@ module.exports = {
                 });
               });
             });
-            callback();
+            return callback();
           });
         }
       }
