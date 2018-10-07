@@ -73,7 +73,10 @@ export class ServerApp {
     app.use(express.static(path.join(__dirname, 'dist')));
 
     // use morgan to log api calls
-    app.use(morgan('short', { 'stream': logger.stream }));
+    morgan.token('xff', function (req, res) { return req.headers['X-Forwarded-For'];
+    });
+    app.use(morgan(':remote-addr :remote-user :method :url HTTP/:http-version :status :res[content-length] - :response-time ms :xff',
+      { 'stream': logger.stream }));
 
 // Set our api routes
     app.use('/api', api);

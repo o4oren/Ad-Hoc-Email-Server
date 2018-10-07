@@ -9,7 +9,10 @@ const logger = winston.createLogger({
     // - Write all logs error (and below) to `error.log`.
     //
     new winston.transports.Console({
-      format: winston.format.simple()
+      colorize: true,
+      prettyPrint: true,
+      timestamp: true,
+      label: 'ahemServer'
     }),
   ]
 });
@@ -20,3 +23,7 @@ module.exports.stream =  {
     logger.info(message);
   }
 };
+
+
+var winston =  require('winston');
+
