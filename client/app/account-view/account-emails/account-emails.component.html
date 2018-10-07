@@ -11,7 +11,7 @@
         <mat-divider></mat-divider>
       </div>
     </div>
-    <div *ngIf="emails.length===0">
+    <div *ngIf="emails && emails.length===0">
       <div>
         This account is currently empty.
         EMails sent to {{getEmptyAccountText()}} will be listed here.

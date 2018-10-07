@@ -18,7 +18,7 @@ enum SortBy {
 export class AccountEmailsComponent implements OnInit, OnDestroy {
   paramsSub: Subscription;
   account: string;
-  emails: Array<EmailInfo> = [];
+  emails: Array<EmailInfo>;
   selectedEmail: EmailInfo;
   emailId: string;
 
