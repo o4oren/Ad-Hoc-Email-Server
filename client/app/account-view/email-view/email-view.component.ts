@@ -18,7 +18,9 @@ export class EmailViewComponent implements OnInit, OnDestroy {
   emailDetails: EmailDetails;
   paramsSub: Subscription;
   account: string;
-  isLoading = true;
+
+
+ @Input() loading = false;
 
 
   @Input()
@@ -26,17 +28,9 @@ export class EmailViewComponent implements OnInit, OnDestroy {
     console.log(email);
     this.emailDetails = null;
     this._email = email;
-    // if (this.email) {
-    //   this.getEmailDetails();
-    // } else {
-    //   this.emailDetails = null;
-    // }
   }
 
   get email(): any { return this._email; }
-
-  readUnreadIcon: string;
-  readUnreadText: string;
 
   constructor(private apiService: ApiService,
               private route: ActivatedRoute,
@@ -64,6 +58,7 @@ export class EmailViewComponent implements OnInit, OnDestroy {
       // this.isLoading = false;
       this.emailDetails = result;
       this.titleService.setTitle('AHEM - ' + this.account + ' - ' + this.emailDetails.subject);
+      this.loading = false;
     });
   }
 

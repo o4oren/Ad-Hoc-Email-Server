@@ -5,7 +5,7 @@
 </mat-toolbar>
 <div class="ahem-centered ahem-overflow">
   <mat-list *ngIf="!selectedEmail" class="ahem-email-list">
-    <div *ngIf="emails.length>0">
+    <div *ngIf="emails && emails.length>0">
       <div *ngFor='let email of emails' (click)="clickedEmail(email)" class="ahem-email-list-item" [ngClass]="{'ahem-email-selected': email.isSelected }">
         <app-email-info [emailInfo]="email"></app-email-info>
         <mat-divider></mat-divider>
@@ -47,5 +47,5 @@
     </div>
 
   </mat-list>
-  <app-email-view *ngIf="selectedEmail" [email]="selectedEmail"></app-email-view>
+  <app-email-view *ngIf="selectedEmail" [email]="selectedEmail" [loading]="true"></app-email-view>
 </div>
