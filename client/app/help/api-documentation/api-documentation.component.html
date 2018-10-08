@@ -9,28 +9,25 @@
 
   <h3>Usage</h3>
 
-  <mat-table #table [dataSource]="dataSource">
+  <mat-list>
+    <h3 mat-subheader>APIs</h3>
 
-    <ng-container matColumnDef="httpMethod">
-      <mat-header-cell *matHeaderCellDef> HTTP Method </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.httpMethod}} </mat-cell>
-    </ng-container>
+    <mat-list-item *ngFor="let apiEndpoint of apiEndpoints">
+      <p mat-line>
+        <b>Description</b>: {{apiEndpoint.description}}
+      </p>
+      <p mat-line>
+        Method: {{apiEndpoint.httpMethod}}
+      </p>
+      <p mat-line>
+        URL: {{apiEndpoint.uriPath}}
+      </p>
+      <p mat-line>
+        Parameters: {{apiEndpoint.parameters}}
+      </p>
+      <mat-divider></mat-divider>
+    </mat-list-item>
+  </mat-list>
 
-    <ng-container matColumnDef="uriPath">
-      <mat-header-cell *matHeaderCellDef> URI Path </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.uriPath}} </mat-cell>
-    </ng-container>
 
-    <ng-container matColumnDef="parameters">
-      <mat-header-cell *matHeaderCellDef> Parameters </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.parameters}} </mat-cell>
-    </ng-container>
-    <ng-container matColumnDef="description">
-      <mat-header-cell *matHeaderCellDef> Description </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.description}} </mat-cell>
-    </ng-container>
-
-    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-  </mat-table>
 </div>
