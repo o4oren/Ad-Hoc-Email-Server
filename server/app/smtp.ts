@@ -9,31 +9,37 @@ module.exports = {
   startSTMPServer: function startSTMPServer(properties, baseDir, db, logger) {
     const smtpPort = properties.smtpPort;
     const mailserver = new SMTPServer({
-        logger: true,
+        logger: false,
         authOptional: true,
         disabledCommands: ['AUTH'],
         disableReverseLookup: true,
+        maxClients: 5,
         onConnect(session, callback) {
-          logger.info('email transport started.');
+          logger.info('SMTP Connect from ' + session.remoteAddress);
           return callback(); // Accept the connection
         },
+        onMailFrom(address, session, callback) {
+          logger.info('SMTP MAIL FROM: ' + address.address);
+          return callback();
+        },
         onRcptTo(address, session, callback) {
+          logger.info('SMTP RCPT TO: ' + address.address);
           if (!validateAddress(address, properties.allowedDomains)) {
-            logger.error(address + ' is not allowed!')
+            logger.error(address + ' is not allowed!');
             return callback(new Error('Only the domains ' + [JSON.stringify(properties.allowedDomains)] + ' are allowed to receive mail'));
           }
           return callback(); // Accept the address
         },
         onData(stream, session, callback) {
+          logger.info('SMTP DATA start');
           let mailDataString = '';
-          const rcptTo = session.envelope.rcptTo;
 
           stream.on('data', function (chunk) {
             mailDataString += chunk;
           });
 
           stream.on('end', function () {
-
+            logger.info('SMTP DATA end');
             simpleParser(mailDataString, (err, mail) => {
               mail.timestamp = new Date().getTime();
 
@@ -49,7 +55,7 @@ module.exports = {
               db.collection('emails').insertOne(mail, function (err1, result) {
 
                 if (err1) {
-                  logger.error('Error in writing email', err1);
+                  logger.error('Error in writing email to db!', err1);
                   return;
                 }
 
@@ -67,8 +73,9 @@ module.exports = {
                         }
                       }
                     }, {upsert: true}, function (err2, res) {
-                      if (err) {
-                        logger.error('Error in writing to account', err2);
+                      if (err2) {
+                        logger.error('Error in writing to account db', err2);
+                        return;
                       }
                       logger.info('updated email content in db.');
                     });
@@ -77,7 +84,7 @@ module.exports = {
                 });
               });
             });
-            callback();
+            return callback();
           });
         }
       }
