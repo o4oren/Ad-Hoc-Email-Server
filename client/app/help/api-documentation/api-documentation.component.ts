@@ -52,7 +52,7 @@ export class ApiDocumentationComponent implements OnInit {
 
 }
 
-export interface Endpoint {
+export class Endpoint {
   httpMethod: string;
   uriPath: string;
   parameters: string;
