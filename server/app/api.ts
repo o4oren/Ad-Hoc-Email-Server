@@ -39,10 +39,10 @@ router.get('/properties', (req, res, next) => {
 /**
  * get a token
  */
-router.post('/authenticate', (req, res, next) => {
+router.post('/auth/authenticate', (req, res, next) => {
   console.log('ip', req.ip);
   const payload = {
-    ip: '192.168.1.1'
+    ip: req.ip
   };
   const token = jwt.sign(payload, req.properties.jwtSecret, {
     expiresIn: req.properties.jwtExpiresIn // expires in 24 hours

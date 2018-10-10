@@ -14,16 +14,17 @@
 
     <mat-list-item *ngFor="let apiEndpoint of apiEndpoints">
       <p mat-line>
-        <b>Description</b>: {{apiEndpoint.description}}
+        <b>Description:</b> {{apiEndpoint.description}}
+      </p>
+      <br>
+      <p mat-line>
+        <b>Method:</b> {{apiEndpoint.httpMethod}}<br>
       </p>
       <p mat-line>
-        Method: {{apiEndpoint.httpMethod}}
+        <b>URL:</b> {{apiEndpoint.uriPath}}
       </p>
       <p mat-line>
-        URL: {{apiEndpoint.uriPath}}
-      </p>
-      <p mat-line>
-        Parameters: {{apiEndpoint.parameters}}
+        <b>Parameters:</b> {{apiEndpoint.parameters}}
       </p>
       <mat-divider></mat-divider>
     </mat-list-item>

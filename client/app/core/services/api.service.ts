@@ -29,7 +29,7 @@ export class ApiService {
   }
 
   authenticate(): any {
-    this.http.post<TokenResponse>(this.baseUri + '/api/authenticate', {}).subscribe(result => {
+    this.http.post<TokenResponse>(this.baseUri + '/api/auth/authenticate', {}).subscribe(result => {
       localStorage.setItem('token', result.token);
     });
   }

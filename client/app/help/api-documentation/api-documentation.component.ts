@@ -13,6 +13,10 @@ export class ApiDocumentationComponent implements OnInit {
 
   apiEndpoints: Endpoint[] = [
     {
+      httpMethod: 'POST', uriPath: '/api/auth/authenticate', parameters: '{}',
+      description: 'Returns an access token associated with the requesting IP address.'
+    },
+    {
       httpMethod: 'POST', uriPath: '/api/account/autocomplete', parameters: '{ "prefix":[string] }',
       description: 'Returns a list of accounts starting with the prefix'
     },
