@@ -4,7 +4,7 @@
 const express = require('express');
 const router = express.Router();
 const ObjectID = require('mongodb').ObjectID;
-const properties = null;
+const jwt    = require('jsonwebtoken');
 
 
 // indicates the api server is up
@@ -34,6 +34,57 @@ router.get('/properties', (req, res, next) => {
     customText: req.properties.customText,
     allowAutocomplete: req.properties.allowAutocomplete
   });
+});
+
+/**
+ * get a token
+ */
+router.post('/authenticate', (req, res, next) => {
+  console.log('ip', req.ip);
+  const payload = {
+    ip: '192.168.1.1'
+  };
+  const token = jwt.sign(payload, req.properties.jwtSecret, {
+    expiresIn: req.properties.jwtExpiresIn // expires in 24 hours
+  });
+
+  // return the information including token as JSON
+  res.status(200).send({
+    success: true,
+    token: token
+  });
+});
+
+// route middleware to verify a token
+router.use(function(req, res, next) {
+
+  // check header or url parameters or post parameters for token
+  const token = req.body.token || req.query.token || req.headers['x-access-token'];
+
+  // decode token
+  if (token) {
+
+    // verifies secret and checks exp
+    jwt.verify(token, req.properties.jwtSecret, function(err, decoded) {
+      if (err) {
+        return res.json({ success: false, message: 'Failed to authenticate token.' });
+      } else {
+        // if everything is good, save to request for use in other routes
+        req.decoded = decoded;
+        next();
+      }
+    });
+
+  } else {
+
+    // if there is no token
+    // return an error
+    return res.status(403).send({
+      success: false,
+      message: 'No token provided.'
+    });
+
+  }
 });
 
 /**

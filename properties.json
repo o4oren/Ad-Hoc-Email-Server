@@ -7,5 +7,7 @@
   "emailDeleteInterval" : 3600,
   "emailDeleteAge" : 86400,
   "allowAutocomplete" : true,
-  "allowedDomains" : ["my.domain.com"]
+  "allowedDomains" : ["my.domain.com"],
+  "jwtSecret": "AH3M 709 S3cR3T",
+  "jwtExpiresIn": 3600
 }

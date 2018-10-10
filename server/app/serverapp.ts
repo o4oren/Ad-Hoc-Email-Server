@@ -67,6 +67,7 @@ export class ServerApp {
 // Parsers for POST data
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({extended: false}));
+    app.enable('trust proxy');
 
 
 // Point static path to dist
