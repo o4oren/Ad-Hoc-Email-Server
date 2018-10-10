@@ -19,7 +19,6 @@ import {Angulartics2Module} from 'angulartics2';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ReactiveFormsModule} from '@angular/forms';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
-import {ApiDocumentationComponent} from '../help/api-documentation/api-documentation.component';
 import {DeviceService} from './services/device.service';
 import {ApiService} from './services/api.service';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
