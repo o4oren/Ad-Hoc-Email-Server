@@ -20,15 +20,27 @@ router.post('/authenticate', (req, res, next) => {
   const payload = {
     ip: req.ip
   };
+
+  // if a token exists for the ip and is not expired
+  //TODO
+
+
+  //if a token doesn't exist for the ip, create new token
   const token = jwt.sign(payload, req.properties.jwtSecret, {
     expiresIn: req.properties.jwtExpiresIn // expires in 24 hours
   });
 
-  // return the information including token as JSON
-  res.status(200).send({
-    success: true,
-    token: token
-  });
+  //insert in db
+  req.db.collection('tokens').updateOne({ 'ip': req.ip, 'token' : token},
+    function (err, result) {
+      if (err) {
+        res.status(500).send({error: err});
+      }
+      res.status(200).send({
+        success: true,
+        token: token
+      });
+    });
 });
 
 module.exports = router;
