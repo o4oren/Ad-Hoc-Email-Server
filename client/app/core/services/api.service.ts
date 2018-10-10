@@ -19,21 +19,6 @@ export class ApiService {
     this.baseUri = origin || '';
   }
 
-  public getToken(): string {
-    if (localStorage.getItem('token')) {
-      return localStorage.getItem('token');
-    } else {
-      this.authenticate();
-      return '';
-    }
-  }
-
-  authenticate(): any {
-    this.http.post<TokenResponse>(this.baseUri + '/api/auth/authenticate', {}).subscribe(result => {
-      localStorage.setItem('token', result.token);
-    });
-  }
-
   getProperties(): any {
     return this._properties = this.http.get(this.baseUri + '/api/properties');
   }

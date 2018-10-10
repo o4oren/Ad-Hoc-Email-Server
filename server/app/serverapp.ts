@@ -15,7 +15,8 @@ const ObjectID = require('mongodb').ObjectID;
 const path = require('path'),
   http = require('http'),
   bodyParser = require('body-parser'),
-  api = require('./api');
+  api = require('./api'),
+  auth = require('./auth');
 
 const PORT = process.env.PORT || 3000;
 const DIST_FOLDER = join(process.cwd() , 'dist');
@@ -79,8 +80,10 @@ export class ServerApp {
     app.use(morgan(':remote-addr :remote-user :method :url HTTP/:http-version :status :res[content-length] - :response-time ms :xff',
       { 'stream': logger.stream }));
 
-// Set our api routes
+// Set routes
     app.use('/api', api);
+    app.use('/auth', auth);
+
 // Server static files from /browser
 app.get('*.*', express.static(join(DIST_FOLDER, 'browser')));
 
