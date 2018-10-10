@@ -5,6 +5,7 @@ import {HttpClient} from '@angular/common/http';
 import {EmailInfo} from '../../model/email-info-model';
 import {EmailDetails} from '../../model/email-details-model';
 import {ConfigService} from './config.service';
+import {TokenResponse} from '../../model/token-response-model';
 
 @Injectable()
 export class ApiService {
@@ -19,7 +20,18 @@ export class ApiService {
   }
 
   public getToken(): string {
-    return localStorage.getItem('token');
+    if (localStorage.getItem('token')) {
+      return localStorage.getItem('token');
+    } else {
+      this.authenticate();
+      return '';
+    }
+  }
+
+  authenticate(): any {
+    this.http.post<TokenResponse>(this.baseUri + '/api/authenticate', {}).subscribe(result => {
+      localStorage.setItem('token', result.token);
+    });
   }
 
   getProperties(): any {
