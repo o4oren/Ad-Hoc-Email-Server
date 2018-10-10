@@ -18,7 +18,7 @@ import {Angulartics2GoogleAnalytics} from 'angulartics2/ga';
 import {Angulartics2Module} from 'angulartics2';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ReactiveFormsModule} from '@angular/forms';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {ApiDocumentationComponent} from '../help/api-documentation/api-documentation.component';
 import {DeviceService} from './services/device.service';
 import {ApiService} from './services/api.service';
@@ -32,6 +32,7 @@ import {SharedModule} from '../shared/shared.module';
 import {HomeModule} from '../home/home.module';
 import {ConfigService} from './services/config.service';
 import {DurationPipe, MomentModule} from 'ngx-moment';
+import {TokenInterceptor} from './services/token-interceptor';
 
 export function initializeApp(ahemProperties: ConfigService) {
   return () => ahemProperties.load();
@@ -83,6 +84,11 @@ library.add(faMeh, faEnvelope, faEnvelopeOpen, faBars, faTrash, faTrashAlt, faCl
     { provide: APP_INITIALIZER,
       useFactory: initializeApp,
       deps: [ConfigService], multi: true },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    },
     DurationPipe,
     ApiService,
     MatIconRegistry,

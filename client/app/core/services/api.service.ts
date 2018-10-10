@@ -18,6 +18,10 @@ export class ApiService {
     this.baseUri = origin || '';
   }
 
+  public getToken(): string {
+    return localStorage.getItem('token');
+  }
+
   getProperties(): any {
     return this._properties = this.http.get(this.baseUri + '/api/properties');
   }
