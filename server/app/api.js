@@ -36,24 +36,6 @@ router.get('/properties', (req, res, next) => {
   });
 });
 
-/**
- * get a token
- */
-router.post('/auth/authenticate', (req, res, next) => {
-  console.log('ip', req.ip);
-  const payload = {
-    ip: req.ip
-  };
-  const token = jwt.sign(payload, req.properties.jwtSecret, {
-    expiresIn: req.properties.jwtExpiresIn // expires in 24 hours
-  });
-
-  // return the information including token as JSON
-  res.status(200).send({
-    success: true,
-    token: token
-  });
-});
 
 // route middleware to verify a token
 router.use(function(req, res, next) {

@@ -81,8 +81,8 @@ export class ServerApp {
       { 'stream': logger.stream }));
 
 // Set routes
-    app.use('/api', api);
     app.use('/auth', auth);
+    app.use('/api', api);
 
 // Server static files from /browser
 app.get('*.*', express.static(join(DIST_FOLDER, 'browser')));
