@@ -22,9 +22,10 @@ function createNewToken(req, res) {
     expiresIn: req.properties.jwtExpiresIn
   });
   //insert in db
-  req.db.collection('tokens').update({'ip': req.ip, 'token': token}, { upsert: true },
+  req.db.collection('tokens').updateOne( {'ip': req.ip}, {$set: {'token': token}}, { upsert: true },
     function (err, result) {
       if (err) {
+        console.log(err)
         res.status(500).json({error: err});
       } else {
         res.status(200).json({
@@ -43,13 +44,14 @@ router.post('/authenticate', (req, res, next) => {
   req.db.collection('tokens').findOne({'ip': req.ip},
     function (err, result) {
       if (err) {
+        console.log(err);
         createNewToken(req, res);
         return;
       }
       if (result) {
         jwt.verify(result.token, req.properties.jwtSecret, function(err, decoded) {
           if (err) {
-            console.log('failed to authenticate token... renewing.');
+            console.log('failed to verify token... renewing.');
             createNewToken(req, res);
             return;
           } else {
