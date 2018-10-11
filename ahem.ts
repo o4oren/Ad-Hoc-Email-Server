@@ -26,6 +26,7 @@ MongoClient.connect(properties.mongoConnectUrl, { useNewUrlParser: true }, funct
   // creating indexes
   const db = client.db(properties.dbName);
   db.collection('accounts').createIndex( {'name': 1}, { unique: true } );
+  db.collection('tokens').createIndex( {'ip': 1}, { unique: true } );
 
   const server = new ServerApp();
 
