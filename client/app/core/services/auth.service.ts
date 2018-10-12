@@ -20,9 +20,12 @@ export class AuthService {
 
 
   public getToken(): string {
-    if (localStorage.getItem('access_token')) {
-      return localStorage.getItem('access_token');
+    if (isPlatformBrowser(this.platformId)) {
+      if (localStorage.getItem('access_token')) {
+        return localStorage.getItem('access_token');
+      }
     }
+
     return '';
   }
 
