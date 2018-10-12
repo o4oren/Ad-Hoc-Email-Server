@@ -9,5 +9,5 @@
   "allowAutocomplete" : true,
   "allowedDomains" : ["my.domain.com"],
   "jwtSecret": "AH3M 709 S3cR3T",
-  "jwtExpiresIn": 10
+  "jwtExpiresIn": 3600
 }

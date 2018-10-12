@@ -12,12 +12,8 @@ export class TokenInterceptor implements HttpInterceptor {
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
-    console.log('intercepted request ... ');
-
 // Clone the request to add the new header if it is not an unauth call.
-    console.log('url', req.url);
     if (req.url.includes('api/properties') || req.url.includes('assets')) {
-      console.log('skip injecting token')
       return next.handle(req);
     }
 
@@ -31,13 +27,11 @@ export class TokenInterceptor implements HttpInterceptor {
     }, (err: any) => {
       if (err instanceof HttpErrorResponse) {
         if (err.status === 401) {
-
           this.authService.authenticate().pipe(mergeMap(res => {
             localStorage.setItem('access_token', res.token);
             authReq = req.clone({ headers: req.headers.set('x-access-token', this.authService.getToken())});
             return next.handle(authReq);
           })).subscribe();
-
         } else if (err.status === 403) {
           console.log('Error 403', err);
         }
