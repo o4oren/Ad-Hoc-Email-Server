@@ -7,16 +7,19 @@
     AHEM provides an easy to use RESTful API, that allows you to test or build anything on top of the AHEM mail server.
     The table below details the various api calls you can use and what they are used for.
 
+  <h3>Authentication</h3>
+  <div>A token must be obtained by calling https://www.ahem.email/auth/authenticate. The response will contain a token filed.<br>
+  Tokens must be added to each api call in the x-access-token header.</div>
+
   <h3>Usage</h3>
 
-  <mat-list>
+  <div>
     <h3 mat-subheader>APIs</h3>
 
-    <mat-list-item *ngFor="let apiEndpoint of apiEndpoints">
+    <div *ngFor="let apiEndpoint of apiEndpoints">
       <p mat-line>
         <b>Description:</b> {{apiEndpoint.description}}
       </p>
-      <br>
       <p mat-line>
         <b>Method:</b> {{apiEndpoint.httpMethod}}<br>
       </p>
@@ -27,8 +30,8 @@
         <b>Parameters:</b> {{apiEndpoint.parameters}}
       </p>
       <mat-divider></mat-divider>
-    </mat-list-item>
-  </mat-list>
+    </div>
+  </div>
 
 
 </div>
