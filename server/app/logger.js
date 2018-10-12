@@ -25,5 +25,5 @@ module.exports.stream =  {
 };
 
 
-var winston =  require('winston');
+
 

@@ -2,7 +2,7 @@
 import {HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs/internal/Observable';
-import { tap } from 'rxjs/operators';
+import { tap, mergeMap } from 'rxjs/operators';
 import {AuthService} from './auth.service';
 
 
@@ -14,20 +14,32 @@ export class TokenInterceptor implements HttpInterceptor {
 
     console.log('intercepted request ... ');
 
-// Clone the request to add the new header.
-    const authReq = req.clone({ headers: req.headers.set('x-access-token', this.authService.getToken())});
+// Clone the request to add the new header if it is not an unauth call.
+    console.log('url', req.url);
+    if (req.url.includes('api/properties') || req.url.includes('assets')) {
+      console.log('skip injecting token')
+      return next.handle(req);
+    }
 
-    console.log('Sending request with new header now ...');
+    let authReq = req.clone({ headers: req.headers.set('x-access-token', this.authService.getToken())});
 
 // send the newly created request
     return next.handle(authReq).pipe(tap((event: HttpEvent<any>) => {
       if (event instanceof HttpResponse) {
-        // do wahtever
+        return event;
       }
     }, (err: any) => {
       if (err instanceof HttpErrorResponse) {
         if (err.status === 401) {
-          this.authService.authenticate();
+
+          this.authService.authenticate().pipe(mergeMap(res => {
+            localStorage.setItem('access_token', res.token);
+            authReq = req.clone({ headers: req.headers.set('x-access-token', this.authService.getToken())});
+            return next.handle(authReq);
+          })).subscribe();
+
+        } else if (err.status === 403) {
+          console.log('Error 403', err);
         }
       }
     }));

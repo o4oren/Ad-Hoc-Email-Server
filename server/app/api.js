@@ -5,6 +5,7 @@ const express = require('express');
 const router = express.Router();
 const ObjectID = require('mongodb').ObjectID;
 const jwt    = require('jsonwebtoken');
+const logger = require('./logger');
 
 
 // indicates the api server is up
@@ -12,18 +13,6 @@ router.get('/alive', (req, res) => {
   res.send('api works');
 });
 
-/**
- * returns a list of account names starting with the req.body.prefix
- */
-router.post('/account/autocomplete', (req, res) => {
-  req.db.collection('accounts').find({'name': {'$regex' : '^' + req.body.prefix, '$options' : 'i'}},
-    {'name': 1}).toArray(function (err, accounts) {
-    if (err) {
-      res.status(500).json(err);
-    }
-    res.status(200).send(accounts.map(account => account.name));
-  });
-});
 
 router.get('/properties', (req, res, next) => {
   res.json({
@@ -49,10 +38,12 @@ router.use(function(req, res, next) {
     // verifies secret and checks exp
     jwt.verify(token, req.properties.jwtSecret, function(err, decoded) {
       if (err) {
-        return res.json({ success: false, message: 'Failed to authenticate token.' });
+        logger.error(err);
+        return res.status(401).send({ success: false, message: 'Failed to authenticate token.' });
       } else {
         // if everything is good, save to request for use in other routes
         req.decoded = decoded;
+        logger.info('decoded', decoded);
         next();
       }
     });
@@ -61,12 +52,26 @@ router.use(function(req, res, next) {
 
     // if there is no token
     // return an error
-    return res.status(403).send({
+    logger.error('No token provided.');
+    return res.status(401).send({
       success: false,
       message: 'No token provided.'
     });
 
   }
+});
+
+/**
+ * returns a list of account names starting with the req.body.prefix
+ */
+router.post('/account/autocomplete', (req, res) => {
+  req.db.collection('accounts').find({'name': {'$regex' : '^' + req.body.prefix, '$options' : 'i'}},
+    {'name': 1}).toArray(function (err, accounts) {
+    if (err) {
+      res.status(500).json(err);
+    }
+    res.status(200).send(accounts.map(account => account.name));
+  });
 });
 
 /**
