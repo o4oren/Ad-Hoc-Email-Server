@@ -14,22 +14,19 @@
   <h3>Usage</h3>
 
   <div>
-    <h3 mat-subheader>APIs</h3>
-
-    <div *ngFor="let apiEndpoint of apiEndpoints">
-      <p mat-line>
-        <b>Description:</b> {{apiEndpoint.description}}
+    <div *ngFor="let apiCall of apiCalls" class="api-call">
+      <mat-card>
+        <mat-card-subtitle>Description:</mat-card-subtitle> {{apiCall.description}}
+      <p>
+        <mat-card-subtitle>Method:</mat-card-subtitle> {{apiCall.httpMethod}}<br>
       </p>
-      <p mat-line>
-        <b>Method:</b> {{apiEndpoint.httpMethod}}<br>
+      <p>
+        <mat-card-subtitle>URL:</mat-card-subtitle> {{apiCall.uriPath}}
       </p>
-      <p mat-line>
-        <b>URL:</b> {{apiEndpoint.uriPath}}
+      <p>
+        <mat-card-subtitle>Parameters:</mat-card-subtitle> {{apiCall.parameters}}
       </p>
-      <p mat-line>
-        <b>Parameters:</b> {{apiEndpoint.parameters}}
-      </p>
-      <mat-divider></mat-divider>
+      </mat-card>
     </div>
   </div>
 

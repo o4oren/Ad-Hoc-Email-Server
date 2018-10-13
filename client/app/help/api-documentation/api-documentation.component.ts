@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {MatTableDataSource} from '@angular/material';
 import {Meta, Title} from '@angular/platform-browser';
+import {ConfigService} from '../../core/services/config.service';
 
 @Component({
   selector: 'app-api-documentation',
@@ -11,56 +12,56 @@ export class ApiDocumentationComponent implements OnInit {
   h1 = 'AHEM - Ad-Hoc Temporary Email Server API Documentation';
   h2 = '';
 
-  apiEndpoints: ApiCall[] = [
+  apiCalls: ApiCall[] = [
     {
       httpMethod: 'POST',
-      uriPath: '/auth/authenticate',
+      uriPath: ConfigService.properties.serverBaseUri + '/auth/authenticate',
       headers: [],
       parameters: '{}',
       description: 'Returns an access token associated with the requesting IP address.'
     },
     {
       httpMethod: 'POST',
-      uriPath: '/api/account/autocomplete',
+      uriPath: ConfigService.properties.serverBaseUri + '/api/account/autocomplete',
       headers: [],
       parameters: '{ "prefix":[string] }',
       description: 'Returns a list of accounts starting with the prefix'
     },
     {
       httpMethod: 'GET',
-      uriPath: '/api/properties',
+      uriPath: ConfigService.properties.serverBaseUri + '/api/properties',
       headers: [],
       parameters: '',
       description: 'Returns various server properties and settings'},
     {
       httpMethod: 'GET',
-      uriPath: '/api/account/{account}',
+      uriPath: ConfigService.properties.serverBaseUri + '/api/account/{account}',
       headers: [],
       parameters: '',
       description: 'returns a list of the email objects in the account'
     },
     {
       httpMethod: 'DELETE',
-      uriPath: '/api/account/{account}',
+      uriPath: ConfigService.properties.serverBaseUri + '/api/account/{account}',
       headers: [],
       parameters: '',
       description: 'Deletes a whole account'},
     {
       httpMethod: 'GET',
-      uriPath: '/api/account/{account}/{emailId}',
+      uriPath: ConfigService.properties.serverBaseUri + '/api/account/{account}/{emailId}',
       headers: [],
       parameters: '',
       description: 'Returns the contents of a specific email'
     },
     {
       httpMethod: 'DELETE',
-      uriPath: '/api/account/{account}/{emailId}',
+      uriPath: ConfigService.properties.serverBaseUri + '/api/account/{account}/{emailId}',
       headers: [],
       parameters: '',
       description: 'Delete an emails'},
     {
       httpMethod: 'PATCH',
-      uriPath: '/api/account/{acount}/{emailId}',
+      uriPath: ConfigService.properties.serverBaseUri + '/api/account/{acount}/{emailId}',
       headers: [],
       parameters: '{"isRead" : [boolean]}',
       description: 'Updates the emailInfo object (representation of the email meta data in the user\'s account.'
@@ -68,7 +69,7 @@ export class ApiDocumentationComponent implements OnInit {
     },
     {
       httpMethod: 'GET',
-      uriPath: '/api/account/{account}/{emailId}/attachments/{filename}',
+      uriPath: ConfigService.properties.serverBaseUri + '/api/account/{account}/{emailId}/attachments/{filename}',
       headers: [],
       parameters: '',
       description: 'Downloads a specific attachment on an email'

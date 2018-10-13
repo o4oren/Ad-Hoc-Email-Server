@@ -1,15 +1,6 @@
 
-.mat-table {
-    max-width: 80vw;
-}
-
-
-.mat-column-httpMethod {
-  max-width: 60px;
-}
-
-.mat-column-uriPath {
-  min-width: 0px;
+.api-call {
+  margin: 20px;
 }
 
 @media screen and (min-width: 720px) {
