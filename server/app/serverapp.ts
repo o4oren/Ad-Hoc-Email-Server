@@ -88,7 +88,6 @@ export class ServerApp {
       { 'stream': logger.stream }));
 
 // Set routes
-    app.use('/auth', auth);
     app.use('/api', api);
 
 // Server static files from /browser

@@ -6,49 +6,9 @@ const router = express.Router();
 const jwt = require('jsonwebtoken');
 const logger = require('./logger');
 
-// indicates the api server is up
-router.get('/alive', (req, res) => {
-  res.send('auth works');
-});
 
 
 
-
-/**
- * get a token
- */
-router.post('/authenticate', (req, res, next) => {
-  // if a token exists for the ip and is not expired
-  req.db.collection('tokens').findOne({'ip': req.ip},
-    function (err, result) {
-      if (err) {
-        logger.info(err);
-        createNewToken(req, res);
-        return;
-      }
-      if (result) {
-        jwt.verify(result.token, req.properties.jwtSecret, function(err, decoded) {
-          if (err) {
-            logger.info('failed to verify token... renewing.');
-            createNewToken(req, res);
-            return;
-          } else {
-            logger.info('Reusing token');
-            res.status(200).send({
-              success: true,
-              token: result.token
-            });
-            return;
-          }
-        });
-
-      } else {
-        createNewToken(req, res);
-      }
-    });
-
-
-});
 
 function createNewToken(req, res) {
   logger.info('ip', req.ip);
@@ -75,4 +35,38 @@ function createNewToken(req, res) {
     });
 }
 
-module.exports = router;
+function verifyToken(req, res, next) {
+
+  // check header or url parameters or post parameters for token
+  const token = req.headers['Authorization'] || req.headers.authorization;
+  // decode token
+  if (token !== undefined && token.split(' ')[0] === 'Bearer') {
+
+    // verifies secret and checks exp
+    jwt.verify(token.split(' ')[1], req.properties.jwtSecret, function(err, decoded) {
+      if (err) {
+        logger.error(err);
+        return res.status(401).send({ success: false, message: 'Failed to authenticate token.' });
+      } else {
+        // if everything is good, save to request for use in other routes
+        req.decoded = decoded;
+        logger.info('decoded', decoded);
+        next();
+      }
+    });
+
+  } else {
+
+    // if there is no token
+    // return an error
+    logger.error('No token provided.');
+    return res.status(401).send({
+      success: false,
+      message: 'No token provided.'
+    });
+
+  }
+}
+
+module.exports.createNewToken = createNewToken;
+module.exports.verifyToken = verifyToken;

@@ -26,24 +26,24 @@ export class ApiService {
   }
 
   listAccountsEmails(account: string): Observable<Array<EmailInfo>> {
-    const url: string = this.baseUri + '/api/account/' + account;
+    const url: string = this.baseUri + '/api/account/' + account + '/email';
     return this.http.get<Array<EmailInfo>>(url);
   }
 
   getEmailContent(account: string, emailId: string): Observable<EmailDetails> {
-    const url: string = this.baseUri + '/api/account/' + account + '/' + emailId;
+    const url: string = this.baseUri + '/api/account/' + account + '/email/' + emailId;
     return this.http.get<EmailDetails>(url);
   }
 
   markAsReadOrUnread(account: string, emailId: string, isRead: boolean) {
-    const url: string = this.baseUri + '/api/account/' + account + '/' + emailId;
+    const url: string = this.baseUri + '/api/account/' + account + '/email/' + emailId;
     const body = { 'isRead': isRead};
     return this.http.patch(url, body);
   }
 
 
   deleteEmail(account: string, timestamp: string) {
-    const url: string = this.baseUri + '/api/account/' + account + '/' + timestamp;
+    const url: string = this.baseUri + '/api/account/' + account + '/email/' + timestamp;
     return this.http.delete(url);
   }
 

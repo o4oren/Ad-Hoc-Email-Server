@@ -4,8 +4,9 @@
 const express = require('express');
 const router = express.Router();
 const ObjectID = require('mongodb').ObjectID;
-const jwt    = require('jsonwebtoken');
 const logger = require('./logger');
+const auth = require('./auth');
+const jwt = require('jsonwebtoken');
 
 
 // indicates the api server is up
@@ -25,40 +26,41 @@ router.get('/properties', (req, res, next) => {
   });
 });
 
-
-// route middleware to verify a token
-router.use(function(req, res, next) {
-
-  // check header or url parameters or post parameters for token
-  const token = req.headers['Authorization'] || req.headers.authorization;
-  // decode token
-  if (token !== undefined && token.split(' ')[0] === 'Bearer') {
-
-    // verifies secret and checks exp
-    jwt.verify(token.split(' ')[1], req.properties.jwtSecret, function(err, decoded) {
+/**
+ * get a token
+ */
+router.post('/auth/authenticate', (req, res, next) => {
+  // if a token exists for the ip and is not expired
+  req.db.collection('tokens').findOne({'ip': req.ip},
+    function (err, result) {
       if (err) {
         logger.error(err);
-        return res.status(401).send({ success: false, message: 'Failed to authenticate token.' });
+        return;
+      }
+      if (result) {
+        jwt.verify(result.token, req.properties.jwtSecret, function(err, decoded) {
+          if (err) {
+            logger.info('failed to verify token... renewing.');
+            auth.createNewToken(req, res);
+            return;
+          } else {
+            logger.info('Re-using token');
+            res.status(200).send({
+              success: true,
+              token: result.token
+            });
+            return;
+          }
+        });
+
       } else {
-        // if everything is good, save to request for use in other routes
-        req.decoded = decoded;
-        logger.info('decoded', decoded);
-        next();
+        createNewToken(req, res);
       }
     });
-
-  } else {
-
-    // if there is no token
-    // return an error
-    logger.error('No token provided.');
-    return res.status(401).send({
-      success: false,
-      message: 'No token provided.'
-    });
-
-  }
 });
+
+// route middleware to verify a token
+router.use(auth.verifyToken);
 
 /**
  * returns a list of account names starting with the req.body.prefix
@@ -76,7 +78,7 @@ router.post('/account/autocomplete', (req, res) => {
 /**
  * returns a list of mail metadata bojects in a specific account
  */
-router.get('/account/:account', (req, res, next) => {
+router.get('/account/:account/email', (req, res, next) => {
   req.db.collection('accounts').findOne({'name': req.params.account}, function (err, account) {
     if (err) {
       return res.status(500).json(err);
@@ -91,7 +93,7 @@ router.get('/account/:account', (req, res, next) => {
 /**
  * returns an email object in a specific account
  */
-router.get('/account/:account/:emailId', (req, res) => {
+router.get('/account/:account/email/:emailId', (req, res) => {
 
   const objectId = ObjectID.createFromHexString(req.params.emailId);
   req.db.collection('emails').findOne({'_id': objectId}, {
@@ -115,7 +117,7 @@ router.get('/account/:account/:emailId', (req, res) => {
 /**
  * updates a specific email object in a specific account
  */
-router.patch('/account/:account/:emailId', (req, res) => {
+router.patch('/account/:account/email/:emailId', (req, res) => {
 
   const objectId = ObjectID.createFromHexString(req.params.emailId);
   req.db.collection('accounts').updateOne({ 'name': req.params.account, 'emails.emailId' : objectId},
@@ -131,7 +133,7 @@ router.patch('/account/:account/:emailId', (req, res) => {
 /**
  * returns the attachment
  */
-router.get('/account/:account/:emailId/attachments/:filename', (req, res) => {
+router.get('/account/:account/email/:emailId/attachments/:filename', (req, res) => {
   try {
 
     const objectId = ObjectID.createFromHexString(req.params.emailId);
@@ -153,7 +155,7 @@ router.get('/account/:account/:emailId/attachments/:filename', (req, res) => {
   }
 });
 
-router.delete('/account/:account/:emailId', (req, res) => {
+router.delete('/account/:account/email/:emailId', (req, res) => {
   const objectId = ObjectID.createFromHexString(req.params.emailId);
   req.db.collection('accounts').updateOne(
     { 'name' : req.params.account },
