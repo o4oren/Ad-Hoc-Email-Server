@@ -1,14 +1,27 @@
 FORMAT: 1A
-HOST: https:/www.ahem.email/api/
+HOST: https://www.ahem.email/api/
 
 # AHEM - Ad Hoc Email
 
 AHEM is an ad hoc disposable and temporary email service. It allows receiving email at an ad-hoc created email, created on the fly when an email is received by our server.
 Using the AHEM service allows you to prevent spam to your real email, and to test products that send email as part of their lifecycle.
 
-## Properties [/properties]
+## alive [/alive]
 
-### List system wide properties [GET]
+### Get system check results [GET]
++ Response 200 (application/json)
+
+        {
+            "success": true,
+            "api": true,
+            "smtp": true,
+            "db": true
+        }
+
+## properties [/properties]
+
+### Get server properties [GET]
+
 + Response 200 (application/json)
 
         {
@@ -27,76 +40,43 @@ Using the AHEM service allows you to prevent spam to your real email, and to tes
 
 
 
-## Account's Email List [/accout/{accountName}]
+## Account's Email List [/account/{accountName}/email]
 
 ### List All Emails in an account [GET]
+    
++ Parameters
+    + accountName: accountName (string, required) - account name.
+    
++ Request
+
+    + Headers
+        Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpcCI6Ijo6MSIsImlhdCI6MTUzOTU1NTI5NCwiZXhwIjoxNTM5NTU4ODk0fQ.Y8FhYY5OGbHNn6EOcrF81swX3xeLF4t7Q6F5L7z6Xdg
 
 + Response 200 (application/json)
 
         [
             {
-                "question": "Favourite programming language?",
-                "published_at": "2015-08-05T08:40:51.620Z",
-                "choices": [
+                "emailId":"5bc3c17cb76d8f4e1099725c",
+                "sender":
                     {
-                        "choice": "Swift",
-                        "votes": 2048
-                    }, {
-                        "choice": "Python",
-                        "votes": 1024
-                    }, {
-                        "choice": "Objective-C",
-                        "votes": 512
-                    }, {
-                        "choice": "Ruby",
-                        "votes": 256
-                    }
-                ]
+                        "address":"test@my.domain.com",
+                        "name":"AHEM Test!"
+                    },
+                "subject":"AHEM mail test!",
+                "timestamp":1539555708477,
+                "isRead":true
             }
         ]
-
-### Create a New Question [POST]
-
-You may create your own question using this action. It takes a JSON
-object containing a question and a collection of answers in the
-form of choices.
-
-+ Request (application/json)
+        
++ Response 404 (application/json)
 
         {
-            "question": "Favourite programming language?",
-            "choices": [
-                "Swift",
-                "Python",
-                "Objective-C",
-                "Ruby"
-            ]
+            error: "ACCOUNT IS EMPTY!"
         }
 
-+ Response 201 (application/json)
++ Response 401 (application/json)
 
-    + Headers
-
-            Location: /questions/2
-
-    + Body
-
-            {
-                "question": "Favourite programming language?",
-                "published_at": "2015-08-05T08:40:51.620Z",
-                "choices": [
-                    {
-                        "choice": "Swift",
-                        "votes": 0
-                    }, {
-                        "choice": "Python",
-                        "votes": 0
-                    }, {
-                        "choice": "Objective-C",
-                        "votes": 0
-                    }, {
-                        "choice": "Ruby",
-                        "votes": 0
-                    }
-                ]
-            }
+        {
+            "success": false,
+            "message": "No token provided."
+        }
