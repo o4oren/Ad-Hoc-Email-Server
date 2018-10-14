@@ -7,6 +7,10 @@ import {enableProdMode} from '@angular/core';
 import {join} from 'path';
 import {readFileSync} from 'fs';
 
+const swaggerUi = require('swagger-ui-express');
+const swaggerDocument = require('../../openapi.json');
+
+
 
 enableProdMode();
 const app = express();
@@ -55,6 +59,9 @@ export class ServerApp {
       });
     });
 
+    app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+
+
     app.set('view engine', 'html');
     app.set('views', join(DIST_FOLDER, 'browser'));
 
@@ -94,8 +101,8 @@ app.get('*.*', express.static(join(DIST_FOLDER, 'browser')));
 
 // error handler
     app.use(function (err, req, res, next) {
-      logger.error(JSON.stringify(err));
-      res.status(500).send({error: err.message});
+      logger.error(err.message);
+      res.status(500).send({error: err});
     });
 
     /**

@@ -31,10 +31,8 @@ router.use(function(req, res, next) {
 
   // check header or url parameters or post parameters for token
   const token = req.headers['Authorization'] || req.headers.authorization;
-  console.log(token);
-  console.log(token.split(' ')[1]);
   // decode token
-  if (token && token.split(' ')[0] === 'Bearer') {
+  if (token !== undefined && token.split(' ')[0] === 'Bearer') {
 
     // verifies secret and checks exp
     jwt.verify(token.split(' ')[1], req.properties.jwtSecret, function(err, decoded) {

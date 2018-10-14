@@ -6,6 +6,9 @@ module.exports = {
   resolve: { extensions: ['.js', '.ts'] },
   target: 'node',
   mode: 'none',
+  node: {
+    __dirname: true
+  },
   // this makes sure we include node_modules and other 3rd party libraries
   externals: [/node_modules/],
   output: {
