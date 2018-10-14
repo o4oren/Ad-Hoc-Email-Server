@@ -31,7 +31,7 @@ function sendTestEmail(properties) {
       // File Stream attachment
       {
         filename: 'ahem-happy.png',
-        path: __dirname + '/../../client/assets/images/happy.png',
+        path: __dirname + './dist/browser/assets/images/happy.png',
         cid: 'ahem-tester@mydomain.com' // should be as unique as possible
       }
     ]
