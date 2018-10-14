@@ -65,7 +65,7 @@ function createNewToken(req, res) {
     function (err, result) {
       if (err) {
         logger.info(err)
-        res.status(500).json({error: err});
+        res.status(401).json({error: err});
       } else {
         res.status(200).json({
           success: true,

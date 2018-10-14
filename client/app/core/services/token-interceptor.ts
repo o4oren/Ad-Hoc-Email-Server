@@ -17,7 +17,7 @@ export class TokenInterceptor implements HttpInterceptor {
       return next.handle(req);
     }
 
-    let authReq = req.clone({ headers: req.headers.set('x-access-token', this.authService.getToken())});
+    let authReq = req.clone({ headers: req.headers.set('Authorization', 'Bearer ' + this.authService.getToken())});
 
 // send the newly created request
     return next.handle(authReq).pipe(tap((event: HttpEvent<any>) => {
@@ -29,7 +29,7 @@ export class TokenInterceptor implements HttpInterceptor {
         if (err.status === 401) {
           this.authService.authenticate().pipe(mergeMap(res => {
             localStorage.setItem('access_token', res.token);
-            authReq = req.clone({ headers: req.headers.set('x-access-token', this.authService.getToken())});
+            authReq = req.clone({ headers: req.headers.set('Authorization', 'Bearer ' + this.authService.getToken())});
             return next.handle(authReq);
           })).subscribe();
         } else if (err.status === 403) {

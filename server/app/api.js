@@ -30,13 +30,14 @@ router.get('/properties', (req, res, next) => {
 router.use(function(req, res, next) {
 
   // check header or url parameters or post parameters for token
-  const token = req.body.token || req.query.token || req.headers['x-access-token'];
-
+  const token = req.headers['Authorization'] || req.headers.authorization;
+  console.log(token);
+  console.log(token.split(' ')[1]);
   // decode token
-  if (token) {
+  if (token && token.split(' ')[0] === 'Bearer') {
 
     // verifies secret and checks exp
-    jwt.verify(token, req.properties.jwtSecret, function(err, decoded) {
+    jwt.verify(token.split(' ')[1], req.properties.jwtSecret, function(err, decoded) {
       if (err) {
         logger.error(err);
         return res.status(401).send({ success: false, message: 'Failed to authenticate token.' });
