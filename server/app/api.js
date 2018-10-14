@@ -7,11 +7,18 @@ const ObjectID = require('mongodb').ObjectID;
 const logger = require('./logger');
 const auth = require('./auth');
 const jwt = require('jsonwebtoken');
+const mailTester = require('./mailTester');
 
 
 // indicates the api server is up
 router.get('/alive', (req, res) => {
-  res.send('api works');
+  mailTester.sendTestEmail(req.properties);
+  res.status(200).send({
+    success:true,
+    api: true,
+    smtp: true,
+    db: true
+  });
 });
 
 

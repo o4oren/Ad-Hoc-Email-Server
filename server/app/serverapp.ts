@@ -101,7 +101,7 @@ app.get('*.*', express.static(join(DIST_FOLDER, 'browser')));
 // error handler
     app.use(function (err, req, res, next) {
       logger.error(err.message);
-      res.status(500).send({error: err});
+      res.status(500).send({error: err.name + ' | ' + err.message});
     });
 
     /**
