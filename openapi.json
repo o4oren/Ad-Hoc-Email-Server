@@ -1,0 +1,134 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "description": "This is the documentation for the [AHEM Ad Hoc Disposable Temporary Email service API](https://www.ahem.email).  AHEM is a free temp mail service that allows recieving of ad-hoc emails to a mailbox of your choice. No  registration or any other preparation is needed. Just send an email, and it's there.<br> Its simple and intuitive api makes it a perfect tool for testing and automation of any product that use email.",
+    "version": "1.0.0",
+    "title": "AHEM - Ad Hoc Email Service",
+    "termsOfService": "https://www.ahem.email/privacy"
+  },
+  "servers": [
+    {
+      "url": "https://www.ahem.email/api"
+    }
+  ],
+  "tags": [
+    {
+      "name": "properties",
+      "description": "System global configuration properties"
+    },
+    {
+      "name": "account",
+      "description": "An AHEM account represents the prefix of the email address."
+    },
+    {
+      "name": "store",
+      "description": "Access to Petstore orders"
+    },
+    {
+      "name": "user",
+      "description": "Operations about user"
+    }
+  ],
+  "paths": {
+    "/properties": {
+      "get": {
+        "tags": [
+          "properties"
+        ],
+        "summary": "System wide global properties",
+        "operationId": "getProperties",
+        "responses": {
+          "200": {
+            "description": "Sucessfully get properties object",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Properties"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Something went wrong"
+          }
+        }
+      }
+    },
+    "/account/autocomplete": {
+      "post": {
+        "tags": [
+          "account"
+        ],
+        "summary": "Returns a list of accounts starting with the prefix string.",
+        "operationId": "autoComplete",
+        "responses": {
+          "200": {
+            "description": "Successfully fetched results",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AccountAutocomplete"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "token": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    },
+    "schemas": {
+      "Properties": {
+        "type": "object",
+        "properties": {
+          "serverBaseUri": {
+            "type": "string",
+            "example": "https://www.ahem.email"
+          },
+          "emailDeleteInterval": {
+            "type": "integer",
+            "example": "3600"
+          },
+          "emailDeleteAge": {
+            "type": "integer",
+            "example": "7200"
+          },
+          "allowedDomains": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "example": [
+                "ahem.email",
+                "ahem-email.com"
+              ]
+            }
+          },
+          "customText": {
+            "type": "string"
+          },
+          "allowAutocomplete": {
+            "type": "boolean",
+            "example": "false"
+          }
+        }
+      },
+      "AccountAutocomplete": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "example": [
+          "test",
+          "test1"
+        ]
+      }
+    }
+  }
+}
