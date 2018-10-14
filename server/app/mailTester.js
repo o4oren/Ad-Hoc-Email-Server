@@ -42,7 +42,7 @@ function sendTestEmail(properties) {
     {
       host: properties.host || 'localhost',
       port: properties.smtpPort,
-      logger: true,
+      logger: false,
       debug: false // include SMTP traffic in the logs
     },
     {
