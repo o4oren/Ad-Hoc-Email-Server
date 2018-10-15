@@ -5,7 +5,7 @@
     "version": "1.0.0",
     "title": "AHEM - Ad Hoc Email Service",
     "termsOfService": "https://www.ahem.email/privacy"
-    "contact": {},
+    "contact": {}
   },
   "servers": [
     {
