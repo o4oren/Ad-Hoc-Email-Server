@@ -107,6 +107,7 @@
         "summary": "List All Emails in an account",
         "description": "",
         "operationId": "ListAllEmailsInAnAccount",
+        "securitySchema": "token",
         "parameters": [
           {
             "name": "accountName",
