@@ -6,6 +6,9 @@ HOST: https://www.ahem.email/api/
 AHEM is an ad hoc disposable and temporary email service. It allows receiving email at an ad-hoc created email, created on the fly when an email is received by our server.
 Using the AHEM service allows you to prevent spam to your real email, and to test products that send email as part of their lifecycle.
 
+An access token is needed for most API calls. Get an access token by calling /api/auth/authenticate.
+Use the token in the Authorization header as a Bearer token.
+
 ## alive [/alive]
 
 ### Get system check results [GET]
@@ -38,7 +41,22 @@ Using the AHEM service allows you to prevent spam to your real email, and to tes
         }
 
 
+## authentication [/auth/authenticate]
 
+### Get access token [POST]
+
++ Request (application/json)
+
+    + Body
+        
+            {}
+
++ Response 200 (application/json)
+
+        {
+            "success":true,
+            "token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpcCI6Ijo6MSIsImlhdCI6MTUzOTU1NTI5NCwiZXhwIjoxNTM5NTU4ODk0fQ.Y8FhYY5OGbHNn6EOcrF81swX3xeLF4t7Q6F5L7z6Xdg",
+        }
 
 ## Account's Email List [/account/{accountName}/email]
 
@@ -50,7 +68,8 @@ Using the AHEM service allows you to prevent spam to your real email, and to tes
 + Request
 
     + Headers
-        Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpcCI6Ijo6MSIsImlhdCI6MTUzOTU1NTI5NCwiZXhwIjoxNTM5NTU4ODk0fQ.Y8FhYY5OGbHNn6EOcrF81swX3xeLF4t7Q6F5L7z6Xdg
+
+            Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpcCI6Ijo6MSIsImlhdCI6MTUzOTU1NTI5NCwiZXhwIjoxNTM5NTU4ODk0fQ.Y8FhYY5OGbHNn6EOcrF81swX3xeLF4t7Q6F5L7z6Xdg
 
 + Response 200 (application/json)
 
