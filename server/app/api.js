@@ -42,6 +42,7 @@ router.post('/auth/authenticate', (req, res, next) => {
     function (err, result) {
       if (err) {
         logger.error(err);
+        res.status(500).json({error: err.message});
         return;
       }
       if (result) {
@@ -52,7 +53,7 @@ router.post('/auth/authenticate', (req, res, next) => {
             return;
           } else {
             logger.info('Re-using token');
-            res.status(200).send({
+            res.status(200).json({
               success: true,
               token: result.token
             });
@@ -61,7 +62,7 @@ router.post('/auth/authenticate', (req, res, next) => {
         });
 
       } else {
-        createNewToken(req, res);
+        auth.createNewToken(req, res);
       }
     });
 });

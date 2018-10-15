@@ -8,7 +8,7 @@ import {join} from 'path';
 import {readFileSync} from 'fs';
 
 const swaggerUi = require('swagger-ui-express');
-const swaggerDocument = require('../../openapi.json');
+const swaggerDocument = require('../../apiary-OpenApi3Json.json');
 
 
 
