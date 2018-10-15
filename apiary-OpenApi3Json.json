@@ -4,7 +4,7 @@
     "description": "This is the documentation for the [AHEM Ad Hoc Disposable Temporary Email service API](https://www.ahem.email).  AHEM is a free temp mail service that allows recieving of ad-hoc emails to a mailbox of your choice. No  registration or any other preparation is needed. Just send an email, and it's there.<br> Its simple and intuitive api makes it a perfect tool for testing and automation of any product that use email.",
     "version": "1.0.0",
     "title": "AHEM - Ad Hoc Email Service",
-    "termsOfService": "https://www.ahem.email/privacy"
+    "termsOfService": "https://www.ahem.email/privacy",
     "contact": {}
   },
   "servers": [
