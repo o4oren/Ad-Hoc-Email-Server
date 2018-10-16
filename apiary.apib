@@ -41,7 +41,7 @@ Use the token in the Authorization header as a Bearer token.
         }
 
 
-## authentication [/auth/authenticate]
+## authentication [/auth/token]
 
 ### Get access token [POST]
 
@@ -58,9 +58,9 @@ Use the token in the Authorization header as a Bearer token.
             "token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpcCI6Ijo6MSIsImlhdCI6MTUzOTU1NTI5NCwiZXhwIjoxNTM5NTU4ODk0fQ.Y8FhYY5OGbHNn6EOcrF81swX3xeLF4t7Q6F5L7z6Xdg",
         }
 
-## Mailbox's Email List [/mailbox/{mailbozName}/email]
+## Mailbox [/mailbox/{mailboxName}/email]
 
-### List All Emails in an mailbox [GET]
+### get a mailbox's emails list [GET]
 
 + Parameters
     + mailboxName: mailboxName (string, required) - mailbox name.
@@ -98,4 +98,217 @@ Use the token in the Authorization header as a Bearer token.
         {
             "success": false,
             "message": "No token provided."
+        }
+        
+        
+## Email [/mailbox/{mailboxName}/email/{emailId}]
+
+### Get an email's content [GET]
+
++ Parameters
+    + mailboxName: mailboxName (string, required) - mailbox name.
+    + emailId: emailId (string, required) - mailbox name.
+
+
++ Request
+
+    + Headers
+
+            Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpcCI6Ijo6MSIsImlhdCI6MTUzOTU1NTI5NCwiZXhwIjoxNTM5NTU4ODk0fQ.Y8FhYY5OGbHNn6EOcrF81swX3xeLF4t7Q6F5L7z6Xdg
+
++ Response 200 (application/json)
+
+            {
+              "_id": "5bc64017002e254f65eb37ef",
+              "attachments": [
+                {
+                  "type": "attachment",
+                  "content": "iVBORw0KGgoAAAANSUhEUgAAAfoAAAFkCAYAAADIefl6AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAACAASURBVHic7J13eFRV2sB/585MekIggQAJyaRAgACWIGAHFQXE3pB1RSyfvXfctaDr2ru7rq6ia9dV1w4qigKWVXQt2AqJCmyPszLl/0c8IQ3mc14/tXXMdCsQ6rBX1c+w8Qhx8xjeCyPbDOPNKP/ODxOQzrk/F5xqAJLlywJtCnwdF5entjUxq0UFBcTkSuQmCC",
+                  "contentType": "image/png",
+                  "release": null,
+                  "contentDisposition": "attachment",
+                  "filename": "ahem-happy.png",
+                  "contentId": "<ahem-tester@mydomain.com>",
+                  "cid": "ahem-tester@mydomain.com",
+                  "related": true,
+                  "headers": {
+                    "content-type": {
+                      "value": "image/png",
+                      "params": {
+                        "name": "ahem-happy.png"
+                      }
+                    },
+                    "content-id": "<ahem-tester@mydomain.com>",
+                    "content-transfer-encoding": "base64",
+                    "content-disposition": {
+                      "value": "attachment",
+                      "params": {
+                        "filename": "ahem-happy.png"
+                      }
+                    }
+                  },
+                  "checksum": "4ac3f7fa98c8c86bb1677f32279db7ad",
+                  "size": 57654
+                }
+              ],
+              "headers": {
+                "content-type": {
+                  "value": "multipart/alternative",
+                  "params": {
+                    "boundary": "--_NmP-56cbf8151211f597-Part_1"
+                  }
+                },
+                "from": {
+                  "value": [
+                    {
+                      "address": "alive-test@my.domain.com",
+                      "name": "AHEM Test!"
+                    }
+                  ],
+                  "html": "<span class=\"mp_address_group\"><span class=\"mp_address_name\">AHEM Test!</span> &lt;<a href=\"mailto:alive-test@my.domain.com\" class=\"mp_address_email\">alive-test@my.domain.com</a>&gt;</span>",
+                  "text": "AHEM Test! <alive-test@my.domain.com>"
+                },
+                "to": {
+                  "value": [
+                    {
+                      "address": "alive-test@my.domain.com",
+                      "name": ""
+                    }
+                  ],
+                  "html": "<span class=\"mp_address_group\"><a href=\"mailto:alive-test@my.domain.com\" class=\"mp_address_email\">alive-test@my.domain.com</a></span>",
+                  "text": "alive-test@my.domain.com"
+                },
+                "subject": "AHEM mail test! ✔",
+                "message-id": "<c70341d4-2acc-ce06-d8ae-e2246e9e867e@my.domain.com>",
+                "date": "2018-10-16T19:46:31.000Z",
+                "mime-version": "1.0"
+              },
+              "headerLines": [
+                {
+                  "key": "content-type",
+                  "line": "Content-Type: multipart/alternative;\r\n boundary=\"--_NmP-56cbf8151211f597-Part_1\""
+                },
+                {
+                  "key": "from",
+                  "line": "From: \"AHEM Test!\" <alive-test@my.domain.com>"
+                },
+                {
+                  "key": "to",
+                  "line": "To: alive-test@my.domain.com"
+                },
+                {
+                  "key": "subject",
+                  "line": "Subject: =?UTF-8?Q?AHEM_mail_test!_=E2=9C=94?="
+                },
+                {
+                  "key": "message-id",
+                  "line": "Message-ID: <c70341d4-2acc-ce06-d8ae-e2246e9e867e@my.domain.com>"
+                },
+                {
+                  "key": "date",
+                  "line": "Date: Tue, 16 Oct 2018 19:46:31 +0000"
+                },
+                {
+                  "key": "mime-version",
+                  "line": "MIME-Version: 1.0"
+                }
+              ],
+              "html": "<p><b>API Test:</b> <span style=\"color: darkgreen\">✔</span></p><p><b>SMTP Test:</b> <span style=\"color: darkgreen\">✔</span></p><p><b>DB Test:</b> <span style=\"color: darkgreen\">✔</span></p><p><br/></p>",
+              "text": "API: ✔ SMTP: ✔ DB: ✔",
+              "textAsHtml": "<p>API: &#x2714; SMTP: &#x2714; DB: &#x2714;</p>",
+              "subject": "AHEM mail test! ✔",
+              "date": "2018-10-16T19:46:31.000Z",
+              "to": {
+                "value": [
+                  {
+                    "address": "alive-test@my.domain.com",
+                    "name": ""
+                  }
+                ],
+                "html": "<span class=\"mp_address_group\"><a href=\"mailto:alive-test@my.domain.com\" class=\"mp_address_email\">alive-test@my.domain.com</a></span>",
+                "text": "alive-test@my.domain.com"
+              },
+              "from": {
+                "value": [
+                  {
+                    "address": "alive-test@my.domain.com",
+                    "name": "AHEM Test!"
+                  }
+                ],
+                "html": "<span class=\"mp_address_group\"><span class=\"mp_address_name\">AHEM Test!</span> &lt;<a href=\"mailto:alive-test@my.domain.com\" class=\"mp_address_email\">alive-test@my.domain.com</a>&gt;</span>",
+                "text": "AHEM Test! <alive-test@my.domain.com>"
+              },
+              "messageId": "<c70341d4-2acc-ce06-d8ae-e2246e9e867e@my.domain.com>",
+              "timestamp": 1539719191853
+            }
+
++ Response 404 (application/json)
+
+        {
+            error: "MAILBOX IS EMPTY!"
+        }
+
++ Response 500 (application/json)
+
+        {
+            "error": "error details"
+        }
+
+
+### Delete an Email [DELETE]
+
++ Parameters
+    + mailboxName: mailboxName (string, required) - mailbox name.
+    + emailId: emailId (string, required) - mailbox name.
+
+
++ Request
+
+    + Headers
+
+            Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpcCI6Ijo6MSIsImlhdCI6MTUzOTU1NTI5NCwiZXhwIjoxNTM5NTU4ODk0fQ.Y8FhYY5OGbHNn6EOcrF81swX3xeLF4t7Q6F5L7z6Xdg
+
++ Response 200 (application/json)
+
+            {
+                "success": true
+            }
+
++ Response 500 (application/json)
+
+        {
+            "error": "error details"
+        }
+        
+### Update an Email's metadata [PATCH]
+
++ Parameters
+    + mailboxName: mailboxName (string, required) - mailbox name.
+    + emailId: emailId (string, required) - mailbox name.
+
+
++ Request
+
+    + Headers
+
+            Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpcCI6Ijo6MSIsImlhdCI6MTUzOTU1NTI5NCwiZXhwIjoxNTM5NTU4ODk0fQ.Y8FhYY5OGbHNn6EOcrF81swX3xeLF4t7Q6F5L7z6Xdg
+    + Body
+
+            {
+                "isRead": true
+            }
+    
+
++ Response 200 (application/json)
+
+            {
+                "n":1,
+                "nModified":0,
+                "ok":1
+            }
+
++ Response 500 (application/json)
+
+        {
+            "error": "error details"
         }
