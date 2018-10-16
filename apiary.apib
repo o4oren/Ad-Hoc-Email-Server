@@ -99,3 +99,185 @@ Use the token in the Authorization header as a Bearer token.
             "success": false,
             "message": "No token provided."
         }
+        
+       /account/:account/email/:emailId 
+
+## Email [/account/{accountName}/email/{emailId}]
+
+### Get email content [GET]
+    
++ Parameters
+    + accountName: accountName (string, required) - account name.
+    + emailId: accountName (string, required) - email Id.
+    
++ Request
+
+    + Headers
+
+            Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpcCI6Ijo6MSIsImlhdCI6MTUzOTU1NTI5NCwiZXhwIjoxNTM5NTU4ODk0fQ.Y8FhYY5OGbHNn6EOcrF81swX3xeLF4t7Q6F5L7z6Xdg
+
++ Response 200 (application/json)
+
+{  
+   "_id":"5bc4aa24a0fb3d45492b8285",
+   "attachments":[  
+
+   ],
+   "headers":{  
+      "received":[  
+         "from xct101cnc.rim.net ([10.65.161.201]) by mhs215cnc.rim.net with ESMTP/TLS/DHE-RSA-AES256-SHA; 15 Oct 2018 10:54:15 -0400",
+         "from XCT199YKF.rim.net (10.2.25.7) by XCT101CNC.rim.net (10.65.161.201) with Microsoft SMTP Server (TLS) id 14.3.408.0; Mon, 15 Oct 2018 10:54:14 -0400",
+         "from XMB116CNC.rim.net ([fe80::45d:f4fe:6277:5d1b]) by XCT199YKF.rim.net ([fe80::3026:d39d:47da:9fa3%12]) with mapi id 14.03.0415.000; Mon, 15 Oct 2018 10:54:14 -0400"
+      ],
+      "from":{  
+         "value":[  
+            {  
+               "address":"test@ahem.eamil,
+               "name":"Test"
+            }
+         ],
+         "html":"<span class=\"mp_address_group\"><span class=\"mp_address_name\">Oren Geva</span> &lt;<a href=\"mailto:test@blackberry.com\" class=\"mp_address_email\">ogeva@blackberry.com</a>&gt;</span>",
+         "text":"Test <test@blackberry.com>"
+      },
+      "to":{  
+         "value":[  
+            {  
+               "address":"test@ahem.email",
+               "name":"Test"
+            }
+         ],
+         "html":"<span class=\"mp_address_group\"><a href=\"mailto:test@ahem.email\" class=\"mp_address_email\">test@ahem.email</a></span>",
+         "text":"test@ahem.email"
+      },
+      "subject":"test",
+      "thread-topic":"test",
+      "thread-index":"AQHUZJbw9bGhzneny0GhnosXwG+QpA==",
+      "date":"2018-10-15T14:54:13.000Z",
+      "message-id":"<36D21D7C-F757-4036-AD19-89F390E77961@blackberry.com>",
+      "accept-language":"en-US, en-CA",
+      "content-language":"en-US",
+      "x-originating-ip":"[10.65.160.251]",
+      "content-type":{  
+         "value":"multipart/alternative",
+         "params":{  
+            "boundary":"_000_36D21D7CF7574036AD1989F390E77961blackberrycom_"
+         }
+      },
+      "mime-version":"1.0",
+      "return-path":{  
+         "value":[  
+            {  
+               "address":"ogeva@blackberry.com",
+               "name":""
+            }
+         ],
+         "html":"<span class=\"mp_address_group\"><a href=\"mailto:ogeva@blackberry.com\" class=\"mp_address_email\">ogeva@blackberry.com</a></span>",
+         "text":"ogeva@blackberry.com"
+      }
+   },
+   "headerLines":[  
+      {  
+         "key":"received",
+         "line":"Received: from xct101cnc.rim.net ([10.65.161.201])\r\n  by mhs215cnc.rim.net with ESMTP/TLS/DHE-RSA-AES256-SHA; 15 Oct 2018 10:54:15 -0400"
+      },
+      {  
+         "key":"from",
+         "line":"From: Ahem Test <tester@ahem.email>"
+      },
+      {  
+         "key":"to",
+         "line":"To: \"test@ahem.email\" <test@ahem.email>"
+      },
+      {  
+         "key":"subject",
+         "line":"Subject: test"
+      },
+      {  
+         "key":"thread-topic",
+         "line":"Thread-Topic: test"
+      },
+      {  
+         "key":"thread-index",
+         "line":"Thread-Index: AQHUZJbw9bGhzneny0GhnosXwG+QpA=="
+      },
+      {  
+         "key":"date",
+         "line":"Date: Mon, 15 Oct 2018 14:54:13 +0000"
+      },
+      {  
+         "key":"message-id",
+         "line":"Message-ID: <36D21D7C-F757-4036-AD19-89F390E77961@blackberry.com>"
+      },
+      {  
+         "key":"accept-language",
+         "line":"Accept-Language: en-US, en-CA"
+      },
+      {  
+         "key":"content-language",
+         "line":"Content-Language: en-US"
+      },
+      {  
+         "key":"x-ms-has-attach",
+         "line":"X-MS-Has-Attach:"
+      },
+      {  
+         "key":"x-ms-tnef-correlator",
+         "line":"X-MS-TNEF-Correlator:"
+      },
+      {  
+         "key":"x-originating-ip",
+         "line":"x-originating-ip: [10.65.160.251]"
+      },
+      {  
+         "key":"content-type",
+         "line":"Content-Type: multipart/alternative;\r\n\tboundary=\"_000_36D21D7CF7574036AD1989F390E77961blackberrycom_\""
+      },
+      {  
+         "key":"mime-version",
+         "line":"MIME-Version: 1.0"
+      },
+      {  
+         "key":"return-path",
+         "line":"Return-Path: ogeva@blackberry.com"
+      }
+   ],
+   "html":"<html xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:w=\"urn:schemas-microsoft-com:office:word\" xmlns:m=\"http://schemas.microsoft.com/office/2004/12/omml\" xmlns=\"http://www.w3.org/TR/REC-html40\">\n<head>\n<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\">\n<meta name=\"Generator\" content=\"Microsoft Word 15 (filtered medium)\">\n<style><!--\n/* Font Definitions */\n@font-face\n\t{font-family:\"Cambria Math\";\n\tpanose-1:2 4 5 3 5 4 6 3 2 4;}\n@font-face\n\t{font-family:Calibri;\n\tpanose-1:2 15 5 2 2 2 4 3 2 4;}\n/* Style Definitions */\np.MsoNormal, li.MsoNormal, div.MsoNormal\n\t{margin:0cm;\n\tmargin-bottom:.0001pt;\n\tfont-size:12.0pt;\n\tfont-family:\"Calibri\",sans-serif;}\na:link, span.MsoHyperlink\n\t{mso-style-priority:99;\n\tcolor:#0563C1;\n\ttext-decoration:underline;}\na:visited, span.MsoHyperlinkFollowed\n\t{mso-style-priority:99;\n\tcolor:#954F72;\n\ttext-decoration:underline;}\nspan.EmailStyle17\n\t{mso-style-type:personal-compose;\n\tfont-family:\"Calibri\",sans-serif;}\n.MsoChpDefault\n\t{mso-style-type:export-only;\n\tfont-family:\"Calibri\",sans-serif;}\n@page WordSection1\n\t{size:612.0pt 792.0pt;\n\tmargin:72.0pt 72.0pt 72.0pt 72.0pt;}\ndiv.WordSection1\n\t{page:WordSection1;}\n--></style>\n</head>\n<body lang=\"EN-US\" link=\"#0563C1\" vlink=\"#954F72\">\n<div class=\"WordSection1\">\n<p class=\"MsoNormal\"><span style=\"font-size:11.0pt\">test<o:p></o:p></span></p>\n</div>\n</body>\n</html>\n",
+   "text":"test\n",
+   "textAsHtml":"<p>test</p>",
+   "subject":"test",
+   "date":"2018-10-15T14:54:13.000Z",
+   "to":{  
+      "value":[  
+         {  
+            "address":"test@ahem.email",
+            "name":""
+         }
+      ],
+      "html":"<span class=\"mp_address_group\"><a href=\"mailto:test@ahem.email\" class=\"mp_address_email\">oren@ahem.email</a></span>",
+      "text":"oren@ahem.email"
+   },
+   "from":{  
+      "value":[  
+         {  
+            "address":"test@blackberry.com",
+            "name":"Test"
+         }
+      ],
+      "html":"<b>Hello</b>"
+   },
+   "messageId":"<36D21D7C-F757-4036-AD19-89F390E77961@ahem.email>",
+   "timestamp":1539615268579
+}
+        
++ Response 404 (application/json)
+
+        {
+            error: "ACCOUNT IS EMPTY!"
+        }
+
++ Response 401 (application/json)
+
+        {
+            "success": false,
+            "message": "No token provided."
+        }
