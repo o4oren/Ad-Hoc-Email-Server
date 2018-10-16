@@ -67,6 +67,33 @@ router.post('/auth/token', (req, res, next) => {
     });
 });
 
+
+/**
+ * returns the attachment
+ */
+router.get('/mailbox/:mailbox/email/:emailId/attachments/:filename', (req, res) => {
+  try {
+
+    const objectId = ObjectID.createFromHexString(req.params.emailId);
+    req.db.collection('emails').findOne({'_id': objectId}, function(err, mail) {
+        const attachmentsFound = mail.attachments.filter(attachment => {
+          return attachment.filename === decodeURI(req.params.filename);
+        });
+        console.log(attachmentsFound);
+        res.setHeader('Content-Type', attachmentsFound[0].contentType);
+        // res.setHeader('Content-disposition', 'attachment;filename=' + attachmentsFound[0].filename);
+        res.setHeader('Content-Length', attachmentsFound[0].size);
+        res.writeHead(200);
+        res.end(attachmentsFound[0].content.buffer);
+      }
+    );
+  } catch (e) {
+    console.log(e);
+    res.status(404).send({error: 'FILE NOT FOUND'});
+  }
+});
+
+
 // route middleware to verify a token
 router.use(auth.verifyToken);
 
@@ -142,30 +169,6 @@ router.patch('/mailbox/:mailbox/email/:emailId', (req, res) => {
   });
 });
 
-/**
- * returns the attachment
- */
-router.get('/mailbox/:mailbox/email/:emailId/attachments/:filename', (req, res) => {
-  try {
-
-    const objectId = ObjectID.createFromHexString(req.params.emailId);
-    req.db.collection('emails').findOne({'_id': objectId}, function(err, mail) {
-      const attachmentsFound = mail.attachments.filter(attachment => {
-        return attachment.filename === decodeURI(req.params.filename);
-      });
-      console.log(attachmentsFound);
-      res.setHeader('Content-Type', attachmentsFound[0].contentType);
-      // res.setHeader('Content-disposition', 'attachment;filename=' + attachmentsFound[0].filename);
-      res.setHeader('Content-Length', attachmentsFound[0].size);
-      res.writeHead(200);
-      res.end(attachmentsFound[0].content.buffer);
-      }
-    );
-  } catch (e) {
-    console.log(e);
-    res.status(404).send({error: 'FILE NOT FOUND'});
-  }
-});
 
 router.delete('/mailbox/:mailbox/email/:emailId', (req, res) => {
   const objectId = ObjectID.createFromHexString(req.params.emailId);
