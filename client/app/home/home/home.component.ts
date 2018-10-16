@@ -36,31 +36,44 @@ export class HomeComponent implements OnInit {
   createHomePageItems() {
     this.items = [
       {
-        title: 'Ad Hoc',
+        title: 'Ad Hoc mailbox',
         text: 'No sign in page! No registration! No password! An ad hoc mailbox is created by just sending an email to its address.',
         iconName: 'paper-plane',
         iconGroup: 'far'
       },
       {
-        title: 'Disposable',
-        text: 'Do not expose your real email. Dispose received emails. No strings attached.',
+        title: 'Disposable email',
+        text: 'Do not expose your real email. Dispose emails immediately. No strings attached.',
         iconName: 'trash-alt',
         iconGroup: 'far'
       },
       {
-        title: 'Temporary',
-        text: 'Received emails are automatically deleted after '
+        title: 'Temporary email address',
+        text: 'Emails are automatically deleted after '
         + this.durationPipe.transform(this.properties.emailDeleteAge + this.properties.emailDeleteInterval, 'seconds') + '.',
         iconName: 'clock',
         iconGroup: 'far'
       },
       {
-        title: 'Simple and free',
-        text: 'Using AHEM is always simple and free. Generate a random email address or select your own.',
+        title: 'Avoid SPAM',
+        text: 'Use an AHEM temporary email to prevent spam and phishing when signing in to online services and wifi networks.',
+        iconName: 'user-secret',
+        iconGroup: 'fas'
+      },
+      {
+        title: 'Simple',
+        text: 'Using AHEM is always simple and free. Just send an email to [mailbox of your choice]@ahem.email and check your ' +
+        'disposable mailbox.',
         iconName: 'dove',
+        iconGroup: 'fas'
+      },
+      {
+        title: 'QA testing',
+        text: 'Many software products use email. Using AHEM is a great way to test your product\'s ' +
+        'email functionality. Send emails here, or use our RESTful API.',
+        iconName: 'laptop-code',
         iconGroup: 'fas'
       },
     ];
   }
-
 }

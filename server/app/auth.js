@@ -11,9 +11,9 @@ const logger = require('./logger');
 
 
 function createNewToken(req, res) {
-  logger.info('ip', req.ip);
   const payload = {
-    ip: req.ip
+    ip: req.ip,
+    maxAllowedApiCalls: req.properties.maxAllowedApiCalls
   };
 //if a token doesn't exist for the ip, create new token
   logger.info('creating new token');

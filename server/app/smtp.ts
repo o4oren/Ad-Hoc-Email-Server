@@ -59,6 +59,9 @@ module.exports = {
                   return;
                 }
 
+                // count email
+                db.collection('emailCount').updateOne({}, { $inc: { count: 1 }}, { upsert: true});
+
                 mail.to.value.forEach(recipient => {
                   const nameAndDomain = recipient.address.split('@');
                   if (properties.allowedDomains.indexOf(nameAndDomain[1].toLowerCase()) > -1) {

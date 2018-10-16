@@ -8,7 +8,7 @@
 
 .home-content-container {
   width: 85%;
-  max-width: 1200px;
+  max-width: 900px;
   flex: 1;
   flex-wrap: wrap;
   display: flex;
