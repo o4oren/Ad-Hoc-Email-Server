@@ -36,7 +36,7 @@ router.get('/properties', (req, res, next) => {
 /**
  * get a token
  */
-router.post('/auth/authenticate', (req, res, next) => {
+router.post('/auth/token', (req, res, next) => {
   // if a token exists for the ip and is not expired
   req.db.collection('tokens').findOne({'ip': req.ip},
     function (err, result) {

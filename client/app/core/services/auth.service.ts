@@ -30,6 +30,6 @@ export class AuthService {
   }
 
   authenticate(): Observable<TokenResponse> {
-    return this.http.post<TokenResponse>(this.baseUri + '/api/auth/authenticate', {});
+    return this.http.post<TokenResponse>(this.baseUri + '/api/auth/token', {});
   }
 }
