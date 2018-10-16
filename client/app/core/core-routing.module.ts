@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import {ApiDocumentationComponent} from '../help/api-documentation/api-documentation.component';
 import {RouterModule, Routes} from '@angular/router';
 
 const appRoutes: Routes = [
@@ -12,8 +11,8 @@ const appRoutes: Routes = [
     loadChildren: '../help/help.module#HelpModule',
   },
   {
-    path: 'account',
-    loadChildren: '../account-view/account-view.module#AccountViewModule'},
+    path: 'mailbox',
+    loadChildren: '../mailbox/mailbox.module#MailboxModule'},
   {
     path: 'privacy',
     loadChildren: '../privacy/privacy.module#PrivacyModule',

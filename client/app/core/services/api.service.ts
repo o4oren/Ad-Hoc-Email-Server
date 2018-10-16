@@ -20,30 +20,30 @@ export class ApiService {
     return this.http.get<AhemProperties>(this.baseUri + '/api/properties');
   }
 
-  listAccountsAutoComplete(prefix: string): any {
-    const url = this.baseUri + '/api/account/autocomplete';
+  listMailboxesAutoComplete(prefix: string): any {
+    const url = this.baseUri + '/api/mailbox/autocomplete';
     return this.http.post(url, {prefix: prefix});
   }
 
-  listAccountsEmails(account: string): Observable<Array<EmailInfo>> {
-    const url: string = this.baseUri + '/api/account/' + account + '/email';
+  listMailboxEmails(mailbox: string): Observable<Array<EmailInfo>> {
+    const url: string = this.baseUri + '/api/mailbox/' + mailbox + '/email';
     return this.http.get<Array<EmailInfo>>(url);
   }
 
-  getEmailContent(account: string, emailId: string): Observable<EmailDetails> {
-    const url: string = this.baseUri + '/api/account/' + account + '/email/' + emailId;
+  getEmailContent(mailbox: string, emailId: string): Observable<EmailDetails> {
+    const url: string = this.baseUri + '/api/mailbox/' + mailbox + '/email/' + emailId;
     return this.http.get<EmailDetails>(url);
   }
 
-  markAsReadOrUnread(account: string, emailId: string, isRead: boolean) {
-    const url: string = this.baseUri + '/api/account/' + account + '/email/' + emailId;
+  markAsReadOrUnread(mailbox: string, emailId: string, isRead: boolean) {
+    const url: string = this.baseUri + '/api/mailbox/' + mailbox + '/email/' + emailId;
     const body = { 'isRead': isRead};
     return this.http.patch(url, body);
   }
 
 
-  deleteEmail(account: string, timestamp: string) {
-    const url: string = this.baseUri + '/api/account/' + account + '/email/' + timestamp;
+  deleteEmail(mailbox: string, timestamp: string) {
+    const url: string = this.baseUri + '/api/mailbox/' + mailbox + '/email/' + timestamp;
     return this.http.delete(url);
   }
 

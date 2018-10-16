@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AccountSelectorComponent } from './account-selector/account-selector.component';
+import { MailboxSelectorComponent } from './mailbox-selector/mailbox-selector.component';
 import {
   MatAutocompleteModule,
   MatButtonModule,
@@ -29,14 +29,14 @@ import { ProgressComponent } from './progress/progress.component';
     ReactiveFormsModule,
   ],
   declarations: [
-    AccountSelectorComponent,
+    MailboxSelectorComponent,
     HtmlSanitizerPipe,
     TrimDomainPipe,
     BannerComponent,
     ProgressComponent,
   ],
   exports: [
-    AccountSelectorComponent,
+    MailboxSelectorComponent,
     BannerComponent,
     ProgressComponent,
     HtmlSanitizerPipe,

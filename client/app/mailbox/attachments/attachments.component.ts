@@ -9,7 +9,7 @@ import {EmailDetails} from '../../model/email-details-model';
 export class AttachmentsComponent implements OnInit {
 
   @Input() emailDetails: EmailDetails;
-  @Input() account: string;
+  @Input() mailbox: string;
   @Input() emailId: string;
 
   constructor() {

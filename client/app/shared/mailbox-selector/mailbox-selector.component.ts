@@ -8,15 +8,15 @@ import {Router} from '@angular/router';
 import {ConfigService} from '../../core/services/config.service';
 
 @Component({
-  selector: 'app-account-selector',
-  templateUrl: './account-selector.component.html',
-  styleUrls: ['./account-selector.component.css']
+  selector: 'app-mailbox-selector',
+  templateUrl: './mailbox-selector.component.html',
+  styleUrls: ['./mailbox-selector.component.css']
 })
-export class AccountSelectorComponent implements OnInit {
+export class MailboxSelectorComponent implements OnInit {
 
   autoCompleteControl: FormControl;
-  accounts: string[];
-  @Input() selectedAccount = '';
+  mailboxes: string[];
+  @Input() selectedMailbox = '';
   @Input() color = 'accent';
   @Input() isInline = true;
   properties: any = {allowedDomains: ['']};
@@ -28,16 +28,16 @@ export class AccountSelectorComponent implements OnInit {
   ngOnInit(): void {
     this.autoCompleteControl.valueChanges.
     pipe(debounceTime(300)).subscribe(val => {
-      this.filterAccounts(val).subscribe(result => this.accounts = result);
+      this.filterMailboxes(val).subscribe(result => this.mailboxes = result);
     });
 
     this.properties = ConfigService.properties;
   }
 
 
-  filterAccounts(val: string): any {
+  filterMailboxes(val: string): any {
     if (this.properties.allowAutocomplete && typeof val !== 'undefined' && val) {
-      return this.apiService.listAccountsAutoComplete(val);
+      return this.apiService.listMailboxesAutoComplete(val);
     } else {
       return Observable.create(observer => {
         observer.next([]);
@@ -47,7 +47,7 @@ export class AccountSelectorComponent implements OnInit {
   }
 
   clickSubmit() {
-    this.router.navigateByUrl('/account/' + this.selectedAccount.toLowerCase().split('@')[0]);
+    this.router.navigateByUrl('/mailbox/' + this.selectedMailbox.toLowerCase().split('@')[0]);
   }
 
   generateEmail() {
@@ -58,7 +58,7 @@ export class AccountSelectorComponent implements OnInit {
       email += possible.charAt(Math.floor(Math.random() * possible.length));
     }
 
-    this.selectedAccount = email;
+    this.selectedMailbox = email;
   }
 
 }

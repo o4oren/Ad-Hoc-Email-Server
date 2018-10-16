@@ -62,7 +62,7 @@ module.exports = {
                 mail.to.value.forEach(recipient => {
                   const nameAndDomain = recipient.address.split('@');
                   if (properties.allowedDomains.indexOf(nameAndDomain[1].toLowerCase()) > -1) {
-                    db.collection('accounts').updateOne({'name': nameAndDomain[0].toLowerCase()}, {
+                    db.collection('mailboxes').updateOne({'name': nameAndDomain[0].toLowerCase()}, {
                       $push: {
                         'emails': {
                           'emailId': mail._id,
@@ -74,7 +74,7 @@ module.exports = {
                       }
                     }, {upsert: true}, function (err2, res) {
                       if (err2) {
-                        logger.error('Error in writing to account db', err2);
+                        logger.error('Error in writing to mailbox db', err2);
                         return;
                       }
                       logger.info('updated email content in db.');

@@ -17,8 +17,8 @@
       "description": "System global configuration properties"
     },
     {
-      "name": "account",
-      "description": "An AHEM account represents the prefix of the email address."
+      "name": "mailbox",
+      "description": "An AHEM mailbox represents the prefix of the email address."
     },
     {
       "name": "store",
@@ -54,12 +54,12 @@
         }
       }
     },
-    "/account/autocomplete": {
+    "/mailbox/autocomplete": {
       "post": {
         "tags": [
-          "account"
+          "mailbox"
         ],
-        "summary": "Returns a list of accounts starting with the prefix string.",
+        "summary": "Returns a list of mailboxs starting with the prefix string.",
         "operationId": "autoComplete",
         "responses": {
           "200": {
@@ -67,7 +67,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/AccountAutocomplete"
+                  "$ref": "#/components/schemas/mailboxAutocomplete"
                 }
               }
             }
@@ -119,7 +119,7 @@
           }
         }
       },
-      "AccountAutocomplete": {
+      "mailboxAutocomplete": {
         "type": "array",
         "items": {
           "type": "string"

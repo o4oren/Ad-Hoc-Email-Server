@@ -130,7 +130,7 @@ app.get('*.*', express.static(join(DIST_FOLDER, 'browser')));
         {'_id': 1}).toArray(function (err, emailsToDelete) {
         logger.info(emailsToDelete.length + ' emails with age > ' + properties.emailDeleteAge + ' seconds where found');
         emailsToDelete.forEach(email => {
-          db.collection('accounts').update(
+          db.collection('mailboxes').update(
             {'emails.emailId': email._id},
             {$pull: {'emails': {'emailId': email._id}}},
             {'multi': true}
@@ -140,7 +140,7 @@ app.get('*.*', express.static(join(DIST_FOLDER, 'browser')));
               }
               logger.info('Removing ' + email._id.toString()
                 + ' has been removed from '
-                + JSON.parse(numberRemoved).nModified + ' accounts.');
+                + JSON.parse(numberRemoved).nModified + 'mailboxess.');
 
             }
           );
@@ -155,11 +155,11 @@ app.get('*.*', express.static(join(DIST_FOLDER, 'browser')));
         });
       });
 
-      db.collection('accounts').remove({'emails': {$exists: true, $ne: '[]'}}, function (err, result) {
+      db.collection('mailboxes').remove({'emails': {$exists: true, $ne: '[]'}}, function (err, result) {
         if (err) {
           logger.error(err);
         } else {
-          logger.info('Removed empty accounts', result.result);
+          logger.info('Removed empty mailboxes', result.result);
         }
       });
 

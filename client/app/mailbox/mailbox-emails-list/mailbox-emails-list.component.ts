@@ -11,13 +11,13 @@ enum SortBy {
 }
 
 @Component({
-  selector: 'app-account-emails',
-  templateUrl: './account-emails.component.html',
-  styleUrls: ['./account-emails.component.css']
+  selector: 'app-mailbox-emails',
+  templateUrl: './mailbox-emails-list.component.html',
+  styleUrls: ['./mailbox-emails-list.component.css']
 })
-export class AccountEmailsComponent implements OnInit, OnDestroy {
+export class MailboxEmailsListComponent implements OnInit, OnDestroy {
   paramsSub: Subscription;
-  account: string;
+  mailbox: string;
   emails: Array<EmailInfo>;
   selectedEmail: EmailInfo;
   emailId: string;
@@ -30,18 +30,18 @@ export class AccountEmailsComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.paramsSub = this.route.params.subscribe(params => {
-      if (params['account'] == null) {
-        this.metaService.updateTag({ name: 'description', content: 'AHEM - accounts'});
-        this.titleService.setTitle('AHEM - Accounts');
+      if (params['mailbox'] == null) {
+        this.metaService.updateTag({ name: 'description', content: 'AHEM - mailboxes'});
+        this.titleService.setTitle('AHEM - Mailboxes');
 
       } else {
       }
       this.emailId = params['emailId'];
-      if (!this.account || this.account.toLowerCase() !== params['account'].toLowerCase()) {
-        this.account = params['account'].toLowerCase();
-        this.metaService.updateTag({ name: 'description', content: 'AHEM - ' + this.account});
-        this.titleService.setTitle('AHEM - ' + this.account);
-        this.getAccountEmails();
+      if (!this.mailbox || this.mailbox.toLowerCase() !== params['mailbox'].toLowerCase()) {
+        this.mailbox = params['mailbox'].toLowerCase();
+        this.metaService.updateTag({ name: 'description', content: 'AHEM - ' + this.mailbox});
+        this.titleService.setTitle('AHEM - ' + this.mailbox);
+        this.getEmails();
       } else {
         this.selectEmail(this.getEmailFromTimeStamp(this.emailId));
       }
@@ -52,8 +52,8 @@ export class AccountEmailsComponent implements OnInit, OnDestroy {
     this.paramsSub.unsubscribe();
   }
 
-  getAccountEmails(): any {
-    this.apiService.listAccountsEmails(this.account).subscribe(
+  getEmails(): any {
+    this.apiService.listMailboxEmails(this.mailbox).subscribe(
       emails => {
         this.emails = this.sortEmails(emails, SortBy.Timestamp, true);
         if (this.emailId) {
@@ -82,7 +82,7 @@ export class AccountEmailsComponent implements OnInit, OnDestroy {
         emailInfo.isRead = true;
       }
       this.selectedEmail = emailInfo;
-      this.apiService.markAsReadOrUnread(this.account, this.selectedEmail.emailId, true).subscribe();
+      this.apiService.markAsReadOrUnread(this.mailbox, this.selectedEmail.emailId, true).subscribe();
     }
   }
 
@@ -92,15 +92,15 @@ export class AccountEmailsComponent implements OnInit, OnDestroy {
 
   clickedEmail(email: EmailInfo) {
     this.selectEmail(email);
-    this.router.navigateByUrl('/account/' + this.account + '/' + email.emailId);
+    this.router.navigateByUrl('/mailbox/' + this.mailbox + '/' + email.emailId);
   }
 
   deleteFile() {
-    this.apiService.deleteEmail(this.account, this.selectedEmail.emailId).subscribe(
+    this.apiService.deleteEmail(this.mailbox, this.selectedEmail.emailId).subscribe(
       result => {
-        this.getAccountEmails();
+        this.getEmails();
         this.selectedEmail = null;
-        this.router.navigateByUrl('/account/' + this.account);
+        this.router.navigateByUrl('/mailbox/' + this.mailbox);
       },
       err => {
         console.log('error!!!!', err); // TODO popup message
@@ -115,16 +115,16 @@ export class AccountEmailsComponent implements OnInit, OnDestroy {
         } else {
           this.selectedEmail.isRead = false;
         }
-        this.apiService.markAsReadOrUnread(this.account, this.selectedEmail.emailId, this.selectedEmail.isRead).subscribe();
+        this.apiService.markAsReadOrUnread(this.mailbox, this.selectedEmail.emailId, this.selectedEmail.isRead).subscribe();
       }
   }
 
-  getEmptyAccountText(): string {
-    return this.account + '@' + ConfigService.properties.allowedDomains[0];
+  getEmptyMailboxText(): string {
+    return this.mailbox + '@' + ConfigService.properties.allowedDomains[0];
   }
 
-  navigateToAccount() {
-    this.router.navigateByUrl('account/' + this.account);
+  navigateToMailbox() {
+    this.router.navigateByUrl('mailbox/' + this.mailbox);
   }
 
 }

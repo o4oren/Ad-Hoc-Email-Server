@@ -12,7 +12,7 @@ import {Router} from '@angular/router';
 })
 export class HeaderComponent implements OnInit, OnDestroy {
 
-  account: string;
+  mailbox: string;
   hideToolbarComponents = true;
   routerSub: Subscription;
 
@@ -25,14 +25,14 @@ export class HeaderComponent implements OnInit, OnDestroy {
       sanitizer.bypassSecurityTrustResourceUrl('assets/svg/ahem-sm-side-text.svg'));
     this.routerSub = this.router.events.subscribe(val => {
       this.router.url !== '/' ? this.hideToolbarComponents = false : this.hideToolbarComponents = true;
-      this.account = this.router.url.split('account/').pop().split('/').shift();
+      this.mailbox = this.router.url.split('mailbox/').pop().split('/').shift();
     });
   }
 
-  updateClassesForAccountPage(): any {
-    if (this.account) {
+  updateClassesForMailboxPage(): any {
+    if (this.mailbox) {
       return {
-        'on-account-page': true,
+        'on-mailbox-page': true,
         'ahem-logo-text': false,
         'ahem-logo': false
       };

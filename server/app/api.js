@@ -71,37 +71,37 @@ router.post('/auth/authenticate', (req, res, next) => {
 router.use(auth.verifyToken);
 
 /**
- * returns a list of account names starting with the req.body.prefix
+ * returns a list of mailbox names starting with the req.body.prefix
  */
-router.post('/account/autocomplete', (req, res) => {
-  req.db.collection('accounts').find({'name': {'$regex' : '^' + req.body.prefix, '$options' : 'i'}},
-    {'name': 1}).toArray(function (err, accounts) {
+router.post('/mailbox/autocomplete', (req, res) => {
+  req.db.collection('mailboxes').find({'name': {'$regex' : '^' + req.body.prefix, '$options' : 'i'}},
+    {'name': 1}).toArray(function (err, mailboxes) {
     if (err) {
       res.status(500).json(err);
     }
-    res.status(200).send(accounts.map(account => account.name));
+    res.status(200).send(mailboxes.map(mailbox => mailbox.name));
   });
 });
 
 /**
- * returns a list of mail metadata bojects in a specific account
+ * returns a list of mail metadata bojects in a specific mailbox
  */
-router.get('/account/:account/email', (req, res, next) => {
-  req.db.collection('accounts').findOne({'name': req.params.account}, function (err, account) {
+router.get('/mailbox/:mailbox/email', (req, res, next) => {
+  req.db.collection('mailboxes').findOne({'name': req.params.mailbox}, function (err, mailbox) {
     if (err) {
       return res.status(500).json(err);
     }
-    if (!account || account.emails.length === 0) {
-      return res.status(404).send({error: 'ACCOUNT IS EMPTY!'});
+    if (!mailbox || mailbox.emails.length === 0) {
+      return res.status(404).send({error: 'MAILBOX IS EMPTY!'});
     }
-    res.status(200).send(account.emails);
+    res.status(200).send(mailbox.emails);
   });
 });
 
 /**
- * returns an email object in a specific account
+ * returns an email object in a specific mailbox
  */
-router.get('/account/:account/email/:emailId', (req, res) => {
+router.get('/mailbox/:mailbox/email/:emailId', (req, res) => {
 
   const objectId = ObjectID.createFromHexString(req.params.emailId);
   req.db.collection('emails').findOne({'_id': objectId}, {
@@ -118,17 +118,21 @@ router.get('/account/:account/email/:emailId', (req, res) => {
     if (err) {
       res.status(500).send({error: err});
     }
-    res.status(200).send(doc);
+    if(doc) {
+      res.status(200).send(doc);
+    } else {
+      res.status(404).send({ error: 'EMAIL NOT FOUND'});
+    }
   });
 });
 
 /**
- * updates a specific email object in a specific account
+ * updates a specific email object in a specific mailbox
  */
-router.patch('/account/:account/email/:emailId', (req, res) => {
+router.patch('/mailbox/:mailbox/email/:emailId', (req, res) => {
 
   const objectId = ObjectID.createFromHexString(req.params.emailId);
-  req.db.collection('accounts').updateOne({ 'name': req.params.account, 'emails.emailId' : objectId},
+  req.db.collection('mailboxes').updateOne({ 'name': req.params.mailbox, 'emails.emailId' : objectId},
     {$set: {'emails.$.isRead': req.body.isRead}},
     function (err, result) {
     if (err) {
@@ -141,7 +145,7 @@ router.patch('/account/:account/email/:emailId', (req, res) => {
 /**
  * returns the attachment
  */
-router.get('/account/:account/email/:emailId/attachments/:filename', (req, res) => {
+router.get('/mailbox/:mailbox/email/:emailId/attachments/:filename', (req, res) => {
   try {
 
     const objectId = ObjectID.createFromHexString(req.params.emailId);
@@ -163,10 +167,10 @@ router.get('/account/:account/email/:emailId/attachments/:filename', (req, res) 
   }
 });
 
-router.delete('/account/:account/email/:emailId', (req, res) => {
+router.delete('/mailbox/:mailbox/email/:emailId', (req, res) => {
   const objectId = ObjectID.createFromHexString(req.params.emailId);
-  req.db.collection('accounts').updateOne(
-    { 'name' : req.params.account },
+  req.db.collection('mailboxes').updateOne(
+    { 'name' : req.params.mailbox },
     {$pull : {'emails' : {'emailId': objectId}}}
     , function (err, result) {
       if (err) {
@@ -178,8 +182,8 @@ router.delete('/account/:account/email/:emailId', (req, res) => {
   );
 });
 
-router.delete('/account/:account', (req, res) => {
-  req.db.collection('accounts').remove({'name': req.params.account}, function(err, result) {
+router.delete('/mailbox/:mailbox', (req, res) => {
+  req.db.collection('mailboxes').remove({'name': req.params.mailbox}, function(err, result) {
     if (err) {
       res.status(500).send({error: err, succes: false});
     }

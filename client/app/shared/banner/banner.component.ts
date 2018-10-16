@@ -9,7 +9,7 @@ import {MatIconRegistry} from '@angular/material';
 })
 export class BannerComponent implements OnInit {
 
-  @Input() showAccountSelector = true;
+  @Input() showMailboxSelector = true;
   @Input() h1 = 'Ad Hoc Disposable Temporary Email';
   @Input() h2 = 'The temp mail service to keep your real email safe';
 

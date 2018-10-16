@@ -17,7 +17,7 @@ export class EmailViewComponent implements OnInit, OnDestroy {
   _email: EmailInfo;
   emailDetails: EmailDetails;
   paramsSub: Subscription;
-  account: string;
+  mailbox: string;
 
 
  @Input() loading = false;
@@ -39,7 +39,7 @@ export class EmailViewComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.paramsSub = this.route.params.subscribe(params => {
-      this.account = params['account'];
+      this.mailbox = params['mailbox'];
       const emailId = params['emailId'];
       this.getEmailDetails();
     });
@@ -54,16 +54,16 @@ export class EmailViewComponent implements OnInit, OnDestroy {
   }
 
   getEmailDetails() {
-    this.apiService.getEmailContent(this.account, this.email.emailId).subscribe(result => {
+    this.apiService.getEmailContent(this.mailbox, this.email.emailId).subscribe(result => {
       // this.isLoading = false;
       this.emailDetails = result;
-      this.titleService.setTitle('AHEM - ' + this.account + ' - ' + this.emailDetails.subject);
+      this.titleService.setTitle('AHEM - ' + this.mailbox + ' - ' + this.emailDetails.subject);
       this.loading = false;
     });
   }
 
   deleteFile() {
-    this.apiService.deleteEmail(this.account, this.emailDetails._id);
+    this.apiService.deleteEmail(this.mailbox, this.emailDetails._id);
   }
 
 }

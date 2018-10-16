@@ -1,6 +1,6 @@
-<div class="sky" [ngClass]="{'banner': showAccountSelector, 'banner-no-account-selector': !showAccountSelector}">
+<div class="sky" [ngClass]="{'banner': showMailboxSelector, 'banner-no-mailbox-selector': !showMailboxSelector}">
   <h1>{{h1}}</h1>
   <h2 class="large-screen">{{h2}}</h2>
 </div>
-<app-account-selector *ngIf="showAccountSelector" [isInline]="false"></app-account-selector>
+<app-mailbox-selector *ngIf="showMailboxSelector" [isInline]="false"></app-mailbox-selector>
 <mat-icon svgIcon="envelopes"></mat-icon>

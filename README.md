@@ -12,7 +12,7 @@ A working example of AHEM is always available [here](http://www.ahem.email "AHEM
 
 ## Getting Started
 Ahem mail server will accept any email sent to it (on the domains specified in the configuration), and create an ad hoc mailbox as needed.
-Then just browse to it's UI, enter the account name and you'll see the emails the account received.
+Then just browse to it's UI, enter the mailbox name and you'll see the emails contained in the mailbox.
 That's it. No authentication. No account creation.
 
 ## Prerequisites
@@ -73,15 +73,15 @@ A brief list of RESTful resources:
 
 HTTP Method | URI Path | Parameters | Descritpion
 --- | --- | --- | ---
-POST | /api/account/autocomplete | { "prefix":"value" } | Returns a partial list of accounts
+POST | /api/mailbox/autocomplete | { "prefix":"value" } | Returns a partial list of mailboxes
 GET | /api/properties | |returns global system properties
 POST | /api/auth/authenticate | { } | Returns an access token
-GET | /api/account/{account}/email | |returns a list of the email objects in the account
-GET | /api/account/{account}/email/{emailId} | |Gets the contents of a specific email
-PATCH | /api/account/{acount}/email/{emailId} | {"isRead" : true} |Updates the emailInfo object (representation of the email meta data in the user's account. Currently, only the isRead field is supported.
-GET | /api/account/{account}/email/{emailId}/attachments/{filename} | |Downloads a specific attachment form an email
-DELETE | /api/account/{account}/email/{emailId} | |Deletes a specific email
-DELETE | /api/account/{account} | | Deletes a whole account
+GET | /api/mailbox/{mailbox}/email | |returns a list of the email objects in the mailbox
+GET | /api/mailbox/{mailbox}/email/{emailId} | |Gets the contents of a specific email
+PATCH | /api/mailbox/{acount}/email/{emailId} | {"isRead" : true} |Updates the emailInfo object (representation of the email meta data in the mailbox. Currently, only the isRead field is supported.
+GET | /api/mailbox/{mailbox}/email/{emailId}/attachments/{filename} | |Downloads a specific attachment form an email
+DELETE | /api/mailbox/{mailbox}/email/{emailId} | |Deletes a specific email
+DELETE | /api/mailbox/{mailbox} | | Deletes a whole mailbox
 
 ### Google Analytics
 
@@ -113,10 +113,10 @@ Replace XX-XXXXXXXXX-X with your GA id.
 - [x] migrate to mongodb
 - [x] update missing emails page and loading circles
 - [ ]  sort out logging
-- [x] separate  account view from email view pages 
+- [x] separate  mailbox view from email view pages 
 - [x] separate  server and webapp properties 
 - [x] better home page
-- [ ] Add apis to get account references from email, get account and email counts - both general and in account context
+- [ ] Add apis to get mailbox references from email, get mailbox and email counts - both general and in mailbox context
 
 
 ## Authors

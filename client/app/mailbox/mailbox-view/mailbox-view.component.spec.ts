@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AccountSelectorComponent } from './account-selector.component';
+import { MailboxViewComponent } from './mailbox-view.component';
 
-describe('AccountSelectorComponent', () => {
-  let component: AccountSelectorComponent;
-  let fixture: ComponentFixture<AccountSelectorComponent>;
+describe('MailboxViewComponent', () => {
+  let component: MailboxViewComponent;
+  let fixture: ComponentFixture<MailboxViewComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AccountSelectorComponent ]
+      declarations: [ MailboxViewComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AccountSelectorComponent);
+    fixture = TestBed.createComponent(MailboxViewComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

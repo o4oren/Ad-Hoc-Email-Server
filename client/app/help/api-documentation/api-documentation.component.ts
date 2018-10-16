@@ -22,10 +22,10 @@ export class ApiDocumentationComponent implements OnInit {
     },
     {
       httpMethod: 'POST',
-      uriPath: ConfigService.properties.serverBaseUri + '/api/account/autocomplete',
+      uriPath: ConfigService.properties.serverBaseUri + '/api/mailbox/autocomplete',
       headers: [],
       parameters: '{ "prefix":[string] }',
-      description: 'Returns a list of accounts starting with the prefix'
+      description: 'Returns a list of mailboxes starting with the prefix'
     },
     {
       httpMethod: 'GET',
@@ -35,41 +35,41 @@ export class ApiDocumentationComponent implements OnInit {
       description: 'Returns various server properties and settings'},
     {
       httpMethod: 'GET',
-      uriPath: ConfigService.properties.serverBaseUri + '/api/account/{account}',
+      uriPath: ConfigService.properties.serverBaseUri + '/api/mailbox/{mailbox}',
       headers: [],
       parameters: '',
-      description: 'returns a list of the email objects in the account'
+      description: 'returns a list of the email objects in the mailbox'
     },
     {
       httpMethod: 'DELETE',
-      uriPath: ConfigService.properties.serverBaseUri + '/api/account/{account}',
+      uriPath: ConfigService.properties.serverBaseUri + '/api/mailbox/{mailbox}',
       headers: [],
       parameters: '',
-      description: 'Deletes a whole account'},
+      description: 'Deletes a whole mailbox'},
     {
       httpMethod: 'GET',
-      uriPath: ConfigService.properties.serverBaseUri + '/api/account/{account}/{emailId}',
+      uriPath: ConfigService.properties.serverBaseUri + '/api/mailbox/{mailbox}/{emailId}',
       headers: [],
       parameters: '',
       description: 'Returns the contents of a specific email'
     },
     {
       httpMethod: 'DELETE',
-      uriPath: ConfigService.properties.serverBaseUri + '/api/account/{account}/{emailId}',
+      uriPath: ConfigService.properties.serverBaseUri + '/api/mailbox/{mailbox}/{emailId}',
       headers: [],
       parameters: '',
       description: 'Delete an emails'},
     {
       httpMethod: 'PATCH',
-      uriPath: ConfigService.properties.serverBaseUri + '/api/account/{acount}/{emailId}',
+      uriPath: ConfigService.properties.serverBaseUri + '/api/mailbox/{acount}/{emailId}',
       headers: [],
       parameters: '{"isRead" : [boolean]}',
-      description: 'Updates the emailInfo object (representation of the email meta data in the user\'s account.'
+      description: 'Updates the emailInfo object (representation of the email meta data in the user\'s mailbox.'
       + ' Currently, only the isRead field is supported.'
     },
     {
       httpMethod: 'GET',
-      uriPath: ConfigService.properties.serverBaseUri + '/api/account/{account}/{emailId}/attachments/{filename}',
+      uriPath: ConfigService.properties.serverBaseUri + '/api/mailbox/{mailbox}/{emailId}/attachments/{filename}',
       headers: [],
       parameters: '',
       description: 'Downloads a specific attachment on an email'

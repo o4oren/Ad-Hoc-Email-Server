@@ -4,30 +4,7 @@
   xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
   <url>
     <loc>https://www.ahem.email/</loc>
-    <image:image>
-      <image:loc>https://www.ahem.email/assets/svg/ahem-bluish.svg</image:loc>
-      <image:caption>AHEM - an ad-hoc email logo</image:caption>
-    </image:image>
-    <image:image>
-      <image:loc>https://www.ahem.email/assets/svg/ahem-logo-text.svg</image:loc>
-      <image:caption>AHEM - an ad-hoc email logo text</image:caption>
-    </image:image>
-    <image:image>
-      <image:loc>https://www.ahem.email/assets/svg/ahem-sm-bottom-text.svg</image:loc>
-      <image:caption>AHEM - an ad-hoc email</image:caption>
-    </image:image>
-    <image:image>
-       <image:loc>https://www.ahem.email/assets/images/ahem-logo.png</image:loc>
-       <image:caption>AHEM - an ad-hoc email</image:caption>
-    </image:image>
-    <image:image>
-       <image:loc>https://www.ahem.email/assets/images/screenshot.png</image:loc>
-       <image:caption>AHEM - an ad-hoc email server</image:caption>
-    </image:image>
-    <image:image>
-       <image:loc>https://www.ahem.email/assets/images/ahem-large.jpg</image:loc>
-       <image:caption>AHEM old logo</image:caption>
-    </image:image>
+    <lastmod>2018-10-16</lastmod>
   </url>
   <url>
   	<loc>https://www.ahem.email/privacy</loc>
@@ -35,13 +12,37 @@
   </url>
   <url>
 	  <loc>https://www.ahem.email/help/api</loc>
-    <lastmod>2018-10-07</lastmod>
+    <lastmod>2018-10-16</lastmod>
   </url>
   <url>
     <loc>https://www.ahem.email/help/faq</loc>
     <lastmod>2018-10-07</lastmod>
   </url>
   <url>
-    <loc>https://www.ahem.email/account</loc>
+    <loc>https://www.ahem.email/mailbox</loc>
   </url>
+  <image:image>
+    <image:loc>https://www.ahem.email/assets/svg/ahem-bluish.svg</image:loc>
+    <image:caption>AHEM - an ad-hoc email logo</image:caption>
+  </image:image>
+  <image:image>
+    <image:loc>https://www.ahem.email/assets/svg/ahem-logo-text.svg</image:loc>
+    <image:caption>AHEM - an ad-hoc email logo text</image:caption>
+  </image:image>
+  <image:image>
+    <image:loc>https://www.ahem.email/assets/svg/ahem-sm-bottom-text.svg</image:loc>
+    <image:caption>AHEM - an ad-hoc email</image:caption>
+  </image:image>
+  <image:image>
+    <image:loc>https://www.ahem.email/assets/images/ahem-logo.png</image:loc>
+    <image:caption>AHEM - an ad-hoc email</image:caption>
+  </image:image>
+  <image:image>
+    <image:loc>https://www.ahem.email/assets/images/screenshot.png</image:loc>
+    <image:caption>AHEM - an ad-hoc email server</image:caption>
+  </image:image>
+  <image:image>
+    <image:loc>https://www.ahem.email/assets/images/ahem-large.jpg</image:loc>
+    <image:caption>AHEM old logo</image:caption>
+  </image:image>
 </urlset>

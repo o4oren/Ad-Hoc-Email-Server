@@ -102,22 +102,23 @@
         }
       }
     },
-    "/account/{accountName}/email": {
+    "/mailbox/{mailbox}/email": {
       "get": {
-        "summary": "List All Emails in an account",
+        "summary": "List All Emails in a mailbox",
         "description": "",
-        "operationId": "ListAllEmailsInAnAccount",
+        "operationId": "ListAllEmailsInAnMailBox",
+        "security": "bearerAuth",
         "parameters": [
           {
-            "name": "accountName",
+            "name": "mailboxName",
             "in": "path",
-            "description": "account name.",
+            "description": "mailbox name.",
             "required": true,
             "style": "simple",
             "explode": false,
             "schema": {
               "type": "string",
-              "example": "accountName"
+              "example": "mailboxName"
             }
           }
         ],
@@ -141,7 +142,7 @@
                         "isRead": true
                       }
                     ],
-                    "$ref": "#/components/schemas/ListAllEmailsInAnAccountResponse"
+                    "$ref": "#/components/schemas/ListAllEmailsInAnmailboxResponse"
                   },
                   "description": ""
                 },
@@ -165,7 +166,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ListAllEmailsInAnAccount401Response"
+                  "$ref": "#/components/schemas/ListAllEmailsInAnmailbox401Response"
                 },
                 "example": {
                   "success": false,
@@ -179,10 +180,10 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ListAllEmailsInAnAccount404Response"
+                  "$ref": "#/components/schemas/ListAllEmailsInAnmailbox404Response"
                 },
                 "example": {
-                  "error": "ACCOUNT IS EMPTY!"
+                  "error": "mailbox IS EMPTY!"
                 }
               }
             }
@@ -199,7 +200,7 @@
   },
   "components": {
     "securitySchemes": {
-      "token": {
+      "bearerAuth": {
         "type": "http",
         "scheme": "bearer",
         "bearerFormat": "JWT"
@@ -300,8 +301,8 @@
           "customText": null
         }
       },
-      "ListAllEmailsInAnAccountResponse": {
-        "title": "List All Emails in an account response",
+      "ListAllEmailsInAnmailboxResponse": {
+        "title": "List All Emails in an mailbox response",
         "required": [
           "emailId",
           "sender",
@@ -347,8 +348,8 @@
           "isRead": true
         }
       },
-      "ListAllEmailsInAnAccount404Response": {
-        "title": "List All Emails in an account 404 response",
+      "ListAllEmailsInAnmailbox404Response": {
+        "title": "List All Emails in an mailbox 404 response",
         "required": [
           "error"
         ],
@@ -356,15 +357,15 @@
         "properties": {
           "error": {
             "type": "string",
-            "example": "ACCOUNT IS EMPTY!"
+            "example": "mailbox IS EMPTY!"
           }
         },
         "example": {
-          "error": "ACCOUNT IS EMPTY!"
+          "error": "mailbox IS EMPTY!"
         }
       },
-      "ListAllEmailsInAnAccount401Response": {
-        "title": "List All Emails in an account 401 response",
+      "ListAllEmailsInAnmailbox401Response": {
+        "title": "List All Emails in an mailbox 401 response",
         "required": [
           "success",
           "message"

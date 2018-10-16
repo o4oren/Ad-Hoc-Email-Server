@@ -48,7 +48,7 @@ Use the token in the Authorization header as a Bearer token.
 + Request (application/json)
 
     + Body
-        
+
             {}
 
 + Response 200 (application/json)
@@ -58,13 +58,13 @@ Use the token in the Authorization header as a Bearer token.
             "token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpcCI6Ijo6MSIsImlhdCI6MTUzOTU1NTI5NCwiZXhwIjoxNTM5NTU4ODk0fQ.Y8FhYY5OGbHNn6EOcrF81swX3xeLF4t7Q6F5L7z6Xdg",
         }
 
-## Account's Email List [/account/{accountName}/email]
+## Mailbox's Email List [/mailbox/{mailbozName}/email]
 
-### List All Emails in an account [GET]
-    
+### List All Emails in an mailbox [GET]
+
 + Parameters
-    + accountName: accountName (string, required) - account name.
-    
+    + mailboxName: mailboxName (string, required) - mailbox name.
+
 + Request
 
     + Headers
@@ -86,11 +86,11 @@ Use the token in the Authorization header as a Bearer token.
                 "isRead":true
             }
         ]
-        
+
 + Response 404 (application/json)
 
         {
-            error: "ACCOUNT IS EMPTY!"
+            error: "MAILBOX IS EMPTY!"
         }
 
 + Response 401 (application/json)

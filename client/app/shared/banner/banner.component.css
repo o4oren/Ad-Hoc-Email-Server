@@ -5,7 +5,7 @@
   margin-bottom: 80px;
 }
 
-.banner-no-account-selector {
+.banner-no-mailbox-selector {
   height: 250px;
   width: 100%;
   text-align: center ;
@@ -39,7 +39,7 @@ mat-icon {
 
 
 @media screen and (min-width: 425px){
-  app-account-selector {
+  app-mailbox-selector {
     width: 300px;
   }
   h1 {
@@ -64,7 +64,7 @@ mat-icon {
     background-size: cover, 250px;
   }
 
-  .banner-no-account-selector {
+  .banner-no-mailbox-selector {
     margin-bottom: 40px;
   }
 

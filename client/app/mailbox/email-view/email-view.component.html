@@ -15,7 +15,7 @@
         <div *ngIf="emailDetails.attachments.length > 0">
           <mat-divider></mat-divider>
           Attachments:
-          <app-attachments [emailDetails]="emailDetails" [account]="account"
+          <app-attachments [emailDetails]="emailDetails" [mailbox]="mailbox"
                            [emailId]="emailDetails._id"></app-attachments>
         </div>
         <mat-divider></mat-divider>

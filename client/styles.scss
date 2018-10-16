@@ -116,7 +116,7 @@ app-main-page-large-screen {
 height: 100%;
 }
 
-app-account-view-page {
+app-mailbox-view-page {
   display: flex;
   flex-direction: column;
   flex:1;
@@ -178,13 +178,13 @@ mat-sidenav-content > div {
 }
 
 
-.ahem-account-selector {
+.ahem-mailbox-selector {
   justify-content: center;
   align-items: center;
   margin:auto;
 }
 
-.ahem-account-selector-internal {
+.ahem-mailbox-selector-internal {
   align-self: end;
 }
 
