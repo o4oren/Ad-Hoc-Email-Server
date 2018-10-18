@@ -1,15 +1,16 @@
 FORMAT: 1A
-HOST: https://www.ahem.email/api/
+HOST: https://www.ahem.email
 
 # AHEM - Ad Hoc Email
 
-AHEM is an ad hoc disposable and temporary email service. It allows receiving email at an ad-hoc created email, created on the fly when an email is received by our server.
+[AHEM](https://www.ahem.email) is an ad hoc disposable and temporary email service. It allows receiving email at an ad-hoc created email, created on the fly when an email is received by our server.
 Using the AHEM service allows you to prevent spam to your real email, and to test products that send email as part of their lifecycle.
 
-An access token is needed for most API calls. Get an access token by calling /api/auth/authenticate.
+
+An access token is needed for most API calls. Get an access token by calling /api/auth/token.
 Use the token in the Authorization header as a Bearer token.
 
-## alive [/alive]
+## alive [/api/alive]
 
 ### Get system check results [GET]
 + Response 200 (application/json)
@@ -21,7 +22,7 @@ Use the token in the Authorization header as a Bearer token.
             "db": true
         }
 
-## properties [/properties]
+## properties [/api/properties]
 
 ### Get server properties [GET]
 
@@ -41,7 +42,7 @@ Use the token in the Authorization header as a Bearer token.
         }
 
 
-## authentication [/auth/token]
+## authentication [/api/auth/token]
 
 ### Get access token [POST]
 
@@ -58,7 +59,7 @@ Use the token in the Authorization header as a Bearer token.
             "token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpcCI6Ijo6MSIsImlhdCI6MTUzOTU1NTI5NCwiZXhwIjoxNTM5NTU4ODk0fQ.Y8FhYY5OGbHNn6EOcrF81swX3xeLF4t7Q6F5L7z6Xdg",
         }
 
-## Mailbox [/mailbox/{mailboxName}/email]
+## Mailbox [/api/mailbox/{mailboxName}/email]
 
 ### get a mailbox's emails list [GET]
 
@@ -101,7 +102,7 @@ Use the token in the Authorization header as a Bearer token.
         }
         
         
-## Email [/mailbox/{mailboxName}/email/{emailId}]
+## Email [/api/mailbox/{mailboxName}/email/{emailId}]
 
 ### Get an email's content [GET]
 
