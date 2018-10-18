@@ -1,0 +1,1389 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "AHEM - Ad Hoc Email",
+    "description": "[AHEM](https://www.ahem.email) is an ad hoc disposable and temporary email service. It allows receiving email at an ad-hoc created email, created on the fly when an email is received by our server. Using the AHEM service allows you to prevent spam to your real email, and to test products that send email as part of their lifecycle.An access token is needed for most API calls. Get an access token by calling /api/auth/token. Use the token in the Authorization header as a Bearer token. To use it in this API documentation tool, execute the /api/auth/token call and use the returned token.",
+    "contact": {},
+    "version": "1.0"
+  },
+  "servers": [
+    {
+      "url": "https://www.ahem.email",
+      "variables": {}
+    }
+  ],
+  "paths": {
+    "/api/alive": {
+      "get": {
+        "summary": "Get system check results",
+        "description": "",
+        "operationId": "GetSystemCheckResults",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "success": true,
+                    "api": true,
+                    "smtp": true,
+                    "db": true
+                  },
+                  "$ref": "#/components/schemas/GetSystemCheckResultsResponse"
+                },
+                "example": {
+                  "success": true,
+                  "api": true,
+                  "smtp": true,
+                  "db": true
+                }
+              }
+            }
+          }
+        },
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      }
+    },
+    "/api/properties": {
+      "get": {
+        "summary": "Get server properties",
+        "description": "",
+        "operationId": "GetServerProperties",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "serverBaseUri": "https://www.ahem.email",
+                    "emailDeleteInterval": 86400,
+                    "emailDeleteAge": 7200,
+                    "allowedDomains": [
+                      "ahem.email",
+                      "mail.ahem.email",
+                      "ahem-email.com"
+                    ],
+                    "allowAutocomplete": false,
+                    "customText": null
+                  },
+                  "$ref": "#/components/schemas/GetServerPropertiesResponse"
+                },
+                "example": {
+                  "serverBaseUri": "https://www.ahem.email",
+                  "emailDeleteInterval": 86400,
+                  "emailDeleteAge": 7200,
+                  "allowedDomains": [
+                    "ahem.email",
+                    "mail.ahem.email",
+                    "ahem-email.com"
+                  ],
+                  "allowAutocomplete": false,
+                  "customText": null
+                }
+              }
+            }
+          }
+        },
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      }
+    },
+    "/api/auth/token": {
+      "post": {
+        "summary": "Get access token",
+        "description": "",
+        "operationId": "GetAccessToken",
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "application/json"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "text/plain": {
+              "schema": {
+                "type": "object"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "success": true,
+                    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpcCI6Ijo6MSIsImlhdCI6MTUzOTU1NTI5NCwiZXhwIjoxNTM5NTU4ODk0fQ.Y8FhYY5OGbHNn6EOcrF81swX3xeLF4t7Q6F5L7z6Xdg"
+                  },
+                  "$ref": "#/components/schemas/GetAccessTokenResponse"
+                },
+                "example": {
+                  "success": true,
+                  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpcCI6Ijo6MSIsImlhdCI6MTUzOTU1NTI5NCwiZXhwIjoxNTM5NTU4ODk0fQ.Y8FhYY5OGbHNn6EOcrF81swX3xeLF4t7Q6F5L7z6Xdg"
+                }
+              }
+            }
+          }
+        },
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      }
+    },
+    "/api/mailbox/{mailboxName}/email": {
+      "get": {
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "get a mailbox's emails list",
+        "description": "",
+        "operationId": "GetAMailbox'sEmailsList",
+        "parameters": [
+          {
+            "name": "mailboxName",
+            "in": "path",
+            "description": "mailbox name.",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "mailboxName"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "example": [
+                      {
+                        "emailId": "5bc3c17cb76d8f4e1099725c",
+                        "sender": {
+                          "address": "test@my.domain.com",
+                          "name": "AHEM Test!"
+                        },
+                        "subject": "AHEM mail test!",
+                        "timestamp": 1539555708477,
+                        "isRead": true
+                      }
+                    ],
+                    "$ref": "#/components/schemas/GetAMailboxsEmailsListResponse"
+                  },
+                  "description": ""
+                },
+                "example": [
+                  {
+                    "emailId": "5bc3c17cb76d8f4e1099725c",
+                    "sender": {
+                      "address": "test@my.domain.com",
+                      "name": "AHEM Test!"
+                    },
+                    "subject": "AHEM mail test!",
+                    "timestamp": 1539555708477,
+                    "isRead": true
+                  }
+                ]
+              }
+            }
+          },
+          "401": {
+            "description": "Unexpected error in API call. See HTTP response body for details.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetAMailboxsEmailsList401Response"
+                },
+                "example": {
+                  "success": false,
+                  "message": "No token provided."
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Unexpected error in API call. See HTTP response body for details.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetAMailboxsEmailsList404Response"
+                },
+                "example": {
+                  "error": "MAILBOX IS EMPTY!"
+                }
+              }
+            }
+          }
+        },
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      }
+    },
+    "/api/mailbox/{mailboxName}/email/{emailId}": {
+      "get": {
+        "summary": "Get an email's content",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "description": "",
+        "operationId": "GetAnEmail'sContent",
+        "parameters": [
+          {
+            "name": "mailboxName",
+            "in": "path",
+            "description": "mailbox name.",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "mailboxName"
+            }
+          },
+          {
+            "name": "emailId",
+            "in": "path",
+            "description": "mailbox name.",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "emailId"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "_id": "5bc64017002e254f65eb37ef",
+                    "attachments": [
+                      {
+                        "type": "attachment",
+                        "content": "iVBORw0KGgoAAAANSUhEUgAAAfoAAAFkCAYAAADIefl6AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAACAASURBVHic7J13eFRV2sB/585MekIggQAJyaRAgACWIGAHFQXE3pB1RSyfvXfctaDr2ru7rq6ia9dV1w4qigKWVXQt2AqJCmyPszLl/0c8IQ3mc14/tXXMdCsQ6rBX1c+w8Qhx8xjeCyPbDOPNKP/ODxOQzrk/F5xqAJLlywJtCnwdF5entjUxq0UFBcTkSuQmCC",
+                        "contentType": "image/png",
+                        "release": null,
+                        "contentDisposition": "attachment",
+                        "filename": "ahem-happy.png",
+                        "contentId": "<ahem-tester@mydomain.com>",
+                        "cid": "ahem-tester@mydomain.com",
+                        "related": true,
+                        "headers": {
+                          "content-type": {
+                            "value": "image/png",
+                            "params": {
+                              "name": "ahem-happy.png"
+                            }
+                          },
+                          "content-id": "<ahem-tester@mydomain.com>",
+                          "content-transfer-encoding": "base64",
+                          "content-disposition": {
+                            "value": "attachment",
+                            "params": {
+                              "filename": "ahem-happy.png"
+                            }
+                          }
+                        },
+                        "checksum": "4ac3f7fa98c8c86bb1677f32279db7ad",
+                        "size": 57654
+                      }
+                    ],
+                    "headers": {
+                      "content-type": {
+                        "value": "multipart/alternative",
+                        "params": {
+                          "boundary": "--_NmP-56cbf8151211f597-Part_1"
+                        }
+                      },
+                      "from": {
+                        "value": [
+                          {
+                            "address": "alive-test@my.domain.com",
+                            "name": "AHEM Test!"
+                          }
+                        ],
+                        "html": "<span class=\"mp_address_group\"><span class=\"mp_address_name\">AHEM Test!</span> &lt;<a href=\"mailto:alive-test@my.domain.com\" class=\"mp_address_email\">alive-test@my.domain.com</a>&gt;</span>",
+                        "text": "AHEM Test! <alive-test@my.domain.com>"
+                      },
+                      "to": {
+                        "value": [
+                          {
+                            "address": "alive-test@my.domain.com",
+                            "name": ""
+                          }
+                        ],
+                        "html": "<span class=\"mp_address_group\"><a href=\"mailto:alive-test@my.domain.com\" class=\"mp_address_email\">alive-test@my.domain.com</a></span>",
+                        "text": "alive-test@my.domain.com"
+                      },
+                      "subject": "AHEM mail test! ✔",
+                      "message-id": "<c70341d4-2acc-ce06-d8ae-e2246e9e867e@my.domain.com>",
+                      "date": "2018-10-16T19:46:31Z",
+                      "mime-version": "1.0"
+                    },
+                    "headerLines": [
+                      {
+                        "key": "content-type",
+                        "line": "Content-Type: multipart/alternative;\r\n boundary=\"--_NmP-56cbf8151211f597-Part_1\""
+                      },
+                      {
+                        "key": "from",
+                        "line": "From: \"AHEM Test!\" <alive-test@my.domain.com>"
+                      },
+                      {
+                        "key": "to",
+                        "line": "To: alive-test@my.domain.com"
+                      },
+                      {
+                        "key": "subject",
+                        "line": "Subject: =?UTF-8?Q?AHEM_mail_test!_=E2=9C=94?="
+                      },
+                      {
+                        "key": "message-id",
+                        "line": "Message-ID: <c70341d4-2acc-ce06-d8ae-e2246e9e867e@my.domain.com>"
+                      },
+                      {
+                        "key": "date",
+                        "line": "Date: Tue, 16 Oct 2018 19:46:31 +0000"
+                      },
+                      {
+                        "key": "mime-version",
+                        "line": "MIME-Version: 1.0"
+                      }
+                    ],
+                    "html": "<p><b>API Test:</b> <span style=\"color: darkgreen\">✔</span></p><p><b>SMTP Test:</b> <span style=\"color: darkgreen\">✔</span></p><p><b>DB Test:</b> <span style=\"color: darkgreen\">✔</span></p><p><br/></p>",
+                    "text": "API: ✔ SMTP: ✔ DB: ✔",
+                    "textAsHtml": "<p>API: &#x2714; SMTP: &#x2714; DB: &#x2714;</p>",
+                    "subject": "AHEM mail test! ✔",
+                    "date": "2018-10-16T19:46:31Z",
+                    "to": {
+                      "value": [
+                        {
+                          "address": "alive-test@my.domain.com",
+                          "name": ""
+                        }
+                      ],
+                      "html": "<span class=\"mp_address_group\"><a href=\"mailto:alive-test@my.domain.com\" class=\"mp_address_email\">alive-test@my.domain.com</a></span>",
+                      "text": "alive-test@my.domain.com"
+                    },
+                    "from": {
+                      "value": [
+                        {
+                          "address": "alive-test@my.domain.com",
+                          "name": "AHEM Test!"
+                        }
+                      ],
+                      "html": "<span class=\"mp_address_group\"><span class=\"mp_address_name\">AHEM Test!</span> &lt;<a href=\"mailto:alive-test@my.domain.com\" class=\"mp_address_email\">alive-test@my.domain.com</a>&gt;</span>",
+                      "text": "AHEM Test! <alive-test@my.domain.com>"
+                    },
+                    "messageId": "<c70341d4-2acc-ce06-d8ae-e2246e9e867e@my.domain.com>",
+                    "timestamp": 1539719191853
+                  },
+                  "$ref": "#/components/schemas/GetAnEmailsContentResponse"
+                },
+                "example": {
+                  "_id": "5bc64017002e254f65eb37ef",
+                  "attachments": [
+                    {
+                      "type": "attachment",
+                      "content": "iVBORw0KGgoAAAANSUhEUgAAAfoAAAFkCAYAAADIefl6AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAACAASURBVHic7J13eFRV2sB/585MekIggQAJyaRAgACWIGAHFQXE3pB1RSyfvXfctaDr2ru7rq6ia9dV1w4qigKWVXQt2AqJCmyPszLl/0c8IQ3mc14/tXXMdCsQ6rBX1c+w8Qhx8xjeCyPbDOPNKP/ODxOQzrk/F5xqAJLlywJtCnwdF5entjUxq0UFBcTkSuQmCC",
+                      "contentType": "image/png",
+                      "release": null,
+                      "contentDisposition": "attachment",
+                      "filename": "ahem-happy.png",
+                      "contentId": "<ahem-tester@mydomain.com>",
+                      "cid": "ahem-tester@mydomain.com",
+                      "related": true,
+                      "headers": {
+                        "content-type": {
+                          "value": "image/png",
+                          "params": {
+                            "name": "ahem-happy.png"
+                          }
+                        },
+                        "content-id": "<ahem-tester@mydomain.com>",
+                        "content-transfer-encoding": "base64",
+                        "content-disposition": {
+                          "value": "attachment",
+                          "params": {
+                            "filename": "ahem-happy.png"
+                          }
+                        }
+                      },
+                      "checksum": "4ac3f7fa98c8c86bb1677f32279db7ad",
+                      "size": 57654
+                    }
+                  ],
+                  "headers": {
+                    "content-type": {
+                      "value": "multipart/alternative",
+                      "params": {
+                        "boundary": "--_NmP-56cbf8151211f597-Part_1"
+                      }
+                    },
+                    "from": {
+                      "value": [
+                        {
+                          "address": "alive-test@my.domain.com",
+                          "name": "AHEM Test!"
+                        }
+                      ],
+                      "html": "<span class=\"mp_address_group\"><span class=\"mp_address_name\">AHEM Test!</span> &lt;<a href=\"mailto:alive-test@my.domain.com\" class=\"mp_address_email\">alive-test@my.domain.com</a>&gt;</span>",
+                      "text": "AHEM Test! <alive-test@my.domain.com>"
+                    },
+                    "to": {
+                      "value": [
+                        {
+                          "address": "alive-test@my.domain.com",
+                          "name": ""
+                        }
+                      ],
+                      "html": "<span class=\"mp_address_group\"><a href=\"mailto:alive-test@my.domain.com\" class=\"mp_address_email\">alive-test@my.domain.com</a></span>",
+                      "text": "alive-test@my.domain.com"
+                    },
+                    "subject": "AHEM mail test! ✔",
+                    "message-id": "<c70341d4-2acc-ce06-d8ae-e2246e9e867e@my.domain.com>",
+                    "date": "2018-10-16T19:46:31Z",
+                    "mime-version": "1.0"
+                  },
+                  "headerLines": [
+                    {
+                      "key": "content-type",
+                      "line": "Content-Type: multipart/alternative;\r\n boundary=\"--_NmP-56cbf8151211f597-Part_1\""
+                    },
+                    {
+                      "key": "from",
+                      "line": "From: \"AHEM Test!\" <alive-test@my.domain.com>"
+                    },
+                    {
+                      "key": "to",
+                      "line": "To: alive-test@my.domain.com"
+                    },
+                    {
+                      "key": "subject",
+                      "line": "Subject: =?UTF-8?Q?AHEM_mail_test!_=E2=9C=94?="
+                    },
+                    {
+                      "key": "message-id",
+                      "line": "Message-ID: <c70341d4-2acc-ce06-d8ae-e2246e9e867e@my.domain.com>"
+                    },
+                    {
+                      "key": "date",
+                      "line": "Date: Tue, 16 Oct 2018 19:46:31 +0000"
+                    },
+                    {
+                      "key": "mime-version",
+                      "line": "MIME-Version: 1.0"
+                    }
+                  ],
+                  "html": "<p><b>API Test:</b> <span style=\"color: darkgreen\">✔</span></p><p><b>SMTP Test:</b> <span style=\"color: darkgreen\">✔</span></p><p><b>DB Test:</b> <span style=\"color: darkgreen\">✔</span></p><p><br/></p>",
+                  "text": "API: ✔ SMTP: ✔ DB: ✔",
+                  "textAsHtml": "<p>API: &#x2714; SMTP: &#x2714; DB: &#x2714;</p>",
+                  "subject": "AHEM mail test! ✔",
+                  "date": "2018-10-16T19:46:31Z",
+                  "to": {
+                    "value": [
+                      {
+                        "address": "alive-test@my.domain.com",
+                        "name": ""
+                      }
+                    ],
+                    "html": "<span class=\"mp_address_group\"><a href=\"mailto:alive-test@my.domain.com\" class=\"mp_address_email\">alive-test@my.domain.com</a></span>",
+                    "text": "alive-test@my.domain.com"
+                  },
+                  "from": {
+                    "value": [
+                      {
+                        "address": "alive-test@my.domain.com",
+                        "name": "AHEM Test!"
+                      }
+                    ],
+                    "html": "<span class=\"mp_address_group\"><span class=\"mp_address_name\">AHEM Test!</span> &lt;<a href=\"mailto:alive-test@my.domain.com\" class=\"mp_address_email\">alive-test@my.domain.com</a>&gt;</span>",
+                    "text": "AHEM Test! <alive-test@my.domain.com>"
+                  },
+                  "messageId": "<c70341d4-2acc-ce06-d8ae-e2246e9e867e@my.domain.com>",
+                  "timestamp": 1539719191853
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Unexpected error in API call. See HTTP response body for details.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetAnEmailsContent404Response"
+                },
+                "example": {
+                  "error": "MAILBOX IS EMPTY!"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Unexpected error in API call. See HTTP response body for details.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetAnEmailsContent404Response"
+                },
+                "example": {
+                  "error": "error details"
+                }
+              }
+            }
+          }
+        },
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      },
+      "delete": {
+        "summary": "Delete an Email",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "description": "",
+        "operationId": "DeleteAnEmail",
+        "parameters": [
+          {
+            "name": "mailboxName",
+            "in": "path",
+            "description": "mailbox name.",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "mailboxName"
+            }
+          },
+          {
+            "name": "emailId",
+            "in": "path",
+            "description": "mailbox name.",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "emailId"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "success": true
+                  },
+                  "$ref": "#/components/schemas/DeleteAnEmailResponse"
+                },
+                "example": {
+                  "success": true
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Unexpected error in API call. See HTTP response body for details.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeleteAnEmail500Response"
+                },
+                "example": {
+                  "error": "error details"
+                }
+              }
+            }
+          }
+        },
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      },
+      "patch": {
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Update an Email's metadata",
+        "description": "",
+        "operationId": "UpdateAnEmail'sMetadata",
+        "parameters": [
+          {
+            "name": "mailboxName",
+            "in": "path",
+            "description": "mailbox name.",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "mailboxName"
+            }
+          },
+          {
+            "name": "emailId",
+            "in": "path",
+            "description": "mailbox name.",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "emailId"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateAnEmailsMetadataRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "n": 1,
+                    "nModified": 0,
+                    "ok": 1
+                  },
+                  "$ref": "#/components/schemas/UpdateAnEmailsMetadataResponse"
+                },
+                "example": {
+                  "n": 1,
+                  "nModified": 0,
+                  "ok": 1
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Unexpected error in API call. See HTTP response body for details.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UpdateAnEmailsMetadata500Response"
+                },
+                "example": {
+                  "error": "error details"
+                }
+              }
+            }
+          }
+        },
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    },
+    "schemas": {
+      "GetSystemCheckResultsResponse": {
+        "title": "Get system check results response",
+        "required": [
+          "success",
+          "api",
+          "smtp",
+          "db"
+        ],
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "example": true
+          },
+          "api": {
+            "type": "boolean",
+            "example": true
+          },
+          "smtp": {
+            "type": "boolean",
+            "example": true
+          },
+          "db": {
+            "type": "boolean",
+            "example": true
+          }
+        },
+        "example": {
+          "success": true,
+          "api": true,
+          "smtp": true,
+          "db": true
+        }
+      },
+      "GetServerPropertiesResponse": {
+        "title": "Get server properties response",
+        "required": [
+          "serverBaseUri",
+          "emailDeleteInterval",
+          "emailDeleteAge",
+          "allowedDomains",
+          "allowAutocomplete",
+          "customText"
+        ],
+        "type": "object",
+        "properties": {
+          "serverBaseUri": {
+            "type": "string",
+            "example": "https://www.ahem.email"
+          },
+          "emailDeleteInterval": {
+            "type": "integer",
+            "format": "int32",
+            "example": 86400
+          },
+          "emailDeleteAge": {
+            "type": "integer",
+            "format": "int32",
+            "example": 7200
+          },
+          "allowedDomains": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "example": [
+                "ahem.email",
+                "mail.ahem.email",
+                "ahem-email.com"
+              ]
+            },
+            "description": ""
+          },
+          "allowAutocomplete": {
+            "type": "boolean",
+            "example": false
+          },
+          "customText": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "example": {
+          "serverBaseUri": "https://www.ahem.email",
+          "emailDeleteInterval": 86400,
+          "emailDeleteAge": 7200,
+          "allowedDomains": [
+            "ahem.email",
+            "mail.ahem.email",
+            "ahem-email.com"
+          ],
+          "allowAutocomplete": false,
+          "customText": null
+        }
+      },
+      "GetAccessTokenResponse": {
+        "title": "Get access token response",
+        "required": [
+          "success",
+          "token"
+        ],
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "example": true
+          },
+          "token": {
+            "type": "string",
+            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpcCI6Ijo6MSIsImlhdCI6MTUzOTU1NTI5NCwiZXhwIjoxNTM5NTU4ODk0fQ.Y8FhYY5OGbHNn6EOcrF81swX3xeLF4t7Q6F5L7z6Xdg"
+          }
+        },
+        "example": {
+          "success": true,
+          "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpcCI6Ijo6MSIsImlhdCI6MTUzOTU1NTI5NCwiZXhwIjoxNTM5NTU4ODk0fQ.Y8FhYY5OGbHNn6EOcrF81swX3xeLF4t7Q6F5L7z6Xdg"
+        }
+      },
+      "GetAMailboxsEmailsListResponse": {
+        "title": "get a mailbox's emails list response",
+        "required": [
+          "emailId",
+          "sender",
+          "subject",
+          "timestamp",
+          "isRead"
+        ],
+        "type": "object",
+        "properties": {
+          "emailId": {
+            "type": "string",
+            "example": "5bc3c17cb76d8f4e1099725c"
+          },
+          "sender": {
+            "type": "object",
+            "example": {
+              "address": "test@my.domain.com",
+              "name": "AHEM Test!"
+            }
+          },
+          "subject": {
+            "type": "string",
+            "example": "AHEM mail test!"
+          },
+          "timestamp": {
+            "type": "integer",
+            "format": "int64",
+            "example": 1539555708477
+          },
+          "isRead": {
+            "type": "boolean",
+            "example": true
+          }
+        },
+        "example": {
+          "emailId": "5bc3c17cb76d8f4e1099725c",
+          "sender": {
+            "address": "test@my.domain.com",
+            "name": "AHEM Test!"
+          },
+          "subject": "AHEM mail test!",
+          "timestamp": 1539555708477,
+          "isRead": true
+        }
+      },
+      "GetAMailboxsEmailsList404Response": {
+        "title": "get a mailbox's emails list 404 response",
+        "required": [
+          "error"
+        ],
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "string",
+            "example": "MAILBOX IS EMPTY!"
+          }
+        },
+        "example": {
+          "error": "MAILBOX IS EMPTY!"
+        }
+      },
+      "GetAMailboxsEmailsList401Response": {
+        "title": "get a mailbox's emails list 401 response",
+        "required": [
+          "success",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "example": false
+          },
+          "message": {
+            "type": "string",
+            "example": "No token provided."
+          }
+        },
+        "example": {
+          "success": false,
+          "message": "No token provided."
+        }
+      },
+      "GetAnEmailsContentResponse": {
+        "title": "Get an email's content response",
+        "required": [
+          "_id",
+          "attachments",
+          "headers",
+          "headerLines",
+          "html",
+          "text",
+          "textAsHtml",
+          "subject",
+          "date",
+          "to",
+          "from",
+          "messageId",
+          "timestamp"
+        ],
+        "type": "object",
+        "properties": {
+          "_id": {
+            "type": "string",
+            "example": "5bc64017002e254f65eb37ef"
+          },
+          "attachments": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "example": [
+                {
+                  "type": "attachment",
+                  "content": "iVBORw0KGgoAAAANSUhEUgAAAfoAAAFkCAYAAADIefl6AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAACAASURBVHic7J13eFRV2sB/585MekIggQAJyaRAgACWIGAHFQXE3pB1RSyfvXfctaDr2ru7rq6ia9dV1w4qigKWVXQt2AqJCmyPszLl/0c8IQ3mc14/tXXMdCsQ6rBX1c+w8Qhx8xjeCyPbDOPNKP/ODxOQzrk/F5xqAJLlywJtCnwdF5entjUxq0UFBcTkSuQmCC",
+                  "contentType": "image/png",
+                  "release": null,
+                  "contentDisposition": "attachment",
+                  "filename": "ahem-happy.png",
+                  "contentId": "<ahem-tester@mydomain.com>",
+                  "cid": "ahem-tester@mydomain.com",
+                  "related": true,
+                  "headers": {
+                    "content-type": {
+                      "value": "image/png",
+                      "params": {
+                        "name": "ahem-happy.png"
+                      }
+                    },
+                    "content-id": "<ahem-tester@mydomain.com>",
+                    "content-transfer-encoding": "base64",
+                    "content-disposition": {
+                      "value": "attachment",
+                      "params": {
+                        "filename": "ahem-happy.png"
+                      }
+                    }
+                  },
+                  "checksum": "4ac3f7fa98c8c86bb1677f32279db7ad",
+                  "size": 57654
+                }
+              ]
+            },
+            "description": ""
+          },
+          "headers": {
+            "type": "object",
+            "example": {
+              "content-type": {
+                "value": "multipart/alternative",
+                "params": {
+                  "boundary": "--_NmP-56cbf8151211f597-Part_1"
+                }
+              },
+              "from": {
+                "value": [
+                  {
+                    "address": "alive-test@my.domain.com",
+                    "name": "AHEM Test!"
+                  }
+                ],
+                "html": "<span class=\"mp_address_group\"><span class=\"mp_address_name\">AHEM Test!</span> &lt;<a href=\"mailto:alive-test@my.domain.com\" class=\"mp_address_email\">alive-test@my.domain.com</a>&gt;</span>",
+                "text": "AHEM Test! <alive-test@my.domain.com>"
+              },
+              "to": {
+                "value": [
+                  {
+                    "address": "alive-test@my.domain.com",
+                    "name": ""
+                  }
+                ],
+                "html": "<span class=\"mp_address_group\"><a href=\"mailto:alive-test@my.domain.com\" class=\"mp_address_email\">alive-test@my.domain.com</a></span>",
+                "text": "alive-test@my.domain.com"
+              },
+              "subject": "AHEM mail test! ✔",
+              "message-id": "<c70341d4-2acc-ce06-d8ae-e2246e9e867e@my.domain.com>",
+              "date": "2018-10-16T19:46:31Z",
+              "mime-version": "1.0"
+            }
+          },
+          "headerLines": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "example": [
+                {
+                  "key": "content-type",
+                  "line": "Content-Type: multipart/alternative;\r\n boundary=\"--_NmP-56cbf8151211f597-Part_1\""
+                },
+                {
+                  "key": "from",
+                  "line": "From: \"AHEM Test!\" <alive-test@my.domain.com>"
+                },
+                {
+                  "key": "to",
+                  "line": "To: alive-test@my.domain.com"
+                },
+                {
+                  "key": "subject",
+                  "line": "Subject: =?UTF-8?Q?AHEM_mail_test!_=E2=9C=94?="
+                },
+                {
+                  "key": "message-id",
+                  "line": "Message-ID: <c70341d4-2acc-ce06-d8ae-e2246e9e867e@my.domain.com>"
+                },
+                {
+                  "key": "date",
+                  "line": "Date: Tue, 16 Oct 2018 19:46:31 +0000"
+                },
+                {
+                  "key": "mime-version",
+                  "line": "MIME-Version: 1.0"
+                }
+              ]
+            },
+            "description": ""
+          },
+          "html": {
+            "type": "string",
+            "example": "<p><b>API Test:</b> <span style=\"color: darkgreen\">✔</span></p><p><b>SMTP Test:</b> <span style=\"color: darkgreen\">✔</span></p><p><b>DB Test:</b> <span style=\"color: darkgreen\">✔</span></p><p><br/></p>"
+          },
+          "text": {
+            "type": "string",
+            "example": "API: ✔ SMTP: ✔ DB: ✔"
+          },
+          "textAsHtml": {
+            "type": "string",
+            "example": "<p>API: &#x2714; SMTP: &#x2714; DB: &#x2714;</p>"
+          },
+          "subject": {
+            "type": "string",
+            "example": "AHEM mail test! ✔"
+          },
+          "date": {
+            "type": "string",
+            "example": "10/16/2018 7:46:31 PM"
+          },
+          "to": {
+            "type": "object",
+            "example": {
+              "value": [
+                {
+                  "address": "alive-test@my.domain.com",
+                  "name": ""
+                }
+              ],
+              "html": "<span class=\"mp_address_group\"><a href=\"mailto:alive-test@my.domain.com\" class=\"mp_address_email\">alive-test@my.domain.com</a></span>",
+              "text": "alive-test@my.domain.com"
+            }
+          },
+          "from": {
+            "type": "object",
+            "example": {
+              "value": [
+                {
+                  "address": "alive-test@my.domain.com",
+                  "name": "AHEM Test!"
+                }
+              ],
+              "html": "<span class=\"mp_address_group\"><span class=\"mp_address_name\">AHEM Test!</span> &lt;<a href=\"mailto:alive-test@my.domain.com\" class=\"mp_address_email\">alive-test@my.domain.com</a>&gt;</span>",
+              "text": "AHEM Test! <alive-test@my.domain.com>"
+            }
+          },
+          "messageId": {
+            "type": "string",
+            "example": "<c70341d4-2acc-ce06-d8ae-e2246e9e867e@my.domain.com>"
+          },
+          "timestamp": {
+            "type": "integer",
+            "format": "int64",
+            "example": 1539719191853
+          }
+        },
+        "example": {
+          "_id": "5bc64017002e254f65eb37ef",
+          "attachments": [
+            {
+              "type": "attachment",
+              "content": "iVBORw0KGgoAAAANSUhEUgAAAfoAAAFkCAYAAADIefl6AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAACAASURBVHic7J13eFRV2sB/585MekIggQAJyaRAgACWIGAHFQXE3pB1RSyfvXfctaDr2ru7rq6ia9dV1w4qigKWVXQt2AqJCmyPszLl/0c8IQ3mc14/tXXMdCsQ6rBX1c+w8Qhx8xjeCyPbDOPNKP/ODxOQzrk/F5xqAJLlywJtCnwdF5entjUxq0UFBcTkSuQmCC",
+              "contentType": "image/png",
+              "release": null,
+              "contentDisposition": "attachment",
+              "filename": "ahem-happy.png",
+              "contentId": "<ahem-tester@mydomain.com>",
+              "cid": "ahem-tester@mydomain.com",
+              "related": true,
+              "headers": {
+                "content-type": {
+                  "value": "image/png",
+                  "params": {
+                    "name": "ahem-happy.png"
+                  }
+                },
+                "content-id": "<ahem-tester@mydomain.com>",
+                "content-transfer-encoding": "base64",
+                "content-disposition": {
+                  "value": "attachment",
+                  "params": {
+                    "filename": "ahem-happy.png"
+                  }
+                }
+              },
+              "checksum": "4ac3f7fa98c8c86bb1677f32279db7ad",
+              "size": 57654
+            }
+          ],
+          "headers": {
+            "content-type": {
+              "value": "multipart/alternative",
+              "params": {
+                "boundary": "--_NmP-56cbf8151211f597-Part_1"
+              }
+            },
+            "from": {
+              "value": [
+                {
+                  "address": "alive-test@my.domain.com",
+                  "name": "AHEM Test!"
+                }
+              ],
+              "html": "<span class=\"mp_address_group\"><span class=\"mp_address_name\">AHEM Test!</span> &lt;<a href=\"mailto:alive-test@my.domain.com\" class=\"mp_address_email\">alive-test@my.domain.com</a>&gt;</span>",
+              "text": "AHEM Test! <alive-test@my.domain.com>"
+            },
+            "to": {
+              "value": [
+                {
+                  "address": "alive-test@my.domain.com",
+                  "name": ""
+                }
+              ],
+              "html": "<span class=\"mp_address_group\"><a href=\"mailto:alive-test@my.domain.com\" class=\"mp_address_email\">alive-test@my.domain.com</a></span>",
+              "text": "alive-test@my.domain.com"
+            },
+            "subject": "AHEM mail test! ✔",
+            "message-id": "<c70341d4-2acc-ce06-d8ae-e2246e9e867e@my.domain.com>",
+            "date": "2018-10-16T19:46:31Z",
+            "mime-version": "1.0"
+          },
+          "headerLines": [
+            {
+              "key": "content-type",
+              "line": "Content-Type: multipart/alternative;\r\n boundary=\"--_NmP-56cbf8151211f597-Part_1\""
+            },
+            {
+              "key": "from",
+              "line": "From: \"AHEM Test!\" <alive-test@my.domain.com>"
+            },
+            {
+              "key": "to",
+              "line": "To: alive-test@my.domain.com"
+            },
+            {
+              "key": "subject",
+              "line": "Subject: =?UTF-8?Q?AHEM_mail_test!_=E2=9C=94?="
+            },
+            {
+              "key": "message-id",
+              "line": "Message-ID: <c70341d4-2acc-ce06-d8ae-e2246e9e867e@my.domain.com>"
+            },
+            {
+              "key": "date",
+              "line": "Date: Tue, 16 Oct 2018 19:46:31 +0000"
+            },
+            {
+              "key": "mime-version",
+              "line": "MIME-Version: 1.0"
+            }
+          ],
+          "html": "<p><b>API Test:</b> <span style=\"color: darkgreen\">✔</span></p><p><b>SMTP Test:</b> <span style=\"color: darkgreen\">✔</span></p><p><b>DB Test:</b> <span style=\"color: darkgreen\">✔</span></p><p><br/></p>",
+          "text": "API: ✔ SMTP: ✔ DB: ✔",
+          "textAsHtml": "<p>API: &#x2714; SMTP: &#x2714; DB: &#x2714;</p>",
+          "subject": "AHEM mail test! ✔",
+          "date": "2018-10-16T19:46:31Z",
+          "to": {
+            "value": [
+              {
+                "address": "alive-test@my.domain.com",
+                "name": ""
+              }
+            ],
+            "html": "<span class=\"mp_address_group\"><a href=\"mailto:alive-test@my.domain.com\" class=\"mp_address_email\">alive-test@my.domain.com</a></span>",
+            "text": "alive-test@my.domain.com"
+          },
+          "from": {
+            "value": [
+              {
+                "address": "alive-test@my.domain.com",
+                "name": "AHEM Test!"
+              }
+            ],
+            "html": "<span class=\"mp_address_group\"><span class=\"mp_address_name\">AHEM Test!</span> &lt;<a href=\"mailto:alive-test@my.domain.com\" class=\"mp_address_email\">alive-test@my.domain.com</a>&gt;</span>",
+            "text": "AHEM Test! <alive-test@my.domain.com>"
+          },
+          "messageId": "<c70341d4-2acc-ce06-d8ae-e2246e9e867e@my.domain.com>",
+          "timestamp": 1539719191853
+        }
+      },
+      "GetAnEmailsContent404Response": {
+        "title": "Get an email's content 404 response",
+        "required": [
+          "error"
+        ],
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "string",
+            "example": "MAILBOX IS EMPTY!"
+          }
+        },
+        "example": {
+          "error": "MAILBOX IS EMPTY!"
+        }
+      },
+      "DeleteAnEmailResponse": {
+        "title": "Delete an Email response",
+        "required": [
+          "success"
+        ],
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "example": true
+          }
+        },
+        "example": {
+          "success": true
+        }
+      },
+      "DeleteAnEmail500Response": {
+        "title": "Delete an Email 500 response",
+        "required": [
+          "error"
+        ],
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "string",
+            "example": "error details"
+          }
+        },
+        "example": {
+          "error": "error details"
+        }
+      },
+      "UpdateAnEmailsMetadataRequest": {
+        "title": "Update an Email's metadata request",
+        "required": [
+          "isRead"
+        ],
+        "type": "object",
+        "properties": {
+          "isRead": {
+            "type": "boolean",
+            "example": true
+          }
+        },
+        "example": {
+          "isRead": true
+        }
+      },
+      "UpdateAnEmailsMetadataResponse": {
+        "title": "Update an Email's metadata response",
+        "required": [
+          "n",
+          "nModified",
+          "ok"
+        ],
+        "type": "object",
+        "properties": {
+          "n": {
+            "type": "integer",
+            "format": "int32",
+            "example": 1
+          },
+          "nModified": {
+            "type": "integer",
+            "format": "int32",
+            "example": 0
+          },
+          "ok": {
+            "type": "integer",
+            "format": "int32",
+            "example": 1
+          }
+        },
+        "example": {
+          "n": 1,
+          "nModified": 0,
+          "ok": 1
+        }
+      },
+      "UpdateAnEmailsMetadata500Response": {
+        "title": "Update an Email's metadata 500 response",
+        "required": [
+          "error"
+        ],
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "string",
+            "example": "error details"
+          }
+        },
+        "example": {
+          "error": "error details"
+        }
+      }
+    }
+  },
+  "security": [],
+  "tags": []
+}
