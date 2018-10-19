@@ -4,6 +4,7 @@
     "title": "AHEM - Ad Hoc Email",
     "description": "[AHEM](https://www.ahem.email) is an ad hoc disposable and temporary email service. It allows receiving email at an ad-hoc created email, created on the fly when an email is received by our server. Using the AHEM service allows you to prevent spam to your real email, and to test products that send email as part of their lifecycle.An access token is needed for most API calls. Get an access token by calling /api/auth/token. Use the token in the Authorization header as a Bearer token. To use it in this API documentation tool, execute the /api/auth/token call and use the returned token.",
     "contact": {},
+    "termsOfService": "https://www.ahem.email/privacy",
     "version": "1.0"
   },
   "servers": [
@@ -15,6 +16,9 @@
   "paths": {
     "/api/alive": {
       "get": {
+        "tags": [
+          "General"
+        ],
         "summary": "Get system check results",
         "description": "",
         "operationId": "GetSystemCheckResults",
@@ -53,6 +57,9 @@
     },
     "/api/properties": {
       "get": {
+        "tags": [
+          "General"
+        ],
         "summary": "Get server properties",
         "description": "",
         "operationId": "GetServerProperties",
@@ -103,6 +110,9 @@
     },
     "/api/auth/token": {
       "post": {
+        "tags": [
+          "General"
+        ],
         "summary": "Get access token",
         "description": "",
         "operationId": "GetAccessToken",
@@ -161,6 +171,9 @@
     },
     "/api/mailbox/{mailboxName}/email": {
       "get": {
+        "tags": [
+          "Mailbox"
+        ],
         "security": [
           {
             "bearerAuth": []
@@ -260,6 +273,9 @@
     },
     "/api/mailbox/{mailboxName}/email/{emailId}": {
       "get": {
+        "tags": [
+          "Email"
+        ],
         "summary": "Get an email's content",
         "security": [
           {
@@ -586,6 +602,9 @@
         }
       },
       "delete": {
+        "tags": [
+          "Email"
+        ],
         "summary": "Delete an Email",
         "security": [
           {
@@ -659,6 +678,9 @@
         }
       },
       "patch": {
+        "tags": [
+          "Email"
+        ],
         "security": [
           {
             "bearerAuth": []
@@ -1385,5 +1407,18 @@
     }
   },
   "security": [],
-  "tags": []
+  "tags": [
+    {
+      "name": "General",
+      "description": "General APIs"
+    },
+    {
+      "name": "Mailbox",
+      "description": "Mailbox actions"
+    },
+    {
+      "name": "Email",
+      "description": "Email actions"
+    }
+  ]
 }
