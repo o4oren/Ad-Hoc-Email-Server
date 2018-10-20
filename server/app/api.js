@@ -42,15 +42,13 @@ router.post('/auth/token', (req, res, next) => {
     function (err, result) {
       if (err) {
         logger.error(err);
-        res.status(500).json({error: err.message});
-        return;
+        return res.status(500).json({error: err.message});
       }
       if (result) {
         jwt.verify(result.token, req.properties.jwtSecret, function(err, decoded) {
           if (err) {
             logger.info('failed to verify token... renewing.');
-            auth.createNewToken(req, res);
-            return;
+            return auth.createNewToken(req, res);
           } else {
             logger.info('Re-using token');
             res.status(200).json({
@@ -62,7 +60,7 @@ router.post('/auth/token', (req, res, next) => {
         });
 
       } else {
-        auth.createNewToken(req, res);
+        return auth.createNewToken(req, res);
       }
     });
 });
@@ -89,13 +87,16 @@ router.get('/mailbox/:mailbox/email/:emailId/attachments/:filename', (req, res) 
     );
   } catch (e) {
     console.log(e);
-    res.status(404).send({error: 'FILE NOT FOUND'});
+    return res.status(404).send({error: 'FILE NOT FOUND'});
   }
 });
 
 
 // route middleware to verify a token
 router.use(auth.verifyToken);
+
+// route middleware to increment api counter when an api is used to make a call
+router.use(auth.increaseApiCounter);
 
 /**
  * returns a list of mailbox names starting with the req.body.prefix
@@ -104,9 +105,9 @@ router.post('/mailbox/autocomplete', (req, res) => {
   req.db.collection('mailboxes').find({'name': {'$regex' : '^' + req.body.prefix, '$options' : 'i'}},
     {'name': 1}).toArray(function (err, mailboxes) {
     if (err) {
-      res.status(500).json(err);
+      return res.status(500).json(err);
     }
-    res.status(200).send(mailboxes.map(mailbox => mailbox.name));
+    return res.status(200).send(mailboxes.map(mailbox => mailbox.name));
   });
 });
 
@@ -143,12 +144,12 @@ router.get('/mailbox/:mailbox/email/:emailId', (req, res) => {
     'attachments.filename': 1
   }, function (err, doc) {
     if (err) {
-      res.status(500).send({error: err});
+      return res.status(500).json({error: err});
     }
     if(doc) {
-      res.status(200).send(doc);
+      return res.status(200).json(doc);
     } else {
-      res.status(404).send({ error: 'EMAIL NOT FOUND'});
+      return res.status(404).json({ error: 'EMAIL NOT FOUND'});
     }
   });
 });
@@ -163,9 +164,9 @@ router.patch('/mailbox/:mailbox/email/:emailId', (req, res) => {
     {$set: {'emails.$.isRead': req.body.isRead}},
     function (err, result) {
     if (err) {
-      res.status(500).send({error: err});
+      return res.status(500).json({error: err});
     }
-    res.status(200).send(result);
+    return res.status(200).json(result);
   });
 });
 
@@ -177,9 +178,9 @@ router.delete('/mailbox/:mailbox/email/:emailId', (req, res) => {
     {$pull : {'emails' : {'emailId': objectId}}}
     , function (err, result) {
       if (err) {
-        res.status(500).send({error: err});
+        return res.status(500).json({error: err});
       }
-      res.json({success: true});
+      return res.json({success: true});
 
     }
   );
@@ -188,9 +189,9 @@ router.delete('/mailbox/:mailbox/email/:emailId', (req, res) => {
 router.delete('/mailbox/:mailbox', (req, res) => {
   req.db.collection('mailboxes').remove({'name': req.params.mailbox}, function(err, result) {
     if (err) {
-      res.status(500).send({error: err, succes: false});
+      return res.status(500).json({error: err, succes: false});
     }
-    res.json({success: true});
+    return res.json({success: true});
   });
 });
 

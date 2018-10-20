@@ -15,7 +15,6 @@ const swaggerDocument = require('../../client/assets/api/swagger.json');
 enableProdMode();
 const app = express();
 const morgan = require('morgan');
-const ObjectID = require('mongodb').ObjectID;
 const path = require('path'),
   http = require('http'),
   bodyParser = require('body-parser'),
