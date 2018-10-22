@@ -24,9 +24,9 @@ function start(properties, db, logger) {
 
   app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
-
   app.set('view engine', 'html');
-  app.set('views', path.join(DIST_FOLDER));
+  app.use(express.static(path.join(DIST_FOLDER, "browser")));
+  app.set('views', path.join(DIST_FOLDER, "browser"));
 
 
   app.use(function (req, res, next) {
@@ -54,9 +54,9 @@ function start(properties, db, logger) {
   app.use('/api', api);
 
 // Server static files from /browser
-app.get('*.*', express.static(path.join(DIST_FOLDER)));
+app.get('*.*', express.static(path.join(DIST_FOLDER, "browser")));
 
-// All regular routes use the Universal engine
+// All regular browser angular folder
   app.get('*', (req, res) => {
     res.render('index', { req });
   });

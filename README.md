@@ -29,10 +29,17 @@ git clone https://github.com/o4oren/ahem-server.git
 cd ahem-server
 npm install
 # builds the project.
-# There are other, convenience options for build and run in development mode.
 npm run build:ssr
-# prod run - will run the backend which will also serve the front end form the `dist` folder.
-npm run serve:ssr
+
+# There are other, convenience options for build and run in development mode.
+# For developmet:
+npm run startDev
+
+# for prod
+# Will run the backend which will also serve the front end form the `dist` folder.
+node ahem.js
+
+
 ```
 
 ### Configuration
