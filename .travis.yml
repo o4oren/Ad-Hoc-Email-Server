@@ -20,7 +20,6 @@ matrix:
   fast_finish: true
 
 before_install:
-  - docker run -d -p 27017:27017 -v ~/data:/data/db mongo
   - npm cache verify
   - npm prune
   - npm install -g @angular/cli
