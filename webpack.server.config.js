@@ -2,7 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 
 module.exports = {
-  entry: { ahem: './ahem.ts' },
+  entry: { universalServer: './universalServer.ts' },
   resolve: { extensions: ['.js', '.ts'] },
   target: 'node',
   mode: 'none',

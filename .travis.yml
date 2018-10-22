@@ -3,7 +3,7 @@ dist: trusty
 language: node_js
 
 services:
-  - docker
+  - mongodb
 
 cache:
   directories:
@@ -29,4 +29,5 @@ install:
   - npm install
 
 script:
+  - npm run testServer
   - npm run build:ssr
