@@ -6,7 +6,6 @@
 'use strict';
 
 const logger = require('./server/app/logger');
-const smtp = require('./server/app/smtp');
 const fs = require('fs');
 const path = require('path');
 const mongo = require('mongodb');
@@ -27,7 +26,7 @@ mongo.MongoClient.connect(properties.mongoConnectUrl, { useNewUrlParser: true },
   db.collection('mailboxes').createIndex( {'name': 1}, { unique: true } );
   db.collection('tokens').createIndex( {'ip': 1}, { unique: true } );
 
-  const serverApp = require('./server/app/serverApp')();
+  const serverApp = require('./server/app/serverApp')(db);
 
   /**
    * Create HTTP server.
@@ -42,5 +41,5 @@ mongo.MongoClient.connect(properties.mongoConnectUrl, { useNewUrlParser: true },
     logger.info('API server listening');
   });
 
-  smtp.startSTMPServer(properties, baseDir, db, logger);
+  const smtp = require('./server/app/smtp')(properties, baseDir, db, logger);
 });

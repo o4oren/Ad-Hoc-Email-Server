@@ -43,6 +43,9 @@ function sendTestEmail(properties) {
       host: properties.host || 'localhost',
       port: properties.smtpPort,
       logger: false,
+      tls: {
+        rejectUnauthorized: false
+      },
       debug: false // include SMTP traffic in the logs
     },
     {

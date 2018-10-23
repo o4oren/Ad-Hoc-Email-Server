@@ -41,7 +41,6 @@ router.post('/auth/token', (req, res, next) => {
   req.db.collection('tokens').findOne({'ip': req.ip},
     function (err, result) {
       if (err) {
-        logger.error(err);
         return res.status(500).json({error: err.message});
       }
       if (result) {

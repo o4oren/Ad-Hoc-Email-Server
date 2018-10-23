@@ -8,8 +8,8 @@ const baseDir = process.cwd();
 const mongoDb = require('mongodb');
 const request = require('request');
 const properties = require('../../properties.json');
-const smtp = require('./smtp');
 let server;
+let smtp;
 let mongoClient;
 
 beforeAll(done => {
@@ -32,7 +32,7 @@ beforeAll(done => {
     /**
      * Listen on provided port, on all network interfaces.
      */
-    smtp.startSTMPServer(properties, baseDir, db, logger);
+    smtp = require('./smtp')(properties, baseDir, db, logger);
 
     server.listen(port, async () => {
       logger.info('API server listening');
@@ -45,6 +45,7 @@ beforeAll(done => {
 afterAll(done => {
   mongoClient.close();
   server.close();
+  smtp.close();
   done();
 });
 
@@ -64,14 +65,45 @@ afterAll(done => {
 describe('alive API', () => {
   // jest.setTimeout(30000)
   test('GET /api/alive', done => {
-
     function callback(error, response, body) {
+      logger.info(body)
       expect(response.statusCode).toBe(200);
       done();
     }
     request.get(properties.serverBaseUri + '/api/alive', callback);
   });
+
+  test('Check that without token we get 401', done => {
+    function callback(error, response, body) {
+      logger.info(body)
+      expect(response.statusCode).toBe(401);
+      done();
+    }
+    request.get(properties.serverBaseUri + '/api/mailbox/test-alive', callback);
+  });
+
+  test('Check mail', done => {
+    function callback(error, response, body) {
+      logger.info(body)
+      expect(response.statusCode).toBe(200);
+      done();
+    }
+
+
+    request.post(properties.serverBaseUri + '/api/auth/token', {}, (error, response, body) => {
+      const token = JSON.parse(body).token;
+      let options = {
+        url: properties.serverBaseUri + '/api/mailbox/alive-test/email',
+        headers: {"Authorization": "Bearer " + token}
+    }
+      request.get(options, callback);
+    });
+
+  });
+
 });
+
+
 
 
 
