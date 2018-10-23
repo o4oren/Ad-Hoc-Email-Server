@@ -10,18 +10,19 @@ const request = require('request');
 const properties = require('../../properties.json');
 const smtp = require('./smtp');
 let server;
-
+let mongoClient;
 
 beforeAll(done => {
   mongoDb.MongoClient.connect(properties.mongoConnectUrl, { useNewUrlParser: true }, function (err, client) {
-    assert.equal(null, err);
+    assert.ok(client !== null, err);
     logger.info('Connected successfully to mongodb server');
     // creating indexes
+    mongoClient = client;
     const db = client.db(properties.dbName);
     db.collection('mailboxes').createIndex( {'name': 1}, { unique: true } );
     db.collection('tokens').createIndex( {'ip': 1}, { unique: true } );
 
-    const serverApp = require('./serverApp')(db);
+    const serverApp = require('./serverapp')(db);
     /**
      * Create HTTP server.
      */
@@ -42,6 +43,7 @@ beforeAll(done => {
 });
 
 afterAll(done => {
+  mongoClient.close();
   server.close();
   done();
 });
