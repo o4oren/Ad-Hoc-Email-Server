@@ -43,9 +43,9 @@ beforeAll(done => {
 });
 
 afterAll(done => {
-  mongoClient.close();
-  server.close();
-  smtp.close();
+  smtp.close(() => logger.info('SMTP Server closed!'));
+  mongoClient.close(true, () => logger.info('Mongo client closed!'));
+  server.close(() => logger.info('appServer stops listening'));
   done();
 });
 
