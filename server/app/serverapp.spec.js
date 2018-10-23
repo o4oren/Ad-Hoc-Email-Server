@@ -12,7 +12,7 @@ const smtp = require('./smtp');
 let server;
 
 
-beforeAll((done) => {
+beforeAll(done => {
   mongoDb.MongoClient.connect(properties.mongoConnectUrl, { useNewUrlParser: true }, function (err, client) {
     assert.equal(null, err);
     logger.info('Connected successfully to mongodb server');
@@ -33,18 +33,33 @@ beforeAll((done) => {
      */
     smtp.startSTMPServer(properties, baseDir, db, logger);
 
-    server.listen(port, function () {
+    server.listen(port, async () => {
       logger.info('API server listening');
     });
-
+    done();
   });
+
 });
 
-afterAll((done) => {
+afterAll(done => {
   server.close();
   done();
 });
-  describe('alive API', () => {
+
+
+  describe('properties API', () => {
+  // jest.setTimeout(30000)
+  test('GET /api/properties', done => {
+
+    function callback(error, response, body) {
+      expect(response.statusCode).toBe(200);
+      done();
+    }
+    request.get(properties.serverBaseUri + '/api/properties', callback);
+  });
+});
+
+describe('alive API', () => {
   // jest.setTimeout(30000)
   test('GET /api/alive', done => {
 
@@ -52,9 +67,7 @@ afterAll((done) => {
       expect(response.statusCode).toBe(200);
       done();
     }
-
     request.get(properties.serverBaseUri + '/api/alive', callback);
-
   });
 });
 

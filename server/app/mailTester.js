@@ -21,9 +21,9 @@ function sendTestEmail(properties) {
 
     // HTML body
     html:
-    '<p><b>API Test:</b> <span style="color: darkgreen">✔</span></p>' +
-    '<p><b>SMTP Test:</b> <span style="color: darkgreen">✔</span></p>' +
-    '<p><b>DB Test:</b> <span style="color: darkgreen">✔</span></p>' +
+    '<p><b>API Test:</b> <span style="color: green">✔</span></p>' +
+    '<p><b>SMTP Test:</b> <span style="color: green">✔</span></p>' +
+    '<p><b>DB Test:</b> <span style="color: green">✔</span></p>' +
     '<p><br/><img src="cid:ahem-tester@mydomain.com"/></p>',
 
     // An array of attachments
