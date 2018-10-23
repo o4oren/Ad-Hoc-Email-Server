@@ -7,18 +7,17 @@
 
 const logger = require('./server/app/logger');
 const smtp = require('./server/app/smtp');
-const serverApp = require('./server/app/serverApp');
 const fs = require('fs');
 const path = require('path');
 const mongo = require('mongodb');
 const baseDir = process.cwd();
 const properties = JSON.parse(fs.readFileSync(path.join(baseDir, 'properties.json')));
 const assert = require('assert');
+const http = require('http');
 
 
 logger.info('properties', properties);
 
-// Start the app with a db connection
 logger.info('connecting to db', properties.mongoConnectUrl);
 mongo.MongoClient.connect(properties.mongoConnectUrl, { useNewUrlParser: true }, function (err, client) {
   assert.equal(null, err);
@@ -28,7 +27,20 @@ mongo.MongoClient.connect(properties.mongoConnectUrl, { useNewUrlParser: true },
   db.collection('mailboxes').createIndex( {'name': 1}, { unique: true } );
   db.collection('tokens').createIndex( {'ip': 1}, { unique: true } );
 
+  const serverApp = require('./server/app/serverApp')();
 
-  serverApp.startServerApp(properties, db, logger);
+  /**
+   * Create HTTP server.
+   */
+  const server = http.createServer(serverApp);
+  const port = process.env.PORT || properties.appListenPort || '3000';
+
+  /**
+   * Listen on provided port, on all network interfaces.
+   */
+  server.listen(port, function () {
+    logger.info('API server listening');
+  });
+
   smtp.startSTMPServer(properties, baseDir, db, logger);
 });

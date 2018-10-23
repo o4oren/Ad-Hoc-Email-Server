@@ -5,6 +5,8 @@ const fs = require('fs');
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('../../client/assets/api/swagger.json');
 
+const properties = require('../../properties');
+const logger = require('./logger');
 
 
 const app = express();
@@ -15,11 +17,10 @@ const path = require('path'),
   api = require('./api'),
   auth = require('./auth');
 
-const PORT = process.env.PORT || 3000;
 const DIST_FOLDER = path.join(process.cwd() , 'dist');
-console.log(DIST_FOLDER);
+logger.debug(DIST_FOLDER);
 
-function start(properties, db, logger) {
+function start(db) {
 
 
   app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
@@ -67,25 +68,6 @@ app.get('*.*', express.static(path.join(DIST_FOLDER, "browser")));
     res.status(500).send({error: err.name + ' | ' + err.message});
   });
 
-  /**
-   * Get port from environment and store in Express.
-   */
-  const port = process.env.PORT || properties.appListenPort || '3000';
-  app.set('port', port);
-
-  /**
-   * Create HTTP server.
-   */
-  const server = http.createServer(app);
-
-  /**
-   * Listen on provided port, on all network interfaces.
-   */
-
-  server.listen(port, function () {
-    logger.info('ad-hoc-mail service started!');
-  });
-
 // delete emails every interval
   setInterval(function () {
     logger.info('checking for emails older than ' + properties.emailDeleteAge + ' seconds');
@@ -127,8 +109,8 @@ app.get('*.*', express.static(path.join(DIST_FOLDER, "browser")));
     });
 
   }, properties.emailDeleteInterval * 1000);
-
-  logger.info('API server listening');
+  return app;
 }
 
-module.exports.startServerApp = start;
+module.exports = start;
+module.exports.app = app;
