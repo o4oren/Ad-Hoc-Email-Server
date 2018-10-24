@@ -26,12 +26,12 @@ mongo.MongoClient.connect(properties.mongoConnectUrl, { useNewUrlParser: true },
   db.collection('mailboxes').createIndex( {'name': 1}, { unique: true } );
   db.collection('tokens').createIndex( {'ip': 1}, { unique: true } );
 
-  const serverApp = require('./server/app/serverApp')(properties, db);
+  const serverApp = require('./server/app/serverapp')(properties, db);
 
   /**
    * Create HTTP server.
    */
-  const server = http.createServer(serverapp);
+  const server = http.createServer(serverApp);
   const port = process.env.PORT || properties.appListenPort || '3000';
 
   /**
