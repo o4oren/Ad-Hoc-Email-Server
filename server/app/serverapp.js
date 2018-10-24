@@ -5,7 +5,6 @@ const fs = require('fs');
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('../../client/assets/api/swagger.json');
 
-const properties = require('../../properties');
 const logger = require('./logger');
 
 
@@ -20,7 +19,7 @@ const path = require('path'),
 const DIST_FOLDER = path.join(process.cwd() , 'dist');
 logger.debug(DIST_FOLDER);
 
-function start(db) {
+function start(properties, db) {
   app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
   app.set('view engine', 'html');
   app.use(express.static(path.join(DIST_FOLDER, "browser")));

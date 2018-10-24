@@ -1,6 +1,6 @@
-require ('jest');
+require('jest');
 const assert = require('assert');
-const logger =require('./logger');
+const logger = require('./logger');
 const fs = require('fs');
 const path = require('path');
 const http = require('http');
@@ -9,20 +9,21 @@ const mongoDb = require('mongodb');
 const request = require('request');
 const properties = require('../../properties.json');
 let server;
+let serverApp;
 let smtp;
 let mongoClient;
 
 beforeAll(done => {
-  mongoDb.MongoClient.connect(properties.mongoConnectUrl, { useNewUrlParser: true }, function (err, client) {
+  mongoDb.MongoClient.connect(properties.mongoConnectUrl, {useNewUrlParser: true}, function (err, client) {
     assert.ok(client !== null, err);
     logger.info('Connected successfully to mongodb server');
     // creating indexes
     mongoClient = client;
     const db = client.db(properties.dbName);
-    db.collection('mailboxes').createIndex( {'name': 1}, { unique: true } );
-    db.collection('tokens').createIndex( {'ip': 1}, { unique: true } );
+    db.collection('mailboxes').createIndex({'name': 1}, {unique: true});
+    db.collection('tokens').createIndex({'ip': 1}, {unique: true});
 
-    const serverApp = require('./serverapp')(db);
+    serverApp = require('./serverapp')(properties, db);
     /**
      * Create HTTP server.
      */
@@ -50,7 +51,7 @@ afterAll(done => {
 });
 
 
-  describe('properties API', () => {
+describe('properties API', () => {
   // jest.setTimeout(30000)
   test('GET /api/properties', done => {
 
@@ -58,6 +59,7 @@ afterAll(done => {
       expect(response.statusCode).toBe(200);
       done();
     }
+
     request.get(properties.serverBaseUri + '/api/properties', callback);
   });
 });
@@ -70,6 +72,7 @@ describe('alive API', () => {
       expect(response.statusCode).toBe(200);
       done();
     }
+
     request.get(properties.serverBaseUri + '/api/alive', callback);
   });
 });
@@ -103,6 +106,7 @@ describe('Token access', () => {
       expect(response.statusCode).toBe(401);
       done();
     }
+
     request.get(properties.serverBaseUri + '/api/mailbox/test-alive', callback);
   });
   test('Token access with invalid token - 401', done => {
@@ -110,6 +114,7 @@ describe('Token access', () => {
       expect(response.statusCode).toBe(401);
       done();
     }
+
     let options = {
       url: properties.serverBaseUri + '/api/mailbox/alive-test/email',
       headers: {"Authorization": "Bearer " + 'stam token'}

@@ -26,7 +26,7 @@ mongo.MongoClient.connect(properties.mongoConnectUrl, { useNewUrlParser: true },
   db.collection('mailboxes').createIndex( {'name': 1}, { unique: true } );
   db.collection('tokens').createIndex( {'ip': 1}, { unique: true } );
 
-  const serverApp = require('./server/app/serverApp')(db);
+  const serverApp = require('./server/app/serverApp')(properties, db);
 
   /**
    * Create HTTP server.
