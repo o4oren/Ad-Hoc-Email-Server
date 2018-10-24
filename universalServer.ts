@@ -8,6 +8,7 @@ import { enableProdMode } from '@angular/core';
 import * as express from 'express';
 import { join } from 'path';
 import { readFileSync } from 'fs';
+import {APP_BASE_HREF} from '@angular/common';
 
 // Faster server renders w/ Prod mode (dev mode never needed)
 enableProdMode();
@@ -33,7 +34,8 @@ app.engine('html', (_, options, callback) => {
     url: options.req.url,
     // DI so that we can get lazy-loading to work differently (since we need it to just instantly render it)
     extraProviders: [
-      provideModuleMap(LAZY_MODULE_MAP)
+      provideModuleMap(LAZY_MODULE_MAP),
+      {provide: APP_BASE_HREF, useValue: properties.serverBaseUri}
     ]
   }).then(html => {
     callback(null, html);
