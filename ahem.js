@@ -31,7 +31,7 @@ mongo.MongoClient.connect(properties.mongoConnectUrl, { useNewUrlParser: true },
   /**
    * Create HTTP server.
    */
-  const server = http.createServer(serverApp);
+  const server = http.createServer(serverapp);
   const port = process.env.PORT || properties.appListenPort || '3000';
 
   /**
