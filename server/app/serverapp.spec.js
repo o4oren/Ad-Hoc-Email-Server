@@ -78,16 +78,19 @@ describe('alive API', () => {
 });
 
 describe('List emails', () => {
+  let emailInfo;
+  let token;
 
   test('List emails', done => {
     function callback(error, response, body) {
       expect(response.statusCode).toBe(200);
-      expect(JSON.parse(body)[0].subject).toBe('AHEM mail test! ✔');
+      emailInfo = JSON.parse(body)[0];
+      expect(emailInfo.subject).toBe('AHEM mail test! ✔');
       done();
     }
 
     request.post(properties.serverBaseUri + '/api/auth/token', {}, (error, response, body) => {
-      const token = JSON.parse(body).token;
+      token = JSON.parse(body).token;
       let options = {
         url: properties.serverBaseUri + '/api/mailbox/alive-test/email',
         headers: {"Authorization": "Bearer " + token}
@@ -98,7 +101,23 @@ describe('List emails', () => {
       }, 1500);
     });
   });
+
+  test('Get email details', done => {
+    function callback(error, response, body) {
+      expect(response.statusCode).toBe(200);
+      let email = JSON.parse(body);
+      expect(email.attachments.length).toBe(1);
+      done();
+    }
+    let options = {
+      url: properties.serverBaseUri + '/api/mailbox/alive-test/email/' + emailInfo.emailId,
+      headers: {"Authorization": "Bearer " + token}
+    }
+    request(options, callback);
+  });
 });
+
+
 
 describe('Token access', () => {
   test('Token access with no token - 401', done => {
