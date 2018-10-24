@@ -28,5 +28,5 @@ install:
   - npm install
 
 script:
-  - npm run testServer
   - npm run build:ssr
+  - npm run testServer
