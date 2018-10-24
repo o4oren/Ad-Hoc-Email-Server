@@ -41,5 +41,5 @@ mongo.MongoClient.connect(properties.mongoConnectUrl, { useNewUrlParser: true },
     logger.info('API server listening');
   });
 
-  const smtp = require('./server/app/smtp')(properties, baseDir, db, logger);
+  const smtp = require('./server/app/smtp')(properties, db);
 });

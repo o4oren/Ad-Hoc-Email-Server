@@ -32,7 +32,7 @@ beforeAll(done => {
     /**
      * Listen on provided port, on all network interfaces.
      */
-    smtp = require('./smtp')(properties, baseDir, db, logger);
+    smtp = require('./smtp')(properties, db);
 
     server.listen(port, async () => {
       logger.info('API server listening');
@@ -72,19 +72,12 @@ describe('alive API', () => {
     }
     request.get(properties.serverBaseUri + '/api/alive', callback);
   });
+});
 
-  test('Check that without token we get 401', done => {
-    function callback(error, response, body) {
-      logger.info(body)
-      expect(response.statusCode).toBe(401);
-      done();
-    }
-    request.get(properties.serverBaseUri + '/api/mailbox/test-alive', callback);
-  });
+describe('List emails', () => {
 
-  test('Check mail', done => {
+  test('List emails', done => {
     function callback(error, response, body) {
-      logger.info(body)
       expect(response.statusCode).toBe(200);
       expect(JSON.parse(body)[0].subject).toBe('AHEM mail test! ✔');
       done();
@@ -95,16 +88,34 @@ describe('alive API', () => {
       let options = {
         url: properties.serverBaseUri + '/api/mailbox/alive-test/email',
         headers: {"Authorization": "Bearer " + token}
-    }
+      }
       //wait for mail to arrive
       setTimeout(() => {
         request.get(options, callback);
       }, 1500);
-
     });
-
   });
+});
 
+describe('Token access', () => {
+  test('Token access with no token - 401', done => {
+    function callback(error, response, body) {
+      expect(response.statusCode).toBe(401);
+      done();
+    }
+    request.get(properties.serverBaseUri + '/api/mailbox/test-alive', callback);
+  });
+  test('Token access with invalid token - 401', done => {
+    function callback(error, response, body) {
+      expect(response.statusCode).toBe(401);
+      done();
+    }
+    let options = {
+      url: properties.serverBaseUri + '/api/mailbox/alive-test/email',
+      headers: {"Authorization": "Bearer " + 'stam token'}
+    }
+    request.get(options, callback);
+  });
 });
 
 
