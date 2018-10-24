@@ -85,11 +85,10 @@ describe('alive API', () => {
   test('Check mail', done => {
     function callback(error, response, body) {
       logger.info(body)
-      expect(response.statusCode).not.toBe(401);
-      expect(response.statusCode).not.toBe(500);
+      expect(response.statusCode).toBe(200);
+      expect(JSON.parse(body)[0].subject).toBe('AHEM mail test! ✔');
       done();
     }
-
 
     request.post(properties.serverBaseUri + '/api/auth/token', {}, (error, response, body) => {
       const token = JSON.parse(body).token;
@@ -97,7 +96,11 @@ describe('alive API', () => {
         url: properties.serverBaseUri + '/api/mailbox/alive-test/email',
         headers: {"Authorization": "Bearer " + token}
     }
-      request.get(options, callback);
+      //wait for mail to arrive
+      setTimeout(() => {
+        request.get(options, callback);
+      }, 1500);
+
     });
 
   });
