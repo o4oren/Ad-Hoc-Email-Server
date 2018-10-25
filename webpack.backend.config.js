@@ -12,7 +12,7 @@ module.exports = {
   // this makes sure we include node_modules and other 3rd party libraries
   externals: [/node_modules/],
   output: {
-    path: path.join(__dirname, 'dist-bakcend'),
+    path: path.join(__dirname, 'dist-backend'),
     filename: '[name].js'
   },
   module: {

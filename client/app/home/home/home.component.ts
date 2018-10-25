@@ -74,6 +74,20 @@ export class HomeComponent implements OnInit {
         iconName: 'laptop-code',
         iconGroup: 'fas'
       },
+      {
+        title: 'High fidelity',
+        text: 'Complex graphics within emails are rendered faithfully, ' +
+        'to a much better result that some of the other temporary email solutions. ' +
+        'You will see the email as the sender intended.',
+        iconName: 'tv',
+        iconGroup: 'fas'
+      },
+      {
+        title: 'Mobile friendly',
+        text: 'AHEM is responsive and is just as usable and on a small screen device.',
+        iconName: 'mobile-alt',
+        iconGroup: 'fas'
+      }
     ];
   }
 }
