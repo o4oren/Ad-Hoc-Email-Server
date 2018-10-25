@@ -6,7 +6,7 @@
     "ng": "ng",
     "start": "concurrently --kill-others \"node ahem.js\" \"ng serve --proxy-config proxy.conf.json\"",
     "test": "ng test",
-    "testServer": "node_modules/jest/bin/jest.js **/*/serverapp.spec.js",
+    "testServer": "node_modules/jest/bin/jest.js --detectOpenHandles **/*/serverapp.spec.js",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "build": "npm install && npm rebuild node-sass && ng build",
@@ -14,7 +14,9 @@
     "build:ssr": "npm run build:client-and-server-bundles && npm run webpack:server",
     "serve:ssr": "node dist/universalServer --proxy-config proxy.conf.json",
     "build:client-and-server-bundles": "ng build --prod && ng run ahem-universal:server",
-    "webpack:server": "webpack --config webpack.server.config.js --progress --colors --display-error-details"
+    "webpack:server": "webpack --config webpack.server.config.js --progress --colors --display-error-details",
+    "webpack:backend": "webpack --config webpack.backend.config.js --progress --colors --display-error-details"
+
   },
   "private": true,
   "dependencies": {
