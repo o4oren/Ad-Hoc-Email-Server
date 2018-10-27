@@ -67,7 +67,7 @@ library.add(faMeh, faEnvelope, faEnvelopeOpen, faBars, faTrash, faTrashAlt, faCl
     MatIconModule,
     MatButtonModule,
     MatExpansionModule,
-    Angulartics2Module.forRoot([ Angulartics2GoogleAnalytics ]),
+    Angulartics2Module.forRoot(),
     HomeModule,
     SharedModule,
     CoreRoutingModule
