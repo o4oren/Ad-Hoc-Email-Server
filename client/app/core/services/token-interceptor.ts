@@ -4,11 +4,13 @@ import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs/internal/Observable';
 import { tap, mergeMap } from 'rxjs/operators';
 import {AuthService} from './auth.service';
+import {ApiService} from './api.service';
+import {EmailInfo} from '../../model/email-info-model';
 
 
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {
-  constructor(private authService: AuthService) { }
+  constructor(private apiService: ApiService, private authService: AuthService) { }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
@@ -30,7 +32,13 @@ export class TokenInterceptor implements HttpInterceptor {
           this.authService.authenticate().pipe(mergeMap(res => {
             localStorage.setItem('access_token', res.token);
             authReq = req.clone({ headers: req.headers.set('Authorization', 'Bearer ' + this.authService.getToken())});
-            return next.handle(authReq);
+            return next.handle(authReq).pipe(tap((event: HttpEvent<any>) => {
+              console.log('event', event)
+              if (event instanceof HttpResponse && event.url.match(/\/api\/mailbox\/.+\/email$/g)) {
+                this.apiService.emails.next(event.body);
+              }
+              return event;
+            }));
           })).subscribe();
         } else if (err.status === 403) {
           console.log('Error 403', err);
