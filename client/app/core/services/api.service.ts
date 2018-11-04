@@ -5,11 +5,18 @@ import {HttpClient} from '@angular/common/http';
 import {EmailInfo} from '../../model/email-info-model';
 import {EmailDetails} from '../../model/email-details-model';
 import {AhemProperties} from '../../model/properties-model';
-
+import {BehaviorSubject} from 'rxjs/internal/BehaviorSubject';
+enum SortBy {
+  Timestamp, Sender, Subject
+}
 @Injectable()
 export class ApiService {
 
+
+
   baseUri: string;
+  emails: BehaviorSubject<Array<EmailInfo>> = new BehaviorSubject<Array<EmailInfo>>([]);
+
 
   constructor(private http: HttpClient,
               @Optional() @Inject(APP_BASE_HREF) origin: string) {
@@ -25,9 +32,12 @@ export class ApiService {
     return this.http.post(url, {prefix: prefix});
   }
 
-  listMailboxEmails(mailbox: string): Observable<Array<EmailInfo>> {
+  listMailboxEmails(mailbox: string) {
     const url: string = this.baseUri + '/api/mailbox/' + mailbox + '/email';
-    return this.http.get<Array<EmailInfo>>(url);
+    this.http.get<Array<EmailInfo>>(url).subscribe(emails => {
+      emails = this.sortEmails(emails, SortBy.Timestamp, true);
+      this.emails.next(emails);
+    });
   }
 
   getEmailContent(mailbox: string, emailId: string): Observable<EmailDetails> {
@@ -45,6 +55,16 @@ export class ApiService {
   deleteEmail(mailbox: string, timestamp: string) {
     const url: string = this.baseUri + '/api/mailbox/' + mailbox + '/email/' + timestamp;
     return this.http.delete(url);
+  }
+
+  sortEmails(emailsArrary: EmailInfo[], sortBy: SortBy, reverse: boolean): EmailInfo[] {
+    emailsArrary.sort((a, b) => {
+      if (reverse) {
+        return b.timestamp - a.timestamp;
+      }
+      return a.timestamp - b.timestamp;
+    });
+    return emailsArrary;
   }
 
 }

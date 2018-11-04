@@ -1,12 +1,12 @@
 <div class="ahem-centered ahem-overflow">
   <mat-list *ngIf="!selectedEmail" class="ahem-email-list">
-    <div *ngIf="emails && emails.length>0">
-      <div *ngFor='let email of emails' (click)="clickedEmail(email)" class="ahem-email-list-item" [ngClass]="{'ahem-email-selected': email.isSelected }">
+    <div *ngIf="(apiService.emails | async)?.length>0">
+      <div *ngFor='let email of apiService.emails | async' (click)="clickedEmail(email)" class="ahem-email-list-item" [ngClass]="{'ahem-email-selected': email.isSelected }">
         <app-email-info [emailInfo]="email"></app-email-info>
         <mat-divider></mat-divider>
       </div>
     </div>
-    <div *ngIf="emails && emails.length===0">
+    <div *ngIf="(apiService.emails | async)?.length==0">
       <div>
         This mailbox is currently empty.
         EMails sent to {{getEmptyMailboxText()}} will be listed here.
