@@ -11,7 +11,7 @@ body {
 }
 
 .link {
-  color: blue;
+  color: #4990e2 !important;
 }
 
 .swagger-ui body {
