@@ -6,7 +6,7 @@ import {AhemProperties} from '../../model/properties-model';
 import {HomePageItem} from '../home-page-item/home-page-item.component';
 import {DurationPipe} from 'ngx-moment';
 import {duration} from 'moment';
-import { SeoService } from 'client/app/core/services/seo.service';
+import { SeoService } from '../../core/services/seo.service';
 
 @Component({
   selector: 'app-home',
