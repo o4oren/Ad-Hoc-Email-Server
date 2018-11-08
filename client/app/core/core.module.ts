@@ -32,6 +32,7 @@ import {HomeModule} from '../home/home.module';
 import {ConfigService} from './services/config.service';
 import {DurationPipe, MomentModule} from 'ngx-moment';
 import {TokenInterceptor} from './services/token-interceptor';
+import { SeoService } from './services/seo.service';
 
 export function initializeApp(ahemProperties: ConfigService) {
   return () => ahemProperties.load();
@@ -90,6 +91,7 @@ library.add(faMeh, faEnvelope, faEnvelopeOpen, faBars, faTrash, faTrashAlt, faCl
     },
     DurationPipe,
     ApiService,
+    SeoService,
     MatIconRegistry,
     DeviceService],
 })

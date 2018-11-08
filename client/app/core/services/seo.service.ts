@@ -1,23 +1,27 @@
 import { Injectable, Inject } from '@angular/core';
-import { Title, DOCUMENT } from '@angular/platform-browser';
+import { Title, DOCUMENT, Meta } from '@angular/platform-browser';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SeoService {
 
-  constructor(private title: Title, @Inject(DOCUMENT) private doc) {
+  constructor(private title: Title, @Inject(DOCUMENT) private doc, private metaService: Meta) {
   }
-  setPageTitle(title: string) {
+  setTitle(title: string) {
      this.title.setTitle(title);
   }
   getPageTitle() {
      return this.title.getTitle();
   }
+  updateMetaTag(name: string, content: string) {
+    this.metaService.updateTag({name: name, conent: content});
+ }
   createLinkForCanonicalURL() {
      const link: HTMLLinkElement = this.doc.createElement('link');
      link.setAttribute('rel', 'canonical');
      this.doc.head.appendChild(link);
+     console.log('setting rel link', this.doc.URL.replace('http', 'https'));
      link.setAttribute('href', this.doc.URL.replace('http', 'https'));
   }
 }

@@ -1,11 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {Meta, Title} from '@angular/platform-browser';
 import {DeviceService} from '../../core/services/device.service';
 import {ConfigService} from '../../core/services/config.service';
 import {AhemProperties} from '../../model/properties-model';
 import {HomePageItem} from '../home-page-item/home-page-item.component';
 import {DurationPipe} from 'ngx-moment';
-import {duration} from 'moment';
 import { SeoService } from '../../core/services/seo.service';
 
 @Component({
@@ -18,17 +16,15 @@ export class HomeComponent implements OnInit {
   properties: AhemProperties;
 
   items: Array<HomePageItem> = [];
-  constructor(public deviceService: DeviceService, seoService: SeoService, titleService: Title,
-    metaService: Meta, private durationPipe: DurationPipe) {
+  constructor(public deviceService: DeviceService, seoService: SeoService, private durationPipe: DurationPipe) {
 
-    titleService.setTitle('AHEM - an Ad-Hoc Disposable Temporary Email Address');
+    seoService.setTitle('AHEM - an Ad-Hoc Disposable Temporary Email Address');
     seoService.createLinkForCanonicalURL();
-    metaService.updateTag({
-      name: 'description', content: 'AHEM - an Ad-Hoc Disposable Temporary Email Address. ' +
+    seoService.updateMetaTag('description', 'AHEM - an Ad-Hoc Disposable Temporary Email Address. ' +
       'Ad-hoc - created on demand. Disposable - ' +
       'you can throw it away. ' +
       'Temporary - your emails will be delete automatically. Don\'t expose your real E-mail. Use AHEM to fight SPAM.'
-    });
+    );
     this.properties = ConfigService.properties;
   }
 
