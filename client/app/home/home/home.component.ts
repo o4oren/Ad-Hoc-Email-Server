@@ -18,7 +18,7 @@ export class HomeComponent implements OnInit {
   properties: AhemProperties;
 
   items: Array<HomePageItem> = [];
-  constructor(public deviceService: DeviceService, seoService: SeoService ,titleService: Title,
+  constructor(public deviceService: DeviceService, seoService: SeoService, titleService: Title,
     metaService: Meta, private durationPipe: DurationPipe) {
 
     titleService.setTitle('AHEM - an Ad-Hoc Disposable Temporary Email Address');
