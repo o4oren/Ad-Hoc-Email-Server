@@ -6,6 +6,7 @@ import {AhemProperties} from '../../model/properties-model';
 import {HomePageItem} from '../home-page-item/home-page-item.component';
 import {DurationPipe} from 'ngx-moment';
 import {duration} from 'moment';
+import { SeoService } from 'client/app/core/services/seo.service';
 
 @Component({
   selector: 'app-home',
@@ -17,9 +18,11 @@ export class HomeComponent implements OnInit {
   properties: AhemProperties;
 
   items: Array<HomePageItem> = [];
-  constructor(public deviceService: DeviceService, titleService: Title, metaService: Meta, private durationPipe: DurationPipe) {
+  constructor(public deviceService: DeviceService, seoService: SeoService ,titleService: Title,
+    metaService: Meta, private durationPipe: DurationPipe) {
 
     titleService.setTitle('AHEM - an Ad-Hoc Disposable Temporary Email Address');
+    seoService.createLinkForCanonicalURL();
     metaService.updateTag({
       name: 'description', content: 'AHEM - an Ad-Hoc Disposable Temporary Email Address. ' +
       'Ad-hoc - created on demand. Disposable - ' +
