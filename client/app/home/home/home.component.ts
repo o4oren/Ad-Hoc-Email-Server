@@ -16,10 +16,9 @@ export class HomeComponent implements OnInit {
   properties: AhemProperties;
 
   items: Array<HomePageItem> = [];
-  constructor(public deviceService: DeviceService, seoService: SeoService, private durationPipe: DurationPipe) {
+  constructor(public deviceService: DeviceService, private seoService: SeoService, private durationPipe: DurationPipe) {
 
     seoService.setTitle('AHEM - an Ad-Hoc Disposable Temporary Email Address');
-    seoService.createLinkForCanonicalURL();
     seoService.updateMetaTag('description', 'AHEM - an Ad-Hoc Disposable Temporary Email Address. ' +
       'Ad-hoc - created on demand. Disposable - ' +
       'you can throw it away. ' +
@@ -30,6 +29,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.createHomePageItems();
+    this.seoService.createLinkForCanonicalURL();
   }
 
   createHomePageItems() {
