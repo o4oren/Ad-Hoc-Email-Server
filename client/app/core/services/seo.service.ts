@@ -19,11 +19,15 @@ export class SeoService {
   updateMetaTag(tag: MetaDefinition) {
     this.metaService.updateTag(tag);
  }
-  createLinkForCanonicalURL(cannonicalUrl: string) {
+  createLinkForCanonicalURL(cannonicalUrl?: string) {
      const link: HTMLLinkElement = this.doc.createElement('link');
      link.setAttribute('rel', 'canonical');
      this.doc.head.appendChild(link);
-     link.setAttribute('href', cannonicalUrl);
+     if (cannonicalUrl) {
+       link.setAttribute('href', cannonicalUrl);
+     } else {
+       link.setAttribute('href', this.doc.URL);
+     }
   }
 }
 
