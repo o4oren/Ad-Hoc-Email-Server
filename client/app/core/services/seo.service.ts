@@ -1,5 +1,5 @@
 import { Injectable, Inject } from '@angular/core';
-import { Title, DOCUMENT, Meta } from '@angular/platform-browser';
+import {Title, DOCUMENT, Meta, MetaDefinition} from '@angular/platform-browser';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +14,7 @@ export class SeoService {
   getPageTitle() {
      return this.title.getTitle();
   }
-  updateMetaTag(tag: MetaTag) {
+  updateMetaTag(tag: MetaDefinition) {
     this.metaService.updateTag(tag);
  }
   createLinkForCanonicalURL() {
@@ -25,7 +25,3 @@ export class SeoService {
   }
 }
 
-export interface MetaTag {
-  name: string;
-  content: string;
-}
