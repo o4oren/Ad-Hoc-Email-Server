@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {MatTableDataSource} from '@angular/material';
-import {Meta, Title} from '@angular/platform-browser';
 import {ConfigService} from '../../core/services/config.service';
+import {SeoService} from '../../core/services/seo.service';
 
 @Component({
   selector: 'app-api-documentation',
@@ -76,9 +75,9 @@ export class ApiDocumentationComponent implements OnInit {
     }
   ];
 
-  constructor(titleService: Title, metaService: Meta) {
-    titleService.setTitle('AHEM - API Documentation');
-    metaService.updateTag({name: 'description', content: 'AHEM - Ad-Hoc Email - API Documentation. '});
+  constructor(seoService: SeoService) {
+    seoService.setTitle('AHEM - API Documentation');
+    seoService.updateMetaTag({name: 'description', content: 'AHEM - Ad-Hoc Email - API Documentation. '});
   }
 
   ngOnInit() {

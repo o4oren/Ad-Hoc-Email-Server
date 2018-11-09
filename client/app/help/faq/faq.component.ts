@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ConfigService} from '../../core/services/config.service';
-import {Meta, Title} from '@angular/platform-browser';
+import {SeoService} from '../../core/services/seo.service';
 
 @Component({
   selector: 'app-faq',
@@ -13,10 +13,10 @@ export class FaqComponent implements OnInit {
   h2 = 'Frequently Asked Questions';
   properties = ConfigService.properties;
 
-  constructor(titleService: Title, metaService: Meta) {
+  constructor(seoService: SeoService) {
 
-    titleService.setTitle('AHEM - Ad-Hoc Email FAQ');
-    metaService.updateTag({
+    seoService.setTitle('AHEM - Ad-Hoc Email FAQ');
+    seoService.updateMetaTag({
       name: 'description', content: 'AHEM - Ad Hoc Email Service - Frequently Asked Questions.'
     });
   }

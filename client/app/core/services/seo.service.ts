@@ -14,8 +14,8 @@ export class SeoService {
   getPageTitle() {
      return this.title.getTitle();
   }
-  updateMetaTag(name: string, content: string) {
-    this.metaService.updateTag({name: name, conent: content});
+  updateMetaTag(tag: MetaTag) {
+    this.metaService.updateTag(tag);
  }
   createLinkForCanonicalURL() {
      const link: HTMLLinkElement = this.doc.createElement('link');
@@ -23,4 +23,9 @@ export class SeoService {
      this.doc.head.appendChild(link);
      link.setAttribute('href', this.doc.URL);
   }
+}
+
+export interface MetaTag {
+  name: string;
+  content: string;
 }

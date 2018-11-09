@@ -1,10 +1,10 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ApiService} from '../../core/services/api.service';
-import {Meta, Title} from '@angular/platform-browser';
 import {EmailInfo} from '../../model/email-info-model';
 import {Subscription} from 'rxjs/internal/Subscription';
 import {ConfigService} from '../../core/services/config.service';
+import {SeoService} from '../../core/services/seo.service';
 
 @Component({
   selector: 'app-mailbox-emails',
@@ -21,21 +21,20 @@ export class MailboxEmailsListComponent implements OnInit, OnDestroy {
   constructor(private apiService: ApiService,
       private route: ActivatedRoute,
       private router: Router,
-      private titleService: Title,
-      private metaService: Meta) {}
+      private seoService: SeoService) {}
 
   ngOnInit() {
     this.paramsSub = this.route.params.subscribe(params => {
       if (params['mailbox'] == null) {
-        this.metaService.updateTag({ name: 'description', content: 'AHEM - mailboxes'});
-        this.titleService.setTitle('AHEM - Mailboxes');
+        this.seoService.updateMetaTag({ name: 'description', content: 'AHEM - mailboxes'});
+        this.seoService.setTitle('AHEM - Mailboxes');
       } else {
       }
       this.emailId = params['emailId'];
       if (!this.mailbox || this.mailbox.toLowerCase() !== params['mailbox'].toLowerCase()) {
         this.mailbox = params['mailbox'].toLowerCase();
-        this.metaService.updateTag({ name: 'description', content: 'AHEM - ' + this.mailbox});
-        this.titleService.setTitle('AHEM - ' + this.mailbox);
+        this.seoService.updateMetaTag({ name: 'description', content: 'AHEM - ' + this.mailbox});
+        this.seoService.setTitle('AHEM - ' + this.mailbox);
         this.apiService.listMailboxEmails(this.mailbox);
       } else {
         this.selectEmail(this.getEmailFromTimeStamp(this.emailId));

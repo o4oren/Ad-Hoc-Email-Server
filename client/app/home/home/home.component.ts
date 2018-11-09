@@ -19,10 +19,10 @@ export class HomeComponent implements OnInit {
   constructor(public deviceService: DeviceService, private seoService: SeoService, private durationPipe: DurationPipe) {
 
     seoService.setTitle('AHEM - an Ad-Hoc Disposable Temporary Email Address');
-    seoService.updateMetaTag('description', 'AHEM - an Ad-Hoc Disposable Temporary Email Address. ' +
+    seoService.updateMetaTag({name: 'description', content: 'AHEM - an Ad-Hoc Disposable Temporary Email Address. ' +
       'Ad-hoc - created on demand. Disposable - ' +
       'you can throw it away. ' +
-      'Temporary - your emails will be delete automatically. Don\'t expose your real E-mail. Use AHEM to fight SPAM.'
+      'Temporary - your emails will be delete automatically. Don\'t expose your real E-mail. Use AHEM to fight SPAM.'}
     );
     this.properties = ConfigService.properties;
   }

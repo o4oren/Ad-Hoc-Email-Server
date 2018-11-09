@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import {Meta, Title} from '@angular/platform-browser';
+import {SeoService} from '../../core/services/seo.service';
 
 @Component({
   selector: 'app-privacy-policy',
@@ -10,9 +10,9 @@ import {Meta, Title} from '@angular/platform-browser';
 export class PrivacyPolicyComponent implements OnInit {
 
 
-  constructor(titleService: Title, metaService: Meta) {
-    titleService.setTitle('AHEM - Privacy Policy');
-    metaService.updateTag({ name: 'description', content: 'AHEM - Temporary Disposable Email Service - Privacy Policy. '});
+  constructor(seoService: SeoService) {
+    seoService.setTitle('AHEM - Privacy Policy');
+    seoService.updateMetaTag({ name: 'description', content: 'AHEM - Temporary Disposable Email Service - Privacy Policy. '});
 
   }
 

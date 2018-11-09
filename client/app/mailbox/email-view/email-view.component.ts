@@ -1,10 +1,11 @@
-import {Component, Input, OnDestroy, OnInit, Output, ViewEncapsulation} from '@angular/core';
+import {Component, Input, OnDestroy, OnInit, ViewEncapsulation} from '@angular/core';
 import {ApiService} from '../../core/services/api.service';
 import {ActivatedRoute} from '@angular/router';
 import {EmailDetails} from '../../model/email-details-model';
-import {DomSanitizer, SafeHtml, Title} from '@angular/platform-browser';
+import {DomSanitizer, SafeHtml} from '@angular/platform-browser';
 import {Subscription} from 'rxjs/internal/Subscription';
 import {EmailInfo} from '../../model/email-info-model';
+import {SeoService} from '../../core/services/seo.service';
 
 @Component({
   selector: 'app-email-view',
@@ -35,7 +36,7 @@ export class EmailViewComponent implements OnInit, OnDestroy {
   constructor(private apiService: ApiService,
               private route: ActivatedRoute,
               private domSanitizer: DomSanitizer,
-              private titleService: Title) { }
+              private seoService: SeoService) { }
 
   ngOnInit() {
     this.paramsSub = this.route.params.subscribe(params => {
@@ -57,7 +58,7 @@ export class EmailViewComponent implements OnInit, OnDestroy {
     this.apiService.getEmailContent(this.mailbox, this.email.emailId).subscribe(result => {
       // this.isLoading = false;
       this.emailDetails = result;
-      this.titleService.setTitle('AHEM - ' + this.mailbox + ' - ' + this.emailDetails.subject);
+      this.seoService.setTitle('AHEM - ' + this.mailbox + ' - ' + this.emailDetails.subject);
       this.loading = false;
     });
   }
