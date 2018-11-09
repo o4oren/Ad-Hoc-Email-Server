@@ -6,10 +6,10 @@ import {Location} from '@angular/common';
 })
 export class SeoService {
 
-  constructor(private title: Title, @Inject(DOCUMENT) private doc, private metaService: Meta, private location: Location) {}
+  constructor(private title: Title, @Inject(DOCUMENT) private doc, private metaService: Meta) {}
   setTitle(title: string) {
     console.log(this.doc.URL);
-    this.createLinkForCanonicalURL(this.location.path());
+    this.createLinkForCanonicalURL(this.doc.URL);
     this.title.setTitle(title);
   }
   getPageTitle() {
