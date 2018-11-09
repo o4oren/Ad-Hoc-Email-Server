@@ -29,7 +29,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.createHomePageItems();
-    this.seoService.createLinkForCanonicalURL();
+    this.seoService.createLinkForCanonicalURL('https://www.ahem.email');
   }
 
   createHomePageItems() {
