@@ -1,16 +1,15 @@
 import { Injectable, Inject } from '@angular/core';
 import {Title, DOCUMENT, Meta, MetaDefinition} from '@angular/platform-browser';
-import {APP_BASE_HREF} from '@angular/common';
-
+import {Location} from '@angular/common';
 @Injectable({
   providedIn: 'root'
 })
 export class SeoService {
 
-  constructor(private title: Title, @Inject(DOCUMENT) private doc, private metaService: Meta) {}
+  constructor(private title: Title, @Inject(DOCUMENT) private doc, private metaService: Meta, private location: Location) {}
   setTitle(title: string) {
     console.log(this.doc.URL);
-    this.createLinkForCanonicalURL(this.doc.URL);
+    this.createLinkForCanonicalURL(this.location.path());
     this.title.setTitle(title);
   }
   getPageTitle() {
