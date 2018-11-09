@@ -8,8 +8,8 @@ export class SeoService {
 
   constructor(private title: Title, @Inject(DOCUMENT) private doc, private metaService: Meta) {}
   setTitle(title: string) {
-    console.log(this.doc.URL);
-    this.createLinkForCanonicalURL(this.doc.URL);
+    // console.log(this.doc.URL);
+    // this.createLinkForCanonicalURL(this.doc.URL);
     this.title.setTitle(title);
   }
   getPageTitle() {
