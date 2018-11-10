@@ -3,8 +3,8 @@
   xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
   xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
   <url>
-    <loc>https://www.ahem.email/</loc>
-    <lastmod>2018-11-09</lastmod>
+    <loc>https://www.ahem.email</loc>
+    <lastmod>2018-11-10</lastmod>
     <image:image>
       <image:loc>https://www.ahem.email/assets/svg/ahem-bluish.svg</image:loc>
       <image:caption>AHEM - an ad-hoc email logo</image:caption>
