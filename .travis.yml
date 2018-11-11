@@ -28,7 +28,9 @@ install:
 
 jobs:
   include:
-    - stage: Build
+    - stage: "Build"
       script: npm run build:ssr
-    - stage: Test server
+      name: "Build"
+    - stage: "Tests"                # naming the Tests stage
       script: npm run testServer
+      name: "Integration Tests"     # names the second Tests stage job
