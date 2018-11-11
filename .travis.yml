@@ -13,6 +13,7 @@ addons:
   chrome: stable
 
 node_js:
+  - "8"
   - "10"
 
 matrix:
@@ -26,11 +27,6 @@ before_install:
 install:
   - npm install
 
-jobs:
-  include:
-    - stage: "Build"
-      script: npm run build:ssr
-      name: "Build"
-    - stage: "Tests"                # naming the Tests stage
-      script: npm run testServer
-      name: "Integration Tests"     # names the second Tests stage job
+script:
+  - npm run build:ssr
+  - npm run testServer
