@@ -13,7 +13,6 @@ addons:
   chrome: stable
 
 node_js:
-  - "8"
   - "10"
 
 matrix:
@@ -27,6 +26,9 @@ before_install:
 install:
   - npm install
 
-script:
-  - npm run build:ssr
-  - npm run testServer
+jobs:
+  include:
+    - stage: Build
+      script: npm run build:ssr
+    - stage: Test server
+      script: npm run testServer
