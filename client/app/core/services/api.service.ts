@@ -37,7 +37,11 @@ export class ApiService {
     this.http.get<Array<EmailInfo>>(url).subscribe(emails => {
       emails = this.sortEmails(emails, SortBy.Timestamp, true);
       this.emails.next(emails);
-    });
+    }, error => {
+      if (error.status === 404) {
+        this.emails.next([]);
+      }
+      });
   }
 
   getEmailContent(mailbox: string, emailId: string): Observable<EmailDetails> {
