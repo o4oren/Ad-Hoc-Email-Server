@@ -17,7 +17,7 @@ export class MailboxEmailsListComponent implements OnInit, OnDestroy {
   mailbox: string;
   selectedEmail: EmailInfo;
   emailId: string;
-  timeoutId: any;
+  intervalId: any;
 
   constructor(private apiService: ApiService,
       private route: ActivatedRoute,
@@ -54,7 +54,7 @@ export class MailboxEmailsListComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.paramsSub.unsubscribe();
     this.emailsSub.unsubscribe();
-    clearInterval(this.timeoutId);
+    this.stopPollingForEmails();
   }
 
 
@@ -64,6 +64,7 @@ export class MailboxEmailsListComponent implements OnInit, OnDestroy {
         emailInfo.isRead = true;
       }
       this.selectedEmail = emailInfo;
+      this.stopPollingForEmails();
       this.apiService.markAsReadOrUnread(this.mailbox, this.selectedEmail.emailId, true).subscribe();
     }
   }
@@ -111,6 +112,10 @@ export class MailboxEmailsListComponent implements OnInit, OnDestroy {
 
   private startPollingForEmails() {
     this.apiService.listMailboxEmails(this.mailbox);
-    this.timeoutId = setInterval(() => { this.apiService.listMailboxEmails(this.mailbox); }, 5000);
+    this.intervalId = setInterval(() => { this.apiService.listMailboxEmails(this.mailbox); }, 5000);
+  }
+
+  private stopPollingForEmails() {
+    clearInterval(this.intervalId);
   }
 }

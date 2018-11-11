@@ -1,3 +1,8 @@
+<mat-toolbar *ngIf="selectedEmail" color="accent" class="ahem-internal-toolbar">
+  <button mat-button (click)="navigateToMailbox()"><mat-icon>arrow_back</mat-icon> Back</button>
+  <button mat-button (click)="deleteFile()"><fa-icon [icon]="['fas', 'trash']"></fa-icon> Delete</button>
+  <button mat-button (click)="markAsReadOrUnread()"><fa-icon [icon]="['far', selectedEmail.isRead ? 'envelope' : 'envelope-open']"></fa-icon> Mark as {{selectedEmail.isRead ? 'unread' : 'read'}}</button>
+</mat-toolbar>
 <div class="ahem-centered ahem-overflow">
   <mat-list *ngIf="!selectedEmail" class="ahem-email-list">
     <div *ngIf="(apiService.emails | async)?.length>0">
