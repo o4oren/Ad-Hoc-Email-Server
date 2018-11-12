@@ -112,7 +112,7 @@ export class MailboxEmailsListComponent implements OnInit, OnDestroy {
 
   private startPollingForEmails() {
     this.apiService.listMailboxEmails(this.mailbox);
-    this.intervalId = setInterval(() => { this.apiService.listMailboxEmails(this.mailbox); }, 5000);
+    this.intervalId = setInterval(() => { this.apiService.listMailboxEmails(this.mailbox); }, 30000);
   }
 
   private stopPollingForEmails() {
