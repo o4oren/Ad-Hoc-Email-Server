@@ -8,6 +8,7 @@ import {HomeRoutingModule} from './home-routing.module';
 import { HomePageItemComponent } from './home-page-item/home-page-item.component';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import {MomentModule} from 'ngx-moment';
+import { EmailCountComponent } from './email-count/email-count.component';
 
 @NgModule({
   imports: [
@@ -19,7 +20,7 @@ import {MomentModule} from 'ngx-moment';
     MomentModule,
     HomeRoutingModule
   ],
-  declarations: [HomeComponent, HomePageItemComponent],
+  declarations: [HomeComponent, HomePageItemComponent, EmailCountComponent],
   exports: []
 })
 export class HomeModule { }

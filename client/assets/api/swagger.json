@@ -108,6 +108,40 @@
         }
       }
     },
+    "/api/emailCount": {
+      "get": {
+        "tags": [
+          "General"
+        ],
+        "summary": "Get server email count",
+        "description": "",
+        "operationId": "GetEmailCount",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "serverBaseUri": "https://www.ahem.email",
+                    "count": 654,
+                    "since": 1539648000
+                    },
+                  "$ref": "#/components/schemas/GetEmailCount"
+                }
+              }
+            }
+          }
+        },
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      }
+    },
     "/api/auth/token": {
       "post": {
         "tags": [
@@ -871,6 +905,24 @@
           ],
           "allowAutocomplete": false,
           "customText": null
+        }
+      },
+      "GetEmailCount": {
+        "title": "Get email count results response",
+        "type": "object",
+        "properties": {
+          "count": {
+            "type": "integer",
+            "example": 654
+          },
+          "since": {
+            "type": "integer",
+            "example": 1539648000
+          },
+          "example": {
+            "count": 654,
+            "since": 1539648000
+          }
         }
       },
       "GetAccessTokenResponse": {

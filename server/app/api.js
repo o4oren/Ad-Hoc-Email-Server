@@ -33,6 +33,19 @@ router.get('/properties', (req, res, next) => {
   });
 });
 
+router.get('/emailCount', (req, res, next) => {
+  req.db.collection('emailCount').findOne({}, function (err, emailCount) {
+    if (err) {
+      return res.status(500).json(err);
+    }
+    if (!emailCount) {
+      return res.status(200).json({ count: 0 })
+    }
+    delete emailCount._id;
+    return res.status(200).json(emailCount);
+  });
+});
+
 /**
  * get a token
  */

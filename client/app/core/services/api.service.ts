@@ -6,6 +6,7 @@ import {EmailInfo} from '../../model/email-info-model';
 import {EmailDetails} from '../../model/email-details-model';
 import {AhemProperties} from '../../model/properties-model';
 import {BehaviorSubject} from 'rxjs/internal/BehaviorSubject';
+import {EmailCount} from '../../model/email-count-model';
 
 enum SortBy {
   Timestamp, Sender, Subject
@@ -42,6 +43,11 @@ export class ApiService {
         this.emails.next([]);
       }
     });
+  }
+
+  getEmailCount(): Observable<EmailCount> {
+    const url: string = this.baseUri + '/api/emailCount';
+    return this.http.get<EmailCount>(url);
   }
 
   getEmailContent(mailbox: string, emailId: string): Observable<EmailDetails> {
