@@ -1,18 +1,18 @@
 import {Injectable, Optional, Inject, OnInit} from '@angular/core';
-import { APP_BASE_HREF } from '@angular/common';
+import {APP_BASE_HREF} from '@angular/common';
 import {Observable} from 'rxjs/internal/Observable';
 import {HttpClient} from '@angular/common/http';
 import {EmailInfo} from '../../model/email-info-model';
 import {EmailDetails} from '../../model/email-details-model';
 import {AhemProperties} from '../../model/properties-model';
 import {BehaviorSubject} from 'rxjs/internal/BehaviorSubject';
+
 enum SortBy {
   Timestamp, Sender, Subject
 }
+
 @Injectable()
 export class ApiService {
-
-
 
   baseUri: string;
   emails: BehaviorSubject<Array<EmailInfo>> = new BehaviorSubject<Array<EmailInfo>>([]);
@@ -41,7 +41,7 @@ export class ApiService {
       if (error.status === 404) {
         this.emails.next([]);
       }
-      });
+    });
   }
 
   getEmailContent(mailbox: string, emailId: string): Observable<EmailDetails> {
@@ -51,7 +51,7 @@ export class ApiService {
 
   markAsReadOrUnread(mailbox: string, emailId: string, isRead: boolean) {
     const url: string = this.baseUri + '/api/mailbox/' + mailbox + '/email/' + emailId;
-    const body = { 'isRead': isRead};
+    const body = {'isRead': isRead};
     return this.http.patch(url, body);
   }
 

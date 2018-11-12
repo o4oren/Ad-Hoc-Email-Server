@@ -62,7 +62,7 @@ function startSTMPServer(properties, db) {
               }
 
               // count email
-              db.collection('emailCount').updateOne({}, {$inc: {count: 1}}, {upsert: true});
+              db.collection('emailCount').updateOne({}, {$inc: {count: 1}, $setOnInsert: { since: new Date().getTime() }}, {upsert: true});
 
               mail.to.value.forEach(recipient => {
                 const nameAndDomain = recipient.address.split('@');
