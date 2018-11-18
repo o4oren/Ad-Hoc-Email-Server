@@ -4,7 +4,7 @@
   xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
   <url>
     <loc>https://www.ahem.email/</loc>
-    <lastmod>2018-11-10</lastmod>
+    <lastmod>2018-11-12</lastmod>
     <image:image>
       <image:loc>https://www.ahem.email/assets/svg/ahem-bluish.svg</image:loc>
       <image:caption>AHEM - an ad-hoc email logo</image:caption>
@@ -28,7 +28,7 @@
   </url>
   <url>
 	  <loc>https://www.ahem.email/api-doc</loc>
-    <lastmod>2018-11-07</lastmod>
+    <lastmod>2018-11-12</lastmod>
   </url>
   <url>
     <loc>https://www.ahem.email/help/faq</loc>

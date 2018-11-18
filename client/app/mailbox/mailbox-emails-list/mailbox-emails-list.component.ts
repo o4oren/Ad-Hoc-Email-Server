@@ -36,7 +36,7 @@ export class MailboxEmailsListComponent implements OnInit, OnDestroy {
         this.mailbox = params['mailbox'].toLowerCase();
         this.seoService.updateMetaTag({ name: 'description', content: 'AHEM - ' + this.mailbox});
         this.seoService.setTitle('AHEM - ' + this.mailbox);
-        this.startPollingForEmails();
+        this.apiService.listMailboxEmails(this.mailbox);
       } else {
         this.selectEmail(this.getEmailFromTimeStamp(this.emailId));
       }
@@ -54,7 +54,6 @@ export class MailboxEmailsListComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.paramsSub.unsubscribe();
     this.emailsSub.unsubscribe();
-    this.stopPollingForEmails();
   }
 
 
@@ -64,7 +63,6 @@ export class MailboxEmailsListComponent implements OnInit, OnDestroy {
         emailInfo.isRead = true;
       }
       this.selectedEmail = emailInfo;
-      this.stopPollingForEmails();
       this.apiService.markAsReadOrUnread(this.mailbox, this.selectedEmail.emailId, true).subscribe();
     }
   }
@@ -108,14 +106,5 @@ export class MailboxEmailsListComponent implements OnInit, OnDestroy {
 
   navigateToMailbox() {
     this.router.navigateByUrl('mailbox/' + this.mailbox);
-  }
-
-  private startPollingForEmails() {
-    this.apiService.listMailboxEmails(this.mailbox);
-    this.intervalId = setInterval(() => { this.apiService.listMailboxEmails(this.mailbox); }, 30000);
-  }
-
-  private stopPollingForEmails() {
-    clearInterval(this.intervalId);
   }
 }
