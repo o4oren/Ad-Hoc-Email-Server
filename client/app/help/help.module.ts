@@ -7,6 +7,7 @@ import {SharedModule} from '../shared/shared.module';
 import {MatCardModule, MatDividerModule, MatListModule, MatTableModule} from '@angular/material';
 import { FaqComponent } from './faq/faq.component';
 import {MomentModule} from 'ngx-moment';
+import { AboutComponent } from './about/about.component';
 
 @NgModule({
   imports: [
@@ -19,6 +20,6 @@ import {MomentModule} from 'ngx-moment';
     MatListModule,
     HelpRoutingModule
   ],
-  declarations: [ApiDocumentationComponent, FaqComponent]
+  declarations: [ApiDocumentationComponent, FaqComponent, AboutComponent]
 })
 export class HelpModule { }

@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {ApiDocumentationComponent} from './api-documentation/api-documentation.component';
 import {FaqComponent} from './faq/faq.component';
+import {AboutComponent} from './about/about.component';
 
 const routes: Routes = [
   {
@@ -11,6 +12,10 @@ const routes: Routes = [
   {
     path: 'faq',
     component: FaqComponent
+  },
+  {
+    path: 'about',
+    component: AboutComponent
   },
 ];
 
