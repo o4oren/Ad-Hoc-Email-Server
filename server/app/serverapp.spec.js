@@ -1,13 +1,27 @@
 require('jest');
 const assert = require('assert');
 const logger = require('./logger');
+const jwt = require('jsonwebtoken');
 const fs = require('fs');
 const path = require('path');
 const http = require('http');
 const baseDir = process.cwd();
 const mongoDb = require('mongodb');
 const request = require('request');
-const properties = require('../../properties.json');
+const properties = {
+  "serverBaseUri": "http://localhost:3000",
+  "mongoConnectUrl": "mongodb://localhost:27017/",
+  "dbName": "ahem",
+  "appListenPort": 3000,
+  "smtpPort" : 2525,
+  "emailDeleteInterval" : 3600,
+  "emailDeleteAge" : 86400,
+  "allowAutocomplete" : true,
+  "allowedDomains" : ["my.domain.com"],
+  "jwtSecret": "AH3M 709 S3cR3T",
+  "jwtExpiresIn": 3600,
+  "maxAllowedApiCalls": 10
+}
 let server;
 let serverApp;
 let smtp;
@@ -140,6 +154,15 @@ describe('Token access', () => {
     }
     request.get(options, callback);
   });
+  test('Token has predefined max allowed api calls', done => {
+    request.post(properties.serverBaseUri + '/api/auth/token', {}, (error, response, body) => {
+      let token = JSON.parse(body).token;
+      console.log(jwt.decode(token).maxAllowedApiCalls)
+      expect(jwt.decode(token).maxAllowedApiCalls).toBe(10);
+      done();
+    });
+  });
+
 });
 
 
