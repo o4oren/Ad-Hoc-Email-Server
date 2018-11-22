@@ -11,6 +11,7 @@ import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import {EmailInfoComponent} from './email-info/email-info.component';
 import {MomentModule} from 'ngx-moment';
 import {MailboxRoutingModule} from './mailbox-routing.module';
+import {AdsenseModule} from 'ng2-adsense';
 
 @NgModule({
   imports: [
@@ -24,6 +25,7 @@ import {MailboxRoutingModule} from './mailbox-routing.module';
     MomentModule,
     MatToolbarModule,
     FontAwesomeModule,
+    AdsenseModule,
     MailboxRoutingModule
   ],
   declarations: [
