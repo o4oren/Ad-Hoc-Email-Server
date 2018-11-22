@@ -47,6 +47,7 @@
     "moment": "^2.22.2",
     "mongodb": "^3.1.8",
     "morgan": "^1.9.1",
+    "ng2-adsense": "^5.3.4",
     "ngx-moment": "^3.1.0",
     "nodemon": "^1.18.5",
     "rxjs": "^6.3.3",

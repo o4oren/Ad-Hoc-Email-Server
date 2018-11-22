@@ -14,8 +14,6 @@ import {
   MatToolbarModule
 } from '@angular/material';
 import {CoreRoutingModule} from './core-routing.module';
-import {Angulartics2GoogleAnalytics} from 'angulartics2/ga';
-import {Angulartics2Module} from 'angulartics2';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ReactiveFormsModule} from '@angular/forms';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
@@ -33,6 +31,8 @@ import {ConfigService} from './services/config.service';
 import {DurationPipe, MomentModule} from 'ngx-moment';
 import {TokenInterceptor} from './services/token-interceptor';
 import { SeoService } from './services/seo.service';
+import {Angulartics2Module} from 'angulartics2';
+import {AdsenseModule} from 'ng2-adsense';
 
 export function initializeApp(ahemProperties: ConfigService) {
   return () => ahemProperties.load();
@@ -68,9 +68,13 @@ library.add(faMeh, faEnvelope, faEnvelopeOpen, faBars, faTrash, faTrashAlt, faCl
     MatIconModule,
     MatButtonModule,
     MatExpansionModule,
-    Angulartics2Module.forRoot(),
     HomeModule,
     SharedModule,
+    Angulartics2Module.forRoot(),
+    AdsenseModule.forRoot({
+      adClient: 'ca-pub-4119576279673540',
+      adSlot: 9150292677,
+    }),
     CoreRoutingModule
   ],
   exports: [

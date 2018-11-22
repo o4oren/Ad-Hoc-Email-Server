@@ -9,11 +9,13 @@ import { HomePageItemComponent } from './home-page-item/home-page-item.component
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import {MomentModule} from 'ngx-moment';
 import { EmailCountComponent } from './email-count/email-count.component';
+import {AdsenseModule} from 'ng2-adsense';
 
 @NgModule({
   imports: [
     CommonModule,
     MatCardModule,
+    AdsenseModule,
     SharedModule,
     FontAwesomeModule,
     MatIconModule,
