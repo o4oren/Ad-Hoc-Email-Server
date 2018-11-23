@@ -14,6 +14,7 @@ import { SeoService } from '../../core/services/seo.service';
 export class HomeComponent implements OnInit {
 
   properties: AhemProperties;
+  showAd = false;
 
   items: Array<HomePageItem> = [];
   constructor(public deviceService: DeviceService, private seoService: SeoService, private durationPipe: DurationPipe) {
@@ -29,6 +30,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.createHomePageItems();
+    this.showAd = this.seoService.shouldShowAd(0.7);
   }
 
   createHomePageItems() {

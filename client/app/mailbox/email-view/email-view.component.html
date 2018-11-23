@@ -20,6 +20,8 @@
         </div>
         <mat-divider></mat-divider>
 
+        <ng-adsense class="ng-adsense-center" *ngIf="this.seoService.shouldShowAd(0.5)" *appShellNoRender></ng-adsense>
+
         <mat-card-content class="ahem-email-content">
 
           <div *ngIf="emailDetails.html" [innerHTML]="emailDetails.html | htmlSanitizer"></div>

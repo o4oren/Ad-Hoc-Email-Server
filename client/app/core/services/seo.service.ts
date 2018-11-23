@@ -28,5 +28,15 @@ export class SeoService {
        link.setAttribute('href', this.doc.URL);
      }
   }
+
+  shouldShowAd(percentage?: Number) {
+    if (!percentage) {
+      percentage = 0.5;
+    }
+    if (Math.random() < percentage) {
+      return true;
+    }
+    return false;
+  }
 }
 
