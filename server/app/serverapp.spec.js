@@ -99,7 +99,13 @@ describe('Token access', () => {
 
     request(server)
       .get('/api/mailbox/test-alive/email')
-      .expect(401, done);
+      .expect(401)
+      .end((err, res) => {
+        // just wait 1 second, so the email arrives for next steps.
+        setTimeout(() => {
+          done();
+          }, 1000);
+      });
   });
 
   test('Token access with invalid token - 401', (done) => {
