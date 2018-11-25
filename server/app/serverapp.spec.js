@@ -98,13 +98,13 @@ describe('Token access', () => {
   test('Token access with no token - 401', (done) => {
 
     request(server)
-      .get('/api/mailbox/test-alive')
+      .get('/api/mailbox/test-alive/email')
       .expect(401, done);
   });
 
   test('Token access with invalid token - 401', (done) => {
     request(server)
-      .get('/api/mailbox/test-alive')
+      .get('/api/mailbox/test-alive/email')
       .set('Authentication', 'Bearer stam-token')
       .expect(401, done);
   });
