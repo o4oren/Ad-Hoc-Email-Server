@@ -19,7 +19,7 @@ const properties = {
   "allowAutocomplete" : true,
   "allowedDomains" : ["my.domain.com"],
   "jwtSecret": "AH3M 709 S3cR3T",
-  "jwtExpiresIn": 10,
+  "jwtExpiresIn": 120,
   "maxAllowedApiCalls": 10
 }
 let server;
@@ -57,13 +57,13 @@ beforeAll(done => {
 
 });
 
-afterAll(done => {
-  smtp.close(() => logger.info('SMTP Server closed!'));
-  mongoClient.close(true, () => logger.info('Mongo client closed!'));
-  server.close(() => logger.info('appServer stops listening'));
-  logger.info('All closed!');
-  done();
-});
+// afterAll(done => {
+//   smtp.close(() => logger.info('SMTP Server closed!'));
+//   mongoClient.close(true, () => logger.info('Mongo client closed!'));
+//   server.close(() => logger.info('appServer stops listening'));
+//   logger.info('All closed!');
+//   done();
+// });
 
 
 describe('properties API', () => {
@@ -78,8 +78,8 @@ describe('properties API', () => {
         if(err) {
           done(err);
         }
-          expect(res.body.allowAutocomplete).toBe(true);
-          done();
+        expect(res.body.allowAutocomplete).toBe(true);
+        done();
       });
   });
 });
@@ -154,7 +154,6 @@ describe('Token access', () => {
   });
 
   test('Verify 403 after 9 more tries', done => {
-
     function makeApiCall() {
       return request(server)
         .get('/api/mailbox/alive-test/email')
@@ -164,22 +163,23 @@ describe('Token access', () => {
 
 
     makeApiCall().expect(200)
-      .then(makeApiCall().expect(200)
-        .then(makeApiCall().expect(200)
-          .then(makeApiCall().expect(200)
-            .then(makeApiCall().expect(200)
-              .then(makeApiCall().expect(200)
-                .then(makeApiCall().expect(200)
-                  .then(makeApiCall().expect(200)
-                    .then(makeApiCall().expect(200)
-                      .then(makeApiCall().expect(200)
-                        .then(makeApiCall().expect(200)
-                          .then(makeApiCall().expect(200)
-                            .then(result => {
-                              done();
-                            })
-                          )
-                        )
+      .end(() => makeApiCall().expect(200)
+        .end(() => makeApiCall().expect(200)
+          .end(() => makeApiCall().expect(200)
+            .end(() => makeApiCall().expect(200)
+              .end(() => makeApiCall().expect(200)
+                .end(() => makeApiCall().expect(200)
+                  .end(() => makeApiCall().expect(200)
+                    .end(() => makeApiCall().expect(200)
+                      .end(() => makeApiCall()
+                        .expect(403)
+                        .end((err, res)=> {
+                          if(err) {
+                            done(err);
+                          }
+                          expect(res.body.message).toBe('API Quote Exceeded');
+                          done();
+                        })
                       )
                     )
                   )

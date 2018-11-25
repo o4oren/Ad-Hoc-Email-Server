@@ -78,11 +78,9 @@ function increaseApiCounter(req, res, next) {
         logger.info(err)
         return res.status(500).json({error: err});
       } else {
-        logger.info('increase api counter')
         next();
       }
     });
-
 }
 
 module.exports.createNewToken = createNewToken;
