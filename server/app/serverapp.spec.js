@@ -19,7 +19,7 @@ const properties = {
   "allowAutocomplete" : true,
   "allowedDomains" : ["my.domain.com"],
   "jwtSecret": "AH3M 709 S3cR3T",
-  "jwtExpiresIn": 3600,
+  "jwtExpiresIn": 10,
   "maxAllowedApiCalls": 10
 }
 let server;
@@ -94,6 +94,7 @@ describe('alive API', () => {
 });
 
 describe('Token access', () => {
+  let token = 'jasfwirjgiwrg';
   test('Token access with no token - 401', (done) => {
 
     request(server)
@@ -108,26 +109,88 @@ describe('Token access', () => {
       .expect(401, done);
   });
 
-  // test('Token access with invalid token - 401', done => {
-  //   function callback(error, response, body) {
-  //     expect(response.statusCode).toBe(401);
-  //     done();
-  //   }
-  //
-  //   let options = {
-  //     url: properties.serverBaseUri + '/api/mailbox/alive-test/email',
-  //     headers: {"Authorization": "Bearer " + 'stam token'}
-  //   }
-  //   request.get(options, callback);
-  // });
-  // test('Token has predefined max allowed api calls', done => {
-  //   request.post(properties.serverBaseUri + '/api/auth/token', {}, (error, response, body) => {
-  //     let token = JSON.parse(body).token;
-  //     console.log(jwt.decode(token).maxAllowedApiCalls)
-  //     expect(jwt.decode(token).maxAllowedApiCalls).toBe(10);
-  //     done();
-  //   });
-  // });
+  test('Get a valid token is valid', done => {
+    request(server)
+      .post('/api/auth/token')
+      .send({})
+      .set('Content-type', 'application/json')
+      .expect(200)
+      .end((err, res) => {
+        if(err) {
+          done(err);
+        }
+        token = res.body.token;
+        jwt.verify(token, properties.jwtSecret); //throws error if invalid
+        done();
+      })
+  });
+
+  test('Verify token is valid and is created with predefined max allowed', () => {
+    let decoded = jwt.verify(token, properties.jwtSecret);
+    expect(decoded.maxAllowedApiCalls).toBe(10);
+  });
+
+  test('Verify that the same token is returned from the same IP', done => {
+    request(server)
+      .post('/api/auth/token')
+      .send({})
+      .set('Content-type', 'application/json')
+      .expect(200)
+      .end((err, res) => {
+        if(err) {
+          done(err);
+        }
+        expect(res.body.token).toBe(token);
+        done();
+      })
+  });
+
+  test('Verify 200 with valid token', done => {
+    request(server)
+      .get('/api/mailbox/alive-test/email')
+      .set('Content-type', 'application/json')
+      .set('Authorization', 'Bearer ' + token)
+      .expect(200, done)
+  });
+
+  test('Verify 403 after 9 more tries', done => {
+
+    function makeApiCall() {
+      return request(server)
+        .get('/api/mailbox/alive-test/email')
+        .set('Content-type', 'application/json')
+        .set('Authorization', 'Bearer ' + token)
+    }
+
+
+    makeApiCall().expect(200)
+      .then(makeApiCall().expect(200)
+        .then(makeApiCall().expect(200)
+          .then(makeApiCall().expect(200)
+            .then(makeApiCall().expect(200)
+              .then(makeApiCall().expect(200)
+                .then(makeApiCall().expect(200)
+                  .then(makeApiCall().expect(200)
+                    .then(makeApiCall().expect(200)
+                      .then(makeApiCall().expect(200)
+                        .then(makeApiCall().expect(200)
+                          .then(makeApiCall().expect(200)
+                            .then(result => {
+                              done();
+                            })
+                          )
+                        )
+                      )
+                    )
+                  )
+                )
+              )
+            )
+          )
+        )
+      )
+
+  });
 
 });
 

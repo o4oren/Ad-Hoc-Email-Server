@@ -49,7 +49,7 @@ function verifyToken(req, res, next) {
         req.db.collection('tokens').findOne( {'ip': decoded.ip}, function (err, result) {
           if(err) {
             return res.status(500).json({error: err});
-          } else if(result.currentApiCount >= req.properties.maxAllowedApiCalls) {
+          } else if(result.currentApiCount >= decoded.maxAllowedApiCalls) {
             return res.status(403).send({ success: false, message: 'API Quote Exceeded' });
           } else {
             // if everything is good, save to request for use in other routes
