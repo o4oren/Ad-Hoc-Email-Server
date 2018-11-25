@@ -81,7 +81,6 @@
     "nodemailer": "^4.6.8",
     "nyc": "^13.1.0",
     "protractor": "~5.4.1",
-    "request-promise-native": "^1.0.5",
     "supertest": "^3.3.0",
     "ts-node": "^7.0.1",
     "tslint": "^5.11.0",
