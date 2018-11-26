@@ -204,7 +204,7 @@ describe('Token access', () => {
 
 
 
-describe('List emails', () => {
+describe('Emails', () => {
   let emailInfo;
   let token;
 
@@ -264,13 +264,64 @@ describe('List emails', () => {
       .set('Authorization', 'Bearer ' + token)
       .expect(404, done);
   });
+
+  test('Get attachment', done => {
+    request(server)
+      .get('/api/mailbox/alive-test/email/' + emailInfo.emailId + '/attachments/ahem-happy.png')
+      .set('Content-type', 'application/json')
+      .expect(200)
+      .expect('content-length', '57654')
+      .expect('content-type', 'image/png', done);
+  });
+
+  test('Get attachment that doesn\'t exist', done => {
+    request(server)
+      .get('/api/mailbox/alive-test/email/' + emailInfo.emailId + '/attachments/ahem-happppppy.png')
+      .set('Content-type', 'application/json')
+      .expect(404, done);
+  });
+
+  test('Get email counter', done => {
+    request(server)
+      .get('/api/emailCount')
+      .set('Content-type', 'application/json')
+      .expect(200)
+      .end((err, res) => {
+        expect(res.body.count).toBe(1);
+        expect(res.body.since).toBeTruthy();
+        expect(res.body.since).toBeLessThan(new Date().getTime());
+        done();
+      });
+  });
+
+
+  test('Delete email', done => {
+    request(server)
+      .delete('/api/mailbox/alive-test/email/' + emailInfo.emailId)
+      .set('Content-type', 'application/json')
+      .set('Authorization', 'Bearer ' + token)
+      .expect(200)
+      .end((err, res) => {
+        expect(res.body.success).toBe(true);
+        done();
+      });
+  });
+  test('Delete email that with data that generates and error', done => {
+    request(server)
+      .delete('/api/mailbox/alive-test/email/wegwrtwrt')
+      .set('Content-type', 'application/json')
+      .set('Authorization', 'Bearer ' + token)
+      .expect(500, done);
+  });
+
+  test('Delete email that with data that doesn\'t exist', done => {
+    request(server)
+      .delete('/api/mailbox/alive-test/email/' + emailInfo.emailId)
+      .set('Content-type', 'application/json')
+      .set('Authorization', 'Bearer ' + token)
+      .expect(404, done);
+  });
+
 });
-
-
-
-
-
-
-
 
 

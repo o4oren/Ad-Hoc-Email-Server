@@ -83,23 +83,27 @@ router.post('/auth/token', (req, res, next) => {
  */
 router.get('/mailbox/:mailbox/email/:emailId/attachments/:filename', (req, res) => {
   try {
-
     const objectId = ObjectID.createFromHexString(req.params.emailId);
     req.db.collection('emails').findOne({'_id': objectId}, function(err, mail) {
-        const attachmentsFound = mail.attachments.filter(attachment => {
+        const attachmentFound = mail.attachments.filter(attachment => {
           return attachment.filename === decodeURI(req.params.filename);
         });
-        console.log(attachmentsFound);
-        res.setHeader('Content-Type', attachmentsFound[0].contentType);
+        // if not found, return 404
+      if (attachmentFound.length === 0) {
+        return res.status(404).send({error: 'FILE NOT FOUND'});
+      }
+
+        // console.log(attachmentFound);
+        res.setHeader('Content-Type', attachmentFound[0].contentType);
         // res.setHeader('Content-disposition', 'attachment;filename=' + attachmentsFound[0].filename);
-        res.setHeader('Content-Length', attachmentsFound[0].size);
+        res.setHeader('Content-Length', attachmentFound[0].size);
         res.writeHead(200);
-        res.end(attachmentsFound[0].content.buffer);
+        res.end(attachmentFound[0].content.buffer);
       }
     );
-  } catch (e) {
+  } catch(e) {
     console.log(e);
-    return res.status(404).send({error: 'FILE NOT FOUND'});
+    return res.status(404).send({error: err});
   }
 });
 
@@ -197,6 +201,9 @@ router.delete('/mailbox/:mailbox/email/:emailId', (req, res) => {
       if (err) {
         return res.status(500).json({error: err});
       }
+      if(result.modifiedCount === 0) {
+        return res.status(404).json({success: false, message: 'EMAIL NOT FOUND'});
+      }
       return res.json({success: true});
 
     }
@@ -206,7 +213,7 @@ router.delete('/mailbox/:mailbox/email/:emailId', (req, res) => {
 router.delete('/mailbox/:mailbox', (req, res) => {
   req.db.collection('mailboxes').remove({'name': req.params.mailbox}, function(err, result) {
     if (err) {
-      return res.status(500).json({error: err, succes: false});
+      return res.status(500).send({error: err, succes: false});
     }
     return res.json({success: true});
   });

@@ -702,6 +702,20 @@
                 }
               }
             }
+          },
+          "404": {
+            "description": "Unexpected error in API call. See HTTP response body for details.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeleteAnEmail404Response"
+                },
+                "example": {
+                  "success": false,
+                  "message": "EMAIL NOT FOUND"
+                }
+              }
+            }
           }
         },
         "x-operation-settings": {
@@ -1387,6 +1401,27 @@
           "error": {
             "type": "string",
             "example": "error details"
+          }
+        },
+        "example": {
+          "error": "error details"
+        }
+      },
+      "DeleteAnEmail404Response": {
+        "title": "Delete an Email 404 response",
+        "required": [
+          "success",
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "example": false
+          },
+          "message": {
+            "type": "string",
+            "example": "EMAIL NOT FOUND"
           }
         },
         "example": {
