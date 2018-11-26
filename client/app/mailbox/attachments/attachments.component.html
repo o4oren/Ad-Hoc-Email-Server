@@ -1,5 +1,5 @@
 <span *ngFor='let attachment of emailDetails.attachments' class="mat-button">
-  <a href="/api/mailbox/{{mailbox}}/{{emailId}}/attachments/{{attachment.filename}}" download>
+  <a href="/api/mailbox/{{mailbox}}/email/{{emailId}}/attachments/{{attachment.filename}}" download>
     <span class="ahem-attachment-span">
       <fa-icon class="attachment" [icon]="['far', getIconName(attachment.filename)]"></fa-icon>{{attachment.filename}}
       <!--<mat-icon fontSet="fa" fontIcon={{// geztIconName(attachment.filename)}}></mat-icon>{{attachment.filename}}-->
