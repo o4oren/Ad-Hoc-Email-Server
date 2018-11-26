@@ -142,8 +142,13 @@ router.get('/mailbox/:mailbox/email', (req, res, next) => {
  * returns an email object in a specific mailbox
  */
 router.get('/mailbox/:mailbox/email/:emailId', (req, res) => {
-
-  const objectId = ObjectID.createFromHexString(req.params.emailId);
+  let objectId;
+  try {
+    objectId = ObjectID.createFromHexString(req.params.emailId);
+  }
+  catch(error) {
+    return res.status(404).json({ error: 'EMAIL NOT FOUND'});
+  }
   req.db.collection('emails').findOne({'_id': objectId}, {
     'from': 1,
     'to': 1,

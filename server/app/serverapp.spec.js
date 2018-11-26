@@ -26,6 +26,7 @@ let server;
 let serverApp;
 let smtp;
 let mongoClient;
+let db;
 
 beforeAll(done => {
   mongoDb.MongoClient.connect(properties.mongoConnectUrl, {useNewUrlParser: true}, function (err, client) {
@@ -33,7 +34,7 @@ beforeAll(done => {
     logger.info('Connected successfully to mongodb server');
     // creating indexes
     mongoClient = client;
-    const db = client.db(properties.dbName);
+    db = client.db(properties.dbName);
     db.collection('mailboxes').createIndex({'name': 1}, {unique: true});
     db.collection('tokens').createIndex({'ip': 1}, {unique: true});
 
@@ -57,13 +58,13 @@ beforeAll(done => {
 
 });
 
-// afterAll(done => {
-//   smtp.close(() => logger.info('SMTP Server closed!'));
-//   mongoClient.close(true, () => logger.info('Mongo client closed!'));
-//   server.close(() => logger.info('appServer stops listening'));
-//   logger.info('All closed!');
-//   done();
-// });
+afterAll(done => {
+  smtp.close(() => logger.info('SMTP Server closed!'));
+  mongoClient.close(true, () => logger.info('Mongo client closed!'));
+  server.close(() => logger.info('appServer stops listening'));
+  logger.info('All closed!');
+  done();
+});
 
 
 describe('properties API', () => {
@@ -104,7 +105,7 @@ describe('Token access', () => {
         // just wait 1 second, so the email arrives for next steps.
         setTimeout(() => {
           done();
-          }, 1000);
+        }, 1000);
       });
   });
 
@@ -184,7 +185,10 @@ describe('Token access', () => {
                             done(err);
                           }
                           expect(res.body.message).toBe('API Quote Exceeded');
-                          done();
+                          //clean burnt token from db
+                          db.collection('tokens').remove({'token': token}, () => {
+                            done();
+                          });
                         })
                       )
                     )
@@ -195,55 +199,75 @@ describe('Token access', () => {
           )
         )
       )
-
   });
-
 });
 
 
 
-// describe('List emails', () => {
-//   let emailInfo;
-//   let token;
-//
-//   test('List emails', done => {
-//     function callback(error, response, body) {
-//       expect(response.statusCode).toBe(200);
-//       emailInfo = JSON.parse(body)[0];
-//       expect(emailInfo.subject).toBe('AHEM mail test! ✔');
-//       done();
-//     }
-//
-//     request.post(properties.serverBaseUri + '/api/auth/token', {}, (error, response, body) => {
-//       token = JSON.parse(body).token;
-//       let options = {
-//         url: properties.serverBaseUri + '/api/mailbox/alive-test/email',
-//         headers: {"Authorization": "Bearer " + token}
-//       }
-//       //wait for mail to arrive
-//       setTimeout(() => {
-//         request.get(options, callback);
-//       }, 1500);
-//     });
-//   });
-//
-//   test('Get email details', done => {
-//     function callback(error, response, body) {
-//       expect(response.statusCode).toBe(200);
-//       let email = JSON.parse(body);
-//       expect(email.attachments.length).toBe(1);
-//       done();
-//     }
-//     let options = {
-//       url: properties.serverBaseUri + '/api/mailbox/alive-test/email/' + emailInfo.emailId,
-//       headers: {"Authorization": "Bearer " + token}
-//     }
-//     request(options, callback);
-//   });
-// });
-//
-//
-//
+describe('List emails', () => {
+  let emailInfo;
+  let token;
+
+  test('List emails', done => {
+    request(server)
+      .post('/api/auth/token')
+      .send({})
+      .set('Content-type', 'application/json')
+      .expect(200)
+      .end((err, res) => {
+        token = res.body.token;
+        done()
+      });
+  });
+
+
+  test('List emails', done => {
+    request(server)
+      .get('/api/mailbox/alive-test/email')
+      .set('Content-type', 'application/json')
+      .set('Authorization', 'Bearer ' + token)
+      .expect(200)
+      .end((err, res) => {
+        if (err) done(err);
+        emailInfo = res.body[0];
+        expect(emailInfo.subject).toBe('AHEM mail test! ✔');
+        done();
+      });
+  });
+
+  test('List emails on account that doesn\'t exist', done => {
+    request(server)
+      .get('/api/mailbox/stam/email')
+      .set('Content-type', 'application/json')
+      .set('Authorization', 'Bearer ' + token)
+      .expect(404, done);
+  });
+
+  test('Get email details', done => {
+    request(server)
+      .get('/api/mailbox/alive-test/email/' + emailInfo.emailId)
+      .set('Content-type', 'application/json')
+      .set('Authorization', 'Bearer ' + token)
+      .expect(200)
+      .end((err, res) => {
+        if (err) done(err);
+        let email = res.body;
+        expect(email.attachments.length).toBe(1);
+        done();
+      });
+  });
+
+  test('Get email details on account that doesn\'t exist', done => {
+    request(server)
+      .get('/api/mailbox/alive-test/email/stam')
+      .set('Content-type', 'application/json')
+      .set('Authorization', 'Bearer ' + token)
+      .expect(404, done);
+  });
+});
+
+
+
 
 
 

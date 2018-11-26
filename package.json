@@ -17,6 +17,12 @@
     "webpack:server": "webpack --config webpack.server.config.js --progress --colors --display-error-details",
     "webpack:backend": "webpack --config webpack.backend.config.js --progress --colors --display-error-details"
   },
+  "jest": {
+    "verbose": true,
+    "collectCoverage": true,
+    "collectCoverageFrom": ["**/server/app/*.js"],
+    "coverageDirectory": "./coverage"
+  },
   "private": true,
   "dependencies": {
     "@angular/animations": "^7.0.1",
