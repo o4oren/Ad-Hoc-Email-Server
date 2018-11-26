@@ -46,7 +46,7 @@ export class EmailViewComponent implements OnInit, OnDestroy {
       this.getEmailDetails();
     });
 
-    this.showAds = this.seoService.shouldShowAd(0.5);
+    this.showAds = this.seoService.shouldShowAd(0.8);
   }
 
   getSafeHtml(htmlString): SafeHtml {

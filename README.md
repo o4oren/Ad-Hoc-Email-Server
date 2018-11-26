@@ -2,6 +2,7 @@
 # Ad Hoc Email Server (AHEM)
 [![Build Status](https://travis-ci.org/o4oren/Ad-Hoc-Email-Server.svg?branch=master)](https://travis-ci.org/o4oren/Ad-Hoc-Email-Server)
 
+
 Ad Hoc Email Server is, well, an ad hoc mail server. 
 AHEM server can be used for testing, were a large (or unknown) number of mailboxes is needed or to provide disposable emails for registering into services that might expose the email for spam;
 This project will provide both RESTful api and web application for consuming the service.

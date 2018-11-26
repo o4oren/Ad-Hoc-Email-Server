@@ -208,7 +208,7 @@ describe('Emails', () => {
   let emailInfo;
   let token;
 
-  test('List emails', done => {
+  test('Get token', done => {
     request(server)
       .post('/api/auth/token')
       .send({})
@@ -322,6 +322,81 @@ describe('Emails', () => {
       .expect(404, done);
   });
 
+  test('cleanup token', done => {
+    db.collection('tokens').remove({'token': token}, () => {
+      done();
+    });
+  });
+
 });
 
 
+describe('Mailbox', () => {
+
+  let token;
+  let emailInfo;
+
+  test('Get token', done => {
+    request(server)
+      .post('/api/auth/token')
+      .send({})
+      .set('Content-type', 'application/json')
+      .expect(200)
+      .end((err, res) => {
+        token = res.body.token;
+        done()
+      });
+  });
+
+
+  test('Call alive to generate an email and an account', (done) => {
+    request(server)
+      .get('/api/alive')
+      .expect(200)
+      .end((err, res) => {
+        if(err) done(err);
+        // wait for email
+        setTimeout(done, 1000);
+      })
+  });
+
+
+  test('List emails to verify account and email creation', done => {
+    request(server)
+      .get('/api/mailbox/alive-test/email')
+      .set('Content-type', 'application/json')
+      .set('Authorization', 'Bearer ' + token)
+      .expect(200)
+      .end((err, res) => {
+        if (err) done(err);
+        emailInfo = res.body[0];
+        expect(emailInfo.subject).toBe('AHEM mail test! ✔');
+        done();
+      });
+  });
+
+  test('Delete account', done => {
+    request(server)
+      .delete('/api/mailbox/alive-test')
+      .set('Content-type', 'application/json')
+      .set('Authorization', 'Bearer ' + token)
+      .expect(200)
+      .end((err, res) => {
+        expect(res.body.success).toBeTruthy();
+        done();
+      });
+  });
+
+  test('List emails to verify account was deleted', done => {
+    request(server)
+      .get('/api/mailbox/alive-test/email')
+      .set('Content-type', 'application/json')
+      .set('Authorization', 'Bearer ' + token)
+      .expect(404)
+      .end((err, res) => {
+        expect(res.body.error).toBe('MAILBOX IS EMPTY!');
+        done();
+      });
+  });
+
+});

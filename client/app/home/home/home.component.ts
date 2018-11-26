@@ -30,7 +30,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.createHomePageItems();
-    this.showAd = this.seoService.shouldShowAd(0.7);
+    this.showAd = this.seoService.shouldShowAd(1);
   }
 
   createHomePageItems() {
