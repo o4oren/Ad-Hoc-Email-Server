@@ -7,21 +7,13 @@ const path = require('path');
 const http = require('http');
 const baseDir = process.cwd();
 const mongoDb = require('mongodb');
+const {MongoMemoryServer} = require('mongodb-memory-server');
+
+const mongoServer = new MongoMemoryServer();
+
+
 const request = require("supertest");
-const properties = {
-  "serverBaseUri": "http://localhost:3000",
-  "mongoConnectUrl": "mongodb://localhost:27017/",
-  "dbName": "ahem",
-  "appListenPort": 3000,
-  "smtpPort" : 2525,
-  "emailDeleteInterval" : 3600,
-  "emailDeleteAge" : 86400,
-  "allowAutocomplete" : true,
-  "allowedDomains" : ["my.domain.com"],
-  "jwtSecret": "AH3M 709 S3cR3T",
-  "jwtExpiresIn": 120,
-  "maxAllowedApiCalls": 10
-}
+let properties;
 let server;
 let serverApp;
 let smtp;
@@ -29,40 +21,59 @@ let mongoClient;
 let db;
 
 beforeAll(done => {
-  mongoDb.MongoClient.connect(properties.mongoConnectUrl, {useNewUrlParser: true}, function (err, client) {
-    assert.ok(client !== null, err);
-    logger.info('Connected successfully to mongodb server');
-    // creating indexes
-    mongoClient = client;
-    db = client.db(properties.dbName);
-    db.collection('mailboxes').createIndex({'name': 1}, {unique: true});
-    db.collection('tokens').createIndex({'ip': 1}, {unique: true});
+  mongoServer.getConnectionString().then((mongoUri) => {
+      properties = {
+        "serverBaseUri": "http://localhost:3000",
+        "mongoConnectUrl": mongoUri,
+        "dbName": "ahem",
+        "appListenPort": 3000,
+        "smtpPort" : 2525,
+        "emailDeleteInterval" : 3600,
+        "emailDeleteAge" : 86400,
+        "allowAutocomplete" : true,
+        "allowedDomains" : ["my.domain.com"],
+        "jwtSecret": "AH3M 709 S3cR3T",
+        "jwtExpiresIn": 120,
+        "maxAllowedApiCalls": 10
+      };
+      mongoDb.MongoClient.connect(properties.mongoConnectUrl, {useNewUrlParser: true}, function (err, client) {
+        assert.ok(client !== null, err);
+        logger.info('Connected successfully to mongodb server');
+        // creating indexes
+        mongoClient = client;
+        db = client.db(properties.dbName);
+        db.collection('mailboxes').createIndex({'name': 1}, {unique: true});
+        db.collection('tokens').createIndex({'ip': 1}, {unique: true});
 
-    serverApp = require('./serverapp')(properties, db);
-    /**
-     * Create HTTP server.
-     */
-    server = http.createServer(serverApp);
-    const port = process.env.PORT || properties.appListenPort || '3000';
+        serverApp = require('./serverapp')(properties, db);
+        /**
+         * Create HTTP server.
+         */
+        server = http.createServer(serverApp);
+        const port = process.env.PORT || properties.appListenPort || '3000';
 
-    /**
-     * Listen on provided port, on all network interfaces.
-     */
-    smtp = require('./smtp')(properties, db);
+        /**
+         * Listen on provided port, on all network interfaces.
+         */
+        smtp = require('./smtp')(properties, db);
 
-    server.listen(port, async () => {
-      logger.info('API server listening');
-    });
-    done();
-  });
+        server.listen(port, async () => {
+          logger.info('API server listening');
+        });
+        done();
+      });
 
+    }
+  );
 });
 
-afterAll(done => {
-  smtp.close(() => logger.info('SMTP Server closed!'));
-  mongoClient.close(true, () => logger.info('Mongo client closed!'));
-  server.close(() => logger.info('appServer stops listening'));
-  logger.info('All closed!');
+afterAll(async (done) => {
+  await smtp.close(() => logger.info('SMTP Server closed!'));
+  await mongoClient.close(true, () => logger.info('Mongo client closed!'));
+  await server.close(() => logger.info('appServer stops listening'));
+  await mongoServer.stop(() => {
+    logger.info('All closed!');
+  });
   done();
 });
 
