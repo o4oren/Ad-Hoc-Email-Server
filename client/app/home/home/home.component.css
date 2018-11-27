@@ -8,7 +8,7 @@
 
 .home-inner-container {
   width: 100%;
-  max-width: 1200px;
+  max-width: 1400px;
   flex: 1;
   flex-wrap: wrap;
   display: flex;
@@ -28,10 +28,19 @@
 }
 
 .home-adsense {
-  min-width: 200px;
+  min-width: 360px;
   min-height: 200px;
   max-height: 600px;
 }
+
+@media screen and (min-width: 640px) {
+  .home-adsense {
+    min-width: 200px;
+    min-height: 200px;
+    max-height: 600px;
+  }
+}
+
 
 @media screen and (min-width: 1921px) {
   .home-adsense {
