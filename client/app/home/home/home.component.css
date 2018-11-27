@@ -28,8 +28,9 @@
 }
 
 .home-adsense {
-  min-width: 160px;
-  min-height: 160px;
+  min-width: 200px;
+  min-height: 200px;
+  max-height: 600px;
 }
 
 @media screen and (min-width: 1921px) {
