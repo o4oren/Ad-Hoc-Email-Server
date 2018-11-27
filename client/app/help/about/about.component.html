@@ -8,18 +8,14 @@
     AHEM was born of out of necessity, and was built as a weekend project by Oren Geva.<br>
     It is not a business, and has no profit goals. If ads are included in the service it is to help maintaining this service free.<br>
     <br>
-
-    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-    <ins class="adsbygoogle"
-         style="display:block; text-align:center;"
-         data-ad-layout="in-article"
-         data-ad-format="fluid"
-         data-ad-client="ca-pub-4119576279673540"
-         data-ad-slot="1975741160"></ins>
-    <script>
-      (adsbygoogle = window.adsbygoogle || []).push({});
-    </script>
-
+    <ng-adsense
+      [adClient]="'ca-pub-4119576279673540'"
+      [adSlot]="1975741160"
+      [display]="'block'"
+      [adFormat]="'fluid'"
+      [layout]="'in-article'"
+    >
+    </ng-adsense>
     AHEM was built as a MEAN stack, using <a href="https://angular.io">Angular</a>, <a href="https://nodejs.org/en/">NodeJS</a>, <a href="https://www.mongodb.com/">MongoDB</a> and <a href="https://expressjs.com/">ExpressJS</a> on top of some awesome open source packages. Check out the github repo for a complete list and licenses.<br>
     I would, however, like to mention one of those projects - <a href="https://nodemailer.com/about/">Nodemailer</a> by Andris Reinman. THis project serves as the core of the mail server part of AHEM, and therefore is very central to this service.
   </article>

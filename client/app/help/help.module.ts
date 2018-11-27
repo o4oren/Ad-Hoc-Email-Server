@@ -8,6 +8,7 @@ import {MatCardModule, MatDividerModule, MatListModule, MatTableModule} from '@a
 import { FaqComponent } from './faq/faq.component';
 import {MomentModule} from 'ngx-moment';
 import { AboutComponent } from './about/about.component';
+import {AdsenseModule} from 'ng2-adsense';
 
 @NgModule({
   imports: [
@@ -18,6 +19,7 @@ import { AboutComponent } from './about/about.component';
     MatDividerModule,
     MomentModule,
     MatListModule,
+    AdsenseModule,
     HelpRoutingModule
   ],
   declarations: [ApiDocumentationComponent, FaqComponent, AboutComponent]
