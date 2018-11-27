@@ -37,5 +37,8 @@
     min-width: 300px;
     max-width: 300px;
   }
+  .home-inner-container {
+    width: 1800px;
+  }
 }
 
