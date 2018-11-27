@@ -6,9 +6,19 @@
   justify-content: center;
 }
 
+.home-inner-container {
+  width: 100%;
+  max-width: 1000px;
+  flex: 1;
+  flex-wrap: wrap;
+  display: flex;
+  margin: auto;
+  justify-content: space-around;
+  padding-top: 20px;
+}
+
 .home-content-container {
   width: 85%;
-  max-width: 900px;
   flex: 1;
   flex-wrap: wrap;
   display: flex;
