@@ -20,7 +20,7 @@
   },
   "jest": {
     "verbose": true,
-    "collectCoverage": true
+    "collectCoverage": true,
     "collectCoverageFrom": [
       "**/server/app/*.js"
     ],
