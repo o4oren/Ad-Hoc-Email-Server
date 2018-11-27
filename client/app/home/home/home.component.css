@@ -28,24 +28,19 @@
 }
 
 .home-adsense {
-  min-width: 360px;
-  min-height: 200px;
-  max-height: 600px;
+  width: 360px;
 }
 
 @media screen and (min-width: 640px) {
   .home-adsense {
-    min-width: 200px;
-    min-height: 200px;
-    max-height: 600px;
+    width: 200px;
   }
 }
 
 
 @media screen and (min-width: 1921px) {
   .home-adsense {
-    min-width: 300px;
-    max-width: 300px;
+    width: 300px;
   }
   .home-inner-container {
     width: 1800px;
