@@ -6,17 +6,17 @@
 </div>
 <div *ngIf="!properties.customText" class="home-container">
   <div class="home-content-container">
-  <ng-adsense
+  <ng-adsense class="home-adsense"
     [adClient]="'ca-pub-4119576279673540'"
     [adSlot]="9150292677"
-    [display]="'block'"
+    [display]="'inline-block'"
     [adFormat]="'auto'"
   ></ng-adsense>
     <app-home-page-item *ngFor='let item of items' [homePageItem]="item"></app-home-page-item>
-  <ng-adsense
+  <ng-adsense class="home-adsense"
     [adClient]="'ca-pub-4119576279673540'"
     [adSlot]="9150292677"
-    [display]="'block'"
+    [display]="'inline-block'"
     [adFormat]="'auto'"
   ></ng-adsense>
   </div>
