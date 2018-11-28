@@ -9,7 +9,7 @@
 
 .ahem-email-list {
   height: 100%;
-  max-width: 600px;
+  max-width: 1200px;
   margin: auto;
 }
 
@@ -31,6 +31,7 @@
 .emails-list {
   flex: 1;
   min-width: 300px;
+  width: 100%;
 }
 
 .email-list-container {
