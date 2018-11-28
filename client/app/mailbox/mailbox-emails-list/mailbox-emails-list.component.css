@@ -47,6 +47,9 @@
   align-items: center;
 }
 
+.email-list-adsense {
+  width: 300px;
+}
 
 @media screen and (min-width: 879px) {
   .email-list-container {
@@ -58,9 +61,6 @@
   }
 }
 
-.email-list-adsense {
-  width: 300px;
-}
 
 .ahem-empty-list {
   max-width: 600px;
