@@ -54,14 +54,12 @@
     align-items: flex-start;
   }
   .email-list-adsense {
-    width: 300px;
+    max-width: 200px;
   }
 }
 
 .email-list-adsense {
-  max-width: 200px;
-  flex-grow: 1;
-  min-width: 120px;
+  width: 300px;
 }
 
 .ahem-empty-list {
