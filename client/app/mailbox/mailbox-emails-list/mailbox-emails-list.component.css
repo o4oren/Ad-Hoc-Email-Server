@@ -44,13 +44,14 @@
   margin: auto;
   justify-content: space-between;
   padding-top: 20px;
+  align-items: center;
 }
 
 
 @media screen and (min-width: 879px) {
   .email-list-container {
     flex-direction: row;
-    align-items: center;
+    align-items: flex-start;
   }
 }
 
