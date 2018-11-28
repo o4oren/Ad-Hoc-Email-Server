@@ -17,7 +17,7 @@
         <ng-adsense class="email-list-adsense"></ng-adsense>
       </div>
     </div>
-    <div *ngIf="(apiService.emails | async)?.length==0">
+    <div *ngIf="(apiService.emails | async)?.length==0" class="ahem-empty-list">
       <div>
         This mailbox is currently empty.
         EMails sent to {{getEmptyMailboxText()}} will be listed here.

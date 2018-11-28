@@ -10,7 +10,6 @@
 .ahem-email-list {
   height: 100%;
   max-width: 1200px;
-  margin: auto;
 }
 
 .ahem-internal-toolbar {
@@ -40,11 +39,18 @@
   flex-wrap: wrap;
   display: flex;
   margin: auto;
-  justify-content: space-around;
+  justify-content: space-between;
   padding-top: 20px;
 }
 
 .email-list-adsense {
-  width: 200px;
+  max-width: 200px;
+  flex-grow: 1;
+  min-width: 120px;
+}
+
+.ahem-empty-list {
+  max-width: 600px;
+  margin: auto;
 }
 
