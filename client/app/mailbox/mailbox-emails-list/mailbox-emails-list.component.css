@@ -28,6 +28,10 @@
   }
 }
 
+.emails-list {
+  flex: 1;
+}
+
 .email-list-container {
   width: 100%;
   flex: 1;

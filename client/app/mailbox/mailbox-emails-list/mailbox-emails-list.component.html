@@ -8,9 +8,11 @@
     <div *ngIf="(apiService.emails | async)?.length>0">
       <div class="email-list-container">
         <ng-adsense class="email-list-adsense"></ng-adsense>
-        <div *ngFor='let email of apiService.emails | async' (click)="clickedEmail(email)" class="ahem-email-list-item" [ngClass]="{'ahem-email-selected': email.isSelected }">
-          <app-email-info [emailInfo]="email"></app-email-info>
-          <mat-divider></mat-divider>
+        <div class="emails-list">
+          <div *ngFor='let email of apiService.emails | async' (click)="clickedEmail(email)" class="ahem-email-list-item" [ngClass]="{'ahem-email-selected': email.isSelected }">
+            <app-email-info [emailInfo]="email"></app-email-info>
+            <mat-divider></mat-divider>
+          </div>
         </div>
         <ng-adsense class="email-list-adsense"></ng-adsense>
       </div>
