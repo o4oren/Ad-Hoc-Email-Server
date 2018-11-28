@@ -27,3 +27,18 @@
     padding-left: 168px;
   }
 }
+
+.email-list-container {
+  width: 100%;
+  flex: 1;
+  flex-wrap: wrap;
+  display: flex;
+  margin: auto;
+  justify-content: space-around;
+  padding-top: 20px;
+}
+
+.email-list-adsense {
+  width: 200px;
+}
+
