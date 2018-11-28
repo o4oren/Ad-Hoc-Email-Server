@@ -53,6 +53,9 @@
     flex-direction: row;
     align-items: flex-start;
   }
+  .email-list-adsense {
+    width: 300px;
+  }
 }
 
 .email-list-adsense {
