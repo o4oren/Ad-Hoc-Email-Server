@@ -38,7 +38,14 @@
 }
 
 .home-adsense {
-  max-height: 300px;
+  width: 300px;
+}
+
+@media screen and (min-width: 1361px) {
+  .home-adsense {
+    text-align: center;
+    width: 100%;
+  }
 }
 
 @media screen and (min-width: 1361px) {
@@ -48,8 +55,7 @@
   }
   .home-adsense {
     text-align: center;
-    width: 250px;
-    height: 300px;
+    width: 200px;
   }
 }
 

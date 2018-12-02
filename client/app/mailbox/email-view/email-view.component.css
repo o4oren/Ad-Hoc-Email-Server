@@ -8,6 +8,9 @@
     margin-left: 10%;
     margin-right: 10%;
   }
+  ng-adsense {
+    max-height: 250px;
+  }
 }
 
 .ahem-email-content {
