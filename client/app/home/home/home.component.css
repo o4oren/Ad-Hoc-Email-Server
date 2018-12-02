@@ -13,6 +13,7 @@
   display: flex;
   margin: auto;
   justify-content: space-around;
+  align-items: center;
   padding-top: 20px;
 }
 
@@ -37,16 +38,18 @@
 }
 
 .home-adsense {
-  width: 200px;
+  max-height: 300px;
 }
 
 @media screen and (min-width: 1361px) {
   .home-ads-container {
     flex-direction: row;
+    align-items: normal;
   }
   .home-adsense {
     text-align: center;
-    width: auto;
+    width: 200px;
+    height: auto;
   }
 }
 
