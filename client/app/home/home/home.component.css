@@ -18,7 +18,7 @@
 
 .home-inner-container {
   width: 100%;
-  max-width: 1400px;
+  max-width: 1199px;
   flex: 1;
   flex-wrap: wrap;
   display: flex;
@@ -43,6 +43,10 @@
 @media screen and (min-width: 1361px) {
   .home-ads-container {
     flex-direction: row;
+  }
+  .home-adsense {
+    text-align: center;
+    width: auto;
   }
 }
 
