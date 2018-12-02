@@ -5,11 +5,13 @@
   <app-mailbox-selector [isInline]="false"></app-mailbox-selector>
 </div>
 <div *ngIf="!properties.customText" class="home-container">
-  <div class="home-inner-container">
-      <ng-adsense class="home-adsense"></ng-adsense>
+  <div class="home-ads-container">
+    <ng-adsense class="home-adsense"></ng-adsense>
+    <div class="home-inner-container">
       <div class="home-content-container">
           <app-home-page-item *ngFor='let item of items' [homePageItem]="item"></app-home-page-item>
       </div>
+    </div>
       <ng-adsense class="home-adsense"></ng-adsense>
   </div>
 </div>

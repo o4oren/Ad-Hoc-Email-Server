@@ -5,6 +5,16 @@
   flex-direction: column;
   justify-content: center;
 }
+.home-ads-container {
+  width: 100%;
+  flex: 1;
+  flex-direction: column;
+  flex-wrap: wrap;
+  display: flex;
+  margin: auto;
+  justify-content: space-around;
+  padding-top: 20px;
+}
 
 .home-inner-container {
   width: 100%;
@@ -14,7 +24,6 @@
   display: flex;
   margin: auto;
   justify-content: space-around;
-  padding-top: 20px;
 }
 
 .home-content-container {
@@ -31,8 +40,10 @@
   width: 200px;
 }
 
-@media screen and (min-width: 640px) {
-
+@media screen and (min-width: 1361px) {
+  .home-ads-container {
+    flex-direction: row;
+  }
 }
 
 
