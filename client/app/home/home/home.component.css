@@ -49,7 +49,7 @@
   .home-adsense {
     text-align: center;
     width: 200px;
-    height: auto;
+    max-height: 300px;
   }
 }
 
