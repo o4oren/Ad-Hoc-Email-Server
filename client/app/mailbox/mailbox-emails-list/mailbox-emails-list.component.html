@@ -7,14 +7,14 @@
   <mat-list *ngIf="!selectedEmail" class="ahem-email-list">
     <div *ngIf="(apiService.emails | async)?.length>0">
       <div class="email-list-container">
-        <ng-adsense class="email-list-adsense"></ng-adsense>
+        <ng-adsense class="email-list-adsense" [adSlot]="5324689158"></ng-adsense>
         <div class="emails-list">
           <div *ngFor='let email of apiService.emails | async' (click)="clickedEmail(email)" class="ahem-email-list-item" [ngClass]="{'ahem-email-selected': email.isSelected }">
             <app-email-info [emailInfo]="email"></app-email-info>
             <mat-divider></mat-divider>
           </div>
         </div>
-        <ng-adsense class="email-list-adsense"></ng-adsense>
+        <ng-adsense class="email-list-adsense" [adSlot]="5324689158"></ng-adsense>
       </div>
     </div>
     <div *ngIf="(apiService.emails | async)?.length==0" class="ahem-empty-list">
@@ -54,5 +54,5 @@
 
   </mat-list>
   <app-email-view *ngIf="selectedEmail" [email]="selectedEmail" [loading]="true"></app-email-view>
-  <!--<ng-adsense class="ng-adsense-center"></ng-adsense>-->
+  <!--<ng-adsense class="ng-adsense-center" [adSlot]="5324689158"></ng-adsense>-->
 </div>
