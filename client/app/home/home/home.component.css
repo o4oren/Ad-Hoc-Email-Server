@@ -37,6 +37,10 @@
   padding-top: 20px;
 }
 
+.home-text-bottom {
+  max-width: 1199px;
+}
+
 .home-adsense {
   width: 300px;
 }
