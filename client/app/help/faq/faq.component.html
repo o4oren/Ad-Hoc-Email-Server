@@ -1,6 +1,6 @@
 <app-banner [h1]="h1" [h2]="h2" [showMailboxSelector]="false"></app-banner>
 
-<div class="ahem-centered">
+<div class="ahem-centered ahem-doc-api">
 
   <h2>What is AHEM?</h2>
   <p>
@@ -14,64 +14,69 @@
       <p>—used especially to attract attention or to express disapproval or embarrassment</p>
     </mat-card-content>
   </mat-card>
-  <p>
-    As defined above, AHEM comes and goes like a throat clearing sound. It wants you attention, but it disapproved or
-    embarassed on your behalf.
-  </p>
+  <br>
+  <mat-card-content>
+    As defined above, AHEM comes and goes like a throat clearing sound. It wants your attention, but in a disapproving way.
+  </mat-card-content>
 
   <mat-divider></mat-divider>
   <h2>Come on! Seriously, what is AHEM Ad Hoc Disposable Temporary Email?!</h2>
-  <p>
+  <mat-card-content>
     AHEM is a free ad-hoc disposable temporary Email service.
   <br>
-    <b>Ad-hoc</b> - a mail that a mailbox is created for you as soon as you need it.<br>
-    <b>Disposable</b> - you can throw it right away. Not strings attached.<br>
-    <b>Temporary</b> - the emails received will be deleted by the system after a certain time elapses.<br>
+    <b>Ad-hoc</b> - a mailbox is created for your temporary email address as soon as you need it, just by sending it an email.<br>
+    <b>Disposable</b> - you can throw a disposable mailbox right away. No unsubscibing from a service, cancelling your account or anything of the sort. No strings attached.<br>
+    <b>Temporary</b> - Your mailbox is temporary. The emails received will be deleted by the system after a certain time elapses.<br>
     <b>Free</b> - you know what that means!<br>
     <br>
     Others call it tempmail, 10minutemail, throwaway email, fake-mail or trash-mail.<br>
     <br>
-    When using forums, connecting to public Wi-Fi, many times users are asked to register before they can use the
-    service.<br>
-    Many websites and blogs ask users to register before they can view content, contribute or download.<br>
-    Well, sometimes we don't have a choice, and sometimes we are interested in exposing our identity to a service
-    provider.<br>
-    <br>
-    But when we do not - or don't even care - storing your email address in any additional data base increases the risk
-    for it to be leaked.
-    AHEM is a service that allows you to register easily without exposing your real email address, so that you can avoid
-    spam and stay safe.
-  </p>
+    Disposable email services are online services that provide temporary email addresses for registering or signing up on websites that require email verification.<br>
+    One purpose of these services is to avoid exposing your own email address to potential SPAM, especially if you just need the service for a short period of time.<br>
+    Disposable email services are also useful in software development and testing, as many software products require email verification themselves. Using real email addresses in the context of software development or testing is cumbersome and annoying. Many teams around the world use temporary disposable email services for testing their own software products.<br>
+    AHEM - Ad Hoc Email is one of these services. You can send an email to an @ahem.email address and check the AHEM mailbox to retrieve and read the email.
+  </mat-card-content>
+  <mat-divider></mat-divider>
+  <ng-adsense class="ng-adsense"
+              [adClient]="'ca-pub-4119576279673540'"
+              [adSlot]="1456083566"
+              [display]="'block'"
+              [adFormat]="'fluid'"
+              [layoutKey]="'-fb+5w+4e-db+86'"
+  >
+  </ng-adsense>
   <mat-divider></mat-divider>
   <h2>Can I only use @ahem.email addresses with the service?</h2>
-  <p>
+  <mat-card-content>
     The AHEM server currently serves the domains:
+    <br>
   <ul>
     <li *ngFor="let domain of properties.allowedDomains">{{domain}}</li>
   </ul>
-
+  <br>
   Sending an email to any of the above domains will be accepted by the AHEM mail service.
+  </mat-card-content>
   <mat-divider></mat-divider>
   <h2>How long does an email remain on the AHEM mail server?</h2>
-  <p>
+  <mat-card-content>
     An email remains on the AHEM server at least {{ min(properties.emailDeleteInterval, properties.emailDeleteAge) |
     amDuration: 'seconds' }}, and up to {{properties.emailDeleteAge + properties.emailDeleteInterval | amDuration:
     'seconds' }}.
-  </p>
+  </mat-card-content>
   <mat-divider></mat-divider>
   <h2>Can I delete my emails immediately?</h2>
-  <p>
+  <mat-card-content>
     Yes.
-  </p>
+  </mat-card-content>
   <mat-divider></mat-divider>
   <h2>What personal information do you save and how do you use it?</h2>
-  <p>
+  <mat-card-content>
     We do not keep any direct personal information. However, the emails are publicly available, so be mindful of how you use
     the service.
     <br>
     We do track accessing IP addresses in order to ensure the service's availability.
     <br>
     We recommend that you read the <a href="/privacy">privacy policy</a>.
-  </p>
+  </mat-card-content>
 
 </div>
