@@ -22,8 +22,8 @@
           Attachments:
           <app-attachments [emailDetails]="emailDetails" [mailbox]="mailbox"
                            [emailId]="emailDetails._id"></app-attachments>
+          <mat-divider></mat-divider>
         </div>
-        <mat-divider></mat-divider>
         <mat-card-content class="ahem-email-content">
 
           <div *ngIf="emailDetails.html" [innerHTML]="emailDetails.html | htmlSanitizer"></div>
