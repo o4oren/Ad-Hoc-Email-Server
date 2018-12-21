@@ -7,8 +7,6 @@
 
 @media screen and (min-width: 1024px){
   .ahem-email-content-container {
-    margin-left: 10%;
-    margin-right: 10%;
   }
   .email-view-adsense-container {
     flex-direction: row;
@@ -16,6 +14,7 @@
   }
   .email-view-adsense {
     max-width: 200px;
+    height: 50px;
   }
 }
 
@@ -31,15 +30,14 @@ ng-adsense {
 
 .email-view-adsense-container {
   flex: 1;
-  flex-wrap: wrap;
-  flex-direction: row;
+  flex-wrap: nowrap;
+  flex-direction: column;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
 .email-view-adsense {
-  width: 300px;
-  height: 50px;
+  width: 200px;
 }
 
