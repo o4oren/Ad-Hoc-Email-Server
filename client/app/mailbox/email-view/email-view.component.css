@@ -23,20 +23,12 @@ ng-adsense {
   align-items: center;
 }
 
-.email-view-adsense {
-  width: 100%;
-  height: 50px;
-}
-
 @media screen and (min-width: 1024px){
   .ahem-email-content-container {
   }
   .email-view-adsense-container {
     flex-direction: row;
     align-items: flex-start;
-  }
-  .email-view-adsense {
-    width: 200px;
   }
 }
 
