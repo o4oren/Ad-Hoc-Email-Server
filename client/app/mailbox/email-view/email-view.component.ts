@@ -6,6 +6,7 @@ import {DomSanitizer, SafeHtml} from '@angular/platform-browser';
 import {Subscription} from 'rxjs/internal/Subscription';
 import {EmailInfo} from '../../model/email-info-model';
 import {SeoService} from '../../core/services/seo.service';
+import {DeviceService} from '../../core/services/device.service';
 
 @Component({
   selector: 'app-email-view',
