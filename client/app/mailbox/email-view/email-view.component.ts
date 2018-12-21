@@ -37,7 +37,9 @@ export class EmailViewComponent implements OnInit, OnDestroy {
   constructor(private apiService: ApiService,
               private route: ActivatedRoute,
               private domSanitizer: DomSanitizer,
-              private seoService: SeoService) { }
+              private seoService: SeoService,
+              private deviceService: DeviceService
+  ) { }
 
   ngOnInit() {
     this.paramsSub = this.route.params.subscribe(params => {
@@ -49,6 +51,13 @@ export class EmailViewComponent implements OnInit, OnDestroy {
 
   getSafeHtml(htmlString): SafeHtml {
     return this.domSanitizer.bypassSecurityTrustHtml(htmlString);
+  }
+
+  getAdsenseHeight() {
+    if (this.deviceService.getPlatformWidth() < 720) {
+      return 50;
+    }
+    return  600;
   }
 
   ngOnDestroy(): void {

@@ -21,6 +21,10 @@ export class DeviceService {
     return window.screen.height;
   }
 
+  getPlatformWidth(): number {
+    return window.screen.width;
+  }
+
   getHeightStyle(substractFromResult?: number, isForMobileOnly?: boolean) {
     if (isForMobileOnly && !this.isSmallScreen()) {
       return '0px';
