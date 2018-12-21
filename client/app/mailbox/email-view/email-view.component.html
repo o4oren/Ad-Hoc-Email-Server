@@ -1,44 +1,48 @@
-<div class="ahem-email-content-container">
-  <div *ngIf="loading">
-    <app-progress></app-progress>
-  </div>
-  <div *ngIf="!loading">
-    <div *ngIf="emailDetails">
-      <mat-card>
-        <mat-card-header>
-          <mat-card-title>From: {{emailDetails.from.text}}</mat-card-title>
-          <mat-card-title>Date: {{emailDetails.timestamp | date:'medium'}}</mat-card-title>
-          <mat-card-title *ngIf="emailDetails.to">To: {{emailDetails.to.text}}</mat-card-title>
-          <mat-card-title *ngIf="emailDetails.cc">cc: {{emailDetails.cc.text}}</mat-card-title>
-          <mat-card-title>Subject: {{emailDetails.subject}}</mat-card-title>
-        </mat-card-header>
-      </mat-card>
-
-      <ng-adsense class="ng-adsense-center" *ngIf="showAds" [adSlot]="1277509220"></ng-adsense>
-
-      <mat-card>
-        <div *ngIf="emailDetails.attachments.length > 0">
-          <mat-divider></mat-divider>
-          Attachments:
-          <app-attachments [emailDetails]="emailDetails" [mailbox]="mailbox"
-                           [emailId]="emailDetails._id"></app-attachments>
-          <mat-divider></mat-divider>
-        </div>
-        <mat-card-content class="ahem-email-content">
-
-          <div *ngIf="emailDetails.html" [innerHTML]="emailDetails.html | htmlSanitizer"></div>
-          <div *ngIf="!emailDetails.html" [innerHTML]="emailDetails.textAsHtml"></div>
-        </mat-card-content>
-      </mat-card>
+<div class="email-view-adsense-container">
+  <ng-adsense class="email-view-adsense" [adSlot]="1277509220"></ng-adsense>
+  <div class="ahem-email-content-container">
+    <div *ngIf="loading">
+      <app-progress></app-progress>
     </div>
-    <div *ngIf="!emailDetails">
-      <mat-card>
-        <mat-card-title>
-          <div style="text-align:center">
-            <fa-icon [icon]="['far','meh']"></fa-icon>
+    <div *ngIf="!loading">
+      <div *ngIf="emailDetails">
+        <mat-card>
+          <mat-card-header>
+            <mat-card-title>From: {{emailDetails.from.text}}</mat-card-title>
+            <mat-card-title>Date: {{emailDetails.timestamp | date:'medium'}}</mat-card-title>
+            <mat-card-title *ngIf="emailDetails.to">To: {{emailDetails.to.text}}</mat-card-title>
+            <mat-card-title *ngIf="emailDetails.cc">cc: {{emailDetails.cc.text}}</mat-card-title>
+            <mat-card-title>Subject: {{emailDetails.subject}}</mat-card-title>
+          </mat-card-header>
+        </mat-card>
+
+        <ng-adsense class="ng-adsense-center" [adSlot]="1277509220"></ng-adsense>
+
+        <mat-card>
+          <div *ngIf="emailDetails.attachments.length > 0">
+            <mat-divider></mat-divider>
+            Attachments:
+            <app-attachments [emailDetails]="emailDetails" [mailbox]="mailbox"
+                             [emailId]="emailDetails._id"></app-attachments>
+            <mat-divider></mat-divider>
           </div>
-        </mat-card-title>
-      </mat-card>
+          <mat-card-content class="ahem-email-content">
+
+            <div *ngIf="emailDetails.html" [innerHTML]="emailDetails.html | htmlSanitizer"></div>
+            <div *ngIf="!emailDetails.html" [innerHTML]="emailDetails.textAsHtml"></div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+      <div *ngIf="!emailDetails">
+        <mat-card>
+          <mat-card-title>
+            <div style="text-align:center">
+              <fa-icon [icon]="['far','meh']"></fa-icon>
+            </div>
+          </mat-card-title>
+        </mat-card>
+      </div>
     </div>
   </div>
+  <ng-adsense class="email-view-adsense" [adSlot]="1277509220"></ng-adsense>
 </div>

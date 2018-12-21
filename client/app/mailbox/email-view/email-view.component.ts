@@ -19,10 +19,9 @@ export class EmailViewComponent implements OnInit, OnDestroy {
   emailDetails: EmailDetails;
   paramsSub: Subscription;
   mailbox: string;
-  showAds = false;
 
 
- @Input() loading = false;
+  @Input() loading = false;
 
 
   @Input()
@@ -45,8 +44,6 @@ export class EmailViewComponent implements OnInit, OnDestroy {
       const emailId = params['emailId'];
       this.getEmailDetails();
     });
-
-    this.showAds = this.seoService.shouldShowAd(0.8);
   }
 
   getSafeHtml(htmlString): SafeHtml {
