@@ -3,13 +3,18 @@
   <button mat-button (click)="deleteFile()"><fa-icon [icon]="['fas', 'trash']"></fa-icon> Delete</button>
   <button mat-button (click)="markAsReadOrUnread()"><fa-icon [icon]="['far', selectedEmail.isRead ? 'envelope' : 'envelope-open']"></fa-icon> Mark as {{selectedEmail.isRead ? 'unread' : 'read'}}</button>
 </mat-toolbar>
-<div class="ahem-centered ahem-overflow">
+
+<div *ngIf="loading" class="email-list-container">
+  <app-progress></app-progress>
+</div>
+
+<div *ngIf="!loading" class="ahem-centered ahem-overflow">
   <mat-list *ngIf="!selectedEmail" class="ahem-email-list">
-    <div *ngIf="(apiService.emails | async)?.length>0">
+    <div *ngIf="(emailList)?.length>0">
       <div class="email-list-container">
         <ng-adsense class="email-list-adsense" [adSlot]="5324689158"></ng-adsense>
         <div class="emails-list">
-          <div *ngFor='let email of apiService.emails | async' (click)="clickedEmail(email)" class="ahem-email-list-item" [ngClass]="{'ahem-email-selected': email.isSelected }">
+          <div *ngFor='let email of emailList' (click)="clickedEmail(email)" class="ahem-email-list-item" [ngClass]="{'ahem-email-selected': email.isSelected }">
             <app-email-info [emailInfo]="email"></app-email-info>
             <mat-divider></mat-divider>
           </div>
@@ -17,7 +22,7 @@
         <ng-adsense class="email-list-adsense" [adSlot]="5324689158"></ng-adsense>
       </div>
     </div>
-    <div *ngIf="(apiService.emails | async)?.length==0" class="ahem-empty-list">
+    <div *ngIf="(emailList)?.length==0" class="ahem-empty-list">
       <div>
         This mailbox is currently empty.
         EMails sent to {{getEmptyMailboxText()}} will be listed here.

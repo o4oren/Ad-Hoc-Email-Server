@@ -5,6 +5,7 @@ import {EmailInfo} from '../../model/email-info-model';
 import {Subscription} from 'rxjs/internal/Subscription';
 import {ConfigService} from '../../core/services/config.service';
 import {SeoService} from '../../core/services/seo.service';
+import {BehaviorSubject} from 'rxjs/internal/BehaviorSubject';
 
 @Component({
   selector: 'app-mailbox-emails',
@@ -15,9 +16,10 @@ export class MailboxEmailsListComponent implements OnInit, OnDestroy {
   paramsSub: Subscription;
   emailsSub: Subscription;
   mailbox: string;
+  emailList: array<EmailInfo> = [];
   selectedEmail: EmailInfo;
   emailId: string;
-  intervalId: any;
+  loading = true;
 
   constructor(private apiService: ApiService,
       private route: ActivatedRoute,
@@ -45,6 +47,8 @@ export class MailboxEmailsListComponent implements OnInit, OnDestroy {
       if (this.emailId) {
         this.selectEmail(this.getEmailFromTimeStamp(this.emailId));
       }
+      this.emailList = emails;
+      this.loading = false;
     }, err => {
       this.selectedEmail = null;
       console.error(err);

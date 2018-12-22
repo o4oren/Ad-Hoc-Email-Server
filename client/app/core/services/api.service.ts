@@ -7,6 +7,7 @@ import {EmailDetails} from '../../model/email-details-model';
 import {AhemProperties} from '../../model/properties-model';
 import {BehaviorSubject} from 'rxjs/internal/BehaviorSubject';
 import {EmailCount} from '../../model/email-count-model';
+import {Subject} from 'rxjs/internal/Subject';
 
 enum SortBy {
   Timestamp, Sender, Subject
@@ -16,7 +17,7 @@ enum SortBy {
 export class ApiService {
 
   baseUri: string;
-  emails: BehaviorSubject<Array<EmailInfo>> = new BehaviorSubject<Array<EmailInfo>>([]);
+  emails: Subject<Array<EmailInfo>> = new Subject<Array<EmailInfo>>();
 
 
   constructor(private http: HttpClient,
