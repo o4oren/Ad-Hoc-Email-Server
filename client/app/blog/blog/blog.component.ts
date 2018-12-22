@@ -15,7 +15,7 @@ export class BlogComponent implements OnInit {
   ngOnInit() {
     this.blogEntries = [
       {
-        date: new Date('Nov 13, 2017').toString(),
+        date: new Date('Nov 13, 2018').toString(),
         title: 'How to setup you own disposable email server',
         imageUrl: '/assets/images/happy-bluish.png',
         bodyUrl: '/assets/blog/how-to-set-up-your-own-disposable-email-server.html',
