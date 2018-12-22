@@ -10,7 +10,8 @@ import {SeoService} from '../../core/services/seo.service';
 export class BlogComponent implements OnInit {
 
   blogEntries: Array<BlogEntry>;
-  h2 = 'Ad Hoc Email Blog';
+  h1 = 'Ad Hoc Email Blog';
+  h2 = '';
 
   constructor(seoService: SeoService) {
     seoService.setTitle('AHEM - Ad Hoc EMail Blog');
