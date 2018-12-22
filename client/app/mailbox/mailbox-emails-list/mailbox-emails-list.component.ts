@@ -16,7 +16,7 @@ export class MailboxEmailsListComponent implements OnInit, OnDestroy {
   paramsSub: Subscription;
   emailsSub: Subscription;
   mailbox: string;
-  emailList: array<EmailInfo> = [];
+  emailList: Array<EmailInfo> = [];
   selectedEmail: EmailInfo;
   emailId: string;
   loading = true;
