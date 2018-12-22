@@ -18,6 +18,10 @@ const appRoutes: Routes = [
     loadChildren: '../privacy/privacy.module#PrivacyModule',
   },
   {
+    path: 'blog',
+    loadChildren: '../blog/blog.module#BlogModule',
+  },
+  {
     path: '**',
     loadChildren: '../page-not-found/page-not-found.module#PageNotFoundModule',
   }];
