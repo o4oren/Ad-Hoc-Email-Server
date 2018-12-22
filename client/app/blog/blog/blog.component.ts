@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {BlogEntry} from '../../model/blog-entry-model';
+import {SeoService} from '../../core/services/seo.service';
 
 @Component({
   selector: 'app-blog',
@@ -9,8 +10,13 @@ import {BlogEntry} from '../../model/blog-entry-model';
 export class BlogComponent implements OnInit {
 
   blogEntries: Array<BlogEntry>;
+  h1 = 'Ad Hoc Email Blog';
 
-  constructor() { }
+  constructor(seoService: SeoService) {
+    seoService.setTitle('AHEM - Ad Hoc EMail Blog');
+    seoService.updateMetaTag({name: 'description', content: 'AHEM - an Ad-Hoc Disposable Temporary Email Address blog'}
+    );
+  }
 
   ngOnInit() {
     this.blogEntries = [

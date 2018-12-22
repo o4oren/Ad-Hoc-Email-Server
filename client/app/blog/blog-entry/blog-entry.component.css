@@ -1,0 +1,7 @@
+section {
+  cursor: pointer;
+}
+
+section:focus {
+  outline: none;
+}

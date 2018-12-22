@@ -271,6 +271,36 @@ mat-list {
   margin: 10px;
 }
 
+.adsense-container {
+  flex: 1;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.ng-adsense-none {
+  text-align: center;
+  margin: 10px;
+  display: none;
+}
+
+.ng-adsense-adaptive {
+  text-align: center;
+  margin: 10px;
+  width: 100%;
+}
+
+@media screen and (min-width: 720px){
+  .adsense-container {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+  .ng-adsense-adaptive {
+    width: 200px;
+  }
+}
 
 //.ahem-sidnav-content {
 //  height: 80%;

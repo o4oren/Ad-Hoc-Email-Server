@@ -25,4 +25,9 @@ export class BlogEntryComponent implements OnInit {
     });
   }
 
+
+  getHashedBlogEntry(blogEntry: BlogEntry): string {
+    return btoa(JSON.stringify(blogEntry));
+  }
+
 }

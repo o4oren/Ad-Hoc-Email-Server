@@ -1,7 +1,7 @@
-<div>
-  {{blogEntry.title}}
-  <br>
-  {{blogEntry.date | date}}
-  <br>
-  {{htmlShort}}}
-</div>
+<section routerLink="/blog/post/{{getHashedBlogEntry(blogEntry)}}">
+  <h2>{{blogEntry.title}}</h2>
+  <div>{{blogEntry.date | date}}</div>
+  <div [innerHTML]="htmlShort">
+  </div>
+
+</section>
