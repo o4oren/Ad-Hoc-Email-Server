@@ -53,13 +53,6 @@ export class EmailViewComponent implements OnInit, OnDestroy {
     return this.domSanitizer.bypassSecurityTrustHtml(htmlString);
   }
 
-  getAdsenseHeight() {
-    if (this.deviceService.getPlatformWidth() < 1024) {
-      return 100;
-    }
-    return  600;
-  }
-
   ngOnDestroy(): void {
     this.paramsSub.unsubscribe();
   }

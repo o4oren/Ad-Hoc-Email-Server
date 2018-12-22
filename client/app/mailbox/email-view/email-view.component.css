@@ -30,9 +30,10 @@ ng-adsense {
 .email-view-adsense {
   text-align: center;
   margin: 10px;
+  display: none;
 }
 
-@media screen and (min-width: 1024px){
+@media screen and (min-width: 720px){
   .ahem-email-content-container {
   }
   .email-view-adsense-container {
@@ -41,6 +42,11 @@ ng-adsense {
   }
   .email-view-adsense {
     width: 200px;
+    display: block;
+  }
+
+  .ng-adsense-center {
+    display: none;
   }
 }
 
