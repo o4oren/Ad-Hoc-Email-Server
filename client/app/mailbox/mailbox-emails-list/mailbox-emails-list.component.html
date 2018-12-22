@@ -4,7 +4,7 @@
   <button mat-button (click)="markAsReadOrUnread()"><fa-icon [icon]="['far', selectedEmail.isRead ? 'envelope' : 'envelope-open']"></fa-icon> Mark as {{selectedEmail.isRead ? 'unread' : 'read'}}</button>
 </mat-toolbar>
 
-<div *ngIf="loading" class="email-list-container">
+<div *ngIf="loading" class="center-screen">
   <app-progress></app-progress>
 </div>
 
