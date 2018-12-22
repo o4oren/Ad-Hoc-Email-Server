@@ -54,8 +54,8 @@ export class EmailViewComponent implements OnInit, OnDestroy {
   }
 
   getAdsenseHeight() {
-    if (this.deviceService.getPlatformWidth() < 720) {
-      return 50;
+    if (this.deviceService.getPlatformWidth() < 1024) {
+      return 100;
     }
     return  600;
   }

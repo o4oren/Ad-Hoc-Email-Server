@@ -22,7 +22,7 @@ export class DeviceService {
   }
 
   getPlatformWidth(): number {
-    return window.screen.width;
+    return window.innerWidth;
   }
 
   getHeightStyle(substractFromResult?: number, isForMobileOnly?: boolean) {
