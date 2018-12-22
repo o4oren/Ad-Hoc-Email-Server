@@ -72,7 +72,7 @@ export class MailboxEmailsListComponent implements OnInit, OnDestroy {
   }
 
   private getEmailFromTimeStamp(emailId: string): EmailInfo {
-    return this.apiService.emails.value.filter(email => email.emailId === emailId)[0];
+    return this.emailList.filter(email => email.emailId === emailId)[0];
   }
 
   clickedEmail(email: EmailInfo) {
