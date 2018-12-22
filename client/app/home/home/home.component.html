@@ -1,15 +1,16 @@
 <app-banner></app-banner>
-<div class="ahem-centered" *ngIf="properties.customText">
-  <mat-card-content [innerHtml]="properties.customText" class="ahem-centered">
-  </mat-card-content>
-  <app-mailbox-selector [isInline]="false"></app-mailbox-selector>
-</div>
-<div *ngIf="!properties.customText" class="home-container">
-  <div class="adsense-container">
+<div class="adsense-container">
+  <ng-adsense class="ng-adsense-adaptive"></ng-adsense>
+  <div class="ahem-centered" *ngIf="properties.customText">
+    <mat-card-content [innerHtml]="properties.customText" class="ahem-centered">
+    </mat-card-content>
+    <app-mailbox-selector [isInline]="false"></app-mailbox-selector>
+  </div>
+  <div *ngIf="!properties.customText" class="home-container">
     <ng-adsense class="home-adsense"></ng-adsense>
     <div class="home-inner-container">
       <div class="home-content-container">
-          <app-home-page-item *ngFor='let item of items' [homePageItem]="item"></app-home-page-item>
+        <app-home-page-item *ngFor='let item of items' [homePageItem]="item"></app-home-page-item>
       </div>
       <article class="home-text-bottom">
         AHEM is a free ad-hoc disposable temporary Email service.
@@ -21,9 +22,10 @@
         </ul>
       </article>
     </div>
-    <ng-adsense class="ng-adsense-adaptive"></ng-adsense>
   </div>
+  <ng-adsense class="ng-adsense-adaptive"></ng-adsense>
 </div>
+
 <app-email-count></app-email-count>
 <!--<ng-adsense class="ng-adsense-center"></ng-adsense>-->
 
