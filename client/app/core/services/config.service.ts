@@ -2,6 +2,7 @@ import {Inject, Injectable, Optional} from '@angular/core';
 import {AhemProperties} from '../../model/properties-model';
 import {HttpClient} from '@angular/common/http';
 import {APP_BASE_HREF} from '@angular/common';
+import {promise} from 'selenium-webdriver';
 
 @Injectable({
   providedIn: 'root'
