@@ -10,7 +10,8 @@ const fs = require('fs');
 const path = require('path');
 const mongo = require('mongodb');
 const baseDir = process.cwd();
-const properties = JSON.parse(fs.readFileSync(path.join(baseDir, 'properties.json')));
+const propertiesPath = process.env.PROPERTIES_PATH || path.join(baseDir, 'properties.json');
+const properties = JSON.parse(fs.readFileSync(propertiesPath));
 const assert = require('assert');
 const http = require('http');
 
