@@ -5,7 +5,7 @@ import {BlogPostPageComponent} from './blog-post-page/blog-post-page.component';
 
 const routes: Routes = [
   { path: '', component: BlogComponent},
-  { path: 'post/:encodedBlogEntry', component: BlogPostPageComponent }
+  { path: 'post/:blogEntryName', component: BlogPostPageComponent }
 ];
 
 @NgModule({

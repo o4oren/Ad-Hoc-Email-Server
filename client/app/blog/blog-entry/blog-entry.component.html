@@ -1,4 +1,4 @@
-<section routerLink="/blog/post/{{getHashedBlogEntry(blogEntry)}}">
+<section routerLink="/blog/post/{{blogEntry.name}}">
   <h2>{{blogEntry.title}}</h2>
   <div>{{blogEntry.date | date}}</div>
   <div [innerHTML]="htmlShort">

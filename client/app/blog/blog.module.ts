@@ -7,6 +7,7 @@ import { BlogEntryComponent } from './blog-entry/blog-entry.component';
 import {AdsenseModule} from 'ng2-adsense';
 import {SharedModule} from '../shared/shared.module';
 import { BlogPostPageComponent } from './blog-post-page/blog-post-page.component';
+import {BlogService} from './blog.service';
 
 @NgModule({
   imports: [
@@ -14,6 +15,9 @@ import { BlogPostPageComponent } from './blog-post-page/blog-post-page.component
     AdsenseModule,
     SharedModule,
     BlogRoutingModule
+  ],
+  providers: [
+    BlogService
   ],
   declarations: [BlogComponent, BlogEntryComponent, BlogPostPageComponent]
 })

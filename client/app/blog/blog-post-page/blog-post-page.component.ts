@@ -4,6 +4,7 @@ import {APP_BASE_HREF} from '@angular/common';
 import {HttpClient} from '@angular/common/http';
 import {ActivatedRoute, Router} from '@angular/router';
 import {SeoService} from '../../core/services/seo.service';
+import {BlogService} from '../blog.service';
 
 @Component({
   selector: 'app-blog-post-page',
@@ -20,19 +21,19 @@ export class BlogPostPageComponent implements OnInit {
   constructor(private http: HttpClient,
               @Optional() @Inject(APP_BASE_HREF) origin: string,
               private route: ActivatedRoute,
-              private seoService: SeoService) {
+              private seoService: SeoService,
+              private blogService: BlogService) {
     this.baseUri = origin || '';
   }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
-      this.blogEntry = JSON.parse(atob(params['encodedBlogEntry'])) as BlogEntry;
-
+      this.blogEntry = this.blogService.getBlogPostByName(params['blogEntryName'])[0];
       this.seoService.setTitle(this.blogEntry.title);
       this.seoService.updateMetaTag({name: 'description', content: 'AHEM - an Ad-Hoc Disposable Temporary Email Address blog post: ' +
         this.blogEntry.title}
       );
-      this.http.get(this.baseUri + this.blogEntry.bodyUrl, {responseType: 'text'}).subscribe(res => {
+      this.http.get(this.baseUri + '/assets/blog/' + this.blogEntry.name + '.html', {responseType: 'text'}).subscribe(res => {
         this.body = res;
       });
     });

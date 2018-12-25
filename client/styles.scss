@@ -200,10 +200,22 @@ mat-sidenav-content > div {
 }
 
 
-@media screen and (min-width: 1000px) {
+.ahem-blog {
+  min-width: 320px;
+  font-size: 18px;
+}
+
+
+@media screen and (min-width: 720px) {
   .ahem-doc-api {
     min-width: 600px;
     max-width: 1200px;
+  }
+  .ahem-blog {
+    min-width: 600px;
+    max-width: 800px;
+    font-size: 21px;
+
   }
 }
 

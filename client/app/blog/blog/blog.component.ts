@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {BlogEntry} from '../../model/blog-entry-model';
 import {SeoService} from '../../core/services/seo.service';
+import {BlogService} from '../blog.service';
 
 @Component({
   selector: 'app-blog',
@@ -13,23 +14,14 @@ export class BlogComponent implements OnInit {
   h1 = 'Ad Hoc Email Blog';
   h2 = '';
 
-  constructor(seoService: SeoService) {
+  constructor(seoService: SeoService, private blogService: BlogService) {
     seoService.setTitle('AHEM - Ad Hoc EMail Blog');
     seoService.updateMetaTag({name: 'description', content: 'AHEM - an Ad-Hoc Disposable Temporary Email Address blog'}
     );
   }
 
   ngOnInit() {
-    this.blogEntries = [
-      {
-        date: new Date('Nov 13, 2018').toString(),
-        title: 'How to setup you own disposable email server',
-        imageUrl: '/assets/images/happy-bluish.png',
-        bodyUrl: '/assets/blog/how-to-set-up-your-own-disposable-email-server.html',
-        bodyShortUrl: '/assets/blog/how-to-set-up-your-own-disposable-email-server.short.html'
-      }
-    ];
-
+    this.blogEntries = this.blogService.blogEntries;
     console.log(this.blogEntries);
   }
 }

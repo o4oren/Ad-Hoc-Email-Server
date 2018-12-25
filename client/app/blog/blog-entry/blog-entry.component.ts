@@ -20,7 +20,7 @@ export class BlogEntryComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.http.get(this.baseUri + this.blogEntry.bodyShortUrl, {responseType: 'text'}).subscribe(res => {
+    this.http.get(this.baseUri + '/assets/blog/' + this.blogEntry.name + '.short.html', {responseType: 'text'}).subscribe(res => {
       this.htmlShort = res;
     });
   }
