@@ -8,12 +8,14 @@ import {AdsenseModule} from 'ng2-adsense';
 import {SharedModule} from '../shared/shared.module';
 import { BlogPostPageComponent } from './blog-post-page/blog-post-page.component';
 import {BlogService} from './blog.service';
+import {MatDividerModule} from '@angular/material';
 
 @NgModule({
   imports: [
     CommonModule,
     AdsenseModule,
     SharedModule,
+    MatDividerModule,
     BlogRoutingModule
   ],
   providers: [
