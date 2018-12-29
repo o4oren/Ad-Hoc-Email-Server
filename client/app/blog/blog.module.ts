@@ -9,6 +9,8 @@ import {SharedModule} from '../shared/shared.module';
 import { BlogPostPageComponent } from './blog-post-page/blog-post-page.component';
 import {BlogService} from './blog.service';
 import {MatDividerModule} from '@angular/material';
+import {HighlightJsModule} from 'ngx-highlight-js';
+import { HowToSetUpYourOwnDisposableMailServerComponent } from './posts/how-to-set-up-your-own-disposable-mail-server/how-to-set-up-your-own-disposable-mail-server.component';
 
 @NgModule({
   imports: [
@@ -16,11 +18,12 @@ import {MatDividerModule} from '@angular/material';
     AdsenseModule,
     SharedModule,
     MatDividerModule,
+    HighlightJsModule,
     BlogRoutingModule
   ],
   providers: [
     BlogService
   ],
-  declarations: [BlogComponent, BlogEntryComponent, BlogPostPageComponent]
+  declarations: [BlogComponent, BlogEntryComponent, BlogPostPageComponent, HowToSetUpYourOwnDisposableMailServerComponent]
 })
 export class BlogModule { }
