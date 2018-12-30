@@ -15,6 +15,7 @@ export class BlogPostPageComponent implements OnInit {
 
   blogEntry: BlogEntry;
   baseUri: string;
+  h2 = 'AHEM - Ad Hoc Email';
 
   constructor(private http: HttpClient,
               @Optional() @Inject(APP_BASE_HREF) origin: string,
