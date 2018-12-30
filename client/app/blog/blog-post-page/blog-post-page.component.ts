@@ -25,12 +25,12 @@ export class BlogPostPageComponent implements OnInit {
   }
 
   ngOnInit() {
-    const blogPostPath = this.route.children[0].url.value[0].path;
-    this.blogEntry = this.blogService.getBlogPostByName(blogPostPath)[0];
-    this.seoService.setTitle(this.blogEntry.title);
-    this.seoService.updateMetaTag({name: 'description', content: 'AHEM - an Ad-Hoc Disposable Temporary Email Address blog post: ' +
-      this.blogEntry.title});
-
+    this.route.children[0].url.subscribe(urlSegment => {
+      this.blogEntry = this.blogService.getBlogPostByName(urlSegment[0].path)[0];
+      this.seoService.setTitle(this.blogEntry.title);
+      this.seoService.updateMetaTag({name: 'description', content: 'AHEM - an Ad-Hoc Disposable Temporary Email Address blog post: ' +
+        this.blogEntry.title});
+    });
   }
 
 }
