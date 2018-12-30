@@ -1,5 +1,4 @@
-<app-banner  [showMailboxSelector]="false"></app-banner>
-<div class="adsense-container">
+<app-banner [h1]="blogEntry.title" [h2]="h2" [showMailboxSelector]="false"></app-banner><div class="adsense-container">
   <ng-adsense class="ng-adsense-adaptive" [adSlot]="8833273458"></ng-adsense>
     <div class="ahem-centered ahem-blog">
       <router-outlet></router-outlet>
@@ -7,7 +6,6 @@
 
   <ng-adsense class="ng-adsense-adaptive" [adSlot]="8833273458"></ng-adsense>
 </div>
-
 
 
 

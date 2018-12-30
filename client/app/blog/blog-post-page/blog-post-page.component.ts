@@ -20,24 +20,17 @@ export class BlogPostPageComponent implements OnInit {
               @Optional() @Inject(APP_BASE_HREF) origin: string,
               private route: ActivatedRoute,
               private seoService: SeoService,
-              private router: Router,
               private blogService: BlogService) {
     this.baseUri = origin || '';
   }
 
   ngOnInit() {
-    this.route.url.subscribe(url => {
-      console.log(url);
-    });
+    const blogPostPath = this.route.children[0].url.value[0].path;
+    this.blogEntry = this.blogService.getBlogPostByName(blogPostPath)[0];
+    this.seoService.setTitle(this.blogEntry.title);
+    this.seoService.updateMetaTag({name: 'description', content: 'AHEM - an Ad-Hoc Disposable Temporary Email Address blog post: ' +
+      this.blogEntry.title});
 
-    // this.route.params.subscribe(params => {
-    //   console.log(this.route.url)
-    //   this.blogEntry = this.blogService.getBlogPostByName(params['blogEntryName'])[0];
-    //   this.seoService.setTitle(this.blogEntry.title);
-    //   this.seoService.updateMetaTag({name: 'description', content: 'AHEM - an Ad-Hoc Disposable Temporary Email Address blog post: ' +
-    //     this.blogEntry.title}
-    //   );
-    // });
   }
 
 }

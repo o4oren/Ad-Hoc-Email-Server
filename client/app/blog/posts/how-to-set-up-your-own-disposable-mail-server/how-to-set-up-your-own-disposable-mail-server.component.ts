@@ -10,7 +10,6 @@ export class HowToSetUpYourOwnDisposableMailServerComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log('1111')
   }
 
 }
