@@ -29,8 +29,6 @@ install:
 script:
   - npm run build:ssr
   - npm run testServer
-
-after_success:
-  - docker build -t $DOCKER_USERNAM/ahem:$TRAVIS_BUILD_NUMBER .
+  - docker build -t $DOCKER_USERNAME/ahem:$TRAVIS_BUILD_NUMBER .
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
   - docker push $DOCKER_USERNAME/ahem
