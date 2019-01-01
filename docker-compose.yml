@@ -14,8 +14,10 @@ services:
       - net1
     depends_on:
       - mongodb
-  mongo:
-    container_name: mongo
+    volumes:
+      - [PATH TO LOCAL PROPERTIES]properties.json:/opt/ahem/properties.json
+  mongodb:
+    container_name: mongodb
     image: mongo
     volumes:
       - ./data:/data/db
