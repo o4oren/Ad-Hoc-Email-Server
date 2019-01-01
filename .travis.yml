@@ -32,7 +32,5 @@ script:
 
 after_success:
   - docker build -t $DOCKER_USERNAM/ahem:$TRAVIS_BUILD_NUMBER .
-
-deploy:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
   - docker push $DOCKER_USERNAME/ahem
