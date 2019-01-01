@@ -44,10 +44,10 @@ export class MailboxEmailsListComponent implements OnInit, OnDestroy {
       }
     });
     this.emailsSub = this.apiService.emails.subscribe(emails => {
+      this.emailList = emails;
       if (this.emailId) {
         this.selectEmail(this.getEmailFromTimeStamp(this.emailId));
       }
-      this.emailList = emails;
       this.loading = false;
     }, err => {
       this.selectedEmail = null;
