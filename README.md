@@ -59,6 +59,7 @@ Parameters:
 
 ### Docker
 * Build docker: docker build -t o4oren/ahem .
+* Build FE only: docker build -t o4oren/ahem-frontend . -f Dockerfile_frontend 
 * Run docker with external properties: docker run -v /[local.properties.path]/properties.json:/opt/ahem/properties.json -it -p 3000:3000 -p 25:25 -d o4oren/ahem
 * Sign into docker: docker exec -it ahem sh
 * start docker stackand swarm: docker swarm init && docker stack deploy -c docker-compose.yml ahemswarmc
