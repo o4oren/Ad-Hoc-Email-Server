@@ -2,6 +2,11 @@ sudo: required
 dist: trusty
 language: node_js
 
+stages:
+  - build
+  - test
+  - dockerize
+
 services:
   - docker
 
@@ -28,11 +33,11 @@ install:
 
 jobs:
   include:
-    - stage: Build
+    - stage: build
       script: npm run build:ssr
-    - stage: Test
+    - stage: test
       script: npm run testServe
-    - stage: Docker build
+    - stage: dockerize
       script:
       - docker build -t $DOCKER_USERNAME/ahem .
       - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
