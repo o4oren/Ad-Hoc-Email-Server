@@ -1,9 +1,5 @@
 FROM node:10.15.0-alpine
 
-WORKDIR /opt/ahem
-
-ARG PROPERTIES_PATH
-
 COPY package*.json ./
 RUN npm install
 
