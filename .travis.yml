@@ -36,7 +36,7 @@ jobs:
     - stage: build
       script: npm run build:ssr
     - stage: test
-      script: npm run testServe
+      script: npm run testServer
     - stage: dockerize
       script:
       - docker build -t $DOCKER_USERNAME/ahem .
