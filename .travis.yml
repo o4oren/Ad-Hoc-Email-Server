@@ -33,5 +33,8 @@ script:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
   - docker push $DOCKER_USERNAME/ahem
   - docker tag $DOCKER_USERNAME/ahem $DOCKER_USERNAME/ahem:$TRAVIS_BUILD_NUMBER
-  - docker push $DOCKER_USERNAME/ahem
-
+  - docker push $DOCKER_USERNAME/ahem:$TRAVIS_BUILD_NUMBER
+  - docker build -t $DOCKER_USERNAME/ahem-universal Dockerfile_frontend
+  - docker push $DOCKER_USERNAME/ahem-universal
+  - docker tag $DOCKER_USERNAME/ahem-universal $DOCKER_USERNAME/ahem-universal:$TRAVIS_BUILD_NUMBER
+  - docker push $DOCKER_USERNAME/ahem-universal:$TRAVIS_BUILD_NUMBER
