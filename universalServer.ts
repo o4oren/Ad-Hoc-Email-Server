@@ -11,6 +11,8 @@ import { readFileSync } from 'fs';
 import {APP_BASE_HREF} from '@angular/common';
 const properties = require('./properties.json');
 
+console.log(properties);
+
 // Faster server renders w/ Prod mode (dev mode never needed)
 enableProdMode();
 
