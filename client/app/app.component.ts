@@ -10,8 +10,9 @@ import {isPlatformBrowser} from '@angular/common';
 })
 export class AppComponent implements OnInit{
   title = 'AHEM - Ad Hoc Email Server';
-
-  constructor(angulartics2GoogleAnalytics: Angulartics2GoogleAnalytics, private authService: AuthService, @Inject(PLATFORM_ID) private platformId: Object) {
+  constructor(angulartics2GoogleAnalytics: Angulartics2GoogleAnalytics,
+              private authService: AuthService,
+              @Inject(PLATFORM_ID) private platformId: Object) {
     angulartics2GoogleAnalytics.startTracking();
   }
 
