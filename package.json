@@ -14,7 +14,7 @@
     "buildDev": "npm install && npm rebuild node-sass && ng build --dev",
     "build:ssr": "npm run build:client-and-server-bundles && npm run webpack:server",
     "serve:ssr": "node dist/universalServer --proxy-config proxy.conf.json",
-    "build:client-and-server-bundles": "ng build --prod && ng run ahem-universal:server",
+    "build:client-and-server-bundles": "ng build && ng run ahem-universal:server",
     "webpack:server": "webpack --config webpack.server.config.js --progress --colors --display-error-details",
     "webpack:backend": "webpack --config webpack.backend.config.js --progress --colors --display-error-details"
   },
