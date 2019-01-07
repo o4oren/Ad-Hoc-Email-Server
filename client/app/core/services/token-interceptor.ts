@@ -6,7 +6,7 @@ import { tap, mergeMap } from 'rxjs/operators';
 import {AuthService} from './auth.service';
 import {ApiService} from './api.service';
 import {EmailInfo} from '../../model/email-info-model';
-import {isPlatformServer} from '@angular/common';
+import {isPlatformBrowser, isPlatformServer} from '@angular/common';
 
 
 @Injectable()
@@ -17,9 +17,6 @@ export class TokenInterceptor implements HttpInterceptor {
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
-    if (isPlatformServer(this.platformId)) {
-      return next.handle(req);
-    }
 // Clone the request to add the new header if it is not an unauth call.
     if (req.url.includes('api/properties') || req.url.includes('assets')) {
       return next.handle(req);
@@ -36,7 +33,9 @@ export class TokenInterceptor implements HttpInterceptor {
       if (err instanceof HttpErrorResponse) {
         if (err.status === 401) {
           this.authService.authenticate().pipe(mergeMap(res => {
-            localStorage.setItem('access_token', res.token);
+            if (isPlatformBrowser(this.platformId)) {
+              localStorage.setItem('access_token', res.token);
+            }
             authReq = req.clone({ headers: req.headers.set('Authorization', 'Bearer ' + this.authService.getToken())});
             return next.handle(authReq).pipe(tap((event: HttpEvent<any>) => {
               console.log('event', event);
