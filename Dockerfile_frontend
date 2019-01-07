@@ -11,7 +11,7 @@ FROM node:10.15.0-alpine
 
 WORKDIR /app
 # COPY --from=buildContainer /app/dist /app/dist
-COPY ./dist /app/dist
+COPY . /app/
 
 # Expose the port the app runs in
 EXPOSE 4000
