@@ -17,7 +17,6 @@ export class ConfigService {
 
   load() {
     return new Promise<void>((resolve, reject) => {
-      console.log('========API/PROPERTIES======', this.baseUri)
       this.http.get(this.baseUri + '/api/properties')
         .toPromise().then(
         res => { // Success
