@@ -10,8 +10,8 @@ import { join } from 'path';
 import * as fs from 'fs';
 import {APP_BASE_HREF} from '@angular/common';
 
-// const properties = JSON.parse(fs.readFileSync('./properties.json', 'utf8'));
-const properties = require('./properties.json');
+const properties = JSON.parse(fs.readFileSync('./properties.json', 'utf8'));
+// const properties = require('./properties.json');
 
 
 console.log(properties);
