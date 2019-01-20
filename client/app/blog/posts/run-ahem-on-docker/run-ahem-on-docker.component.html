@@ -3,7 +3,55 @@
 </p>
 <section>
   <p>
-    You can now easily run AHEM server in a docker image.
+    AHEM - Ad Hoc Email is a temporary disposable email service. Its <a href="https://www.ahem.email">public website</a> provides a disposable email service for the domain @ahem.email.<br>
+    You can send an email to any @ahem.email address and check the AHEM mailbox to retrieve and read the email.
+  </p>
+  <p>
+    But AHEM is also installable as an <a href="https://www.ahem.email/blog/post/how-to-set-up-your-own-disposable-email-server">on premise server</a>, serving your own domains.<br>
+    Setting up AHEM as your own temporary email service is now ever easier with Docker.<br>
+  </p>
+  <p>
+    The AHEM server image is available in the <a href="https://hub.docker.com/r/o4oren/ahem">docker hub website</a>.
+    To pull the AHEM docker image run the following command:
+    <textarea highlight-js [options]="{}" [lang]="'bash'">
+      docker pull o4oren/ahem
+    </textarea>
+  </p>
+  <p>
+    To run AHEM, you also need a Mongo DB server.
+    If you do not have access to a mongo db server, or don't want to install and manage one, you can easily run one in a docker container.
+    Follow the instructions on the <a href="https://hub.docker.com/_/mongo">mongodb docker hub page</a>.
+  </p>
+  <p>
+    Create a configuration file named properties.json. Edit it to suit your preferences.
+    <textarea highlight-js [options]="{}" [lang]="'bash'">
+          vim properties.json
+      </textarea>
+
+    The properties.json file should look something like this:
+
+    <textarea highlight-js [options]="{}" [lang]="'json'">
+      {
+      "serverBaseUri": "http://[YOUR SERVER URL]:3000",
+      "mongoConnectUrl": "mongodb://[YOUR MONGO DB ADDRESS]:27017/",
+      "dbName": "ahem",
+      "appListenPort": 3000,
+      "smtpPort" : 25,
+      "emailDeleteInterval" : 3600,
+      "emailDeleteAge" : 86400,
+      "allowAutocomplete" : true,
+      "allowedDomains" : ["my.domain.com", "my.second.domain.com"],
+      "jwtSecret": "AH3M 709 S3cR3T",
+      "jwtExpiresIn": 3600,
+      "maxAllowedApiCalls": 1000
+      }
+     </textarea>
+  </p>
+  <p>
+    To run the docker image while mounting the properties file you created earlier, use the following command:
+    <textarea highlight-js [options]="{}" [lang]="'bash'">
+          docker run -d -p 3000:3000 -v [FULL PATH TO properties.json]/properties.json:/app/properties.json o4oren/ahem
+      </textarea>
   </p>
 
 </section>
