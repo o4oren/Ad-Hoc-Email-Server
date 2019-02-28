@@ -38,7 +38,7 @@ export class EmailViewComponent implements OnInit, OnDestroy {
               private route: ActivatedRoute,
               private domSanitizer: DomSanitizer,
               private seoService: SeoService,
-              private deviceService: DeviceService
+              public deviceService: DeviceService
   ) { }
 
   ngOnInit() {
