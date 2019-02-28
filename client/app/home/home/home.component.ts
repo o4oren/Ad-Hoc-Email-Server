@@ -17,8 +17,9 @@ export class HomeComponent implements OnInit {
   showAd = false;
 
   items: Array<HomePageItem> = [];
-  constructor(public deviceService: DeviceService, private seoService: SeoService, private durationPipe: DurationPipe) {
-
+  constructor(public deviceService: DeviceService,
+              private seoService: SeoService,
+              private durationPipe: DurationPipe) {
     seoService.setTitle('AHEM - an Ad-Hoc Disposable Temporary Email Address');
     seoService.updateMetaTag({name: 'description', content: 'AHEM - an Ad-Hoc Disposable Temporary Email Address. ' +
       'Ad-hoc - created on demand. Disposable - ' +

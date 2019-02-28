@@ -6,6 +6,7 @@ import {Subscription} from 'rxjs/internal/Subscription';
 import {ConfigService} from '../../core/services/config.service';
 import {SeoService} from '../../core/services/seo.service';
 import {BehaviorSubject} from 'rxjs/internal/BehaviorSubject';
+import {DeviceService} from '../../core/services/device.service';
 
 @Component({
   selector: 'app-mailbox-emails',
@@ -24,6 +25,7 @@ export class MailboxEmailsListComponent implements OnInit, OnDestroy {
   constructor(private apiService: ApiService,
       private route: ActivatedRoute,
       private router: Router,
+      private deviceService: DeviceService,
       private seoService: SeoService) {}
 
   ngOnInit() {

@@ -1,6 +1,6 @@
 <app-banner></app-banner>
 <div class="adsense-container">
-  <ng-adsense class="ng-adsense-adaptive"></ng-adsense>
+  <ng-adsense *ngIf="this.deviceService.getPlatformWidth()>1024" class="ng-adsense-adaptive"></ng-adsense>
   <div class="ahem-centered" *ngIf="properties.customText">
     <mat-card-content [innerHtml]="properties.customText" class="ahem-centered">
     </mat-card-content>

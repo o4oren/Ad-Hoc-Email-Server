@@ -65,7 +65,7 @@ Parameters:
 * start docker stackand swarm: docker swarm init && docker stack deploy -c docker-compose.yml ahemswarmc
 * stop docker stack: docker stack rm getstartedlab
 
-* for debugging - run docker locally: docker run -d -p 27017:27017 -v ~/data:/data/db mongo
+* for debugging - run mongo on docker locally: docker run -d -p 27017:27017 -v ~/data:/data/db mongo
 
 #### Build and run with mongodb
 * docker-compose build

@@ -293,8 +293,6 @@ mat-list {
 }
 
 .ng-adsense-none {
-  text-align: center;
-  margin: 10px;
   display: none;
 }
 
@@ -311,6 +309,9 @@ mat-list {
   }
   .ng-adsense-adaptive {
     width: 200px;
+  }
+  .ng-adsense-none {
+    display: block;
   }
 }
 

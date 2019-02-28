@@ -12,7 +12,7 @@
   <mat-list *ngIf="!selectedEmail" class="ahem-email-list">
     <div *ngIf="(emailList)?.length>0">
       <div class="email-list-container">
-        <ng-adsense class="email-list-adsense" [adSlot]="5324689158"></ng-adsense>
+        <ng-adsense *ngIf="this.deviceService.getPlatformWidth()>1024" class="email-list-adsense" [adSlot]="5324689158"></ng-adsense>
         <div class="emails-list">
           <div *ngFor='let email of emailList' (click)="clickedEmail(email)" class="ahem-email-list-item" [ngClass]="{'ahem-email-selected': email.isSelected }">
             <app-email-info [emailInfo]="email"></app-email-info>

@@ -1,5 +1,5 @@
 <div class="email-view-adsense-container">
-  <ng-adsense class="email-view-adsense" [adSlot]="1277509220"></ng-adsense>
+  <ng-adsense *ngIf="this.deviceService.getPlatformWidth()>1024" class="email-view-adsense" [adSlot]="1277509220"></ng-adsense>
   <div class="ahem-email-content-container">
     <div *ngIf="loading">
       <app-progress class="center-screen" ></app-progress>
