@@ -18,11 +18,11 @@ export class DeviceService {
   }
 
   getPlatformHeight(): number {
-    return window.screen.height;
+    return isPlatformBrowser(this.platformId) ? window.screen.height : 1000;
   }
 
   getPlatformWidth(): number {
-    return window.innerWidth;
+    return isPlatformBrowser(this.platformId) ? window.innerWidth : 1000;
   }
 
   getHeightStyle(substractFromResult?: number, isForMobileOnly?: boolean) {
