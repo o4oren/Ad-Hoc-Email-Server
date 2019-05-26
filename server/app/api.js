@@ -108,7 +108,7 @@ router.get('/mailbox/:mailbox/email/:emailId/attachments/:filename', (req, res) 
 });
 
 
-// route middleware to verify a token
+// route middleware to verify a token if a token
 router.use(auth.verifyToken);
 
 // route middleware to increment api counter when an api is used to make a call

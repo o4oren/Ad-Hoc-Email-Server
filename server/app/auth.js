@@ -33,7 +33,14 @@ function createNewToken(req, res) {
     });
 }
 
+
 function verifyToken(req, res, next) {
+
+  //If we don't use a token we return immediately
+  if(req.properties.jwtExpiresIn == -1) {
+    return next();
+  }
+
   // check header or url parameters or post parameters for token
   const token = req.headers['Authorization'] || req.headers.authorization;
   // decode token
@@ -72,6 +79,11 @@ function verifyToken(req, res, next) {
 }
 
 function increaseApiCounter(req, res, next) {
+
+  if(req.properties.jwtExpiresIn == -1) {
+    return next();
+  }
+
   req.db.collection('tokens').updateOne( {'ip': req.decoded.ip}, {$inc: {currentApiCount: 1}},
     function (err, result) {
       if (err) {
