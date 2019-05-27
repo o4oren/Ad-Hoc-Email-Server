@@ -4,7 +4,6 @@ import { AppComponent } from './app.component';
 import { isPlatformBrowser, APP_BASE_HREF } from '@angular/common';
 import {CoreModule} from './core/core.module';
 import {Angulartics2Module} from 'angulartics2';
-import {AdsenseModule} from 'ng2-adsense';
 
 @NgModule({
   declarations: [
