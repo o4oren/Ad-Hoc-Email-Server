@@ -44,8 +44,6 @@ function start(properties, db) {
   app.enable('trust proxy');
 
 
-// Point static path to dist
-  app.use(express.static(path.join(__dirname, 'dist')));
 
   // use morgan to log api calls
   morgan.token('xff', function (req, res) { return req.headers['X-Forwarded-For'];
@@ -61,7 +59,7 @@ app.get('*.*', express.static(path.join(DIST_FOLDER, "browser")));
 
 // All regular browser angular folder
   app.get('*', (req, res) => {
-    res.render('index', { req });
+    res.sendfile(path.join(DIST_FOLDER, "browser", "index.html"));
   });
 
 // error handler
