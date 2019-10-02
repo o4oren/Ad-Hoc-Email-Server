@@ -1,4 +1,4 @@
-FROM node:10-jessie
+FROM node:10-buster
 
 WORKDIR /app
 COPY package*.json /app/
