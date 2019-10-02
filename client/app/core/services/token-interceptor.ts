@@ -1,12 +1,10 @@
-///<reference path="../../../../node_modules/@angular/common/http/src/interceptor.d.ts"/>
 import {HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse} from '@angular/common/http';
 import {Inject, Injectable, PLATFORM_ID} from '@angular/core';
 import {Observable} from 'rxjs/internal/Observable';
 import { tap, mergeMap } from 'rxjs/operators';
 import {AuthService} from './auth.service';
 import {ApiService} from './api.service';
-import {EmailInfo} from '../../model/email-info-model';
-import {isPlatformBrowser, isPlatformServer} from '@angular/common';
+import {isPlatformBrowser} from '@angular/common';
 
 
 @Injectable()
