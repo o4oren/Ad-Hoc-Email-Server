@@ -7,7 +7,7 @@
 # COPY . /app
 # RUN npm run build:ssr
 
-FROM node:10.15.0-alpine
+FROM node:10-alpine
 
 WORKDIR /app
 # COPY --from=buildContainer /app/dist /app/dist
