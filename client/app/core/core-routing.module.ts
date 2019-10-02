@@ -4,26 +4,26 @@ import {RouterModule, Routes} from '@angular/router';
 const appRoutes: Routes = [
   {
     path: '',
-    loadChildren: '../home/home.module#HomeModule',
+    loadChildren: () => import('../home/home.module').then(m => m.HomeModule),
   },
   {
     path: 'help',
-    loadChildren: '../help/help.module#HelpModule',
+    loadChildren: () => import('../help/help.module').then(m => m.HelpModule),
   },
   {
     path: 'mailbox',
-    loadChildren: '../mailbox/mailbox.module#MailboxModule'},
+    loadChildren: () => import('../mailbox/mailbox.module').then(m => m.MailboxModule)},
   {
     path: 'privacy',
-    loadChildren: '../privacy/privacy.module#PrivacyModule',
+    loadChildren: () => import('../privacy/privacy.module').then(m => m.PrivacyModule),
   },
   {
     path: 'blog',
-    loadChildren: '../blog/blog.module#BlogModule',
+    loadChildren: () => import('../blog/blog.module').then(m => m.BlogModule),
   },
   {
     path: '**',
-    loadChildren: '../page-not-found/page-not-found.module#PageNotFoundModule',
+    loadChildren: () => import('../page-not-found/page-not-found.module').then(m => m.PageNotFoundModule),
   }];
 
 @NgModule({
