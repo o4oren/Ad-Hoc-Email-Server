@@ -57,7 +57,7 @@ function verifyToken(req, res, next) {
           if(err) {
             return res.status(500).json({error: err});
           } else if(result.currentApiCount >= decoded.maxAllowedApiCalls) {
-            return res.status(403).send({ success: false, message: 'API Quote Exceeded' });
+            return res.status(403).send({ success: false, message: 'API Quota Exceeded' });
           } else {
             // if everything is good, save to request for use in other routes
             req.decoded = decoded;
