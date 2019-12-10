@@ -1,18 +1,16 @@
+<h1 align="center">
+  Ad Hoc Email Server (AHEM)
+</h1>
 
-# Ad Hoc Email Server (AHEM)
 [![Build Status](https://travis-ci.org/o4oren/Ad-Hoc-Email-Server.svg?branch=master)](https://travis-ci.org/o4oren/Ad-Hoc-Email-Server)
 
-
 Ad Hoc Email Server is, well, an ad hoc mail server. 
-AHEM server can be used for testing, where a large (or unknown) number of mailboxes are needed or to provide disposable emails for registering for services that might expose the email to spam;
+AHEM can be used for testing, where a large (or unknown) number of mailboxes are needed or to provide disposable emails for registering for services that might expose the email to spam;
 This project will provide both a RESTful API and web application for consuming the service.
-A working example of AHEM is always available [here](https://www.ahem.email "AHEM - Ad Hoc Disposable Temporary Email addresss").
-
-
-![Alt text](/client/assets/images/screenshot.png?raw=true "AHEM mail server")
+A working example of AHEM is always available [here](https://www.ahem.email "AHEM - Ad Hoc Disposable Temporary Email address").
 
 ## Getting Started
-Ahem mail server will accept any email sent to it (on the domains specified in the configuration), and create an ad hoc mailbox as needed.
+AHEM will accept any email sent to it (on the domains specified in the configuration), and create an ad hoc mailbox as needed.
 Then just browse to its UI, enter the mailbox name and you'll see the emails contained in the mailbox.
 That's it. No authentication. No account creation.
 
@@ -32,33 +30,33 @@ npm install
 # builds the project.
 npm run build:ssr
 
-# There are other, convenience options for build and run in development mode.
-# For developmet:
+# there are other, convenience options for build and run in development mode.
+# for development:
 npm run startDev
 
-# for prod
-# Will run the backend which will also serve the front end form the `dist` folder.
+# for prod:
+# will run the backend which will also serve the front end form the `dist` folder.
 node ahem.js
-
-
 ```
 
 ### Configuration
-A configuration file named properties.json is located in the root of the project.
-Edit it to fit your use case.
-Parameters:
-* serverBaseUri - The base address for your api server.
-* mongoConnectUrl - The mongodb connect url in the form of "mongodb://localhost:27017/ahem".
-* appListenPort - The port the node app will bind to.
-* smtpPort - The SMTP server's port. Note that by default it is set to 2525 - this is done for testing purposes, as on many systems only a system account can listen on port 25.
-* emailDeleteInterval - The time in seconds between age checks for purging old files.
-* emailDeleteAge - The age in seconds above which emails will be deleted.
-* allowedDomains - An array of allowed email domains. These domains will be allowed by the server as RCPT TO: entries. This also makes the server not act as an open relay. Format: ["my.domain.com", "my.second-domain.com"].
-* customText - HTML string that will replace the default text in the landing page.
-* allowAutocomplete - If set to false, will prevent auto completing users in the ui.
-* jwtSecret -  The JWT secret, if using token authentication.
-* jwtExpiresIn - JWT token TTL in seconds. -1 means token validation is not enforced.
-* maxAllowedApiCalls -  If using token validation, this is the amount of API calls a token is allowed to make.
+A configuration file named properties.json is located in the root of the project. Edit it to fit your use case.\
+Here are the available parameters:
+
+Parameter | Description
+--- | ---
+serverBaseUri | The base address for your API server.
+mongoConnectUrl | The mongodb connect URL in the form of "mongodb://localhost:27017/ahem".
+appListenPort | The port the node app will bind to.
+smtpPort | The SMTP server's port. Note that by default it is set to 2525 - this is done for testing purposes, as on many systems only a system account can listen on port 25.
+emailDeleteInterval | The time in seconds between age checks for purging old files.
+emailDeleteAge | The age in seconds above which emails will be deleted.
+allowedDomains | An array of allowed email domains. These domains will be allowed by the server as RCPT TO: entries. This also makes the server not act as an open relay. Format: ["my.domain.com", "my.second-domain.com"].
+customText | HTML string that will replace the default text in the landing page.
+allowAutocomplete | If set to false, will prevent auto completing users in the ui.
+jwtSecret | The JWT secret, if using token authentication.
+jwtExpiresIn | JWT token TTL in seconds. -1 means token validation is not enforced.
+maxAllowedApiCalls | If using token validation, this is the amount of API calls a token is allowed to make.
 
 ### Docker
 * Build docker: docker build -t o4oren/ahem .
@@ -74,16 +72,15 @@ Parameters:
 * docker-compose build
 * docker-compose up
 
-#### palette ####
-https://material.io/tools/color/#!/?view.left=0&view.right=0&primary.color=515f77&secondary.color=E3F2FD
+#### Palette ####
+The AHEM color palette is available [here](https://material.io/tools/color/#!/?view.left=0&view.right=0&primary.color=515f77&secondary.color=E3F2FD).
 
 ### API
-
-The full api documentation is available [here](https://www.ahem.email/help/api "AHEM - API Help").
+The full API documentation is available [here](https://www.ahem.email/help/api "AHEM - API Help").
 
 A brief list of RESTful resources:
 
-HTTP Method | URI Path | Parameters | Descritpion
+HTTP Method | URI Path | Parameters | Description
 --- | --- | --- | ---
 POST | /api/mailbox/autocomplete | { "prefix":"value" } | Returns a partial list of mailboxes.
 GET | /api/properties | |Returns global system properties.
@@ -113,33 +110,27 @@ Replace XX-XXXXXXXXX-X with your GA id.
 
 ### Todo for 1.0
 
-- [x] Error page when user/email doesn't exist.
+- [x] Error page when user/email doesn't exist
 - [x] Empty mail page
 - [x] Landing page
 - [x] Errors on find user/email in api
 - [x] Error on non existing user / message
-- [x] routing for messages
-- [x] read/unread icons
-- [x] attachments
-- [x] allow delete emails
-- [x] migrate to mongodb
-- [x] update missing emails page and loading circles
-- [ ]  sort out logging
-- [x] separate  mailbox view from email view pages 
-- [x] separate  server and webapp properties 
-- [x] better home page
+- [x] Routing for messages
+- [x] Read/unread icons
+- [x] Attachments
+- [x] Allow delete emails
+- [x] Migrate to mongodb
+- [x] Update missing emails page and loading circles
+- [ ] Sort out logging
+- [x] Separate mailbox view from email view pages 
+- [x] Separate server and webapp properties 
+- [x] Better home page
 - [ ] Add apis to get mailbox references from email, get mailbox and email counts - both general and in mailbox context
 
-
 ## Authors
-
-* **Oren Geva**
+* [**Oren Geva**](https://github.com/o4oren)
 
 See also the list of [contributors](https://github.com/o4oren/ahem-server/contributors) who participated in this project.
 
 ## License
-
 This project is licensed under the GPLv3 License - see the [LICENSE.md](LICENSE.md) file for details
-
-
-
