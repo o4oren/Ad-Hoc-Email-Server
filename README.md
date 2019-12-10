@@ -9,7 +9,7 @@ This project will provide both a RESTful API and web application for consuming t
 A working example of AHEM is always available [here](https://www.ahem.email "AHEM - Ad Hoc Disposable Temporary Email addresss").
 
 
-![Alt text](/client/assets/images/screenshot.png?raw=true "AHEM mail server")
+![](/client/assets/images/ahem-logo-200.png)
 
 ## Getting Started
 Ahem mail server will accept any email sent to it (on the domains specified in the configuration), and create an ad hoc mailbox as needed.
