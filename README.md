@@ -30,12 +30,12 @@ npm install
 # builds the project.
 npm run build:ssr
 
-# There are other, convenience options for build and run in development mode.
-# For developmet:
+# there are other, convenience options for build and run in development mode.
+# for development:
 npm run startDev
 
-# for prod
-# Will run the backend which will also serve the front end form the `dist` folder.
+# for prod:
+# will run the backend which will also serve the front end form the `dist` folder.
 node ahem.js
 ```
 
@@ -45,8 +45,8 @@ Here are the available parameters:
 
 Parameter | Description
 --- | ---
-serverBaseUri | The base address for your api server.
-mongoConnectUrl | The mongodb connect url in the form of "mongodb://localhost:27017/ahem".
+serverBaseUri | The base address for your API server.
+mongoConnectUrl | The mongodb connect URL in the form of "mongodb://localhost:27017/ahem".
 appListenPort | The port the node app will bind to.
 smtpPort | The SMTP server's port. Note that by default it is set to 2525 - this is done for testing purposes, as on many systems only a system account can listen on port 25.
 emailDeleteInterval | The time in seconds between age checks for purging old files.
@@ -110,33 +110,27 @@ Replace XX-XXXXXXXXX-X with your GA id.
 
 ### Todo for 1.0
 
-- [x] Error page when user/email doesn't exist.
+- [x] Error page when user/email doesn't exist
 - [x] Empty mail page
 - [x] Landing page
 - [x] Errors on find user/email in api
 - [x] Error on non existing user / message
-- [x] routing for messages
-- [x] read/unread icons
-- [x] attachments
-- [x] allow delete emails
-- [x] migrate to mongodb
-- [x] update missing emails page and loading circles
-- [ ]  sort out logging
-- [x] separate  mailbox view from email view pages 
-- [x] separate  server and webapp properties 
-- [x] better home page
+- [x] Routing for messages
+- [x] Read/unread icons
+- [x] Attachments
+- [x] Allow delete emails
+- [x] Migrate to mongodb
+- [x] Update missing emails page and loading circles
+- [ ] Sort out logging
+- [x] Separate mailbox view from email view pages 
+- [x] Separate server and webapp properties 
+- [x] Better home page
 - [ ] Add apis to get mailbox references from email, get mailbox and email counts - both general and in mailbox context
 
-
 ## Authors
-
-* **Oren Geva**
+* [**Oren Geva**](https://github.com/o4oren)
 
 See also the list of [contributors](https://github.com/o4oren/ahem-server/contributors) who participated in this project.
 
 ## License
-
 This project is licensed under the GPLv3 License - see the [LICENSE.md](LICENSE.md) file for details
-
-
-
