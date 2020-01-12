@@ -5,9 +5,11 @@ services:
     build:
       context: .
     deploy:
-      replicas: 1
       restart_policy:
         condition: on-failure
+        delay: 5s
+        max_attempts: 3
+        window: 120s
     ports:
       - "4000:3000"
     tty: true
