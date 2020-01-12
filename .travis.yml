@@ -13,7 +13,7 @@ addons:
   chrome: stable
 
 node_js:
-  - "10"
+  - "13"
 
 matrix:
   fast_finish: true
