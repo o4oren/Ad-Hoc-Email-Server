@@ -40,8 +40,12 @@ node ahem.js
 ```
 
 ### Configuration
-A configuration file named properties.json is located in the root of the project. Edit it to fit your use case.\
-Here are the available parameters:
+AHEM use several environment variables for configuration. These can be set up using a .env file (see [dotEnv docuemntation](https://www.npmjs.com/package/dotenv)).
+An example file is located in the root of the project.
+If a .env file is no found, you can just set these items as env variables.
+A docker-compose file is also present in the root of the project, showing how these configuration properties can be set in a docker compose set up or passed to a docker image.
+
+These are the available parameters:
 
 Parameter | Description
 --- | ---
@@ -61,7 +65,7 @@ maxAllowedApiCalls | If using token validation, this is the amount of API calls 
 ### Docker
 * Build docker: docker build -t o4oren/ahem .
 * Build FE only: docker build -t o4oren/ahem-frontend . -f Dockerfile_frontend 
-* Run docker with external properties: docker run -v /[local.properties.path]/properties.json:/opt/ahem/properties.json -it -p 3000:3000 -p 25:25 -d o4oren/ahem
+* Run docker with external properties: docker run -v /[local.dotEvn.path]/.env:/opt/ahem/.env -it -p 3000:3000 -p 25:25 -d o4oren/ahem
 * Sign into docker: docker exec -it ahem sh
 * start docker stackand swarm: docker swarm init && docker stack deploy -c docker-compose.yml ahemswarmc
 * stop docker stack: docker stack rm getstartedlab

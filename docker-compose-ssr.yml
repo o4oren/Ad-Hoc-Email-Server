@@ -1,44 +1,5 @@
 version: "3"
 services:
-  ahem:
-    image: o4oren/ahem:latest
-    build:
-      context: .
-    deploy:
-      replicas: 2
-      restart_policy:
-        condition: on-failure
-    ports:
-      - "3000:3000"
-      - "2525:2525"
-    tty: true
-    networks:
-      - net1
-    depends_on:
-      - mongodb
-    environment:
-      - serverBaseUri=http://localhost:3000
-      - mongoConnectUrl=mongodb://mongodb:27017/
-      - appListenPort=3000
-      - smtpPort=2525
-      - allowAutocomplete=true
-      - allowedDomains=my.domain.com
-      - jwtSecret=AH3M 709 S3cR3T
-
-  mongodb:
-    container_name: mongodb
-    image: mongo
-    volumes:
-      - ./data:/data/db
-    ports:
-      - "27017:27017"
-    networks:
-      - net1
-networks:
-  net1:
-
-
-
   ahem-ssr:
     image: o4oren/ahem-ssr:latest
     build:
@@ -74,3 +35,4 @@ networks:
       - net1
 networks:
   net1:
+

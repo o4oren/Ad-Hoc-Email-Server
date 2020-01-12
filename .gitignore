@@ -6,6 +6,8 @@
 /out-tsc
 /data
 
+.env
+
 # dependencies
 /node_modules
 
