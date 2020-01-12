@@ -20,7 +20,6 @@ matrix:
 
 before_install:
   - npm cache verify
-  - npm prune
   - npm install -g @angular/cli
 
 install:
