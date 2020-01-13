@@ -64,7 +64,7 @@ maxAllowedApiCalls | If using token validation, this is the amount of API calls 
 
 ### Docker
 * Build docker: docker build -t o4oren/ahem .
-* Build FE only: docker build -t o4oren/ahem-frontend . -f Dockerfile_frontend 
+* Build FE only: docker build -t o4oren/ahem-universal . -f Dockerfile_ssr
 * Run docker with external properties: docker run -v /[local.dotEvn.path]/.env:/opt/ahem/.env -it -p 3000:3000 -p 25:25 -d o4oren/ahem
 * Sign into docker: docker exec -it ahem sh
 * start docker stackand swarm: docker swarm init && docker stack deploy -c docker-compose.yml ahemswarmc
