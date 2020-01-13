@@ -21,9 +21,6 @@ matrix:
 before_install:
   - npm cache verify
   - npm install -g @angular/cli
-
-install:npm audit fix
-
   - npm install
 
 script:
