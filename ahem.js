@@ -9,7 +9,7 @@ const path = require('path');
 const mongo = require('mongodb');
 const assert = require('assert');
 const http = require('http');
-
+require('dotenv').config()
 const properties = {
   serverBaseUri: process.env.serverBaseUri,
   mongoConnectUrl: process.env.mongoConnectUrl,
