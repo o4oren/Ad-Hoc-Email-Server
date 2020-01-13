@@ -25,8 +25,6 @@ const properties = {
   maxAllowedApiCalls: process.env.maxAllowedApiCalls || 10000
 };
 
-logger.info('properties', properties);
-
 logger.info('connecting to db', properties.mongoConnectUrl);
 mongo.MongoClient.connect(properties.mongoConnectUrl, { useNewUrlParser: true }, function (err, client) {
   assert.equal(null, err);
