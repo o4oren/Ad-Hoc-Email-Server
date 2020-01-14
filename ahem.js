@@ -18,7 +18,7 @@ const properties = {
   smtpPort: process.env.smtpPort || 25,
   emailDeleteInterval: process.env.emailDeleteInterval || 3600,
   emailDeleteAge: process.env.emailDeleteAge || 86400,
-  allowAutocomplete: process.env.allowAutocomplete || true,
+  allowAutocomplete: process.env.allowAutocomplete,
   allowedDomains: process.env.allowedDomains.split(','),
   jwtSecret: process.env.jwtSecret,
   jwtExpiresIn: process.env.jwtExpiresIn || 3600,
