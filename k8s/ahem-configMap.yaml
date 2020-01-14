@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ahem-config
+  namespace: default
+data:
+  serverBaseUri: http://localhost:3000
+  mongoConnectUrl: mongodb://mongo:27017/
+  appListenPort: "3000"
+  smtpPort: "2525"
+  allowAutocomplete: "true"
+  allowedDomains: my.domain.com
+  jwtSecret: AH3M 709 S3cR3T

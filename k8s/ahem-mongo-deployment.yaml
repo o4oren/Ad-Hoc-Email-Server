@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ahem-mongo-deployment
+  namespace: ahem
+spec:
+  selector:
+    matchLabels:
+      app: ahem-mongo
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: ahem-mongo
+    spec:
+      containers:
+        # by default, the image is pulled from docker hub
+        - image: mongo
+          name: mongo
+          ports:
+            - containerPort: 27017
+          volumeMounts:
+            - name: mongo-persistent-storage
+              mountPath: /data/db
+      volumes:
+        - name: mongo-persistent-storage
+          persistentVolumeClaim:
+            claimName: ahem-mongo-pv-claim

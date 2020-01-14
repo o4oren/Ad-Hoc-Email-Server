@@ -3,7 +3,7 @@ const express = require('express');
 const fs = require('fs');
 
 const swaggerUi = require('swagger-ui-express');
-const swaggerDocument = require('../../client/assets/api/swagger.json');
+const swaggerDocument = require('./swagger');
 
 const css = fs.readFileSync('server/app/swagger-ui.css', 'utf8');
 

@@ -13,17 +13,14 @@ addons:
   chrome: stable
 
 node_js:
-  - "10"
+  - "13"
 
 matrix:
   fast_finish: true
 
 before_install:
   - npm cache verify
-  - npm prune
   - npm install -g @angular/cli
-
-install:
   - npm install
 
 script:
@@ -34,7 +31,7 @@ script:
   - docker push $DOCKER_USERNAME/ahem
   - docker tag $DOCKER_USERNAME/ahem $DOCKER_USERNAME/ahem:$TRAVIS_BUILD_NUMBER
   - docker push $DOCKER_USERNAME/ahem:$TRAVIS_BUILD_NUMBER
-  - docker build -t $DOCKER_USERNAME/ahem-universal -f Dockerfile_frontend .
+  - docker build -t $DOCKER_USERNAME/ahem-universal -f Dockerfile_ssr .
   - docker push $DOCKER_USERNAME/ahem-universal
   - docker tag $DOCKER_USERNAME/ahem-universal $DOCKER_USERNAME/ahem-universal:$TRAVIS_BUILD_NUMBER
   - docker push $DOCKER_USERNAME/ahem-universal:$TRAVIS_BUILD_NUMBER

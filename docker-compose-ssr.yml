@@ -1,16 +1,17 @@
 version: "3"
 services:
-  ahem:
-    image: o4oren/ahem:latest
+  ahem-ssr:
+    image: o4oren/ahem-ssr:latest
     build:
       context: .
     deploy:
-      replicas: 2
       restart_policy:
         condition: on-failure
+        delay: 5s
+        max_attempts: 3
+        window: 120s
     ports:
-      - "3000:3000"
-      - "2525:2525"
+      - "4000:3000"
     tty: true
     networks:
       - net1
@@ -36,3 +37,4 @@ services:
       - net1
 networks:
   net1:
+
