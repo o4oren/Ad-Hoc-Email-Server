@@ -14,15 +14,15 @@ const properties = {
   serverBaseUri: process.env.serverBaseUri,
   mongoConnectUrl: process.env.mongoConnectUrl,
   dbName: process.env.dbName || 'ahem',
-  appListenPort: process.env.appListenPort || 3000,
-  smtpPort: process.env.smtpPort || 25,
-  emailDeleteInterval: process.env.emailDeleteInterval || 3600,
-  emailDeleteAge: process.env.emailDeleteAge || 86400,
+  appListenPort: parseInt(process.env.appListenPort) || 3000,
+  smtpPort: parseInt(process.env.smtpPort) || 25,
+  emailDeleteInterval: parseInt(process.env.emailDeleteInterval) || 3600,
+  emailDeleteAge: parseInt(process.env.emailDeleteAge) || 86400,
   allowAutocomplete: process.env.allowAutocomplete,
   allowedDomains: process.env.allowedDomains.split(','),
   jwtSecret: process.env.jwtSecret,
-  jwtExpiresIn: process.env.jwtExpiresIn || 3600,
-  maxAllowedApiCalls: process.env.maxAllowedApiCalls || 10000
+  jwtExpiresIn: parseInt(process.env.jwtExpiresIn) || 3600,
+  maxAllowedApiCalls: parseInt(process.env.maxAllowedApiCalls) || 10000
 };
 
 logger.info('connecting to db', properties.mongoConnectUrl);
