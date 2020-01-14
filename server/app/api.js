@@ -118,7 +118,7 @@ router.use(auth.increaseApiCounter);
  * returns a list of mailbox names starting with the req.body.prefix
  */
 router.post('/mailbox/autocomplete', (req, res) => {
-  if (!req.db.properties.allowAutocomplete) {
+  if (!req.properties.allowAutocomplete) {
     return res.status(200).send([]);
   }
   req.db.collection('mailboxes').find({'name': {'$regex' : '^' + req.body.prefix, '$options' : 'i'}},
