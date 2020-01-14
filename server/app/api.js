@@ -13,7 +13,7 @@ const mailTester = require('./mailTester');
 // indicates the api server is up
 router.get('/alive', (req, res) => {
   mailTester.sendTestEmail(req.properties);
-  res.status(200).send({ut
+  res.status(200).send({
     success:true,
     api: true,
     smtp: true,
