@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ahem-deployment
+  labels:
+    app: ahem
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: ahem
+  template:
+    metadata:
+      labels:
+        app: ahem
+    spec:
+      containers:
+      - name: ahem
+        image: o4oren/ahem-ssr:latest
+        envFrom: 
+        - configMapRef: 
+            name: ahem-config
+        ports:
+        - containerPort: 3000

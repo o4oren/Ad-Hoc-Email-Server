@@ -69,6 +69,7 @@ maxAllowedApiCalls | If using token validation, this is the amount of API calls 
 * Sign into docker: docker exec -it ahem sh
 * start docker stackand swarm: docker swarm init && docker stack deploy -c docker-compose.yml ahemswarmc
 * stop docker stack: docker stack rm getstartedlab
+* In addition, sample kubernetes yaml config files are provided as reference in the k8s folder. These are provided as is.
 
 * for debugging - run mongo on docker locally: docker run -d -p 27017:27017 -v ~/data:/data/db mongo
 
