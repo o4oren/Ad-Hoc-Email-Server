@@ -82,31 +82,31 @@
     </pre>
 
     <h4>Update Configuration</h4>
-    A configuration file named properties.json is located in the root of the project. Edit it to suit your preferences.
+    AHEM's configuration is based on environment variables. You set your system to include the variables described below or alternatively
+    include a file name .env in the root of the project.
+    A sample configuration file named .env.sample is located in the root of the project, you can copy or rename it. Edit it to suit your preferences.
 
     <pre>
       <code>
-        vim properties.json
+        vim .env
       </code>
     </pre>
 
-    The properties.json file will look something like this:
+    The .env file should look like this:
 
-    <textarea highlight-js [options]="{}" [lang]="'json'">
-  {
-      "serverBaseUri": "http://localhost:3000",
-      "mongoConnectUrl": "mongodb://localhost:27017/",
-      "dbName": "ahem",
-      "appListenPort": 3000,
-      "smtpPort" : 2525,
-      "emailDeleteInterval" : 3600,
-      "emailDeleteAge" : 86400,
-      "allowAutocomplete" : true,
-      "allowedDomains" : ["my.domain.com"],
-      "jwtSecret": "AH3M 709 S3cR3T",
-      "jwtExpiresIn": 3600,
-      "maxAllowedApiCalls": 1000
-  }
+    <textarea highlight-js [options]="{}" [lang]="'properties'">
+      serverBaseUri=http://localhost:3000
+      mongoConnectUrl=mongodb://localhost:27017/
+      dbName=ahem
+      appListenPort=3000
+      smtpPort=2525
+      emailDeleteInterval=3600
+      emailDeleteAge=86400
+      allowAutocomplete=true
+      allowedDomains=my.domain.com
+      jwtSecret=AH3M 709 S3cR3T
+      jwtExpiresIn=3600
+      maxAllowedApiCalls=1000
    </textarea>
 
     <p>
@@ -122,6 +122,9 @@
     allowedDomains - An array of allowed email domains. These domains will be allowed by the server as RCPT TO: entries. This also makes the server not act as an open relay. Format: [“my.domain.com”, “my.second-domain.com”].
     customText - A html string that will replace the default text in the landing page.
     allowAutocomplete - If set to false, will prevent auto completing users in the UI.
+    jwtSecret - a secret used to sign the token
+    jwtExpiresIn - TTL for th token
+    maxAllowedApiCalls - maximum number of API calls a token is allowed to execute
     </p>
 
     <h4>Build the project</h4>

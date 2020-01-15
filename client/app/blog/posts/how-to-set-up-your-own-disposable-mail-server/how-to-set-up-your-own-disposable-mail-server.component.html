@@ -73,30 +73,32 @@
     </textarea>
 
     <h4>Update Configuration</h4>
-    A configuration file named properties.json is located in the root of the project. Edit it to suit your preferences.
+    AHEM's configuration is based on environment variables. You set your system to include the variables described below or alternatively
+    include a file name .env in the root of the project.
+    A sample configuration file named .env.sample is located in the root of the project, you can copy or rename it. Edit it to suit your preferences.
 
-    <textarea highlight-js [options]="{}" [lang]="'bash'">
-        vim properties.json
+    <pre>
+      <code>
+        vim .env
+      </code>
+    </pre>
+
+    The .env file should look like this:
+
+    <textarea highlight-js [options]="{}" [lang]="'properties'">
+      serverBaseUri=http://localhost:3000
+      mongoConnectUrl=mongodb://localhost:27017/
+      dbName=ahem
+      appListenPort=3000
+      smtpPort=2525
+      emailDeleteInterval=3600
+      emailDeleteAge=86400
+      allowAutocomplete=true
+      allowedDomains=my.domain.com
+      jwtSecret=AH3M 709 S3cR3T
+      jwtExpiresIn=3600
+      maxAllowedApiCalls=1000
     </textarea>
-
-    The properties.json file will look something like this:
-
-    <textarea highlight-js [options]="{}" [lang]="'json'">
-  {
-      "serverBaseUri": "http://localhost:3000",
-      "mongoConnectUrl": "mongodb://localhost:27017/",
-      "dbName": "ahem",
-      "appListenPort": 3000,
-      "smtpPort" : 2525,
-      "emailDeleteInterval" : 3600,
-      "emailDeleteAge" : 86400,
-      "allowAutocomplete" : true,
-      "allowedDomains" : ["my.domain.com"],
-      "jwtSecret": "AH3M 709 S3cR3T",
-      "jwtExpiresIn": 3600,
-      "maxAllowedApiCalls": 1000
-  }
-   </textarea>
 
     <p>
       Here is an explanation of the parameters within the properties file:
