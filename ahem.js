@@ -35,11 +35,11 @@ mongo.MongoClient.connect(properties.mongoConnectUrl, { useNewUrlParser: true },
   db.collection('tokens').createIndex( {'ip': 1}, { unique: true } );
 
   const serverApp = require('./server/app/serverapp')(properties, db);
-
   /**
    * Create HTTP server.
    */
   const server = http.createServer(serverApp);
+  const io = require('socket.io')(server);
   const port = process.env.PORT || properties.appListenPort || '3000';
 
   /**
@@ -49,5 +49,5 @@ mongo.MongoClient.connect(properties.mongoConnectUrl, { useNewUrlParser: true },
     logger.info('API server listening');
   });
 
-  const smtp = require('./server/app/smtp')(properties, db);
+  const smtp = require('./server/app/smtp')(properties, db, io);
 });

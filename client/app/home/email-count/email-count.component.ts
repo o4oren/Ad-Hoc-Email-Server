@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ApiService} from '../../core/services/api.service';
+import {SocketService} from '../../core/services/socket.service';
 
 @Component({
   selector: 'app-email-count',
@@ -11,7 +12,7 @@ export class EmailCountComponent implements OnInit {
   count: number;
   since: number;
 
-  constructor(private apiService: ApiService) { }
+  constructor(private apiService: ApiService, private socketService: SocketService ) { }
 
   ngOnInit() {
     this.apiService.getEmailCount().subscribe(emailCount => {
@@ -19,6 +20,10 @@ export class EmailCountComponent implements OnInit {
         this.since = emailCount.since;
       }
     );
+    this.socketService.emailCount.subscribe(emailCount => {
+      this.since = emailCount.since;
+      this.count = emailCount.count;
+    });
   }
 
 }

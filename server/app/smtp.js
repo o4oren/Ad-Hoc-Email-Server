@@ -7,7 +7,7 @@ const simpleParser = require('mailparser').simpleParser;
 const logger = require('./logger');
 let mailserver;
 
-function startSTMPServer(properties, db) {
+function startSTMPServer(properties, db, io) {
   const smtpPort = properties.smtpPort;
   logger.info('starting smtp on ' + properties.smtpPort);
   mailserver = new SMTPServer({
@@ -62,8 +62,9 @@ function startSTMPServer(properties, db) {
               }
 
               // count email
-              db.collection('emailCount').updateOne({}, {$inc: {count: 1}, $setOnInsert: { since: new Date().getTime() }}, {upsert: true});
-
+              db.collection('emailCount').findOneAndUpdate({}, {$inc: {count: 1}, $setOnInsert: { since: new Date().getTime() }}, {upsert: true, returnNewDocument: true}, (err, result) => {
+                io.emit('emailCount', result.value);
+              });
               mail.to.value.forEach(recipient => {
                 const nameAndDomain = recipient.address.split('@');
                 if (properties.allowedDomains.indexOf(nameAndDomain[1].toLowerCase()) > -1) {
