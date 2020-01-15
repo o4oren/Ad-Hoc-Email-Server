@@ -1,4 +1,5 @@
 <app-banner></app-banner>
+<app-email-count></app-email-count>
 <div class="adsense-container">
   <ng-adsense *ngIf="this.deviceService.getPlatformWidth()>1024" class="ng-adsense-adaptive"></ng-adsense>
   <div class="ahem-centered" *ngIf="properties.customText">
@@ -23,7 +24,5 @@
   </div>
   <ng-adsense class="ng-adsense-adaptive"></ng-adsense>
 </div>
-
-<app-email-count></app-email-count>
 <!--<ng-adsense class="ng-adsense-center"></ng-adsense>-->
 
