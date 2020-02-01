@@ -17,7 +17,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
   properties: AhemProperties;
   showAd = false;
 
-  @ViewChild('article') article: ElementRef;
+  @ViewChild('article', {static: false}) article: ElementRef;
 
   items: Array<HomePageItem> = [];
   constructor(public deviceService: DeviceService,
