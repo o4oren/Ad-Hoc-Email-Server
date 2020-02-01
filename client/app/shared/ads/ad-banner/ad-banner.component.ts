@@ -13,6 +13,7 @@ export class AdBannerComponent implements OnInit, AfterViewInit {
   constructor(private _renderer2: Renderer2) { }
 
   ngOnInit() {
+
   }
 
 
@@ -27,12 +28,22 @@ export class AdBannerComponent implements OnInit, AfterViewInit {
                         'width' : 728,
                         'params' : {}
                     };
-        var text = '<scr' + 'ipt type="text/javascript" src="http' + (location.protocol === 'https:' ? 's' : '') + '://www.madcpms.com/938d5c0fb87beb89eafe244059ced18c/invoke.js"></scr' + 'ipt>';
-        var script = document.createElement("script");
-        script.text=text;
-        document.getElementById("adBanner").appendChild(script);
+
+            var s = document.createElement('script');
+            s.type = 'text/javascript';
+            s.src = "https://www.madcpms.com/938d5c0fb87beb89eafe244059ced18c/invoke.js";
+            var code = "console.log('11111')"
+            try {
+              s.appendChild(document.createTextNode(code));
+              document.findElementById("adBanner").appendChild(s);
+            } catch (e) {
+              s.text = code;
+              document.body.appendChild(s);
+            }
         `;
+    console.log(script)
     this._renderer2.appendChild(this.adBanner.nativeElement, script);
+    // this.adBanner.nativeElement.insertAdjacentHTML('beforeend',script);
   }
 
 }
