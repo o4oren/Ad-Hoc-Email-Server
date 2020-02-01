@@ -302,9 +302,13 @@ mat-list {
   width: 100%;
 }
 
+app-ad-banner {
+  align-self: center;
+}
+
 @media screen and (min-width: 1024px){
   .adsense-container {
-    flex-direction: row;
+    //flex-direction: co;
     align-items: flex-start;
   }
   .ng-adsense-adaptive {
