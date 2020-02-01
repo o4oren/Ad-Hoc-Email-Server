@@ -27,7 +27,10 @@ export class AdBannerComponent implements OnInit, AfterViewInit {
                         'width' : 728,
                         'params' : {}
                     };
-        document.getElementById("adBanner").appendChild('<scr' + 'ipt type="text/javascript" src="http' + (location.protocol === 'https:' ? 's' : '') + '://www.madcpms.com/938d5c0fb87beb89eafe244059ced18c/invoke.js"></scr' + 'ipt>');
+        var text = '<scr' + 'ipt type="text/javascript" src="http' + (location.protocol === 'https:' ? 's' : '') + '://www.madcpms.com/938d5c0fb87beb89eafe244059ced18c/invoke.js"></scr' + 'ipt>';
+        var script = document.createElement("script");
+        script.text=text;
+        document.getElementById("adBanner").appendChild(script);
         `;
     this._renderer2.appendChild(this.adBanner.nativeElement, script);
   }
