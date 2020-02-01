@@ -1,10 +1,11 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Inject, OnInit, Renderer2} from '@angular/core';
 import {DeviceService} from '../../core/services/device.service';
 import {ConfigService} from '../../core/services/config.service';
 import {AhemProperties} from '../../model/properties-model';
 import {HomePageItem} from '../home-page-item/home-page-item.component';
 import {DurationPipe} from 'ngx-moment';
 import { SeoService } from '../../core/services/seo.service';
+import {DOCUMENT} from '@angular/common';
 
 @Component({
   selector: 'app-home',
@@ -19,7 +20,9 @@ export class HomeComponent implements OnInit {
   items: Array<HomePageItem> = [];
   constructor(public deviceService: DeviceService,
               private seoService: SeoService,
-              private durationPipe: DurationPipe) {
+              private durationPipe: DurationPipe,
+              private _renderer2: Renderer2,
+              @Inject(DOCUMENT) private _document: Document) {
     seoService.setTitle('AHEM - an Ad-Hoc Disposable Temporary Email Address');
     seoService.updateMetaTag({name: 'description', content: 'AHEM - an Ad-Hoc Disposable Temporary Email Address. ' +
       'Ad-hoc - created on demand. Disposable - ' +
@@ -29,9 +32,26 @@ export class HomeComponent implements OnInit {
     this.properties = ConfigService.properties;
   }
 
+
+
   ngOnInit() {
     this.createHomePageItems();
     this.showAd = this.seoService.shouldShowAd(1);
+
+    const script = this._renderer2.createElement('script');
+    script.type = `text/javascript`;
+    script.text = `
+        atOptions = {
+                        'key' : '938d5c0fb87beb89eafe244059ced18c',
+                        'format' : 'iframe',
+                        'height' : 90,
+                        'width' : 728,
+                        'params' : {}
+                    };
+        document.write('<scr' + 'ipt type="text/javascript" src="http' + (location.protocol === 'https:' ? 's' : '') + '://www.madcpms.com/938d5c0fb87beb89eafe244059ced18c/invoke.js"></scr' + 'ipt>');
+        `;
+
+    this._renderer2.appendChild(this._document.body, script);
   }
 
   createHomePageItems() {
