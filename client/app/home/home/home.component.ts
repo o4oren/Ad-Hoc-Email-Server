@@ -1,30 +1,25 @@
-import {AfterViewInit, Component, ElementRef, Inject, OnInit, Renderer2, ViewChild} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {DeviceService} from '../../core/services/device.service';
 import {ConfigService} from '../../core/services/config.service';
 import {AhemProperties} from '../../model/properties-model';
 import {HomePageItem} from '../home-page-item/home-page-item.component';
 import {DurationPipe} from 'ngx-moment';
 import { SeoService } from '../../core/services/seo.service';
-import {DOCUMENT} from '@angular/common';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit, AfterViewInit {
+export class HomeComponent implements OnInit {
 
   properties: AhemProperties;
   showAd = false;
 
-  @ViewChild('containerDiv', {static: false, read: ElementRef}) containerDiv: ElementRef;
-
   items: Array<HomePageItem> = [];
   constructor(public deviceService: DeviceService,
               private seoService: SeoService,
-              private durationPipe: DurationPipe,
-              private _renderer2: Renderer2,
-              @Inject(DOCUMENT) private _document: Document) {
+              private durationPipe: DurationPipe) {
     seoService.setTitle('AHEM - an Ad-Hoc Disposable Temporary Email Address');
     seoService.updateMetaTag({name: 'description', content: 'AHEM - an Ad-Hoc Disposable Temporary Email Address. ' +
       'Ad-hoc - created on demand. Disposable - ' +
@@ -34,27 +29,9 @@ export class HomeComponent implements OnInit, AfterViewInit {
     this.properties = ConfigService.properties;
   }
 
-
-
   ngOnInit() {
     this.createHomePageItems();
     this.showAd = this.seoService.shouldShowAd(1);
-  }
-
-  ngAfterViewInit() {
-    const script = this._renderer2.createElement('script');
-    script.type = `text/javascript`;
-    script.text = `
-        atOptions = {
-                        'key' : '938d5c0fb87beb89eafe244059ced18c',
-                        'format' : 'iframe',
-                        'height' : 90,
-                        'width' : 728,
-                        'params' : {}
-                    };
-        document.write('<scr' + 'ipt type="text/javascript" src="http' + (location.protocol === 'https:' ? 's' : '') + '://www.madcpms.com/938d5c0fb87beb89eafe244059ced18c/invoke.js"></scr' + 'ipt>');
-        `;
-    this._renderer2.appendChild(this.containerDiv.nativeElement, script);
   }
 
   createHomePageItems() {

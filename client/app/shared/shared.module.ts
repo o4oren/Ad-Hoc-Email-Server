@@ -14,6 +14,7 @@ import {HtmlSanitizerPipe} from './pipes/html-sanitizer.pipe';
 import {TrimDomainPipe} from './pipes/trim-domain.pipe';
 import { BannerComponent } from './banner/banner.component';
 import { ProgressComponent } from './progress/progress.component';
+import { AdBannerComponent } from './ads/ad-banner/ad-banner.component';
 
 @NgModule({
   imports: [
@@ -34,13 +35,15 @@ import { ProgressComponent } from './progress/progress.component';
     TrimDomainPipe,
     BannerComponent,
     ProgressComponent,
+    AdBannerComponent,
   ],
   exports: [
     MailboxSelectorComponent,
     BannerComponent,
     ProgressComponent,
     HtmlSanitizerPipe,
-    TrimDomainPipe
+    TrimDomainPipe,
+    AdBannerComponent
   ],
 })
 export class SharedModule { }
