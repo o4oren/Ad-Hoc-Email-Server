@@ -101,19 +101,19 @@
     </textarea>
 
     <p>
-      Here is an explanation of the parameters within the properties file:
-
-      serverBaseUri - the base address for your API server.
-      mongoConnectUrl - the mongodb connect url.
-      Example: “mongodb://localhost:27017/ahem”.
-      appListenPort - the port the node app binds to.
-      smtpPort - the SMTP server’s port. Note that by default it is set to 2525 — this is done for testing purposes, as on many systems only a system account can listen on port 25. To receive standard SMTP email, change this to 25.
-      emailDeleteInterval - The time in seconds between age checks for purging old emails.
-      emailDeleteAge - The max age in seconds above which emails will be deleted.
-      allowedDomains - An array of allowed email domains. These domains will be allowed by the server as RCPT TO: entries. This also makes the server not act as an open relay. Format: [“my.domain.com”, “my.second-domain.com”].
-      customText - A html string that will replace the default text in the landing page.
-      allowAutocomplete - If set to false, will prevent auto completing users in the UI.
-    </p>
+      Here is an explanation of the parameters within the properties file: <br>
+      <ul>
+    <li>serverBaseUri - the base address for your API server. </li>
+    <li>mongoConnectUrl - the mongodb connect url.</li>
+    <li>Example: “mongodb://localhost:27017/ahem”.</li>
+    <li>appListenPort - the port the node app binds to.</li>
+    <li>smtpPort - the SMTP server’s port. Note that by default it is set to 2525 — this is done for testing purposes, as on many systems only a system account can listen on port 25. To receive standard SMTP email, change this to 25.</li>
+    <li>emailDeleteInterval - The time in seconds between age checks for purging old emails.</li>
+    <li>emailDeleteAge - The max age in seconds above which emails will be deleted.</li>
+    <li>allowedDomains - An array of allowed email domains. These domains will be allowed by the server as RCPT TO: entries. This also makes the server not act as an open relay. Format: [“my.domain.com”, “my.second-domain.com”].</li>
+    <li>customText - A html string that will replace the default text in the landing page.</li>
+    <li>allowAutocomplete - If set to false, will prevent auto completing users in the UI.</li>
+      </ul>
 
     <h4>Build the project</h4>
     <textarea highlight-js [options]="{}" [lang]="'bash'">
