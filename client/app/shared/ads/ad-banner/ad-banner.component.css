@@ -1,8 +1,16 @@
 iframe {
-  width: 720px;
-  height: 92px;
+  width: 250px;
+  height: 300px;
   border: none;
 }
+
+@media screen and (min-width: 800px) {
+  iframe {
+    width: 728px;
+    height: 90px;
+  }
+}
+
 app-ad-banner {
   align-self: center;
 }

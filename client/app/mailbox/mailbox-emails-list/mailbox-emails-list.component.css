@@ -53,8 +53,8 @@
 
 @media screen and (min-width: 879px) {
   .email-list-container {
-    flex-direction: row;
-    align-items: flex-start;
+    /*flex-direction: row;*/
+    align-items: center;
   }
   .email-list-adsense {
     max-width: 200px;
