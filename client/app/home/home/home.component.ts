@@ -55,7 +55,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
         document.write('<scr' + 'ipt type="text/javascript" src="http' + (location.protocol === 'https:' ? 's' : '') + '://www.madcpms.com/938d5c0fb87beb89eafe244059ced18c/invoke.js"></scr' + 'ipt>');
         `;
     this._renderer2.appendChild(this.containerDiv, script);
-    this.article.nativeElement.insertAdjacentHTML('afterend', script);
+    this.containerDiv.nativeElement.insertAdjacentHTML('afterend', script);
   }
 
   createHomePageItems() {
