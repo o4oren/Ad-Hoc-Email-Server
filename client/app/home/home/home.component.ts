@@ -1,4 +1,4 @@
-import {Component, Inject, OnInit, Renderer2} from '@angular/core';
+import {AfterViewInit, Component, Inject, OnInit, Renderer2} from '@angular/core';
 import {DeviceService} from '../../core/services/device.service';
 import {ConfigService} from '../../core/services/config.service';
 import {AhemProperties} from '../../model/properties-model';
@@ -12,7 +12,7 @@ import {DOCUMENT} from '@angular/common';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, AfterViewInit {
 
   properties: AhemProperties;
   showAd = false;
@@ -37,7 +37,9 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.createHomePageItems();
     this.showAd = this.seoService.shouldShowAd(1);
+  }
 
+  ngAfterViewInit() {
     const script = this._renderer2.createElement('script');
     script.type = `text/javascript`;
     script.text = `
