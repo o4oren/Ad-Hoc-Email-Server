@@ -17,7 +17,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
   properties: AhemProperties;
   showAd = false;
 
-  @ViewChild('containerDiv', {static: true}) containerDiv: ElementRef;
+  @ViewChild('containerDiv', {static: false}) containerDiv: ElementRef;
 
   items: Array<HomePageItem> = [];
   constructor(public deviceService: DeviceService,
@@ -54,8 +54,21 @@ export class HomeComponent implements OnInit, AfterViewInit {
                     };
         document.write('<scr' + 'ipt type="text/javascript" src="http' + (location.protocol === 'https:' ? 's' : '') + '://www.madcpms.com/938d5c0fb87beb89eafe244059ced18c/invoke.js"></scr' + 'ipt>');
         `;
-    this._renderer2.appendChild(this.containerDiv, script);
-    this.containerDiv.nativeElement.insertAdjacentHTML('afterend', script);
+    script.text = `console.log('running in the script!')`
+    // this._renderer2.appendChild(this.containerDiv, script);
+    console.log(script)
+    this.containerDiv.nativeElement.insertAdjacentHTML('afterend', `
+    <script type="text/javascript">
+\tatOptions = {
+\t\t'key' : '938d5c0fb87beb89eafe244059ced18c',
+\t\t'format' : 'iframe',
+\t\t'height' : 90,
+\t\t'width' : 728,
+\t\t'params' : {}
+\t};
+\tdocument.write('<scr' + 'ipt type="text/javascript" src="http' + (location.protocol === 'https:' ? 's' : '') + '://www.madcpms.com/938d5c0fb87beb89eafe244059ced18c/invoke.js"></scr' + 'ipt>');
+</script>
+    `);
   }
 
   createHomePageItems() {
