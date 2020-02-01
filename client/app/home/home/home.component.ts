@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, Inject, OnInit, Renderer2} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, Inject, OnInit, Renderer2, ViewChild} from '@angular/core';
 import {DeviceService} from '../../core/services/device.service';
 import {ConfigService} from '../../core/services/config.service';
 import {AhemProperties} from '../../model/properties-model';
@@ -16,6 +16,8 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
   properties: AhemProperties;
   showAd = false;
+
+  @ViewChild('article') article: ElementRef;
 
   items: Array<HomePageItem> = [];
   constructor(public deviceService: DeviceService,
@@ -53,7 +55,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
         document.write('<scr' + 'ipt type="text/javascript" src="http' + (location.protocol === 'https:' ? 's' : '') + '://www.madcpms.com/938d5c0fb87beb89eafe244059ced18c/invoke.js"></scr' + 'ipt>');
         `;
 
-    this._renderer2.appendChild(this._document.body, script);
+    this.article.nativeElement.insertAdjacentHTML('afterend', script);
   }
 
   createHomePageItems() {
