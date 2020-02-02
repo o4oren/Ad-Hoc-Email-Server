@@ -15,6 +15,7 @@ import {TrimDomainPipe} from './pipes/trim-domain.pipe';
 import { BannerComponent } from './banner/banner.component';
 import { ProgressComponent } from './progress/progress.component';
 import { AdBannerComponent } from './ads/ad-banner/ad-banner.component';
+import { AdTowerComponent } from './ads/ad-tower/ad-tower.component';
 
 @NgModule({
   imports: [
@@ -36,6 +37,7 @@ import { AdBannerComponent } from './ads/ad-banner/ad-banner.component';
     BannerComponent,
     ProgressComponent,
     AdBannerComponent,
+    AdTowerComponent,
   ],
   exports: [
     MailboxSelectorComponent,
@@ -43,7 +45,8 @@ import { AdBannerComponent } from './ads/ad-banner/ad-banner.component';
     ProgressComponent,
     HtmlSanitizerPipe,
     TrimDomainPipe,
-    AdBannerComponent
+    AdBannerComponent,
+    AdTowerComponent
   ],
 })
 export class SharedModule { }

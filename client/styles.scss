@@ -308,7 +308,7 @@ app-ad-banner {
 
 @media screen and (min-width: 1024px){
   .adsense-container {
-    //flex-direction: co;
+    flex-direction: row;
     align-items: flex-start;
   }
   .ng-adsense-adaptive {

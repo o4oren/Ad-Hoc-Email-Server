@@ -1,0 +1,10 @@
+iframe {
+  width: 160px;
+  height: 600px;
+  border: none;
+}
+
+
+app-ad-banner {
+  align-self: center;
+}
