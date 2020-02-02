@@ -1,3 +1,4 @@
 <div #adBanner id="adBanner">
-  <iframe src="assets/adsterra/adTower.html"></iframe>
+  <iframe *ngIf="this.adSize=='large'" src="assets/adsterra/adTower.html"></iframe>
+  <iframe *ngIf="this.adSize=='small'" src="assets/adsterra/adTower-160-300.html"></iframe>
 </div>

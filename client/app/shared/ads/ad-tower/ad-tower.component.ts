@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {DeviceService} from '../../../core/services/device.service';
 
 @Component({
@@ -7,6 +7,8 @@ import {DeviceService} from '../../../core/services/device.service';
   styleUrls: ['./ad-tower.component.css']
 })
 export class AdTowerComponent implements OnInit {
+
+  @Input() adSize = 'large';
 
   constructor(public deviceService: DeviceService) { }
 

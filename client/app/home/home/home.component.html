@@ -25,7 +25,7 @@
     </div>
   </div>
   <app-ad-banner *ngIf="deviceService.isSmallScreen()"></app-ad-banner>
-  <app-ad-tower *ngIf="!deviceService.isSmallScreen()"></app-ad-tower>
+  <app-ad-tower adSize="small" *ngIf="!deviceService.isSmallScreen()"></app-ad-tower>
 <!--  <ng-adsense class="ng-adsense-adaptive"></ng-adsense>-->
 </div>
 <!--<ng-adsense class="ng-adsense-center"></ng-adsense>-->
