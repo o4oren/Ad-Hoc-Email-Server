@@ -8,7 +8,7 @@ import {DeviceService} from '../../../core/services/device.service';
 })
 export class AdTowerComponent implements OnInit {
 
-  constructor(private deviceService: DeviceService) { }
+  constructor(public deviceService: DeviceService) { }
 
   ngOnInit() {
   }

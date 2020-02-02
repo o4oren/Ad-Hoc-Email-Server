@@ -12,15 +12,16 @@
   <mat-list *ngIf="!selectedEmail" class="ahem-email-list">
     <div *ngIf="(emailList)?.length>0">
       <div class="email-list-container">
-        <ng-adsense *ngIf="this.deviceService.getPlatformWidth()>1024" class="email-list-adsense" [adSlot]="5324689158"></ng-adsense>
+<!--        <ng-adsense *ngIf="this.deviceService.getPlatformWidth()>1024" class="email-list-adsense" [adSlot]="5324689158"></ng-adsense>-->
         <div class="emails-list">
+          <app-ad-banner></app-ad-banner>
           <div *ngFor='let email of emailList' (click)="clickedEmail(email)" class="ahem-email-list-item" [ngClass]="{'ahem-email-selected': email.isSelected }">
             <app-email-info [emailInfo]="email"></app-email-info>
             <mat-divider></mat-divider>
           </div>
         </div>
-        <ng-adsense class="email-list-adsense" [adSlot]="5324689158"></ng-adsense>
-        <app-ad-banner></app-ad-banner>
+<!--        <ng-adsense class="email-list-adsense" [adSlot]="5324689158"></ng-adsense>-->
+<!--        <app-ad-tower *ngIf="!this.deviceService.isSmallScreen()"></app-ad-tower>-->
       </div>
     </div>
     <div *ngIf="(emailList)?.length==0" class="ahem-empty-list">
@@ -60,5 +61,6 @@
 
   </mat-list>
   <app-email-view *ngIf="selectedEmail" [email]="selectedEmail" [loading]="true"></app-email-view>
+<!--  <app-ad-tower *ngIf="!this.deviceService.isSmallScreen()"></app-ad-tower>-->
   <!--<ng-adsense class="ng-adsense-center" [adSlot]="5324689158"></ng-adsense>-->
 </div>
