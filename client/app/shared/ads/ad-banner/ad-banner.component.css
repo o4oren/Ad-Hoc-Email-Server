@@ -1,7 +1,5 @@
-iframe {
-  width: 320px;
-  height: 50px;
-  border: none;
+.ahem-ad {
+  display: flex;
 }
 
 @media screen and (min-width: 800px) {
