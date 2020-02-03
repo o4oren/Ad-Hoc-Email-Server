@@ -59,14 +59,13 @@ export class AdBannerComponent implements OnInit, AfterViewInit {
                         'params' : {}
                     };
 
-            let s = document.createElement('script');
-            s.type = 'text/javascript';
-            s.src = "https://www.madcpms.com/938d5c0fb87beb89eafe244059ced18c/invoke.js";
+            let scriptA = document.createElement('script');
+            scriptA.type = 'text/javascript';
+            scriptA.src = "https://www.madcpms.com/938d5c0fb87beb89eafe244059ced18c/invoke.js";
             // s.code = 'console.log("aaaaa")'
             try {
-              let el = document.getElementById("ahemBanner");
-              console.log(el);
-              el.appendChild(s);
+              let elA = document.getElementById("ahemBanner");
+              elA.appendChild(scriptA);
             } catch (e) {
               console.log(e);
             }
@@ -86,12 +85,12 @@ export class AdBannerComponent implements OnInit, AfterViewInit {
                         'params' : {}
                     };
 
-            let s = document.createElement('script');
-            s.type = 'text/javascript';
-            s.src = "https://www.madcpms.com/7b948ca94242c23b2a457ae04d235025/invoke.js";
+            let scriptB = document.createElement('script');
+            scriptB.type = 'text/javascript';
+            scriptB.src = "https://www.madcpms.com/7b948ca94242c23b2a457ae04d235025/invoke.js";
             try {
-              let el = document.getElementById("ahemMobileBanner");
-              el.appendChild(s);
+              let elB = document.getElementById("ahemMobileBanner");
+              elB.appendChild(scriptB);
             } catch (e) {
               console.log(e);
             }
@@ -111,12 +110,12 @@ export class AdBannerComponent implements OnInit, AfterViewInit {
                         'params' : {}
                     };
 
-            let s = document.createElement('script');
-            s.type = 'text/javascript';
-            s.src = "https://www.madcpms.com/400fda9f32d444e1dcc4037640007321/invoke.js";
+            let scriptC = document.createElement('script');
+            scriptC.type = 'text/javascript';
+            scriptC.src = "https://www.madcpms.com/400fda9f32d444e1dcc4037640007321/invoke.js";
             try {
-              let el = document.getElementById("ahemShortTower");
-              el.appendChild(s);
+              let elC = document.getElementById("ahemShortTower");
+              elC.appendChild(scriptC);
             } catch (e) {
               console.log(e);
             }
@@ -136,12 +135,12 @@ export class AdBannerComponent implements OnInit, AfterViewInit {
                         'params' : {}
                     };
 
-            let s = document.createElement('script');
-            s.type = 'text/javascript';
-            s.src = "https://www.madcpms.com/fbecc40ac25f1a3dfb84295a57f64211/invoke.js";
+            let scriptD = document.createElement('script');
+            scriptD.type = 'text/javascript';
+            scriptD.src = "https://www.madcpms.com/fbecc40ac25f1a3dfb84295a57f64211/invoke.js";
             try {
-              let el = document.getElementById("ahemTower");
-              el.appendChild(s);
+              let elD = document.getElementById("ahemTower");
+              elD.appendChild(scriptD);
             } catch (e) {
               console.log(e);
             }
