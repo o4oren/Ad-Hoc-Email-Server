@@ -59,12 +59,12 @@ export class AdBannerComponent implements OnInit, AfterViewInit {
                         'params' : {}
                     };
 
-            let scriptA = document.createElement('script');
+            var scriptA = document.createElement('script');
             scriptA.type = 'text/javascript';
             scriptA.src = "https://www.madcpms.com/938d5c0fb87beb89eafe244059ced18c/invoke.js";
             // s.code = 'console.log("aaaaa")'
             try {
-              let elA = document.getElementById("ahemBanner");
+              var elA = document.getElementById("ahemBanner");
               elA.appendChild(scriptA);
             } catch (e) {
               console.log(e);
@@ -85,11 +85,11 @@ export class AdBannerComponent implements OnInit, AfterViewInit {
                         'params' : {}
                     };
 
-            let scriptB = document.createElement('script');
+            var scriptB = document.createElement('script');
             scriptB.type = 'text/javascript';
             scriptB.src = "https://www.madcpms.com/7b948ca94242c23b2a457ae04d235025/invoke.js";
             try {
-              let elB = document.getElementById("ahemMobileBanner");
+              var elB = document.getElementById("ahemMobileBanner");
               elB.appendChild(scriptB);
             } catch (e) {
               console.log(e);
@@ -110,11 +110,11 @@ export class AdBannerComponent implements OnInit, AfterViewInit {
                         'params' : {}
                     };
 
-            let scriptC = document.createElement('script');
+            var scriptC = document.createElement('script');
             scriptC.type = 'text/javascript';
             scriptC.src = "https://www.madcpms.com/400fda9f32d444e1dcc4037640007321/invoke.js";
             try {
-              let elC = document.getElementById("ahemShortTower");
+              var elC = document.getElementById("ahemShortTower");
               elC.appendChild(scriptC);
             } catch (e) {
               console.log(e);
@@ -135,11 +135,11 @@ export class AdBannerComponent implements OnInit, AfterViewInit {
                         'params' : {}
                     };
 
-            let scriptD = document.createElement('script');
+            var scriptD = document.createElement('script');
             scriptD.type = 'text/javascript';
             scriptD.src = "https://www.madcpms.com/fbecc40ac25f1a3dfb84295a57f64211/invoke.js";
             try {
-              let elD = document.getElementById("ahemTower");
+              var elD = document.getElementById("ahemTower");
               elD.appendChild(scriptD);
             } catch (e) {
               console.log(e);
