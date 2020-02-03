@@ -59,12 +59,12 @@ export class AdBannerComponent implements OnInit, AfterViewInit {
                         'params' : {}
                     };
 
-            var s = document.createElement('script');
+            let s = document.createElement('script');
             s.type = 'text/javascript';
             s.src = "https://www.madcpms.com/938d5c0fb87beb89eafe244059ced18c/invoke.js";
             // s.code = 'console.log("aaaaa")'
             try {
-              var el = document.getElementById("ahemBanner");
+              let el = document.getElementById("ahemBanner");
               console.log(el);
               el.appendChild(s);
             } catch (e) {
@@ -86,11 +86,11 @@ export class AdBannerComponent implements OnInit, AfterViewInit {
                         'params' : {}
                     };
 
-            var s = document.createElement('script');
+            let s = document.createElement('script');
             s.type = 'text/javascript';
             s.src = "https://www.madcpms.com/7b948ca94242c23b2a457ae04d235025/invoke.js";
             try {
-              var el = document.getElementById("ahemMobileBanner");
+              let el = document.getElementById("ahemMobileBanner");
               el.appendChild(s);
             } catch (e) {
               console.log(e);
@@ -111,11 +111,11 @@ export class AdBannerComponent implements OnInit, AfterViewInit {
                         'params' : {}
                     };
 
-            var s = document.createElement('script');
+            let s = document.createElement('script');
             s.type = 'text/javascript';
             s.src = "https://www.madcpms.com/400fda9f32d444e1dcc4037640007321/invoke.js";
             try {
-              var el = document.getElementById("ahemShortTower");
+              let el = document.getElementById("ahemShortTower");
               el.appendChild(s);
             } catch (e) {
               console.log(e);
@@ -136,11 +136,11 @@ export class AdBannerComponent implements OnInit, AfterViewInit {
                         'params' : {}
                     };
 
-            var s = document.createElement('script');
+            let s = document.createElement('script');
             s.type = 'text/javascript';
             s.src = "https://www.madcpms.com/fbecc40ac25f1a3dfb84295a57f64211/invoke.js";
             try {
-              var el = document.getElementById("ahemTower");
+              let el = document.getElementById("ahemTower");
               el.appendChild(s);
             } catch (e) {
               console.log(e);
