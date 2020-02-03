@@ -2,8 +2,6 @@
 <app-email-count></app-email-count>
 <div class="adsense-container">
 <!--  <ng-adsense *ngIf="this.deviceService.getPlatformWidth()>1024" class="ng-adsense-adaptive"></ng-adsense>-->
-  <app-ad-banner *ngIf="deviceService.isSmallScreen()"></app-ad-banner>
-  <app-ad-tower *ngIf="!deviceService.isSmallScreen()"></app-ad-tower>
   <div class="ahem-centered" *ngIf="properties.customText">
     <mat-card-content [innerHtml]="properties.customText" class="ahem-centered">
     </mat-card-content>
@@ -24,8 +22,6 @@
       </article>
     </div>
   </div>
-  <app-ad-banner *ngIf="deviceService.isSmallScreen()"></app-ad-banner>
-  <app-ad-tower adSize="small" *ngIf="!deviceService.isSmallScreen()"></app-ad-tower>
 <!--  <ng-adsense class="ng-adsense-adaptive"></ng-adsense>-->
 </div>
 <!--<ng-adsense class="ng-adsense-center"></ng-adsense>-->
