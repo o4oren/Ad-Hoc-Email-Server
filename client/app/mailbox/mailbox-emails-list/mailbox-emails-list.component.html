@@ -21,8 +21,6 @@
         </div>
 <!--        <ng-adsense class="email-list-adsense" [adSlot]="5324689158"></ng-adsense>-->
 <!--        <app-ad-tower *ngIf="!this.deviceService.isSmallScreen()"></app-ad-tower>-->
-        <app-ad-banner *ngIf="deviceService.isSmallScreen() " adType="ahemMobileBanner"></app-ad-banner>
-        <app-ad-banner *ngIf="!deviceService.isSmallScreen()" adType="ahemBanner"></app-ad-banner>
       </div>
     </div>
     <div *ngIf="(emailList)?.length==0" class="ahem-empty-list">
@@ -62,7 +60,7 @@
 
   </mat-list>
   <app-ad-banner *ngIf="deviceService.isSmallScreen() " adType="ahemMobileBanner"></app-ad-banner>
-  <app-email-view *ngIf="selectedEmail" [email]="selectedEmail" [loading]="true"></app-email-view>
+  <app-ad-banner *ngIf="!deviceService.isSmallScreen()" adType="ahemBanner"></app-ad-banner>  <app-email-view *ngIf="selectedEmail" [email]="selectedEmail" [loading]="true"></app-email-view>
 <!--  <app-ad-tower *ngIf="!this.deviceService.isSmallScreen()"></app-ad-tower>-->
   <!--<ng-adsense class="ng-adsense-center" [adSlot]="5324689158"></ng-adsense>-->
 </div>
