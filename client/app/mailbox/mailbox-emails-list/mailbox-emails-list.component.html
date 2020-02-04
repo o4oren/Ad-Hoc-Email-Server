@@ -19,9 +19,11 @@
             <mat-divider></mat-divider>
           </div>
         </div>
-<!--        <ng-adsense class="email-list-adsense" [adSlot]="5324689158"></ng-adsense>-->
+        <!--        <ng-adsense class="email-list-adsense" [adSlot]="5324689158"></ng-adsense>-->
 <!--        <app-ad-tower *ngIf="!this.deviceService.isSmallScreen()"></app-ad-tower>-->
       </div>
+      <app-ad-banner></app-ad-banner>
+
     </div>
     <div *ngIf="(emailList)?.length==0" class="ahem-empty-list">
       <div>
@@ -59,7 +61,6 @@
     </div>
 
   </mat-list>
-  <app-ad-banner></app-ad-banner>
   <app-email-view *ngIf="selectedEmail" [email]="selectedEmail" [loading]="true"></app-email-view>
 <!--  <app-ad-tower *ngIf="!this.deviceService.isSmallScreen()"></app-ad-tower>-->
   <!--<ng-adsense class="ng-adsense-center" [adSlot]="5324689158"></ng-adsense>-->

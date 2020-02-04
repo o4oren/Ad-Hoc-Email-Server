@@ -4,6 +4,12 @@ iframe {
   border: none;
 }
 
+.adBanner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 @media screen and (min-width: 800px) {
   iframe {
     width: 728px;

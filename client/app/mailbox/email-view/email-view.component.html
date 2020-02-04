@@ -15,9 +15,7 @@
             <mat-card-title>Subject: {{emailDetails.subject}}</mat-card-title>
           </mat-card-header>
         </mat-card>
-
-        <ng-adsense class="ng-adsense-center" [adSlot]="1277509220"></ng-adsense>
-
+        <app-ad-banner></app-ad-banner>
         <mat-card class="email-card">
           <div *ngIf="emailDetails.attachments.length > 0">
             <mat-divider></mat-divider>
@@ -27,7 +25,6 @@
             <mat-divider></mat-divider>
           </div>
           <mat-card-content class="ahem-email-content">
-
             <div *ngIf="emailDetails.html" [innerHTML]="emailDetails.html | htmlSanitizer"></div>
             <div *ngIf="!emailDetails.html" [innerHTML]="emailDetails.textAsHtml"></div>
           </mat-card-content>
