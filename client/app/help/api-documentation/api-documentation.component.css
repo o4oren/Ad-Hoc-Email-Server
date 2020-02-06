@@ -10,9 +10,18 @@
 }
 
 .iframe-container {
-  position: relative;
+  position: fixed;
+  top: 320px;
+  bottom: 100px;
   overflow: hidden;
   padding-top: 56.25%;
+}
+
+@media screen and (min-width: 720px) {
+  .iframe-container {
+    position: relative;
+    top: 0px;;
+  }
 }
 
 iframe {
