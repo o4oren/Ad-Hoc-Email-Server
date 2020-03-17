@@ -1,0 +1,4 @@
+<div #adBanner id="adBanner" class="adBanner">
+  <iframe  *ngIf="!this.deviceService.isSmallScreen()" src="assets/adsterra/adBanner.html"></iframe>
+  <iframe  *ngIf="this.deviceService.isSmallScreen()" src="assets/adsterra/mobile-leaderboard-320-50.html"></iframe>
+</div>

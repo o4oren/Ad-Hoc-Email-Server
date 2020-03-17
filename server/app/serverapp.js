@@ -94,7 +94,7 @@ app.get('*.*', express.static(path.join(DIST_FOLDER, "browser")));
           if (err1) {
             logger.error(err1);
           } else {
-            logger.info('Delete email', result.result);
+            logger.info('Deleting email ' + email._id.toString(), result.result);
           }
         });
       });
