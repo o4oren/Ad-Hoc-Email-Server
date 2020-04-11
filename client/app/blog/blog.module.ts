@@ -8,7 +8,7 @@ import {AdsenseModule} from 'ng2-adsense';
 import {SharedModule} from '../shared/shared.module';
 import { BlogPostPageComponent } from './blog-post-page/blog-post-page.component';
 import {BlogService} from './blog.service';
-import {MatDividerModule} from '@angular/material';
+import {MatDividerModule} from '@angular/material/divider';
 import {HighlightJsModule} from 'ngx-highlight-js';
 import { HowToSetUpYourOwnDisposableMailServerComponent } from './posts/how-to-set-up-your-own-disposable-mail-server/how-to-set-up-your-own-disposable-mail-server.component';
 import { RunAhemOnDockerComponent } from './posts/run-ahem-on-docker/run-ahem-on-docker.component';

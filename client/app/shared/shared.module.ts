@@ -1,13 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MailboxSelectorComponent } from './mailbox-selector/mailbox-selector.component';
-import {
-  MatAutocompleteModule,
-  MatButtonModule,
-  MatFormFieldModule,
-  MatIconModule,
-  MatInputModule, MatProgressBarModule,
-} from '@angular/material';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import {MatButtonModule} from '@angular/material/button';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatIconModule} from '@angular/material/icon';
+import {MatInputModule} from '@angular/material/input';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {HtmlSanitizerPipe} from './pipes/html-sanitizer.pipe';

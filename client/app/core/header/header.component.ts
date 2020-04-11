@@ -1,6 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {DeviceService} from '../services/device.service';
-import {MatIconRegistry} from '@angular/material';
+import {MatIconRegistry} from '@angular/material/icon';
 import {Subscription} from 'rxjs/internal/Subscription';
 import {DomSanitizer} from '@angular/platform-browser';
 import {Router} from '@angular/router';
