@@ -8,6 +8,7 @@ Ad Hoc Email Server is, well, an ad hoc mail server.
 AHEM can be used for testing, where a large (or unknown) number of mailboxes are needed or to provide disposable emails for registering for services that might expose the email to spam;
 This project will provide both a RESTful API and web application for consuming the service.
 A working example of AHEM is always available [here](https://www.ahem.email "AHEM - Ad Hoc Disposable Temporary Email address").
+* Note - the public cloud based version of AHEM will be cancelled on June 11, 2020.
 
 ## Getting Started
 AHEM will accept any email sent to it (on the domains specified in the configuration), and create an ad hoc mailbox as needed.
