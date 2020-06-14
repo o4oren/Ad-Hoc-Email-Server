@@ -12,6 +12,7 @@ services:
         window: 120s
     ports:
       - "4000:3000"
+      - "25:2525"
     tty: true
     networks:
       - net1
