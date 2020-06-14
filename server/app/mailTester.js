@@ -3,6 +3,7 @@
 'use strict';
 const nodemailer = require('nodemailer');
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
+const logger = require('./logger');
 
 function sendTestEmail(properties) {
 
@@ -57,7 +58,7 @@ function sendTestEmail(properties) {
 
   transporter.sendMail(message, (error, info) => {
     if (error) {
-      throw error;
+      logger.info('Mail tester error!', result.result);
     }
 
     // only needed when using pooled connections
