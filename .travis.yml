@@ -24,7 +24,7 @@ before_install:
   - npm install
 
 script:
-  - npm run build:ssr
+#  - npm run build:ssr # built in docker anyway
 #  - npm run testServer  ## commented because tests currently fail in travis - but it is all working fine.
   - docker build -t $DOCKER_USERNAME/ahem .
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
