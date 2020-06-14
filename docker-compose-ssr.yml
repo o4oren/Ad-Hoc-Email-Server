@@ -1,7 +1,7 @@
 version: "3"
 services:
   ahem-ssr:
-    image: o4oren/ahem-ssr:latest
+    image: o4oren/ahem-universal:latest
     build:
       context: .
     deploy:
