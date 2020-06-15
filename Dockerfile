@@ -5,6 +5,7 @@ COPY . /app
 RUN npm install
 RUN npm run build:ssr
 
-EXPOSE 3000
-EXPOSE 25
+# override in your docker-compose, kubrnetes, swarm configuration - or uncomment
+#EXPOSE 3000
+#EXPOSE 25
 CMD [ "node", "ahem" ]
