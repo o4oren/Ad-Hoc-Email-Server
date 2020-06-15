@@ -10,9 +10,20 @@ import { join } from 'path';
 import * as fs from 'fs';
 import {APP_BASE_HREF} from '@angular/common';
 
-const properties = JSON.parse(fs.readFileSync('./properties.json', 'utf8'));
-// const properties = require('./properties.json');
-
+const properties = {
+  serverBaseUri: process.env.serverBaseUri,
+  mongoConnectUrl: process.env.mongoConnectUrl,
+  dbName: process.env.dbName || 'ahem',
+  appListenPort: parseInt(process.env.appListenPort) || 3000,
+  smtpPort: parseInt(process.env.smtpPort) || 25,
+  emailDeleteInterval: parseInt(process.env.emailDeleteInterval) || 3600,
+  emailDeleteAge: parseInt(process.env.emailDeleteAge) || 86400,
+  allowAutocomplete: JSON.parse(process.env.allowAutocomplete),
+  allowedDomains: process.env.allowedDomains.split(','),
+  jwtSecret: process.env.jwtSecret,
+  jwtExpiresIn: parseInt(process.env.jwtExpiresIn) || 3600,
+  maxAllowedApiCalls: parseInt(process.env.maxAllowedApiCalls) || 10000
+};
 
 console.log(properties);
 
