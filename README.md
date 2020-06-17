@@ -24,8 +24,8 @@ mongodb
 ## Installation
 ```bash
 # clone the repository
-git clone https://github.com/o4oren/ahem-server.git
-cd ahem-server
+git clone https://github.com/o4oren/Ad-Hoc-Email-Server.git
+cd Ad-Hoc-Email-Server
 npm install
 # builds the project.
 npm run build:ssr
