@@ -97,7 +97,7 @@
     "karma-jasmine": "~1.1.0",
     "karma-jasmine-html-reporter": "^1.5.1",
     "mongodb-memory-server": "^2.9.3",
-    "node-sass": "13.0.0",
+    "node-sass": "^14.13.0",
     "nodemailer": "^4.7.0",
     "nyc": "^14.1.1",
     "protractor": "^5.4.2",
