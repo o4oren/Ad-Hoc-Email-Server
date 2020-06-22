@@ -41,7 +41,6 @@ router.get('/emailCount', (req, res, next) => {
     if (!emailCount) {
       return res.status(200).json({ count: 0 })
     }
-    delete emailCount._id;
     return res.status(200).json(emailCount);
   });
 });
