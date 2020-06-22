@@ -41,7 +41,7 @@ router.get('/emailCount', (req, res, next) => {
     if (!emailCount) {
       return res.status(200).json({ count: 0 })
     }
-    return res.status(200).json(emailCount);
+    return res.status(200).json({count: emailCount.count, since: emailCount.since});
   });
 });
 
