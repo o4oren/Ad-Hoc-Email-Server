@@ -66,27 +66,30 @@ function startSTMPServer(properties, db, io) {
                 io.emit('emailCount', result.value);
               });
               mail.to.value.forEach(recipient => {
-                const nameAndDomain = recipient.address.split('@');
-                if (properties.allowedDomains.indexOf(nameAndDomain[1].toLowerCase()) > -1) {
-                  db.collection('mailboxes').updateOne({'name': nameAndDomain[0].toLowerCase()}, {
-                    $push: {
-                      'emails': {
-                        'emailId': mail._id,
-                        'sender': mail.from.value[0],
-                        'subject': mail.subject,
-                        'timestamp': mail.timestamp,
-                        'isRead': false
+                try {
+                  const nameAndDomain = recipient.address.split('@');
+                  if (properties.allowedDomains.indexOf(nameAndDomain[1].toLowerCase()) > -1) {
+                    db.collection('mailboxes').updateOne({'name': nameAndDomain[0].toLowerCase()}, {
+                      $push: {
+                        'emails': {
+                          'emailId': mail._id,
+                          'sender': mail.from.value[0],
+                          'subject': mail.subject,
+                          'timestamp': mail.timestamp,
+                          'isRead': false
+                        }
                       }
-                    }
-                  }, {upsert: true}, function (err2, res) {
-                    if (err2) {
-                      logger.error('Error in writing to mailbox db', err2);
-                      return;
-                    }
-                    logger.info('updated email content in db.');
-                  });
+                    }, {upsert: true}, function (err2, res) {
+                      if (err2) {
+                        logger.error('Error in writing to mailbox db', err2);
+                        return;
+                      }
+                      logger.info('updated email content in db.');
+                    });
+                  }
+                } catch (e) {
+                  logger.error(e);
                 }
-
               });
             });
           });
