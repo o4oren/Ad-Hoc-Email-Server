@@ -35,7 +35,7 @@ npm run build:ssr
 npm run startDev
 
 # for prod:
-# will run the backend which will also serve the front end form the `dist` folder.
+# will run the backend which will also serve the front end from the `dist` folder.
 node ahem.js
 ```
 
