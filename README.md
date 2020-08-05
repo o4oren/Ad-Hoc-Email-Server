@@ -9,6 +9,9 @@ AHEM can be used for testing, where a large (or unknown) number of mailboxes are
 This project will provide both a RESTful API and web application for consuming the service.
 A working example of AHEM is always available [here](https://www.ahem.email "AHEM - Ad Hoc Disposable Temporary Email address").
 
+
+![AHEM](https://github.com/o4oren/Ad-Hoc-Email-Server/blob/master/client/assets/images/ahem.png?raw=true)
+
 ## Getting Started
 AHEM will accept any email sent to it (on the domains specified in the configuration), and create an ad hoc mailbox as needed.
 Then just browse to its UI, enter the mailbox name and you'll see the emails contained in the mailbox.
