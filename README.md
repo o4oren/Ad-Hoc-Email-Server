@@ -1,6 +1,6 @@
 ![AHEM]()
 <p align="center">
-  <img width="800" src="https://github.com/o4oren/Ad-Hoc-Email-Server/blob/master/client/assets/svg/ahem-happy-top-bottom-dk.svg?raw=true">
+  <img width="460" src="https://github.com/o4oren/Ad-Hoc-Email-Server/blob/master/client/assets/svg/ahem-happy-top-bottom-dk.svg?raw=true">
 </p>
 
 
