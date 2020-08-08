@@ -1,11 +1,12 @@
 ![AHEM](https://github.com/o4oren/Ad-Hoc-Email-Server/blob/master/client/assets/svg/ahem-happy-top-bottom-dk.svg?raw=true)
 
-<h1 align="center">
-  Ad Hoc Email Server (AHEM)
-</h1>
+
 
 [![Build Status](https://travis-ci.org/o4oren/Ad-Hoc-Email-Server.svg?branch=master)](https://travis-ci.org/o4oren/Ad-Hoc-Email-Server)
 
+<h2 align="center">
+  Ad Hoc Email Server (AHEM)
+</h2>
 Ad Hoc Email Server is, well, an ad hoc mail server. 
 AHEM can be used for testing, where a large (or unknown) number of mailboxes are needed or to provide disposable emails for registering for services that might expose the email to spam;
 This project will provide both a RESTful API and web application for consuming the service.
