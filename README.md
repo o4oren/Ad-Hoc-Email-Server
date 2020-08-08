@@ -1,5 +1,7 @@
-![AHEM](https://github.com/o4oren/Ad-Hoc-Email-Server/blob/master/client/assets/svg/ahem-happy-top-bottom-dk.svg?raw=true)
-
+![AHEM]()
+<p align="center">
+  <img width="800" src="https://github.com/o4oren/Ad-Hoc-Email-Server/blob/master/client/assets/svg/ahem-happy-top-bottom-dk.svg?raw=true">
+</p>
 
 
 [![Build Status](https://travis-ci.org/o4oren/Ad-Hoc-Email-Server.svg?branch=master)](https://travis-ci.org/o4oren/Ad-Hoc-Email-Server)
