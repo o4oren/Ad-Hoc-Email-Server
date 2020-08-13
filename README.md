@@ -4,6 +4,7 @@
 
 
 [![Build Status](https://travis-ci.org/o4oren/Ad-Hoc-Email-Server.svg?branch=master)](https://travis-ci.org/o4oren/Ad-Hoc-Email-Server)
+![Website](https://img.shields.io/website?down_message=Down&style=plastic&up_message=Up&url=https%3A%2F%2Fwww.ahem.email)
 
 <h2 align="center">
   Ad Hoc Email Server (AHEM)
