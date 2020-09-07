@@ -1,9 +1,14 @@
-<h1 align="center">
-  Ad Hoc Email Server (AHEM)
-</h1>
+<p align="center">
+  <img width="460" src="https://github.com/o4oren/Ad-Hoc-Email-Server/blob/master/client/assets/svg/ahem-happy-top-bottom-dk.svg?raw=true">
+</p>
+
 
 [![Build Status](https://travis-ci.org/o4oren/Ad-Hoc-Email-Server.svg?branch=master)](https://travis-ci.org/o4oren/Ad-Hoc-Email-Server)
+[![Website](https://img.shields.io/website?down_message=Down&up_message=Up&url=https%3A%2F%2Fwww.ahem.email)](https://www.ahem.email)
 
+<h2 align="center">
+  Ad Hoc Email Server (AHEM)
+</h2>
 Ad Hoc Email Server is, well, an ad hoc mail server. 
 AHEM can be used for testing, where a large (or unknown) number of mailboxes are needed or to provide disposable emails for registering for services that might expose the email to spam;
 This project will provide both a RESTful API and web application for consuming the service.
@@ -35,7 +40,7 @@ npm run build:ssr
 npm run startDev
 
 # for prod:
-# will run the backend which will also serve the front end form the `dist` folder.
+# will run the backend which will also serve the front end from the `dist` folder.
 node ahem.js
 ```
 
