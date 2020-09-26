@@ -100,7 +100,7 @@ app.get('*.*', express.static(path.join(DIST_FOLDER, "browser")));
       });
     });
 
-    db.collection('mailboxes').remove({'emails': {$exists: true, $ne: '[]'}}, function (err, result) {
+    db.collection('mailboxes').remove({'emails': {$exists: true, $eq: []}}, function (err, result) {
       if (err) {
         logger.error(err);
       } else {
