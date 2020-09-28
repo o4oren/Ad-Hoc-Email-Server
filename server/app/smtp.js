@@ -4,6 +4,7 @@
 
 const SMTPServer = require('smtp-server').SMTPServer;
 const simpleParser = require('mailparser').simpleParser;
+const axios = require('axios');
 const logger = require('./logger');
 let mailserver;
 
@@ -55,12 +56,18 @@ function startSTMPServer(properties, db, io) {
           });
 
           db.collection('emails').insertOne(mail, function (err1, result) {
-
             if (err1) {
               logger.error('Error in writing email to db!', err1);
               return;
             }
 
+            if(properties.webHookUrl) {
+              try {
+                axios.post(properties.webHookUrl, mail).catch(error=>logger.error('axios error: ', error));
+              } catch (error) {
+                logger.error('axios error', error);
+              }
+            }
             // count email
             db.collection('emailCount').findOneAndUpdate({}, {
               $inc: {count: 1},

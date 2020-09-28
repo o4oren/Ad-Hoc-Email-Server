@@ -9,7 +9,7 @@ const path = require('path');
 const mongo = require('mongodb');
 const assert = require('assert');
 const http = require('http');
-require('dotenv').config()
+require('dotenv').config();
 const properties = {
   serverBaseUri: process.env.serverBaseUri,
   mongoConnectUrl: process.env.mongoConnectUrl,
@@ -22,7 +22,8 @@ const properties = {
   allowedDomains: process.env.allowedDomains.split(','),
   jwtSecret: process.env.jwtSecret,
   jwtExpiresIn: parseInt(process.env.jwtExpiresIn) || 3600,
-  maxAllowedApiCalls: parseInt(process.env.maxAllowedApiCalls) || 10000
+  maxAllowedApiCalls: parseInt(process.env.maxAllowedApiCalls) || 10000,
+  webHookUrl: process.env.webHookUrl
 };
 
 logger.info('connecting to db', properties.mongoConnectUrl);
