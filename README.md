@@ -141,4 +141,4 @@ Replace XX-XXXXXXXXX-X with your GA id.
 See also the list of [contributors](https://github.com/o4oren/ahem-server/contributors) who participated in this project.
 
 ## License
-This project is licensed under the GPLv3 License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the Apache v2 License - see the [LICENSE.md](LICENSE.md) file for details
