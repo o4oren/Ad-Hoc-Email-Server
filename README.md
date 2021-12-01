@@ -84,7 +84,6 @@ maxAllowedApiCalls | If using token validation, this is the amount of API calls 
 The AHEM color palette is available [here](https://material.io/tools/color/#!/?view.left=0&view.right=0&primary.color=515f77&secondary.color=E3F2FD).
 
 ### API
-The full API documentation is available [here](https://www.ahem.email/help/api "AHEM - API Help").
 
 A brief list of RESTful resources:
 
