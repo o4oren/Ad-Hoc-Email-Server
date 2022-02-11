@@ -92,7 +92,7 @@
     "jasmine-ts": "^0.3.0",
     "jest": "^25.0.0",
     "jest-coverage-badges": "^1.1.2",
-    "karma": "^4.4.1",
+    "karma": "^6.3.14",
     "karma-chrome-launcher": "~2.2.0",
     "karma-cli": "~1.0.1",
     "karma-coverage-istanbul-reporter": "^2.1.1",
