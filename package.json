@@ -61,7 +61,7 @@
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
     "mailparser": "^2.7.7",
-    "moment": "^2.24.0",
+    "moment": "^2.29.2",
     "mongodb": "^3.4.1",
     "morgan": "^1.9.1",
     "ng2-adsense": "^5.4.3",
