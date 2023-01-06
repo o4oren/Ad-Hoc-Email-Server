@@ -64,6 +64,7 @@ allowAutocomplete | If set to false, will prevent auto completing users in the u
 jwtSecret | The JWT secret, if using token authentication.
 jwtExpiresIn | JWT token TTL in seconds. -1 means token validation is not enforced.
 maxAllowedApiCalls | If using token validation, this is the amount of API calls a token is allowed to make.
+webHookUrl | Optional webhook. If set, Ahem will POST each incoming email to the endpoint.
 
 ### Docker
 * Build docker: docker build -t o4oren/ahem .
