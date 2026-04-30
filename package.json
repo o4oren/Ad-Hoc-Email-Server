@@ -59,7 +59,7 @@
     "core-js": "^2.6.11",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "jsonwebtoken": "^8.5.1",
+    "jsonwebtoken": "^9.0.0",
     "mailparser": "^2.7.7",
     "moment": "^2.24.0",
     "mongodb": "^3.4.1",
